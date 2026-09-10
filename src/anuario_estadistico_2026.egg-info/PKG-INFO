@@ -1,0 +1,199 @@
+Metadata-Version: 2.4
+Name: anuario-estadistico-2026
+Version: 0.5.0
+Summary: Pipeline reproducible para generar el Anuario Estadístico 2026
+License: MIT License
+        
+        Copyright (c) 2026 Contributors to Anuario Estadístico 2026
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+        This license covers the source code created for this repository. Source data,
+        logos, illustrations and reference publications retain their original terms.
+        
+        
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Jinja2<4,>=3.1
+Requires-Dist: matplotlib<4,>=3.8
+Requires-Dist: numpy<3,>=1.26
+Requires-Dist: openpyxl<4,>=3.1
+Requires-Dist: pandas<3,>=2.1
+Requires-Dist: Pillow<13,>=10
+Provides-Extra: mapas
+Requires-Dist: geopandas<2,>=0.14; extra == "mapas"
+Requires-Dist: shapely<3,>=2; extra == "mapas"
+Provides-Extra: playwright
+Requires-Dist: playwright<2,>=1.47; extra == "playwright"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8; extra == "dev"
+Requires-Dist: ruff<1,>=0.6; extra == "dev"
+Dynamic: license-file
+
+# Anuario Estadístico 2026
+
+Proyecto reproducible para actualizar, calcular, documentar y ensamblar las 105
+figuras del Anuario Estadístico 2026. El anuario 2024 es el referente visual y
+metodológico. Los códigos originales permanecen intactos en la carpeta padre.
+
+Esta versión entrega la base operativa y las figuras A.1, A.2, A.3 y A.4 actualizadas. Los demás
+scripts se incorporarán uno por uno cuando el responsable del proyecto lo
+autorice. Una copia de consulta de los códigos 2024 vive en
+`scripts/legacy/original_2024/`; el pipeline sólo ejecuta los scripts migrados a
+`scripts/figures/`.
+
+## Inicio rápido
+
+```powershell
+.\preparar_entorno.ps1
+.\ejecutar.ps1 doctor
+.\ejecutar.ps1 run --dry-run
+```
+
+Si `python` apunta a una distribución reducida sin `venv`, indica una
+instalación completa: `./preparar_entorno.ps1 -PythonEjecutable C:\ruta\python.exe`.
+
+La simulación crea desde el inicio una carpeta en `reportes/` con el inventario
+de fuentes, pendientes, estados y archivos CSV preparados para cálculos y
+referencias.
+
+## Ejecución normal
+
+```powershell
+# Todas las figuras, en orden A.1, A.2, ... H.14
+.\ejecutar.ps1 run
+
+# Una figura
+.\ejecutar.ps1 run --only A.1
+
+# Un tramo
+.\ejecutar.ps1 run --from A.1 --until A.10
+
+# Ensamblar el PPTX al terminar
+.\ejecutar.ps1 run --assemble
+```
+
+La corrida continúa cuando encuentra una figura aún pendiente y registra su
+estado. Use `--stop-on-error` durante una investigación puntual.
+
+## Insumos especiales
+
+- A.5: `data/manual/A.5/`
+- B.22: `data/manual/B.22/`
+- A.2: adquisición automática de microdatos ENOE; reutiliza ZIP verificados,
+  intenta los enlaces oficiales directos y usa Playwright sólo como respaldo.
+
+El programa muestra estas rutas al iniciar. No descarga ni modifica estos
+archivos manuales.
+
+A.3 integra la descarga del portal dinámico del INEGI dentro de su propio
+script. La primera ejecución sin caché requiere preparar Chromium con
+`.\preparar_entorno.ps1 -ConPlaywright`; las siguientes reutilizan el CSV
+verificado. `ANUARIO_PLAYWRIGHT_HEADED=1` permite mostrar el navegador si el
+portal requiere supervisión.
+
+## Figura A.1
+
+```powershell
+.\ejecutar.ps1 run --only A.1
+```
+
+El script obtiene el tabulado oficial `PIBT_2.xlsx`, verifica
+que sea un libro Office válido, localiza por nombre el bloque a precios de 2018,
+calcula la contribución conjunta de telecomunicaciones y radiodifusión, imprime
+los datos usados y produce el PNG. Si el archivo ya está en la caché y pasa la
+verificación, no se vuelve a descargar. `ANUARIO_FORCE_DOWNLOAD=1` fuerza una
+actualización y `ANUARIO_OFFLINE=1` exige trabajar sólo con archivos existentes.
+
+## Figura A.2
+
+```powershell
+.\ejecutar.ps1 run --only A.2
+```
+
+El script reúne los 27 cortes ENOE necesarios entre 2013-II y 2026-II. Importa
+las copias históricas existentes sin volver a bajarlas y descarga únicamente
+los ZIP faltantes. Después verifica SDEM/COE1, cruza cada persona con las llaves
+completas, aplica el factor trimestral, calcula los sectores SCIAN 517 y 515,
+imprime la tabla usada y genera la gráfica PNG.
+
+## Figura A.3
+
+```powershell
+.\ejecutar.ps1 run --only A.3
+```
+
+El script reutiliza primero los descargables verificados. Si falta el CSV
+histórico, automatiza la exportación con Playwright; además obtiene el conjunto
+mensual vigente del INPC, calcula la variación anual, imprime la tabla usada y
+genera el PNG. La serie comparable `08 Comunicaciones` del portal anterior sólo
+está publicada hasta julio de 2024, por lo que IPCOM termina en ese punto sin
+unirla artificialmente con la clasificación nueva.
+
+## Figura A.4
+
+```powershell
+.\ejecutar.ps1 run --only A.4
+```
+
+El script adquiere `TODO.zip`, el archivo global oficial de BIT, y lo conserva
+como caché compartida. Si ya existe una copia verificada no vuelve a
+descargarla. A.4 abre directamente dentro del ZIP únicamente
+`TD_INVERSION_TELECOM_ITE_VA.csv`, calcula los totales y participaciones de
+2013 a 2024, imprime los datos usados y genera la gráfica PNG. Las siguientes
+figuras basadas en BIT deben solicitar esta misma fuente para reutilizarla.
+
+## Salidas por figura
+
+- Gráfica: `build/figures/<sección>/`
+- Página completa opcional: `build/slides/`
+- Texto: registrado dentro de la carpeta de corrida
+- Tabla usada: `reportes/<corrida>/datos_usados/`
+- Referencias y cálculos: CSV dentro de `reportes/<corrida>/`
+
+El ensamblador PowerPoint usa lienzo de 1600 × 900, igual que el PDF de 2024.
+Prefiere una página completa si el script la produce; en caso contrario inserta
+la gráfica sin añadir rótulos editoriales.
+
+El ensamblador usa `@oai/artifact-tool`. En Codex se resuelve con el runtime
+incluido. En otra máquina, `ANUARIO_NODE_MODULES` debe apuntar a una carpeta
+`node_modules` que contenga ese paquete; `ANUARIO_NODE` puede indicar la ruta de
+Node.js. En Codex, `ANUARIO_RUNTIME_PYTHON` y `ANUARIO_RUNTIME_BIN_DIR` permiten
+activar la validación avanzada con el runtime incluido.
+
+## Reglas de diseño
+
+Cada figura parte de su código original. Se conservan colores, tipografía,
+proporciones, leyendas y formatos numéricos. Sólo se actualizan datos, periodos y
+el contenido mínimo de `Fuente:`, `Nota:` o `Notas:`. Esas etiquetas permanecen
+en negritas y el texto posterior en peso normal. No se agregan etiquetas como
+`revisión` o `control editorial`.
+
+## Documentación
+
+- [Arquitectura](docs/ARQUITECTURA.md)
+- [Contrato de cada figura](docs/CONTRATO_FIGURA.md)
+- [Evidencia para defensa](docs/DEFENSA_SINODALES.md)
+- [Insumos manuales](docs/INSUMOS_MANUALES.md)
+
+## Licencia
+
+El código nuevo usa licencia MIT. Los datos, logotipos, ilustraciones y
+publicaciones de referencia conservan los términos de sus titulares.

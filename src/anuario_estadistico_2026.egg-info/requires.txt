@@ -1,0 +1,17 @@
+Jinja2<4,>=3.1
+matplotlib<4,>=3.8
+numpy<3,>=1.26
+openpyxl<4,>=3.1
+pandas<3,>=2.1
+Pillow<13,>=10
+
+[dev]
+pytest<9,>=8
+ruff<1,>=0.6
+
+[mapas]
+geopandas<2,>=0.14
+shapely<3,>=2
+
+[playwright]
+playwright<2,>=1.47

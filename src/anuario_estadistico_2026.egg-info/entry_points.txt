@@ -1,0 +1,2 @@
+[console_scripts]
+anuario-2026 = anuario2026.cli:main

@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Descargas, resultados y reportes reproducibles
+data/raw/**
+!data/raw/.gitkeep
+build/**
+!build/.gitkeep
+reportes/**
+!reportes/.gitkeep
+entrega/*.pptx
+entrega/*.pdf
+
+# Temporales de PowerPoint
+.codex-finalizer/
+.pptx-build/
+node_modules/
+*.part
+

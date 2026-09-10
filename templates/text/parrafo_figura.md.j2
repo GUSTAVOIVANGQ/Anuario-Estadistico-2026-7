@@ -1,0 +1,2 @@
+{% if periodo %}Con información disponible a {{ periodo }}, {% endif %}{{ descripcion }}{% if variacion is not none %} La variación respecto del periodo anterior fue de {{ variacion | porcentaje(1) }}.{% endif %}{% if mayor %} El valor más alto correspondió a {{ mayor.etiqueta }} con {{ mayor.valor | numero(decimales) }} {{ unidad }}.{% endif %}{% if menor %} El valor más bajo correspondió a {{ menor.etiqueta }} con {{ menor.valor | numero(decimales) }} {{ unidad }}.{% endif %}
+
