@@ -1,0 +1,18 @@
+Versión SIN generación de gráficas de las Figuras B.4-B.20.
+
+Estos scripts descargan/leen los mismos datos del BIT/CRT que las figuras
+originales, hacen exactamente los mismos cálculos, y en vez de dibujar la
+gráfica solo IMPRIMEN EN CONSOLA los resultados/tablas que la alimentarían
+(no generan ningún .png ni usan matplotlib/geopandas).
+
+Desde la raíz del proyecto:
+
+python scripts/figures/generar_b4_b20.py
+
+Una figura individual, por ejemplo B.4:
+python scripts/figures/figura_b4.py
+
+Si falta Playwright (solo se usa para la descarga de datos del portal BIT/CRT
+si no hay copia local del archivo/TODO.zip):
+pip install playwright
+python -m playwright install chromium

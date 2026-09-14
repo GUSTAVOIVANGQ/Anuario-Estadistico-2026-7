@@ -26,10 +26,18 @@ def doctor(project_root: Path) -> int:
     print(f"Figuras inventariadas: {len(figures)}")
     print(f"Fuentes registradas: {len(sources)}")
     print(f"Scripts listos: {sum(item.script_path.is_file() for item in figures)}")
-    print("Insumos manuales: A.5 y B.22")
+    print("Insumos manuales: A.5")
     print("Descargador ENOE integrado (enlace directo y respaldo Playwright): A.2")
     print("Descargador INPC/IPCOM integrado dentro del script: A.3")
-    print("Caché global TODO.zip de BIT integrada y reutilizable: A.4")
+    print("Caché global TODO.zip de BIT integrada y reutilizable: A.4, A.6, B.4 a B.25 y C.5 a C.16")
+    print("Descarga masiva DENUE integrada y reutilizable: B.22")
+    print("CSV individuales de espectro BIT integrados y reutilizables: C.1 y C.2")
+    print("Caché integral ENIGH 2024 verificada y reutilizable: A.7 a A.10")
+    print(
+        "Caché ENDUTIH 2023 a 2025 verificada y reutilizable: "
+        "F.1.1 a F.1.4, B.1 a B.21, C.3, C.4 y D.2 a D.4"
+    )
+    print("Base oficial ECSI 2024 verificada y reutilizable: D.5 a D.11")
     print("Estado base: correcto")
     return 0
 

@@ -1,0 +1,24 @@
+INSUMOS DE DESCARGA MANUAL
+  A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\data\manual\A.5
+      Coloca aqu� Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+
+Anuario Estad�stico 2026 | corrida 20260911T225523835344Z_corrida
+Figuras seleccionadas: 1 de 105
+
+[001/001] C.1 | LISTA
+
+Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\reportes\20260911T225523835344Z_corrida
+  C.1 | Adquisici�n o reutilizaci�n del CSV directo actualizado de BIT/CRT
+  C.1 | Selecci�n de la fecha m�s reciente y c�lculo de MHz por banda
+
+Datos usados en C.1:
+banda,mhz,anio,mes
+Banda de 700 MHz,90.0,2024,8
+Banda de 800 MHz,20.0,2024,8
+Banda de 850 MHz,47.0,2024,8
+Banda PCS,68.0,2024,8
+Banda AWS,130.0,2024,8
+Banda de 2500 MHz,140.0,2024,8
+Banda de 3300 MHz,50.0,2024,8
+Banda de 3500 MHz,100.0,2024,8
+  C.1 | Generaci�n del PNG

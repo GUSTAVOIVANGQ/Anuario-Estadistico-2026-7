@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: anuario-estadistico-2026
-Version: 0.5.0
+Version: 0.14.0
 Summary: Pipeline reproducible para generar el Anuario Estadístico 2026
 License: MIT License
         
@@ -53,11 +53,10 @@ Proyecto reproducible para actualizar, calcular, documentar y ensamblar las 105
 figuras del Anuario Estadístico 2026. El anuario 2024 es el referente visual y
 metodológico. Los códigos originales permanecen intactos en la carpeta padre.
 
-Esta versión entrega la base operativa y las figuras A.1, A.2, A.3 y A.4 actualizadas. Los demás
-scripts se incorporarán uno por uno cuando el responsable del proyecto lo
-autorice. Una copia de consulta de los códigos 2024 vive en
-`scripts/legacy/original_2024/`; el pipeline sólo ejecuta los scripts migrados a
-`scripts/figures/`.
+Esta versión entrega la base operativa, las figuras A.1 a A.10, B.1 a B.22,
+C.3, C.4 y D.2 a D.4 actualizadas. Los demás scripts se incorporarán uno por
+uno cuando el responsable del proyecto lo autorice. El pipeline sólo ejecuta
+los scripts de `scripts/figures/`; la carpeta `scripts/legacy/` fue eliminada.
 
 ## Inicio rápido
 
@@ -96,12 +95,12 @@ estado. Use `--stop-on-error` durante una investigación puntual.
 ## Insumos especiales
 
 - A.5: `data/manual/A.5/`
-- B.22: `data/manual/B.22/`
 - A.2: adquisición automática de microdatos ENOE; reutiliza ZIP verificados,
   intenta los enlaces oficiales directos y usa Playwright sólo como respaldo.
 
-El programa muestra estas rutas al iniciar. No descarga ni modifica estos
-archivos manuales.
+El programa muestra esta ruta al iniciar. No descarga ni modifica los archivos
+manuales de A.5. B.22 descubre y descarga automáticamente los 25 ZIP CSV por
+actividad económica de la edición DENUE más reciente.
 
 A.3 integra la descarga del portal dinámico del INEGI dentro de su propio
 script. La primera ejecución sin caché requiere preparar Chromium con
@@ -160,6 +159,113 @@ descargarla. A.4 abre directamente dentro del ZIP únicamente
 2013 a 2024, imprime los datos usados y genera la gráfica PNG. Las siguientes
 figuras basadas en BIT deben solicitar esta misma fuente para reutilizarla.
 
+## Figura A.5
+
+```powershell
+.\ejecutar.ps1 run --only A.5
+```
+
+A.5 usa exclusivamente los dos libros colocados en `data/manual/A.5/`; no los
+descarga ni los reemplaza. Si falta alguno, la corrida indica el nombre y esa
+ruta. El script verifica los archivos, lee la IED total actualizada y el renglón
+517 Telecomunicaciones, detecta el último trimestre numérico común de ambas
+fuentes, imprime los datos usados y genera el PNG. Con los libros actuales, la
+serie llega a 2026-T1 y utiliza 2025 completo.
+
+## Figura A.6
+
+```powershell
+.\ejecutar.ps1 run --only A.6
+```
+
+A.6 reutiliza el mismo `TODO.zip` y abre únicamente
+`TD_INGRESOS_TELECOM_ITE_VA.csv`. La gráfica llega al último dato de la tabla,
+2024-T4. BIT no incluye el desglose de egresos y margen para 2024, por lo que
+esos cuatro trimestres muestran el ingreso total con contorno y el indicador
+`n.d.`; el desglose histórico termina en 2023-T4 sin estimar valores.
+
+## Figuras A.7 a A.10
+
+```powershell
+.\ejecutar.ps1 run --from A.7 --until A.10
+```
+
+Cada script adquiere por sí mismo la fuente `inegi_enigh_2024`. La primera
+figura descarga y verifica el ZIP integral de microdatos; las siguientes lo
+reutilizan desde la caché. A.7 y A.8 procesan servicios fijos. A.9 y A.10 usan
+las claves CCIF 2018 de recarga, plan celular y cuádruple play. Los cuatro
+scripts forman deciles con el factor de expansión, imprimen su tabla de datos,
+registran los cálculos y generan su propio PNG con periodo 2024.
+
+## Figuras B.1 a B.3, C.3, C.4 y D.2 a D.4
+
+```powershell
+.\ejecutar.ps1 run --from B.1 --until B.3
+.\ejecutar.ps1 run --from C.3 --until C.4
+.\ejecutar.ps1 run --from D.2 --until D.4
+```
+
+Las ocho figuras comparten el ZIP oficial de datos abiertos ENDUTIH 2025. La
+primera ejecución lo descarga y verifica; las siguientes reutilizan la misma
+copia sin descargarla nuevamente. B.1 a B.3 calculan las ocho combinaciones de
+Internet fijo, televisión restringida y telefonía fija con `FAC_HOG`. C.3 y
+C.4 identifican a las personas de 6 años o más con celular tipo smartphone y
+calculan los porcentajes nacional, urbano y rural con `FAC_PER`. D.2 cruza
+las tablas de usuarios para identificar smartphone e Internet; D.3 calcula
+horas promedio ponderadas; D.4 calcula cada dispositivo respecto de las
+personas que usaron al menos uno. Cada script imprime y registra sus resultados.
+
+## Figuras B.4 a B.20
+
+```powershell
+.\ejecutar.ps1 run --from B.4 --until B.20
+```
+
+Cada figura cuenta con un único script ejecutable y autónomo: el archivo de la
+figura contiene adquisición o reutilización de fuentes, lectura, cálculo,
+auditoría, texto y PNG, sin depender de un motor compartido entre B.4 y B.20.
+Los 17 scripts reutilizan el mismo `CRT_BIT_TODO.zip`, abren únicamente las
+tablas que necesitan y seleccionan el último diciembre completo. Con la
+descarga actual, todas las tablas BIT llegan a diciembre de 2024.
+
+El diseño conserva la familia visual del anuario (tipografías, paleta, tipos de
+gráfica, etiquetas, notas y fuentes). Las ilustraciones externas —casas,
+televisores, teléfonos, computadoras o personas— no forman parte del PNG; su
+espacio se asigna al área útil de las series, mapas y comparaciones.
+
+B.13 divide los accesos residenciales de BIT entre los hogares expandidos de
+ENDUTIH 2025. B.14 divide los accesos no residenciales entre las unidades
+económicas del desglose estatal DENUE disponible en el repositorio, cuya
+edición es noviembre de 2023. El periodo de cada numerador y denominador queda
+registrado en el reporte de la corrida.
+
+## Figura B.21
+
+```powershell
+.\ejecutar.ps1 run --only B.21
+```
+
+B.21 reutiliza `CRT_BIT_TODO.zip` y el ZIP ENDUTIH 2025. Abre únicamente la
+tabla de accesos residenciales de televisión restringida, detecta el último
+corte disponible, suma los operadores por entidad y divide entre los hogares
+expandidos con `FAC_HOG`. Con los archivos actuales utiliza diciembre de 2024
+y ENDUTIH 2025. Imprime las 32 observaciones, registra numeradores,
+denominadores y resultados, y genera el mapa con los rangos del referente.
+
+## Figura B.22
+
+```powershell
+.\ejecutar.ps1 run --only B.22
+```
+
+B.22 reutiliza `CRT_BIT_TODO.zip`, consulta el catálogo oficial de descarga
+masiva de INEGI y conserva en caché los 25 ZIP CSV por actividad de la edición
+DENUE más reciente. Cuenta directamente cada establecimiento por entidad,
+detecta el último corte BIT y calcula el indicador estatal y nacional, además
+de la variación anual de los accesos. Con las fuentes actuales usa BIT
+diciembre de 2024 y DENUE mayo de 2026. La gráfica, los datos usados y los
+reportes se generan sin cifras pegadas manualmente.
+
 ## Salidas por figura
 
 - Gráfica: `build/figures/<sección>/`
@@ -192,6 +298,10 @@ en negritas y el texto posterior en peso normal. No se agregan etiquetas como
 - [Contrato de cada figura](docs/CONTRATO_FIGURA.md)
 - [Evidencia para defensa](docs/DEFENSA_SINODALES.md)
 - [Insumos manuales](docs/INSUMOS_MANUALES.md)
+- [Metodología ENDUTIH para B.1-B.3, C.3-C.4 y D.2-D.4](docs/METODOLOGIA_ENDUTIH.md)
+- [Metodología de B.21](docs/METODOLOGIA_B21.md)
+- [Metodología de B.22](docs/METODOLOGIA_B22.md)
+- [Metodología de B.4 a B.20](docs/METODOLOGIA_B4_B20.md)
 
 ## Licencia
 

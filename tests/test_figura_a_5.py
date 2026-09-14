@@ -25,9 +25,9 @@ def _total_workbook(path: Path) -> None:
     worksheet.cell(2, 2, "Periodo")
     worksheet.cell(2, 4, "Datos actualizados al segundo trimestre 2026")
     row = 3
-    for year in MODULE.YEARS:
+    for year in range(2013, 2027):
         worksheet.cell(row, 1, year)
-        worksheet.cell(row, 2, "Enero - junio" if year == 2024 else "Enero - diciembre")
+        worksheet.cell(row, 2, "Enero - marzo" if year == 2026 else "Enero - diciembre")
         worksheet.cell(row, 4, year * 10.0)
         row += 1
     workbook.save(path)
@@ -39,7 +39,7 @@ def _activity_workbook(path: Path) -> None:
     worksheet.title = "Por Actividad Económica"
     worksheet.cell(5, 1, "517 Telecomunicaciones")
     column = 2
-    for year in MODULE.YEARS:
+    for year in range(2013, 2027):
         for quarter in range(1, 5):
             if quarter == 1:
                 worksheet.cell(3, column, year)
@@ -59,13 +59,13 @@ def test_a5_reads_comparable_periods_from_manual_workbooks(tmp_path: Path):
     telecom = MODULE.read_telecom_ied(activity_path)
     result = MODULE.calculate_series(total, telecom)
 
-    assert result["anio"].tolist() == list(MODULE.YEARS)
-    assert total[2024] == 20240.0
-    assert telecom[2023] == 2023.4
-    assert telecom[2024] == 2024.2
-    assert result.iloc[-1]["periodo"] == "enero-junio"
+    assert result["anio"].tolist() == list(range(2013, 2027))
+    assert total[(2025, 4)] == 20250.0
+    assert telecom[(2025, 4)] == 2025.4
+    assert telecom[(2026, 1)] == 2026.1
+    assert result.iloc[-1]["periodo"] == "enero-marzo"
     assert result.iloc[-1]["participacion_telecom_pct"] == pytest.approx(
-        telecom[2024] / total[2024] * 100
+        telecom[(2026, 1)] / total[(2026, 1)] * 100
     )
 
 

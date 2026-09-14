@@ -2,6 +2,299 @@
 
 Todos los cambios importantes del proyecto se documentarán aquí.
 
+## [0.21.0] - 2026-09-14
+
+### Agregado
+
+- D.5 a D.11 como siete scripts autónomos con adquisición o reutilización de
+  la base oficial ECSI 2024, cálculo ponderado, impresión, auditoría, texto y
+  gráfica PNG.
+- Registro de la ECSI 2024 en el inventario de fuentes y documentación de las
+  variables, universos y fórmulas aplicadas.
+
+### Validado
+
+- Las cifras publicadas de D.5 a D.11 se reconstruyen directamente desde los
+  4,275 registros de la base; la desviación máxima es de 0.1 puntos
+  porcentuales por redondeo.
+- ECSI 2024, publicada el 16 de junio de 2025, es el último corte oficial
+  localizado y compatible con estas siete figuras.
+
+### Diseño
+
+- Barras simples, agrupadas y horizontales con paleta, chips numéricos,
+  tipografía y pies de figura de la familia visual del anuario, sin elementos
+  ilustrativos externos.
+
+## [0.20.0] - 2026-09-14
+
+### Agregado
+
+- F.1.1 a F.1.4 como cuatro scripts autónomos con microdatos ENDUTIH, cálculo
+  ponderado por sexo, impresión, auditoría, texto automático y PNG.
+- ENDUTIH 2023 como control metodológico y ENDUTIH 2024 como último corte
+  compatible para las habilidades informáticas de F.1.3.
+
+### Corregido
+
+- Separación explícita de las cuatro láminas que el anuario identifica de
+  manera inconsistente como F.1.
+- F.1.1 ahora lee la tabla oficial `usuarios2` y las variables P8 de
+  aplicaciones; no intenta inferirlas desde las variables generales P7.
+- F.1.3 comprueba que ENDUTIH 2025 eliminó parte de la batería de habilidades
+  y evita mezclar conceptos no comparables.
+
+### Diseño
+
+- Tarjetas por sexo, cifras principales, jerarquía, paleta y pies reconstruidos
+  a partir de las páginas 82 a 85, sin depender de ilustraciones externas.
+
+## [0.19.0] - 2026-09-14
+
+### Agregado
+
+- F.3 a F.9 como siete scripts autónomos con adquisición o reutilización de
+  microdatos MOCIBA, cálculo ponderado, impresión, auditoría, texto y PNG.
+- MOCIBA 2024 como control metodológico y MOCIBA 2025 como fuente actual para
+  todas las figuras, con validaciones de totales, exhaustividad y 41 contrastes
+  contra cifras oficiales.
+
+### Diseño
+
+- Barras estatales, paneles por sexo y gráficas horizontales reconstruidas con
+  la paleta, tarjetas, etiquetas y pies del Anuario 2024, sin las ilustraciones
+  editoriales externas.
+
+## [0.18.0] - 2026-09-14
+
+### Agregado
+
+- F.2 como script autónomo con adquisición o reutilización de ENOE, cruce de
+  SDEM y COE1, cálculo ponderado por sexo, salida en terminal, auditoría y PNG.
+- Prueba previa obligatoria que reproduce exactamente los seis resultados de la
+  Figura F.2 publicada en 2024 antes de aplicar el modelo a 2026-T2.
+
+### Diseño
+
+- La gráfica conserva semicírculos, tarjetas, paleta, jerarquía tipográfica y
+  pie de fuente del referente, destinando el espacio de ilustraciones externas
+  a mostrar los totales desagregados calculados.
+
+## [0.17.0] - 2026-09-14
+
+### Agregado
+
+- F.10 a F.16 como siete scripts autónomos con adquisición o reutilización de
+  fuentes oficiales, cálculo o síntesis cualitativa, salida en terminal,
+  auditoría y gráfica PNG.
+- Validaciones de regresión frente a los resultados de referencia de 2023 y
+  documentación de fórmulas, población elegible y factores de ponderación.
+
+### Corregido
+
+- La última fuente compatible es la Tercera Encuesta 2023: las encuestas 2025
+  fueron revisadas, pero no contienen la batería comparable de violencia
+  digital y no se mezclan con indicadores distintos.
+- F.16 reconoce la opción publicada «Acudir con algún familiar/amigo/pareja» y
+  agrega sin doble conteo las respuestas incluidas en «otras autoridades».
+
+### Diseño
+
+- Las siete figuras conservan la paleta, tarjetas, jerarquía tipográfica y pies
+  editoriales del Anuario 2024, sin incorporar ilustraciones externas.
+
+## [0.16.0] - 2026-09-14
+
+### Agregado
+
+- C.5 a C.16 como doce scripts autónomos con adquisición o reutilización de
+  `CRT_BIT_TODO.zip`, cálculo, impresión de resultados, auditoría y PNG.
+- Mapas estatales para C.7 y C.13 con geometría reutilizable, cinco intervalos,
+  indicador nacional y superlativos calculados a partir de la tabla cruda.
+- Documentación metodológica y pruebas de regresión para las tablas móviles.
+
+### Actualizado
+
+- Todas las figuras C.5-C.16 seleccionan diciembre de 2024, el corte más actual
+  del archivo BIT disponible, sin estimar datos posteriores.
+- El diseño adopta la estructura, paleta y pies del referente 2024, reservando
+  el espacio de ilustraciones externas para la visualización estadística.
+
+## [0.15.0] - 2026-09-11
+
+### Agregado
+
+- B.23, B.24 y B.25 como scripts autónomos que reutilizan `CRT_BIT_TODO.zip`,
+  seleccionan diciembre de 2024 y generan auditoría, texto y PNG.
+- C.1 y C.2 como scripts autónomos con descarga y caché de las tablas
+  individuales de espectro del CRT, con último corte en agosto de 2024.
+- Pruebas de regresión para periodos, agrupaciones, participaciones, IHH y el
+  total de 645 MHz.
+
+### Corregido
+
+- C.1 y C.2 usan los CSV individuales vigentes en lugar de las copias antiguas
+  incluidas en `TODO.zip`.
+- Las cinco interfaces siguen el lenguaje visual del Anuario 2024 y conservan
+  el formato editorial de `Fuente:` y `Nota:`.
+
+## [0.14.0] - 2026-09-11
+
+### Agregado
+
+- B.22 integra en un único script la reutilización de TODO.zip, el descubrimiento
+  de la edición DENUE más reciente, la descarga y caché de sus ZIP CSV oficiales,
+  el conteo de establecimientos, los cálculos auditables y el mapa PNG.
+- La gráfica reproduce los cinco intervalos, la burbuja nacional, la tasa anual
+  y el pie de fuente del referente, sin incorporar la ilustración editorial del
+  televisor.
+
+### Cambiado
+
+- B.22 deja de bloquear la corrida por insumo manual; todavía acepta ZIP o CSV
+  colocados en `data/manual/B.22/` cuando se desea trabajar con una copia local.
+
+## [0.13.3] - 2026-09-11
+
+### Corregido
+
+- B.9 adopta columnas apiladas estrechas con extremos redondeados, etiquetas
+  blancas conectadas a cada segmento y leyenda horizontal como el referente.
+- Maxcom se integra en `Otros` para presentar los siete grupos de la figura del
+  anuario; la serie conserva el último diciembre disponible de 2024.
+
+## [0.13.2] - 2026-09-11
+
+### Corregido
+
+- B.4 adopta el panel interior blanco, la escala recortada, la leyenda superior,
+  las etiquetas de extremos y la banda redondeada de años del referente 2024.
+- El área de la serie se amplió hasta 2024 sin reproducir teléfono, casa u otros
+  dispositivos editoriales externos a la gráfica.
+
+## [0.13.1] - 2026-09-11
+
+### Corregido
+
+- Se reorganizó la interfaz de B.1 siguiendo la composición del anuario y se
+  integró el mapa verde de México como fondo tenue del gráfico principal.
+- Se ampliaron y alinearon el pastel, el total nacional y los paneles de uno y
+  dos servicios. Las columnas se sustituyeron por barras editoriales con remate
+  curvo y chips de porcentaje, sin añadir casas, televisores, dispositivos o
+  personas.
+
+## [0.13.0] - 2026-09-10
+
+### Cambiado
+
+- B.4 a B.20 son ahora 17 scripts autónomos: cada archivo contiene la
+  adquisición o reutilización de fuentes, cálculo, auditoría, texto y PNG.
+- Se eliminó el motor de ejecución compartido de B.4 a B.20 y se adaptaron las
+  pruebas para validar directamente uno de los scripts entregables.
+- Se amplió el área útil de las series y mapas siguiendo el referente del
+  anuario, sin reproducir casas, televisores, dispositivos o personas.
+- Se eliminó por solicitud la carpeta `scripts/legacy/` y sus 289 archivos.
+
+## [0.12.0] - 2026-09-10
+
+### Añadido
+
+- Figuras B.4 a B.20 con un script independiente por figura y una corrida
+  completa de adquisición, cálculo, reporte, texto y PNG.
+- Lectura selectiva de 14 tablas dentro del ZIP global BIT, sin extraer ni
+  volver a descargar el archivo de 1.1 GB.
+- Cálculos estatales de B.13 con hogares ENDUTIH 2025 y de B.14 con unidades
+  económicas DENUE; ambos registran numeradores y denominadores.
+- Pruebas de series, participaciones, IHH y distribución por velocidades.
+
+### Corregido
+
+- B.8 usa tráfico de telefonía fija y B.10 usa el IHH de telefonía fija; no se
+  heredan las sustituciones por indicadores de Internet presentes en algunos
+  códigos 2024.
+
+## [0.11.0] - 2026-09-10
+
+### Añadido
+
+- B.21 con lectura directa de `TD_ACC_TVRES_ITE_VA.csv` dentro de `TODO.zip`,
+  hogares ENDUTIH 2025, cálculo estatal y nacional, texto Jinja2 y mapa PNG.
+- Geometría estatal reutilizable y una prueba del corte temporal, agregación de
+  operadores, ponderación y rangos de color.
+
+### Verificado
+
+- El estimador aplicado a diciembre de 2023 y ENDUTIH 2023 reproduce el valor
+  nacional 58 y los seis extremos estatales descritos en el anuario 2024.
+
+## [0.10.0] - 2026-09-10
+
+### Añadido
+
+- C.3 y C.4 con reutilización del ZIP oficial ENDUTIH 2025, cálculo nacional,
+  urbano y rural con `FAC_PER`, texto Jinja2, datos auditables y gráficas PNG.
+- Regresión metodológica contra los microdatos ENDUTIH 2023 y los valores
+  publicados 78%, 82% y 63% del anuario 2024.
+
+### Corregido
+
+- El indicador de C.3/C.4 se calcula con `P8_1=1` y `P8_4_2=1`, combinación
+  que reproduce el referente; la propuesta basada en llamadas e Internet móvil
+  no reproduce esos rótulos y usa un campo que cambió en ENDUTIH 2025.
+
+## [0.9.0] - 2026-09-10
+
+### Añadido
+
+- B.1, B.2 y B.3 con descarga y caché compartida de ENDUTIH 2025, cálculo de
+  combinaciones de servicios con `FAC_HOG`, texto Jinja2 y gráficas PNG.
+- D.2, D.3 y D.4 con lectura directa de las tablas oficiales, cálculos
+  ponderados con `FAC_PER`, datos usados y trazabilidad de fórmulas.
+- Pruebas de las fórmulas de dominio, smartphone, horas de Internet y universo
+  de dispositivos inteligentes.
+
+### Corregido
+
+- D.2 identifica smartphone mediante `P8_1=1` y `P8_4_2=1`; esta operación
+  reproduce a una decimal los valores del anuario 2024 y sustituye las
+  variables cruzadas del código heredado.
+
+## [0.8.0] - 2026-09-09
+
+### Añadido
+
+- A.7 a A.10 como scripts independientes con adquisición y reutilización del
+  ZIP integral ENIGH 2024, cálculo ponderado por decil, texto Jinja2, datos
+  usados, cálculos auditables y gráficas PNG.
+- Claves CCIF 2018 para servicios fijos y móviles de la ENIGH 2024.
+
+### Corregido
+
+- A.9 y A.10 dejan de usar una clave heredada ajena a telefonía móvil y
+  calculan el gasto con recarga, plan celular y cuádruple play.
+
+## [0.7.1] - 2026-09-09
+
+### Corregido
+
+- A.6 muestra los ingresos de los cuatro trimestres de 2024, último periodo de
+  la tabla BIT descargada. Los presenta sin desglose y como `n.d.` porque la
+  fuente no publica egresos ni margen para esos periodos.
+
+## [0.7.0] - 2026-09-09
+
+### Añadido
+
+- A.6 con reutilización de `TODO.zip`, lectura selectiva de ingresos, cálculos
+  de egresos y margen, texto Jinja2 y gráfica fiel al referente.
+- Registro separado del último periodo disponible en la fuente y del último
+  periodo completo que puede representarse sin estimar datos faltantes.
+
+### Corregido
+
+- A.5 detecta el último trimestre numérico común de sus dos libros; con los
+  insumos actuales muestra 2025 completo y 2026 acumulado a marzo.
+
 ## [0.6.0] - 2026-09-09
 
 ### Añadido

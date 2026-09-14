@@ -36,7 +36,13 @@ COLOR_BACKGROUND = "#FBFBF7"
 COLOR_MARKER = "#F58F82"
 COLOR_MEXICO = "#ACDDE0"
 COLOR_TELECOM = "#4E4F82"
-YEARS = tuple(range(2013, 2025))
+FIRST_YEAR = 2013
+QUARTER_NAMES = {
+    1: "enero-marzo",
+    2: "enero-junio",
+    3: "enero-septiembre",
+    4: "enero-diciembre",
+}
 
 
 def _configure_fonts(project_root: Path) -> str:
@@ -59,8 +65,16 @@ def _year(value: object) -> int | None:
     return result if 1900 <= result <= 2100 else None
 
 
-def read_total_ied(path: Path) -> dict[int, float]:
-    """Lee la columna de datos actualizados y conserva el corte comparable."""
+def _quarter(period: object) -> int | None:
+    normalized = str(period or "").lower()
+    for word, quarter in (("marzo", 1), ("junio", 2), ("septiembre", 3), ("diciembre", 4)):
+        if word in normalized:
+            return quarter
+    return None
+
+
+def read_total_ied(path: Path) -> dict[tuple[int, int], float]:
+    """Lee todos los cortes numéricos de la columna de datos actualizados."""
     workbook = load_workbook(path, read_only=True, data_only=True)
     try:
         worksheet = workbook[workbook.sheetnames[0]]
@@ -68,28 +82,26 @@ def read_total_ied(path: Path) -> dict[int, float]:
         if "actualiz" not in header:
             raise ValueError(f"{path.name} no contiene la columna de datos actualizados")
 
-        selected: dict[int, float] = {}
+        selected: dict[tuple[int, int], float] = {}
         for row in worksheet.iter_rows(min_row=3, values_only=True):
             year = _year(row[0] if row else None)
-            period = str(row[1] if len(row) > 1 else "").lower()
+            quarter = _quarter(row[1] if len(row) > 1 else None)
             value = row[3] if len(row) > 3 else None
-            if year not in YEARS or value is None:
+            if year is None or year < FIRST_YEAR or quarter is None or value is None:
                 continue
-            comparable = (year < 2024 and "diciembre" in period) or (
-                year == 2024 and "junio" in period
-            )
-            if comparable:
-                selected[year] = float(value)
+            try:
+                selected[(year, quarter)] = float(value)
+            except (TypeError, ValueError):
+                continue
     finally:
         workbook.close()
 
-    missing = [year for year in YEARS if year not in selected]
-    if missing:
-        raise ValueError(f"Faltan años en la IED total: {missing}")
+    if not selected:
+        raise ValueError("No se encontraron cortes numéricos de IED total")
     return selected
 
 
-def read_telecom_ied(path: Path) -> dict[int, float]:
+def read_telecom_ied(path: Path) -> dict[tuple[int, int], float]:
     """Lee el subsector 517 y ubica los trimestres mediante los encabezados."""
     workbook = load_workbook(path, read_only=True, data_only=True)
     try:
@@ -125,37 +137,49 @@ def read_telecom_ied(path: Path) -> dict[int, float]:
         if target_row is None:
             raise ValueError("No se encontró el renglón 517 Telecomunicaciones")
 
-        selected: dict[int, float] = {}
-        for year in YEARS:
-            quarter = 4 if year < 2024 else 2
-            key = year * 10 + quarter
-            column = next((col for col, value in year_by_column.items() if value == key), None)
-            if column is None:
+        selected: dict[tuple[int, int], float] = {}
+        for column, encoded_period in year_by_column.items():
+            year, quarter = divmod(encoded_period, 10)
+            if year < FIRST_YEAR:
                 continue
             value = worksheet.cell(target_row, column).value
-            selected[year] = 0.0 if value is None or str(value).strip() == "C" else float(value)
+            if value is None or str(value).strip() == "C":
+                continue
+            try:
+                selected[(year, quarter)] = float(value)
+            except (TypeError, ValueError):
+                continue
     finally:
         workbook.close()
 
-    missing = [year for year in YEARS if year not in selected]
-    if missing:
-        raise ValueError(f"Faltan años en la IED de telecomunicaciones: {missing}")
+    if not selected:
+        raise ValueError("No se encontraron cortes numéricos de IED de telecomunicaciones")
     return selected
 
 
 def calculate_series(
-    total_ied: dict[int, float], telecom_ied: dict[int, float]
+    total_ied: dict[tuple[int, int], float],
+    telecom_ied: dict[tuple[int, int], float],
 ) -> pd.DataFrame:
+    common_periods = sorted(set(total_ied) & set(telecom_ied))
+    if not common_periods:
+        raise ValueError("Las dos fuentes de A.5 no tienen un trimestre común")
+    latest_year, _ = common_periods[-1]
     records = []
-    for year in YEARS:
-        total = float(total_ied[year])
-        telecom = float(telecom_ied[year])
+    for year in range(FIRST_YEAR, latest_year + 1):
+        available = [quarter for candidate_year, quarter in common_periods if candidate_year == year]
+        if not available:
+            raise ValueError(f"Las dos fuentes no tienen datos comunes para {year}")
+        quarter = max(available)
+        total = float(total_ied[(year, quarter)])
+        telecom = float(telecom_ied[(year, quarter)])
         if total == 0:
             raise ValueError(f"La IED total de {year} es cero")
         records.append(
             {
                 "anio": year,
-                "periodo": "enero-junio" if year == 2024 else "enero-diciembre",
+                "trimestre": quarter,
+                "periodo": QUARTER_NAMES[quarter],
                 "ied_mexico_millones_usd": total,
                 "ied_telecom_millones_usd": telecom,
                 "participacion_telecom_pct": telecom / total * 100,
@@ -307,10 +331,14 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         "CRT con datos de la Secretaría de Economía, actualizados al segundo trimestre "
         f"de 2026. Datos disponibles en: {SOURCE_PAGE}."
     )
+    latest = plotted.iloc[0]
+    latest_year = int(latest["anio"])
+    latest_period = str(latest["periodo"])
     notes_body = (
         "Cifras en millones de dólares (dólares corrientes). Rama 5151 Transmisión de "
-        "programas de radio y televisión, y Subsector 517 Telecomunicaciones. Para 2024 "
-        "las cifras son acumuladas a junio; para los demás años, a diciembre."
+        "programas de radio y televisión, y Subsector 517 Telecomunicaciones. "
+        f"Para {latest_year} las cifras son acumuladas de {latest_period}; para los años "
+        "anteriores se utiliza el último trimestre común disponible."
     )
     fig.text(0.055, 0.075, "Fuente:", fontsize=8.0, fontweight="bold", color=COLOR_TEXT, va="top")
     fig.text(
@@ -347,28 +375,40 @@ def generate(context):
     total_ied = read_total_ied(total_path)
     telecom_ied = read_telecom_ied(activity_path)
     data = calculate_series(total_ied, telecom_ied)
-    context.record_source_period(TOTAL_SOURCE_ID, "2026-T2", "AL_DIA")
-    context.record_source_period(ACTIVITY_SOURCE_ID, "2026-T2", "AL_DIA")
+    latest_total_period = max(total_ied)
+    latest_activity_period = max(telecom_ied)
+    context.record_source_period(
+        TOTAL_SOURCE_ID,
+        f"{latest_total_period[0]}-T{latest_total_period[1]}",
+        "ULTIMO_DATO_NUMERICO",
+    )
+    context.record_source_period(
+        ACTIVITY_SOURCE_ID,
+        f"{latest_activity_period[0]}-T{latest_activity_period[1]}",
+        "ULTIMO_DATO_NUMERICO",
+    )
     context.write_data_used(data)
 
     latest = data.iloc[-1]
     telecom_max = data.loc[data["ied_telecom_millones_usd"].idxmax()]
     telecom_min = data.loc[data["ied_telecom_millones_usd"].idxmin()]
     context.record_calculation(
-        "participacion_ied_telecom_2024",
-        "IED telecomunicaciones 2024 enero-junio / IED México 2024 enero-junio * 100",
+        "participacion_ied_telecom_ultimo_corte",
+        "IED telecomunicaciones del último corte / IED México del último corte * 100",
         {
-            "ied_telecom_2024": round(float(latest["ied_telecom_millones_usd"]), 6),
-            "ied_mexico_2024": round(float(latest["ied_mexico_millones_usd"]), 6),
+            "anio": int(latest["anio"]),
+            "trimestre": int(latest["trimestre"]),
+            "ied_telecom": round(float(latest["ied_telecom_millones_usd"]), 6),
+            "ied_mexico": round(float(latest["ied_mexico_millones_usd"]), 6),
         },
         round(float(latest["participacion_telecom_pct"]), 2),
         "porcentaje",
         2,
     )
     context.record_calculation(
-        "mayor_ied_telecom_2013_2024",
+        "mayor_ied_telecom_periodo_mostrado",
         "máximo de IED en telecomunicaciones en el periodo mostrado",
-        {"periodo": "2013-2024; 2024 enero-junio"},
+        {"periodo": f"2013-{int(latest['anio'])}"},
         {
             "anio": int(telecom_max["anio"]),
             "valor": round(float(telecom_max["ied_telecom_millones_usd"]), 2),
@@ -377,9 +417,9 @@ def generate(context):
         2,
     )
     context.record_calculation(
-        "menor_ied_telecom_2013_2024",
+        "menor_ied_telecom_periodo_mostrado",
         "mínimo de IED en telecomunicaciones en el periodo mostrado",
-        {"periodo": "2013-2024; 2024 enero-junio"},
+        {"periodo": f"2013-{int(latest['anio'])}"},
         {
             "anio": int(telecom_min["anio"]),
             "valor": round(float(telecom_min["ied_telecom_millones_usd"]), 2),
@@ -391,6 +431,8 @@ def generate(context):
     text_path = context.render_text(
         "a_5.md.j2",
         {
+            "anio": int(latest["anio"]),
+            "periodo": str(latest["periodo"]),
             "ied_telecom": float(latest["ied_telecom_millones_usd"]),
             "ied_mexico": float(latest["ied_mexico_millones_usd"]),
             "participacion": float(latest["participacion_telecom_pct"]),
@@ -406,7 +448,7 @@ def generate(context):
     return {
         "figure_path": str(output_path),
         "text_path": str(text_path),
-        "detected_period": "fuentes 2026-T2; visualización hasta 2024-T2",
+        "detected_period": f"{int(latest['anio'])}-T{int(latest['trimestre'])}",
         "rows_used": len(data),
         "total_input": total_path.name,
         "activity_input": activity_path.name,

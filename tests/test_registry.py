@@ -24,7 +24,7 @@ class RegistryTests(unittest.TestCase):
     def test_manual_figures(self):
         figures = load_figures(ROOT, load_project_config(ROOT))
         manual = {item.figure_id for item in figures if item.manual_input}
-        self.assertEqual({"A.5", "B.22"}, manual)
+        self.assertEqual({"A.5"}, manual)
 
 
 if __name__ == "__main__":

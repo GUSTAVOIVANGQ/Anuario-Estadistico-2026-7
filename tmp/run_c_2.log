@@ -1,0 +1,39 @@
+INSUMOS DE DESCARGA MANUAL
+  A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\data\manual\A.5
+      Coloca aqu� Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+
+Anuario Estad�stico 2026 | corrida 20260911T225315621833Z_corrida
+Figuras seleccionadas: 1 de 105
+
+[001/001] C.2 | LISTA
+
+Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\reportes\20260911T225315621833Z_corrida
+  C.2 | Adquisici�n o reutilizaci�n de los CSV directos actualizados de BIT/CRT
+
+Datos usados en C.2:
+operador,banda,participacion
+TELCEL,700 MHz,0.0
+TELCEL,800 MHz,0.0
+TELCEL,850 MHz,65.0
+TELCEL,1900 MHz,54.0
+TELCEL,AWS,63.0
+TELCEL,2500 MHz,43.0
+TELCEL,3300 MHz,100.0
+TELCEL,3500 MHz,50.0
+AT&T,700 MHz,0.0
+AT&T,800 MHz,100.0
+AT&T,850 MHz,35.0
+AT&T,1900 MHz,46.0
+AT&T,AWS,37.0
+AT&T,2500 MHz,56.99999999999999
+AT&T,3300 MHz,0.0
+AT&T,3500 MHz,50.0
+ALT�N,700 MHz,100.0
+ALT�N,800 MHz,0.0
+ALT�N,850 MHz,0.0
+ALT�N,1900 MHz,0.0
+ALT�N,AWS,0.0
+ALT�N,2500 MHz,0.0
+ALT�N,3300 MHz,0.0
+ALT�N,3500 MHz,0.0
+  C.2 | Generaci�n del PNG

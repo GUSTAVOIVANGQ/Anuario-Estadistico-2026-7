@@ -1,0 +1,24 @@
+INSUMOS DE DESCARGA MANUAL
+  A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\data\manual\A.5
+      Coloca aqu� Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+
+Anuario Estad�stico 2026 | corrida 20260911T225302577388Z_corrida
+Figuras seleccionadas: 1 de 105
+
+[001/001] B.23 | LISTA
+
+Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\reportes\20260911T225302577388Z_corrida
+  B.23 | Adquisici�n o reutilizaci�n de TODO.zip de BIT/CRT
+  B.23 | Lectura, agregaci�n por tecnolog�a y c�lculo de participaciones
+
+Datos usados en B.23:
+segmento,tecnologia,anio,accesos,participacion,anio_previo,accesos_previos,crecimiento_anual
+Residencial,Cable,2024,9952505.0,52.00412646853779,2023,12120480.0,-17.886874117196683
+Residencial,Direct-to-home (DTH),2024,6786005.0,35.458436065707055,2023,7889546.0,-13.98738279743853
+Residencial,IPTV Terrestre,2024,2399404.0,12.537437465755149,2023,2481407.0,-3.3046976977174625
+Residencial,Sin informaci�n de tecnolog�a,2024,0.0,0.0,2023,0.0,
+No Residencial,Cable,2024,1983541.0,96.00657681069211,2023,390772.0,407.5954776698433
+No Residencial,Direct-to-home (DTH),2024,3998.0,0.19350963458236914,2023,4253.0,-5.995767693392895
+No Residencial,IPTV Terrestre,2024,78508.0,3.7999135547255216,2023,60903.0,28.906622005484127
+No Residencial,Sin informaci�n de tecnolog�a,2024,0.0,0.0,2023,0.0,
+  B.23 | Generaci�n del PNG
