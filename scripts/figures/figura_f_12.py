@@ -1,5 +1,13 @@
 """Figura F.12: percepción del riesgo de violencia mediante telefonía móvil."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import re,sys,unicodedata,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -46,7 +54,7 @@ def _plot(d,out,root):
     plt.rcParams.update({"font.family":_font(root)});fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.055),.95,.87,boxstyle="round,pad=.012,rounding_size=.02",fc=BACKGROUND,ec="none",transform=fig.transFigure,zorder=-2));fig.text(.047,.887,"•",color=SALMON,fontsize=20,va="center");fig.text(.064,.887,"Figura F.12.",color=TEXT,fontsize=16,fontweight="bold",va="center");fig.text(.171,.887,"Personas con mayor riesgo de violencia a través del teléfono móvil (2023)",color=TEXT,fontsize=16,va="center")
     ax=fig.add_axes([.16,.19,.78,.60]);bars=ax.bar(range(len(d)),d.porcentaje,color=BLUE,width=.58);ax.set_xticks(range(len(d)),[x.replace(" ","\n",1) if len(x)>20 else x for x in d.categoria],fontsize=9,color=TEXT);ax.set_ylim(0,max(52,d.porcentaje.max()*1.18));ax.set_yticks([]);ax.spines[:].set_visible(False);ax.set_facecolor(BACKGROUND)
     for bar,v in zip(bars,d.porcentaje):ax.text(bar.get_x()+bar.get_width()/2,v+1,f"{v:.1f}%",ha="center",fontsize=11,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.22",fc="white",ec="none"))
-    fig.text(.047,.09,"Fuente:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.094,.09,"IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",color=TEXT,fontsize=9);fig.text(.047,.067,"Nota:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.081,.067,"Porcentajes ponderados; las respuestas son de selección múltiple y no suman 100%.",color=TEXT,fontsize=9);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    fig.text(.047,.09,"Fuente:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.094,.09,"IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",color=TEXT,fontsize=9);fig.text(.047,.067,"Nota:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.081,.067,"Porcentajes ponderados; las respuestas son de selección múltiple y no suman 100%.",color=TEXT,fontsize=9);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  F.12 | Reutilización o descarga de la base oficial IFT");source=context.acquire_source(SOURCE_ID);raw,member=load_raw(source);d,m=build_metrics(raw);dev=validate_reference(d);context.record_source_period(SOURCE_ID,PERIOD,"ULTIMO_COMPATIBLE");context.write_data_used(d[["categoria","porcentaje"]])
     for r in d.itertuples(index=False):context.record_calculation(f"riesgo_{_norm(r.categoria).replace(' ','_')}","sum(calibrador de casos Sí) / sum(calibrador de personas usuarias) * 100",{"archivo":member,"numerador":r.numerador_ponderado,"denominador":m["denominador"]},r.porcentaje,"porcentaje",1)

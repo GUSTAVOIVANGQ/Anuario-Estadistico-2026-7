@@ -1,5 +1,13 @@
 """Figura F.6: situaciones de ciberacoso experimentadas, por sexo."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,textwrap,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -70,7 +78,7 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     for s in ax.spines.values():s.set_visible(False)
     fig.legend(loc="upper center",bbox_to_anchor=(.57,.815),ncol=2,frameon=False,labelcolor=TEXT)
     fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1));fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc=MEN,ec="none"));fig.text(.066,.873,"Figura F.6.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.151,.873,"Distribución porcentual de las situaciones de ciberacoso experimentadas por sexo",fontsize=14,color=TEXT,va="center");fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top")
-    fig.subplots_adjust(left=.34,right=.94,top=.75,bottom=.19);output.parent.mkdir(parents=True,exist_ok=True);fig.savefig(output,dpi=200);plt.close(fig)
+    fig.subplots_adjust(left=.34,right=.94,top=.75,bottom=.19);output.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200);plt.close(fig)
 def generate(context):
     print("  F.6 | 1/4 Adquisición o reutilización de MOCIBA 2024 y 2025");ref_path=context.acquire_source(REFERENCE_SOURCE_ID);cur_path=context.acquire_source(CURRENT_SOURCE_ID);print("  F.6 | 2/4 Validación con MOCIBA 2024");ref,ref_member=load_microdata(ref_path);validation=validate_reference(ref);del ref;print(f"  F.6 | Validación 2024 APROBADA; desviación máxima {validation['desviacion_maxima_pp']:.3f} pp")
     print("  F.6 | 3/4 Cálculo MOCIBA 2025");frame,member=load_microdata(cur_path);data=calculate(frame);del frame;data.insert(0,"periodo",PERIOD);context.record_source_period(REFERENCE_SOURCE_ID,"2024","REFERENCIA_REPRODUCIDA");context.record_source_period(CURRENT_SOURCE_ID,PERIOD,"AL_DIA");context.write_data_used(data);context.record_calculation("validacion_2024","sum(FACTOR de víctimas que reportan la situación y sexo) / sum(FACTOR de víctimas del sexo) * 100",{"miembro":ref_member},validation,"validación",3);context.record_calculation("situaciones_por_sexo_2025","sum(FACTOR de respuesta Sí por situación y sexo) / total de víctimas del sexo * 100",{"miembro":member,"situaciones":13},{"max_mujeres":round(data.Mujeres.max(),2),"max_hombres":round(data.Hombres.max(),2)},"porcentaje",2);summary=f"En {PERIOD}, la situación más frecuente entre mujeres fue {data.loc[data.Mujeres.idxmax(),'situacion']} ({data.Mujeres.max():.1f}%) y entre hombres {data.loc[data.Hombres.idxmax(),'situacion']} ({data.Hombres.max():.1f}%).";text_path=context.render_text("f_mociba.md.j2",{"resumen":summary});print(data.to_string(index=False,formatters={"Hombres":lambda x:f"{x:.1f}%","Mujeres":lambda x:f"{x:.1f}%"}));print("  F.6 | 4/4 Generación de gráfica PNG");_plot(data,context.expected_figure_path,context.project_root);return {"figure_path":str(context.expected_figure_path),"text_path":str(text_path),"detected_period":PERIOD,"rows_used":len(data),"reference_validation":"aprobada"}

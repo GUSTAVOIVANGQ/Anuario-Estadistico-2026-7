@@ -1,5 +1,13 @@
 """Figura C.11: líneas del servicio móvil de acceso a Internet."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -23,7 +31,7 @@ def _plot(d,m,out):
     ax=fig.add_axes([.07,.20,.86,.62]);series=[d.L_PREPAGO_E,d.L_POSPAGO_E,d.L_POSPAGOC_E,d.L_POSPAGOL_E,d.L_NO_ESPECIFICADO_E];ax.stackplot(d.anio,*series,colors=["#ADDCDF","#65BED8","#4BA7C9","#317DA3","#4B4B83"],labels=["Prepago","Pospago","Pospago controlado","Pospago libre","Sin especificar"]);ax.plot(d.anio,d.L_TOTAL_E,color=TEXT,lw=2,marker="o",label="Total")
     for r in d.itertuples(index=False):
         ax.annotate(f"{r.L_TOTAL_E:.1f}",(r.anio,r.L_TOTAL_E),xytext=(0,6),textcoords="offset points",ha="center",fontsize=7,fontweight="bold",color=TEXT)
-    ax.set_xticks(d.anio);ax.tick_params(colors=TEXT);ax.grid(axis="y",color="#E5E5E5");ax.spines[["top","right"]].set_visible(False);ax.legend(ncol=6,loc="lower center",bbox_to_anchor=(.5,-.18),frameon=False,fontsize=8);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Cifras en millones de líneas.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+    ax.set_xticks(d.anio);ax.tick_params(colors=TEXT);ax.grid(axis="y",color="#E5E5E5");ax.spines[["top","right"]].set_visible(False);ax.legend(ncol=6,loc="lower center",bbox_to_anchor=(.5,-.18),frameon=False,fontsize=8);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Cifras en millones de líneas.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
 def generate(context):
     print("  C.11 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"lineas_internet_{r.anio}","suma L_TOTAL_E / 1,000,000",{"anio":r.anio},r.L_TOTAL_E,"millones",1) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"En diciembre de {m['anio']} se registraron {d.iloc[-1].L_TOTAL_E:,.1f} millones de líneas móviles de acceso a Internet."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
 def main():

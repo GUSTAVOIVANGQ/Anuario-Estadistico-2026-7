@@ -3,9 +3,6 @@ from __future__ import annotations
 import importlib.util
 import json
 import logging
-import os
-import shutil
-import subprocess
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,6 +12,7 @@ from PIL import Image
 
 from .context import FigureContext
 from .models import FigureDefinition, FigureStatus
+from .presentation import assemble_from_template
 from .registry import load_figures, load_project_config
 from .reports import RunReports, utc_now
 from .sources import SourceCatalog
@@ -258,23 +256,34 @@ def run_pipeline(
     return reports.run_dir
 
 
-def assemble_pptx(project_root: Path, run_dir: Path | None = None) -> Path:
-    node = os.environ.get("ANUARIO_NODE") or shutil.which("node")
-    if not node:
-        raise RuntimeError(
-            "No se encontró Node.js. Define ANUARIO_NODE o ejecuta el ensamblador con Node."
-        )
+def assemble_pptx(
+    project_root: Path,
+    run_dir: Path | None = None,
+    *,
+    output: Path | None = None,
+    strict: bool = False,
+) -> Path:
     suffix = run_dir.name if run_dir else "base"
-    output = project_root / "entrega" / f"anuario_estadistico_2026_{suffix}.pptx"
-    command = [
-        node,
-        str(project_root / "scripts" / "assemble_pptx.mjs"),
-        "--project-root",
-        str(project_root),
-        "--output",
-        str(output),
-    ]
-    if run_dir:
-        command.extend(["--run-dir", str(run_dir)])
-    subprocess.run(command, check=True)
-    return output
+    output_path = output or (
+        project_root / "entrega" / f"anuario_estadistico_2026_{suffix}.pptx"
+    )
+    result = assemble_from_template(
+        project_root,
+        output_path,
+        strict=strict,
+        run_dir=run_dir,
+    )
+    LOGGER.info("PPTX ensamblado: %s", result.output_path)
+    LOGGER.info(
+        "Figuras insertadas: %d | faltantes: %d | errores: %d",
+        result.inserted,
+        len(result.missing),
+        len(result.errors),
+    )
+    if result.missing:
+        LOGGER.info("Marcadores conservados para figuras faltantes: %s", ", ".join(result.missing))
+    if result.errors:
+        for error in result.errors:
+            LOGGER.warning("Ensamblaje: %s", error)
+    LOGGER.info("Reporte de ensamblaje: %s", result.report_path)
+    return result.output_path

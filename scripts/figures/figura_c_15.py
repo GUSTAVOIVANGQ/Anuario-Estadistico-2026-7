@@ -1,5 +1,13 @@
 """Figura C.15: participación de mercado del Internet móvil."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,unicodedata,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -33,7 +41,7 @@ def _plot(d,m,out):
         for bar,value,base in zip(bars,values,bottom):
             if value>=2:ax.text(bar.get_x()+bar.get_width()/2,base+value/2,f"{value:.1f}%",ha="center",va="center",fontsize=7,fontweight="bold",color="white" if color in ("#4B4B83","#317DA3","#F2535A") else TEXT)
         bottom+=values
-    ax.set_ylim(0,102);ax.set_xticks(d.anio);ax.set_yticks([]);ax.tick_params(colors=TEXT);ax.spines[:].set_visible(False);ax.legend(ncol=5,loc="lower center",bbox_to_anchor=(.5,-.15),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"La suma puede no ser 100% por redondeo.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    ax.set_ylim(0,102);ax.set_xticks(d.anio);ax.set_yticks([]);ax.tick_params(colors=TEXT);ax.spines[:].set_visible(False);ax.legend(ncol=5,loc="lower center",bbox_to_anchor=(.5,-.15),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"La suma puede no ser 100% por redondeo.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  C.15 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d)
     for _,r in d.iterrows():

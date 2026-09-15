@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 from . import __version__
-from .pipeline import run_pipeline
+from .pipeline import assemble_pptx, run_pipeline
 from .registry import load_figures, load_project_config
 from .sources import load_sources
 
@@ -40,6 +40,15 @@ def doctor(project_root: Path) -> int:
     print("Base oficial ECSI 2024 verificada y reutilizable: D.5 a D.11")
     print("Bases oficiales MiPymes 2022 a 2024 verificadas y reutilizables: E.3 a E.8")
     print("Encuestas de satisfacción 2023-2025 y estudio MiPymes importadoras/exportadoras: E.1 y E.9")
+    presentation = config.get("presentation", {})
+    template = project_root / presentation.get(
+        "template", "assets/presentation/anuario_estadistico_2026_automatizable.pptx"
+    )
+    manifest = project_root / presentation.get(
+        "manifest", "assets/presentation/anuario_estadistico_2026_manifest.json"
+    )
+    print(f"Plantilla PPTX automatizable: {'OK' if template.is_file() else 'FALTA'} | {template}")
+    print(f"Manifest PPTX de figuras: {'OK' if manifest.is_file() else 'FALTA'} | {manifest}")
     print("Estado base: correcto")
     return 0
 
@@ -57,6 +66,21 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--until", metavar="FIGURA")
     run.add_argument("--stop-on-error", action="store_true")
     run.add_argument("--assemble", action="store_true", help="Ensambla el PPTX al terminar")
+
+    assemble = subparsers.add_parser(
+        "assemble",
+        help="Inserta las figuras existentes en la plantilla PPTX automatizable",
+    )
+    assemble.add_argument(
+        "--output",
+        metavar="RUTA",
+        help="Ruta de salida. Por defecto usa entrega/anuario_estadistico_2026_base.pptx",
+    )
+    assemble.add_argument(
+        "--strict",
+        action="store_true",
+        help="No genera el PPTX si falta una figura o un marcador de la plantilla",
+    )
     return parser
 
 
@@ -65,6 +89,17 @@ def main(argv: list[str] | None = None) -> int:
     project_root = project_root_from_module()
     if args.command == "doctor":
         return doctor(project_root)
+    if args.command == "assemble":
+        output = None
+        if args.output:
+            output = Path(args.output)
+            if not output.is_absolute():
+                output = project_root / output
+            output = output.resolve()
+        pptx_path = assemble_pptx(project_root, output=output, strict=args.strict)
+        print(f"PPTX: {pptx_path}")
+        print(f"Reporte: {pptx_path.with_name(pptx_path.stem + '_ensamblaje.json')}")
+        return 0
     if args.command == "run":
         run_pipeline(
             project_root,

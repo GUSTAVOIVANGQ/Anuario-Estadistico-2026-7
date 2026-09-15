@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import math
 import sys
 import textwrap
@@ -31,11 +39,11 @@ SOURCE_PAGE = (
     "competitividad-y-normatividad-inversion-extranjera-directa?state=published"
 )
 
-COLOR_TEXT = "#565682"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
-COLOR_MEXICO = "#ACDDE0"
-COLOR_TELECOM = "#4E4F82"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
+COLOR_MEXICO = "#86adae"
+COLOR_TELECOM = "#335a5c"
 FIRST_YEAR = 2013
 QUARTER_NAMES = {
     1: "enero-marzo",
@@ -223,7 +231,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             [position, position],
             color=COLOR_MEXICO,
             linewidth=9.2,
-            solid_capstyle="round",
+            solid_capstyle="butt",
             zorder=3,
         )
     for position, value in zip(y + offset, telecom, strict=True):
@@ -232,7 +240,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             [position, position],
             color=COLOR_TELECOM,
             linewidth=9.2,
-            solid_capstyle="round",
+            solid_capstyle="butt",
             zorder=4,
         )
 
@@ -308,8 +316,8 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     )
 
     legend_handles = [
-        mlines.Line2D([], [], color=COLOR_TELECOM, linewidth=8, solid_capstyle="round"),
-        mlines.Line2D([], [], color=COLOR_MEXICO, linewidth=8, solid_capstyle="round"),
+        mlines.Line2D([], [], color=COLOR_TELECOM, linewidth=8, solid_capstyle="butt"),
+        mlines.Line2D([], [], color=COLOR_MEXICO, linewidth=8, solid_capstyle="butt"),
     ]
     fig.legend(
         legend_handles,
@@ -361,7 +369,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     fig.subplots_adjust(left=0.09, right=0.955, top=0.85, bottom=0.23)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

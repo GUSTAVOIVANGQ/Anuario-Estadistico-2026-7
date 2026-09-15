@@ -1,6 +1,14 @@
 """Figura E.6: beneficios de vender mediante Internet fijo, 2024."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import re,sys,textwrap,unicodedata,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -58,7 +66,7 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     ax.set_ylim(0,75); ax.set_yticks(range(0,71,10),[f"{x}%" for x in range(0,71,10)]); ax.set_xticks(x,[textwrap.fill(c,22) for c in CATEGORIES],fontsize=9,color=TEXT); ax.tick_params(axis="both",length=0,pad=8,colors=TEXT); ax.grid(axis="y",color="#DADAE3",linewidth=.7,zorder=0); ax.spines[:].set_visible(False); ax.legend(ncol=4,loc="upper center",bbox_to_anchor=(.5,1.10),frameon=False,labelcolor=TEXT)
     fig.text(.055,.12,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.12,"IFT, Cuarta Encuesta 2024, Usuarios de Servicios de Telecomunicaciones (MiPymes).",color=TEXT,fontsize=9)
     fig.text(.055,.092,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.092,"Respuesta espontánea; se excluye No sabe/No contestó, por lo que la suma no da 100%.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

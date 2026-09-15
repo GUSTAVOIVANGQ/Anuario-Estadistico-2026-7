@@ -1,5 +1,13 @@
 """Figura C.6: teledensidad nacional del servicio móvil de telefonía."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -27,7 +35,7 @@ def _plot(d,m,out):
         ax.annotate(f"{r.teledensidad:.0f}",(r.anio,r.teledensidad),xytext=(0,8),textcoords="offset points",ha="center",fontsize=7,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.2",fc="white",ec="none"))
     ax.set_xticks(d.anio);ax.tick_params(axis="x",rotation=90,labelsize=7,colors=TEXT);ax.set_ylim(0,max(d.teledensidad.max()*1.25,10));ax.grid(axis="y",color="#E5E5E5");ax.spines[["top","right"]].set_visible(False)
     fig.text(.05,.075,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.075,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.054,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.054,"Líneas por cada 100 habitantes.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
 def generate(context):
     print("  C.6 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"teledensidad_{r.anio}","T_H_TELMOVIL_E nacional publicado por BIT",{"anio":r.anio},r.teledensidad,"líneas por cada 100 habitantes",0) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"La teledensidad móvil publicada para {m['anio']} fue {d.iloc[-1].teledensidad:.0f} líneas por cada 100 habitantes."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
 def main():

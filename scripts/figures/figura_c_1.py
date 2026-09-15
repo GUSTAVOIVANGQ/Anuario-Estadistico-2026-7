@@ -1,5 +1,13 @@
 """Figura C.1: espectro asignado por banda con fuente directa BIT/CRT."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,re
 from pathlib import Path
 import matplotlib
@@ -50,7 +58,7 @@ def _plot(d,m,out,root):
         ax.text(x+w/2,y+h/2,f"{shown}\n{val:,.0f} MHz",ha="center",va="center",fontsize=fs,fontweight="bold",color="white",wrap=True,clip_on=True)
     ax.set_xlim(0,100); ax.set_ylim(0,100); ax.axis("off"); fig.text(.055,.105,f"Total: {m['total']:,.0f} MHz",fontsize=15,fontweight="bold",color=TEXT)
     months={1:"enero",2:"febrero",3:"marzo",4:"abril",5:"mayo",6:"junio",7:"julio",8:"agosto",9:"septiembre",10:"octubre",11:"noviembre",12:"diciembre"}; fig.text(.045,.068,"Fuente:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.086,.068,f"CRT, distribución de espectro radioeléctrico a {months[m['mes']]} de {m['anio']}.",fontsize=8,color=TEXT); fig.text(.045,.048,"Nota:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.077,.048,"Las superficies son proporcionales a los MHz asignados.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
 def generate(context):
     print("  C.1 | Adquisición o reutilización del CSV directo actualizado de BIT/CRT"); src=context.acquire_source(SOURCE_ID); print("  C.1 | Selección de la fecha más reciente y cálculo de MHz por banda"); d,m=build_metrics(load_raw(src)); period=f"{m['anio']}-{m['mes']:02d}"; context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE"); context.write_data_used(d)
     for r in d.itertuples(index=False): context.record_calculation("mhz_"+r.banda.lower().replace(" ","_"),"valor de MHz publicado por banda en la fila más reciente",{"periodo":period,"banda":r.banda},r.mhz,"MHz",0)

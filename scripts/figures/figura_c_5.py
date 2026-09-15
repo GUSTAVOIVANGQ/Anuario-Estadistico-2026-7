@@ -1,5 +1,13 @@
 """Figura C.5: líneas del servicio móvil de telefonía."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -27,7 +35,7 @@ def _plot(d,m,out,root):
     ax.stackplot(x,*series,labels=labels,colors=colors,alpha=.96);ax.plot(x,d.L_TOTAL_E,color="#4B4B83",lw=2.2,marker="o",ms=3,label="Líneas totales")
     for r in d.itertuples(index=False):ax.annotate(f"{r.L_TOTAL_E:.1f}",(r.anio,r.L_TOTAL_E),xytext=(0,6),textcoords="offset points",ha="center",fontsize=6.5,fontweight="bold",color=TEXT)
     ax.set_xlim(d.anio.min()-.5,d.anio.max()+.5);ax.set_ylim(bottom=0);ax.set_xticks(d.anio);ax.tick_params(axis="x",rotation=90,labelsize=7,colors=TEXT);ax.tick_params(axis="y",labelsize=8,colors=TEXT);ax.grid(axis="y",color="#E5E5E5",lw=.7);ax.spines[["top","right"]].set_visible(False);ax.legend(ncol=6,loc="lower center",bbox_to_anchor=(.5,-.25),frameon=False,fontsize=8)
-    fig.text(.045,.075,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.086,.075,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.045,.054,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.077,.054,"Cifras expresadas en millones de líneas.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+    fig.text(.045,.075,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.086,.075,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.045,.054,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.077,.054,"Cifras expresadas en millones de líneas.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
 def generate(context):
     print("  C.5 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);print("  C.5 | Lectura y cálculo de líneas por segmento");d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d)
     for r in d.itertuples(index=False):context.record_calculation(f"lineas_totales_{r.anio}","suma L_TOTAL_E / 1,000,000",{"anio":r.anio},r.L_TOTAL_E,"millones",1)

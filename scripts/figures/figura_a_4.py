@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 import textwrap
 import zipfile
@@ -24,14 +32,14 @@ SOURCE_ID = "crt_bit_todo_2025_q2"
 SOURCE_LANDING_PAGE = "https://bit.crt.gob.mx/BitWebApp/descargaDatos.xhtml"
 TABLE_BASENAME = "TD_INVERSION_TELECOM_ITE_VA.csv"
 
-COLOR_TEXT = "#565682"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
 CATEGORIES = (
-    ("infraestructura", "INV_INFRA_E", "Infraestructura", "#327B9E"),
-    ("otros_activos", "INV_OTRO_ACT_E", "Otros Activos", "#ACDDE0"),
-    ("activos_no_tangibles", "INV_ACT_NO_TANG_E", "Activos No Tangibles", "#4E4F82"),
-    ("no_especificada", "INV_NO_ESP_E", "No Especificada", "#F15A5B"),
+    ("infraestructura", "INV_INFRA_E", "Infraestructura", "#234244"),
+    ("otros_activos", "INV_OTRO_ACT_E", "Otros Activos", "#4c7d7e"),
+    ("activos_no_tangibles", "INV_ACT_NO_TANG_E", "Activos No Tangibles", "#64a0a1"),
+    ("no_especificada", "INV_NO_ESP_E", "No Especificada", "#86adae"),
 )
 TOTAL_COLUMN = "INV_TOTAL_E"
 
@@ -244,7 +252,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
                 va="center",
                 fontsize=7.6,
                 fontweight="bold",
-                color=COLOR_TEXT if color != "#F15A5B" else COLOR_TEXT,
+                color=COLOR_TEXT if color != "#86adae" else COLOR_TEXT,
                 bbox=chip_style,
                 zorder=5,
             )
@@ -335,7 +343,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     fig.subplots_adjust(left=0.065, right=0.97, top=0.83, bottom=0.25)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

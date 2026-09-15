@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import re
 import sys
 import textwrap
@@ -26,12 +34,12 @@ SOURCE_ID = "inegi_pibt_2026_q2"
 START_YEAR = 2013
 SOURCE_LANDING_PAGE = "https://www.inegi.org.mx/programas/pib/"
 
-COLOR_TEXT = "#565682"
-COLOR_BAR = "#2D7298"
-COLOR_LINE = "#4B4D7B"
-COLOR_GRID = "#DCEBE9"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BAR = "#86adae"
+COLOR_LINE = "#2c3e40"
+COLOR_GRID = "#d1d1d1"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
 
 
 def _normalize(value: object) -> str:
@@ -167,40 +175,15 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
     ax1.set_facecolor(COLOR_BACKGROUND)
     x = np.arange(len(plotted), dtype=float)
 
-    path_codes = [
-        mpath.Path.MOVETO,
-        mpath.Path.LINETO,
-        mpath.Path.LINETO,
-        mpath.Path.CURVE3,
-        mpath.Path.CURVE3,
-        mpath.Path.LINETO,
-        mpath.Path.CLOSEPOLY,
-    ]
-    for position, value in zip(x, plotted["pib_miles_millones_pesos"], strict=True):
-        left = position - 0.34
-        right = position + 0.34
-        top = float(value)
-        bar_path = mpath.Path(
-            [
-                (left, 0),
-                (left, top),
-                (right - 0.28, top),
-                (right, top),
-                (right, top - 1_050),
-                (right, 0),
-                (left, 0),
-            ],
-            path_codes,
-        )
-        ax1.add_patch(
-            mpatches.PathPatch(
-                bar_path,
-                facecolor=COLOR_BAR,
-                edgecolor="none",
-                linewidth=0,
-                zorder=2,
-            )
-        )
+    ax1.bar(
+        x,
+        plotted["pib_miles_millones_pesos"].to_numpy(dtype=float),
+        width=0.68,
+        color=COLOR_BAR,
+        edgecolor="none",
+        linewidth=0,
+        zorder=2,
+    )
 
     ax1.set_ylabel(
         "PIB Nacional en miles de millones de pesos",
@@ -390,7 +373,7 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
 
     fig.subplots_adjust(left=0.075, right=0.93, top=0.82, bottom=0.25)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

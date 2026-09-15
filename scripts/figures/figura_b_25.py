@@ -1,5 +1,13 @@
 """Figura B.25: índice Herfindahl-Hirschman de televisión restringida."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -32,7 +40,7 @@ def _plot(d,m,out,root):
         ax.add_patch(patches.FancyBboxPatch((0,pos-.31),row.ihh,.62,boxstyle="round,pad=0,rounding_size=.31",lw=0,fc=TEAL)); ax.text(row.ihh+xmax*.012,pos,f"{row.ihh:,.0f}",va="center",fontsize=11,fontweight="bold",color=TEXT)
     ax.set_xlim(0,xmax); ax.set_ylim(-.7,ymax-.3); ax.invert_yaxis(); ax.set_yticks(range(ymax),d["anio"].astype(str),fontsize=11,fontweight="bold",color=TEXT); ax.set_xticks([]); [s.set_visible(False) for s in ax.spines.values()]
     fig.text(.045,.078,"Fuente:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.086,.078,f"CRT con datos de los operadores de telecomunicaciones a diciembre de {m['anio']}.",fontsize=8,color=TEXT); fig.text(.045,.057,"Nota:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.077,.057,"El índice se calcula con las participaciones de mercado del servicio.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
 def generate(context):
     print("  B.25 | Adquisición o reutilización de TODO.zip de BIT/CRT"); src=context.acquire_source(SOURCE_ID); print("  B.25 | Lectura y validación de la serie IHH"); d,m=build_metrics(load_raw(src)); period=f"{m['anio']}-12"; context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE"); context.write_data_used(d)
     for r in d.itertuples(index=False): context.record_calculation(f"ihh_{r.anio}","IHH_TVRES_E publicado por BIT",{"anio":r.anio,"mes":12},r.ihh,"puntos IHH",0)

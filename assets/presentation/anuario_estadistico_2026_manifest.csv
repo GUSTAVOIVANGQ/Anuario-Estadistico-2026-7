@@ -1,0 +1,106 @@
+﻿slide_number,section,figure_id,title,token,figure_shape_name,narrative_shape_name,expected_image,left,top,width,height
+6,A,A.1,Producto Interno Bruto y contribución de telecomunicaciones y radiodifusión,{{FIGURA:A.1}},ANUARIO_FIGURE_A_1,ANUARIO_TEXT_A_1,build/figures/A/figura_a_1.png,3.5917,1.0319,5.9333,3.9265
+7,A,A.2,Empleo en los sectores de telecomunicaciones y radiodifusión,{{FIGURA:A.2}},ANUARIO_FIGURE_A_2,ANUARIO_TEXT_A_2,build/figures/A/figura_a_2.png,3.5917,1.0319,5.9333,3.9265
+8,A,A.3,Índices de precios (INPC e IPCOM),{{FIGURA:A.3}},ANUARIO_FIGURE_A_3,ANUARIO_TEXT_A_3,build/figures/A/figura_a_3.png,3.5917,1.0319,5.9333,3.9265
+9,A,A.4,Inversión privada en Telecomunicaciones por tipo de inversión,{{FIGURA:A.4}},ANUARIO_FIGURE_A_4,ANUARIO_TEXT_A_4,build/figures/A/figura_a_4.png,3.5917,1.0319,5.9333,3.9265
+10,A,A.5,Inversión Extranjera Directa (IED) en telecomunicaciones,{{FIGURA:A.5}},ANUARIO_FIGURE_A_5,ANUARIO_TEXT_A_5,build/figures/A/figura_a_5.png,3.5917,1.0319,5.9333,3.9265
+11,A,A.6,"Ingresos, egresos y margen en el sector de telecomunicaciones",{{FIGURA:A.6}},ANUARIO_FIGURE_A_6,ANUARIO_TEXT_A_6,build/figures/A/figura_a_6.png,3.5917,1.0319,5.9333,3.9265
+12,A,A.7,Porcentaje de hogares con servicios de telecomunicaciones fijas por decil de ingreso,{{FIGURA:A.7}},ANUARIO_FIGURE_A_7,ANUARIO_TEXT_A_7,build/figures/A/figura_a_7.png,3.5917,1.0319,5.9333,3.9265
+13,A,A.8,Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Fijas de los hogares por decil de ingreso,{{FIGURA:A.8}},ANUARIO_FIGURE_A_8,ANUARIO_TEXT_A_8,build/figures/A/figura_a_8.png,3.5917,1.0319,5.9333,3.9265
+14,A,A.9,Porcentaje de hogares con Servicios de Telecomunicaciones Móviles por decil de ingreso,{{FIGURA:A.9}},ANUARIO_FIGURE_A_9,ANUARIO_TEXT_A_9,build/figures/A/figura_a_9.png,3.5917,1.0319,5.9333,3.9265
+15,A,A.10,Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Móviles de los hogares por decil de ingreso,{{FIGURA:A.10}},ANUARIO_FIGURE_A_10,ANUARIO_TEXT_A_10,build/figures/A/figura_a_10.png,3.5917,1.0319,5.9333,3.9265
+17,B,B.1,Distribución de los Servicios Fijos con respecto del total de hogares a nivel nacional,{{FIGURA:B.1}},ANUARIO_FIGURE_B_1,ANUARIO_TEXT_B_1,build/figures/B/figura_b_1.png,3.5917,1.0319,5.9333,3.9265
+18,B,B.2,Distribución de los Servicios Fijos con respecto del total de hogares en las zonas rurales,{{FIGURA:B.2}},ANUARIO_FIGURE_B_2,ANUARIO_TEXT_B_2,build/figures/B/figura_b_2.png,3.5917,1.0319,5.9333,3.9265
+19,B,B.3,Distribución de los Servicios Fijos con respecto del total de hogares en las zonas urbanas,{{FIGURA:B.3}},ANUARIO_FIGURE_B_3,ANUARIO_TEXT_B_3,build/figures/B/figura_b_3.png,3.5917,1.0319,5.9333,3.9265
+20,B,B.4,Líneas del Servicio Fijo de Telefonía,{{FIGURA:B.4}},ANUARIO_FIGURE_B_4,ANUARIO_TEXT_B_4,build/figures/B/figura_b_4.png,3.5917,1.0319,5.9333,3.9265
+21,B,B.5,Líneas del Servicio Fijo de Telefonía por cada 100 hogares,{{FIGURA:B.5}},ANUARIO_FIGURE_B_5,ANUARIO_TEXT_B_5,build/figures/B/figura_b_5.png,3.5917,1.0319,5.9333,3.9265
+22,B,B.6,Líneas del Servicio Fijo de Telefonía Residencial por cada 100 hogares por entidad federativa,{{FIGURA:B.6}},ANUARIO_FIGURE_B_6,ANUARIO_TEXT_B_6,build/figures/B/figura_b_6.png,3.5917,1.0319,5.9333,3.9265
+23,B,B.7,Líneas del Servicio Fijo de Telefonía No Residencial por cada 100 unidades económicas por entidad federativa,{{FIGURA:B.7}},ANUARIO_FIGURE_B_7,ANUARIO_TEXT_B_7,build/figures/B/figura_b_7.png,3.5917,1.0319,5.9333,3.9265
+24,B,B.8,Tráfico de minutos del Servicio Fijo de Telefonía,{{FIGURA:B.8}},ANUARIO_FIGURE_B_8,ANUARIO_TEXT_B_8,build/figures/B/figura_b_8.png,3.5917,1.0319,5.9333,3.9265
+25,B,B.9,Participación de mercado del Servicio Fijo de Telefonía,{{FIGURA:B.9}},ANUARIO_FIGURE_B_9,ANUARIO_TEXT_B_9,build/figures/B/figura_b_9.png,3.5917,1.0319,5.9333,3.9265
+26,B,B.10,Herfindahl-Hirschman (IHH) del Servicio Fijo de Telefonía,{{FIGURA:B.10}},ANUARIO_FIGURE_B_10,ANUARIO_TEXT_B_10,build/figures/B/figura_b_10.png,3.5917,1.0319,5.9333,3.9265
+27,B,B.11,Accesos del Servicio Fijo de Internet,{{FIGURA:B.11}},ANUARIO_FIGURE_B_11,ANUARIO_TEXT_B_11,build/figures/B/figura_b_11.png,3.5917,1.0319,5.9333,3.9265
+28,B,B.12,Accesos del Servicio Fijo de Internet por cada 100 hogares,{{FIGURA:B.12}},ANUARIO_FIGURE_B_12,ANUARIO_TEXT_B_12,build/figures/B/figura_b_12.png,3.5917,1.0319,5.9333,3.9265
+29,B,B.13,Accesos del Servicio Fijo de Internet Residencial por cada 100 hogares por entidad federativa,{{FIGURA:B.13}},ANUARIO_FIGURE_B_13,ANUARIO_TEXT_B_13,build/figures/B/figura_b_13.png,3.5917,1.0319,5.9333,3.9265
+30,B,B.14,Accesos del Servicio Fijo de Internet No Residencial por cada 100 unidades económicas por entidad federativa,{{FIGURA:B.14}},ANUARIO_FIGURE_B_14,ANUARIO_TEXT_B_14,build/figures/B/figura_b_14.png,3.5917,1.0319,5.9333,3.9265
+31,B,B.15,Distribución de accesos del Servicio Fijo de Internet por rangos de velocidad,{{FIGURA:B.15}},ANUARIO_FIGURE_B_15,ANUARIO_TEXT_B_15,build/figures/B/figura_b_15.png,3.5917,1.0319,5.9333,3.9265
+32,B,B.16,Distribución de accesos del Servicio Fijo de Internet por tecnología y segmento,{{FIGURA:B.16}},ANUARIO_FIGURE_B_16,ANUARIO_TEXT_B_16,build/figures/B/figura_b_16.png,3.5917,1.0319,5.9333,3.9265
+33,B,B.17,Participación de mercado del Servicio Fijo de Internet,{{FIGURA:B.17}},ANUARIO_FIGURE_B_17,ANUARIO_TEXT_B_17,build/figures/B/figura_b_17.png,3.5917,1.0319,5.9333,3.9265
+34,B,B.18,Herfindahl-Hirschman (IHH) del Servicio Fijo de Internet,{{FIGURA:B.18}},ANUARIO_FIGURE_B_18,ANUARIO_TEXT_B_18,build/figures/B/figura_b_18.png,3.5917,1.0319,5.9333,3.9265
+35,B,B.19,Accesos del Servicio de Televisión Restringida,{{FIGURA:B.19}},ANUARIO_FIGURE_B_19,ANUARIO_TEXT_B_19,build/figures/B/figura_b_19.png,3.5917,1.0319,5.9333,3.9265
+36,B,B.20,Accesos del Servicio de Televisión Restringida por cada 100 hogares,{{FIGURA:B.20}},ANUARIO_FIGURE_B_20,ANUARIO_TEXT_B_20,build/figures/B/figura_b_20.png,3.5917,1.0319,5.9333,3.9265
+37,B,B.21,Accesos del Servicio de Televisión Restringida Residencial por cada 100 hogares por entidad federativa,{{FIGURA:B.21}},ANUARIO_FIGURE_B_21,ANUARIO_TEXT_B_21,build/figures/B/figura_b_21.png,3.5917,1.0319,5.9333,3.9265
+38,B,B.22,Accesos del Servicio de Televisión Restringida No Residencial por cada 100 unidades económicas por entidad federativa,{{FIGURA:B.22}},ANUARIO_FIGURE_B_22,ANUARIO_TEXT_B_22,build/figures/B/figura_b_22.png,3.5917,1.0319,5.9333,3.9265
+39,B,B.23,Tecnologías de conexión del Servicio de Televisión Restringida por segmento,{{FIGURA:B.23}},ANUARIO_FIGURE_B_23,ANUARIO_TEXT_B_23,build/figures/B/figura_b_23.png,3.5917,1.0319,5.9333,3.9265
+40,B,B.24,Participación de mercado del Servicio de Televisión Restringida,{{FIGURA:B.24}},ANUARIO_FIGURE_B_24,ANUARIO_TEXT_B_24,build/figures/B/figura_b_24.png,3.5917,1.0319,5.9333,3.9265
+41,B,B.25,Índice de concentración del Servicio de Televisión Restringida,{{FIGURA:B.25}},ANUARIO_FIGURE_B_25,ANUARIO_TEXT_B_25,build/figures/B/figura_b_25.png,3.5917,1.0319,5.9333,3.9265
+43,C,C.1,Espectro radioeléctrico asignado por banda de frecuencia,{{FIGURA:C.1}},ANUARIO_FIGURE_C_1,ANUARIO_TEXT_C_1,build/figures/C/figura_c_1.png,3.5917,1.0319,5.9333,3.9265
+44,C,C.2,Distribución del espectro radioeléctrico por operador y por banda de frecuencia,{{FIGURA:C.2}},ANUARIO_FIGURE_C_2,ANUARIO_TEXT_C_2,build/figures/C/figura_c_2.png,3.5917,1.0319,5.9333,3.9265
+45,C,C.3,Porcentaje del uso de los servicios móviles de telecomunicaciones,{{FIGURA:C.3}},ANUARIO_FIGURE_C_3,ANUARIO_TEXT_C_3,build/figures/C/figura_c_3.png,3.5917,1.0319,5.9333,3.9265
+46,C,C.4,Porcentaje del uso de los servicios móviles de telecomunicaciones por zona geográfica,{{FIGURA:C.4}},ANUARIO_FIGURE_C_4,ANUARIO_TEXT_C_4,build/figures/C/figura_c_4.png,3.5917,1.0319,5.9333,3.9265
+47,C,C.5,Líneas del servicio móvil de telefonía por modalidad,{{FIGURA:C.5}},ANUARIO_FIGURE_C_5,ANUARIO_TEXT_C_5,build/figures/C/figura_c_5.png,3.5917,1.0319,5.9333,3.9265
+48,C,C.6,Líneas del servicio móvil de telefonía por cada 100 habitantes,{{FIGURA:C.6}},ANUARIO_FIGURE_C_6,ANUARIO_TEXT_C_6,build/figures/C/figura_c_6.png,3.5917,1.0319,5.9333,3.9265
+49,C,C.7,Líneas del servicio móvil de telefonía por cada 100 habitantes por entidad federativa,{{FIGURA:C.7}},ANUARIO_FIGURE_C_7,ANUARIO_TEXT_C_7,build/figures/C/figura_c_7.png,3.5917,1.0319,5.9333,3.9265
+50,C,C.8,Tráfico de minutos del servicio móvil de telefonía,{{FIGURA:C.8}},ANUARIO_FIGURE_C_8,ANUARIO_TEXT_C_8,build/figures/C/figura_c_8.png,3.5917,1.0319,5.9333,3.9265
+51,C,C.9,Participación de mercado del servicio móvil de telefonía,{{FIGURA:C.9}},ANUARIO_FIGURE_C_9,ANUARIO_TEXT_C_9,build/figures/C/figura_c_9.png,3.5917,1.0319,5.9333,3.9265
+52,C,C.10,Índice de concentración del servicio móvil de telefonía,{{FIGURA:C.10}},ANUARIO_FIGURE_C_10,ANUARIO_TEXT_C_10,build/figures/C/figura_c_10.png,3.5917,1.0319,5.9333,3.9265
+53,C,C.11,Líneas del servicio móvil de acceso a Internet por modalidad,{{FIGURA:C.11}},ANUARIO_FIGURE_C_11,ANUARIO_TEXT_C_11,build/figures/C/figura_c_11.png,3.5917,1.0319,5.9333,3.9265
+54,C,C.12,Líneas del servicio móvil de acceso a Internet por cada 100 habitantes,{{FIGURA:C.12}},ANUARIO_FIGURE_C_12,ANUARIO_TEXT_C_12,build/figures/C/figura_c_12.png,3.5917,1.0319,5.9333,3.9265
+55,C,C.13,Líneas del servicio móvil de acceso a Internet por cada 100 habitantes por entidad federativa,{{FIGURA:C.13}},ANUARIO_FIGURE_C_13,ANUARIO_TEXT_C_13,build/figures/C/figura_c_13.png,3.5917,1.0319,5.9333,3.9265
+56,C,C.14,Tráfico del servicio móvil de acceso a Internet por tecnología,{{FIGURA:C.14}},ANUARIO_FIGURE_C_14,ANUARIO_TEXT_C_14,build/figures/C/figura_c_14.png,3.5917,1.0319,5.9333,3.9265
+57,C,C.15,Participación de mercado del servicio móvil de acceso a Internet,{{FIGURA:C.15}},ANUARIO_FIGURE_C_15,ANUARIO_TEXT_C_15,build/figures/C/figura_c_15.png,3.5917,1.0319,5.9333,3.9265
+58,C,C.16,Índice de concentración del servicio móvil de acceso a Internet,{{FIGURA:C.16}},ANUARIO_FIGURE_C_16,ANUARIO_TEXT_C_16,build/figures/C/figura_c_16.png,3.5917,1.0319,5.9333,3.9265
+60,D,D.1,Disponibilidad de las TIC en los hogares,{{FIGURA:D.1}},ANUARIO_FIGURE_D_1,ANUARIO_TEXT_D_1,build/figures/D/figura_d_1.png,3.5917,1.0319,5.9333,3.9265
+61,D,D.2,Uso de Smartphone e Internet por grupos de edad,{{FIGURA:D.2}},ANUARIO_FIGURE_D_2,ANUARIO_TEXT_D_2,build/figures/D/figura_d_2.png,3.5917,1.0319,5.9333,3.9265
+62,D,D.3,Horas promedio de uso de internet por grupos de edad,{{FIGURA:D.3}},ANUARIO_FIGURE_D_3,ANUARIO_TEXT_D_3,build/figures/D/figura_d_3.png,3.5917,1.0319,5.9333,3.9265
+63,D,D.4,Uso de dispositivos inteligentes conectados a Internet,{{FIGURA:D.4}},ANUARIO_FIGURE_D_4,ANUARIO_TEXT_D_4,build/figures/D/figura_d_4.png,3.5917,1.0319,5.9333,3.9265
+64,D,D.5,Forma en que las personas aprendieron a buscar información o usar Internet,{{FIGURA:D.5}},ANUARIO_FIGURE_D_5,ANUARIO_TEXT_D_5,build/figures/D/figura_d_5.png,3.5917,1.0319,5.9333,3.9265
+65,D,D.6,Experiencias negativas en Internet por sexo,{{FIGURA:D.6}},ANUARIO_FIGURE_D_6,ANUARIO_TEXT_D_6,build/figures/D/figura_d_6.png,3.5917,1.0319,5.9333,3.9265
+66,D,D.7,Experiencias negativas en Internet por grupo de edad,{{FIGURA:D.7}},ANUARIO_FIGURE_D_7,ANUARIO_TEXT_D_7,build/figures/D/figura_d_7.png,3.5917,1.0319,5.9333,3.9265
+67,D,D.8,Influencia de la confianza en Internet sobre su uso,{{FIGURA:D.8}},ANUARIO_FIGURE_D_8,ANUARIO_TEXT_D_8,build/figures/D/figura_d_8.png,3.5917,1.0319,5.9333,3.9265
+68,D,D.9,Percepción de seguridad al realizar compras por Internet por grupo de edad,{{FIGURA:D.9}},ANUARIO_FIGURE_D_9,ANUARIO_TEXT_D_9,build/figures/D/figura_d_9.png,3.5917,1.0319,5.9333,3.9265
+69,D,D.10,Percepción de seguridad al usar banca por Internet por grupo de edad,{{FIGURA:D.10}},ANUARIO_FIGURE_D_10,ANUARIO_TEXT_D_10,build/figures/D/figura_d_10.png,3.5917,1.0319,5.9333,3.9265
+70,D,D.11,Percepción de seguridad al compartir información en redes sociales por sexo,{{FIGURA:D.11}},ANUARIO_FIGURE_D_11,ANUARIO_TEXT_D_11,build/figures/D/figura_d_11.png,3.5917,1.0319,5.9333,3.9265
+72,E,E.1,Índice General de Satisfacción por servicio de telecomunicaciones,{{FIGURA:E.1}},ANUARIO_FIGURE_E_1,ANUARIO_TEXT_E_1,build/figures/E/figura_e_1.png,3.5917,1.0319,5.9333,3.9265
+73,E,E.2,Principales hallazgos de la Inteligencia Artificial y ChatGPT,{{FIGURA:E.2}},ANUARIO_FIGURE_E_2,ANUARIO_TEXT_E_2,build/figures/E/figura_e_2.png,3.5917,1.0319,5.9333,3.9265
+74,E,E.3,Índice General de Satisfacción por servicio y tamaño de empresa,{{FIGURA:E.3}},ANUARIO_FIGURE_E_3,ANUARIO_TEXT_E_3,build/figures/E/figura_e_3.png,3.5917,1.0319,5.9333,3.9265
+75,E,E.4,Servicios de telecomunicaciones contratados por las MiPymes,{{FIGURA:E.4}},ANUARIO_FIGURE_E_4,ANUARIO_TEXT_E_4,build/figures/E/figura_e_4.png,3.5917,1.0319,5.9333,3.9265
+76,E,E.5,Percepción de beneficios de Internet fijo y telefonía fija,{{FIGURA:E.5}},ANUARIO_FIGURE_E_5,ANUARIO_TEXT_E_5,build/figures/E/figura_e_5.png,3.5917,1.0319,5.9333,3.9265
+77,E,E.6,Beneficios de vender mediante Internet fijo,{{FIGURA:E.6}},ANUARIO_FIGURE_E_6,ANUARIO_TEXT_E_6,build/figures/E/figura_e_6.png,3.5917,1.0319,5.9333,3.9265
+78,E,E.7,Dispositivos utilizados por las MiPymes,{{FIGURA:E.7}},ANUARIO_FIGURE_E_7,ANUARIO_TEXT_E_7,build/figures/E/figura_e_7.png,3.5917,1.0319,5.9333,3.9265
+79,E,E.8,Beneficios de contar con una aplicación móvil,{{FIGURA:E.8}},ANUARIO_FIGURE_E_8,ANUARIO_TEXT_E_8,build/figures/E/figura_e_8.png,3.5917,1.0319,5.9333,3.9265
+80,E,E.9,Servicios de telecomunicaciones más importantes para MiPymes importadoras y exportadoras,{{FIGURA:E.9}},ANUARIO_FIGURE_E_9,ANUARIO_TEXT_E_9,build/figures/E/figura_e_9.png,3.5917,1.0319,5.9333,3.9265
+82,F,F.1.1,Aplicaciones instaladas mediante Smartphone,{{FIGURA:F.1.1}},ANUARIO_FIGURE_F_1_1,ANUARIO_TEXT_F_1_1,build/figures/F/figura_f_1_1.png,3.5917,1.0319,5.9333,3.9265
+83,F,F.1.2,Actividades realizadas en Internet,{{FIGURA:F.1.2}},ANUARIO_FIGURE_F_1_2,ANUARIO_TEXT_F_1_2,build/figures/F/figura_f_1_2.png,3.5917,1.0319,5.9333,3.9265
+84,F,F.1.3,Habilidades en la computadora,{{FIGURA:F.1.3}},ANUARIO_FIGURE_F_1_3,ANUARIO_TEXT_F_1_3,build/figures/F/figura_f_1_3.png,3.5917,1.0319,5.9333,3.9265
+85,F,F.1.4,Uso de redes sociales,{{FIGURA:F.1.4}},ANUARIO_FIGURE_F_1_4,ANUARIO_TEXT_F_1_4,build/figures/F/figura_f_1_4.png,3.5917,1.0319,5.9333,3.9265
+86,F,F.2,Porcentaje de personas empleadas en telecomunicaciones y radiodifusión,{{FIGURA:F.2}},ANUARIO_FIGURE_F_2,ANUARIO_TEXT_F_2,build/figures/F/figura_f_2.png,3.5917,1.0319,5.9333,3.9265
+87,F,F.3,Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa,{{FIGURA:F.3}},ANUARIO_FIGURE_F_3,ANUARIO_TEXT_F_3,build/figures/F/figura_f_3.png,3.5917,1.0319,5.9333,3.9265
+88,F,F.4,Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa y sexo,{{FIGURA:F.4}},ANUARIO_FIGURE_F_4,ANUARIO_TEXT_F_4,build/figures/F/figura_f_4.png,3.5917,1.0319,5.9333,3.9265
+89,F,F.5,Porcentaje de la población que vivió ciberacoso por sexo y rango de edad,{{FIGURA:F.5}},ANUARIO_FIGURE_F_5,ANUARIO_TEXT_F_5,build/figures/F/figura_f_5.png,3.5917,1.0319,5.9333,3.9265
+90,F,F.6,Distribución de las situaciones de ciberacoso experimentadas por sexo,{{FIGURA:F.6}},ANUARIO_FIGURE_F_6,ANUARIO_TEXT_F_6,build/figures/F/figura_f_6.png,3.5917,1.0319,5.9333,3.9265
+91,F,F.7,Medidas de seguridad para proteger equipos o cuentas de Internet por sexo,{{FIGURA:F.7}},ANUARIO_FIGURE_F_7,ANUARIO_TEXT_F_7,build/figures/F/figura_f_7.png,3.5917,1.0319,5.9333,3.9265
+92,F,F.8,Porcentaje de población que vivió ciberacoso por medios digitales,{{FIGURA:F.8}},ANUARIO_FIGURE_F_8,ANUARIO_TEXT_F_8,build/figures/F/figura_f_8.png,3.5917,1.0319,5.9333,3.9265
+93,F,F.9,Medidas tomadas contra el ciberacoso experimentado,{{FIGURA:F.9}},ANUARIO_FIGURE_F_9,ANUARIO_TEXT_F_9,build/figures/F/figura_f_9.png,3.5917,1.0319,5.9333,3.9265
+94,F,F.10,Personas con mayor riesgo de ser víctimas de violencia en Internet,{{FIGURA:F.10}},ANUARIO_FIGURE_F_10,ANUARIO_TEXT_F_10,build/figures/F/figura_f_10.png,3.5917,1.0319,5.9333,3.9265
+95,F,F.11,Personas con mayor riesgo de ser víctimas de violencia en Internet por sexo,{{FIGURA:F.11}},ANUARIO_FIGURE_F_11,ANUARIO_TEXT_F_11,build/figures/F/figura_f_11.png,3.5917,1.0319,5.9333,3.9265
+96,F,F.12,Personas con mayor riesgo de violencia a través del teléfono móvil,{{FIGURA:F.12}},ANUARIO_FIGURE_F_12,ANUARIO_TEXT_F_12,build/figures/F/figura_f_12.png,3.5917,1.0319,5.9333,3.9265
+97,F,F.13,Personas con mayor riesgo de violencia mediante telefonía móvil por sexo,{{FIGURA:F.13}},ANUARIO_FIGURE_F_13,ANUARIO_TEXT_F_13,build/figures/F/figura_f_13.png,3.5917,1.0319,5.9333,3.9265
+98,F,F.14,Medidas preventivas y de protección ante la violencia digital,{{FIGURA:F.14}},ANUARIO_FIGURE_F_14,ANUARIO_TEXT_F_14,build/figures/F/figura_f_14.png,3.5917,1.0319,5.9333,3.9265
+99,F,F.15,Acciones para protegerse o prevenir la violencia en Internet por sexo,{{FIGURA:F.15}},ANUARIO_FIGURE_F_15,ANUARIO_TEXT_F_15,build/figures/F/figura_f_15.png,3.5917,1.0319,5.9333,3.9265
+100,F,F.16,Medidas que se tomarían ante violencia en Internet por sexo,{{FIGURA:F.16}},ANUARIO_FIGURE_F_16,ANUARIO_TEXT_F_16,build/figures/F/figura_f_16.png,3.5917,1.0319,5.9333,3.9265
+102,G,G.1,"Concesiones otorgadas de radiodifusión para AM, FM y TDT, a nivel nacional",{{FIGURA:G.1}},ANUARIO_FIGURE_G_1,ANUARIO_TEXT_G_1,build/figures/G/figura_g_1.png,3.5917,1.0319,5.9333,3.9265
+104,H,H.1,Porcentaje de personas que vieron la televisión por hora a nivel nacional (28 ciudades),{{FIGURA:H.1}},ANUARIO_FIGURE_H_1,ANUARIO_TEXT_H_1,build/figures/H/figura_h_1.png,3.5917,1.0319,5.9333,3.9265
+105,H,H.2,Horas dedicadas y Rating promedio por género en canales nacionales (28 ciudades),{{FIGURA:H.2}},ANUARIO_FIGURE_H_2,ANUARIO_TEXT_H_2,build/figures/H/figura_h_2.png,3.5917,1.0319,5.9333,3.9265
+106,H,H.3,Porcentaje de personas que vieron la televisión por hora en Ciudad de México,{{FIGURA:H.3}},ANUARIO_FIGURE_H_3,ANUARIO_TEXT_H_3,build/figures/H/figura_h_3.png,3.5917,1.0319,5.9333,3.9265
+107,H,H.4,Horas dedicadas y Rating promedio por género en canales nacionales (CDMX),{{FIGURA:H.4}},ANUARIO_FIGURE_H_4,ANUARIO_TEXT_H_4,build/figures/H/figura_h_4.png,3.5917,1.0319,5.9333,3.9265
+108,H,H.5,Porcentaje de personas que vieron la televisión por hora en Guadalajara,{{FIGURA:H.5}},ANUARIO_FIGURE_H_5,ANUARIO_TEXT_H_5,build/figures/H/figura_h_5.png,3.5917,1.0319,5.9333,3.9265
+109,H,H.6,Horas dedicadas y Rating promedio por género en canales nacionales (Guadalajara),{{FIGURA:H.6}},ANUARIO_FIGURE_H_6,ANUARIO_TEXT_H_6,build/figures/H/figura_h_6.png,3.5917,1.0319,5.9333,3.9265
+110,H,H.7,Porcentaje de personas que vieron la televisión por hora en Monterrey,{{FIGURA:H.7}},ANUARIO_FIGURE_H_7,ANUARIO_TEXT_H_7,build/figures/H/figura_h_7.png,3.5917,1.0319,5.9333,3.9265
+111,H,H.8,Horas dedicadas y Rating promedio por género en canales nacionales (Monterrey),{{FIGURA:H.8}},ANUARIO_FIGURE_H_8,ANUARIO_TEXT_H_8,build/figures/H/figura_h_8.png,3.5917,1.0319,5.9333,3.9265
+112,H,H.9,Porcentaje de personas que vieron la televisión por hora en 25 ciudades,{{FIGURA:H.9}},ANUARIO_FIGURE_H_9,ANUARIO_TEXT_H_9,build/figures/H/figura_h_9.png,3.5917,1.0319,5.9333,3.9265
+113,H,H.10,Horas dedicadas y Rating promedio por género en canales nacionales (25 ciudades),{{FIGURA:H.10}},ANUARIO_FIGURE_H_10,ANUARIO_TEXT_H_10,build/figures/H/figura_h_10.png,3.5917,1.0319,5.9333,3.9265
+114,H,H.11,Proporción de personas que escucharon la radio por hora (%) — Nacional,{{FIGURA:H.11}},ANUARIO_FIGURE_H_11,ANUARIO_TEXT_H_11,build/figures/H/figura_h_11.png,3.5917,1.0319,5.9333,3.9265
+115,H,H.12,Proporción de personas que escucharon la radio por hora (%) — CDMX,{{FIGURA:H.12}},ANUARIO_FIGURE_H_12,ANUARIO_TEXT_H_12,build/figures/H/figura_h_12.png,3.5917,1.0319,5.9333,3.9265
+116,H,H.13,Proporción de personas que escucharon la radio por hora (%) — Guadalajara,{{FIGURA:H.13}},ANUARIO_FIGURE_H_13,ANUARIO_TEXT_H_13,build/figures/H/figura_h_13.png,3.5917,1.0319,5.9333,3.9265
+117,H,H.14,Proporción de personas que escucharon la radio por hora (%) — Monterrey,{{FIGURA:H.14}},ANUARIO_FIGURE_H_14,ANUARIO_TEXT_H_14,build/figures/H/figura_h_14.png,3.5917,1.0319,5.9333,3.9265

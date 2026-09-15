@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 import textwrap
 import zipfile
@@ -23,11 +31,11 @@ FIGURE_ID = "A.6"
 SOURCE_ID = "crt_bit_todo_2025_q2"
 TABLE_BASENAME = "TD_INGRESOS_TELECOM_ITE_VA.csv"
 
-COLOR_TEXT = "#565682"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
-COLOR_EXPENSES = "#327B9E"
-COLOR_MARGIN = "#ACDDE0"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
+COLOR_EXPENSES = "#335a5c"
+COLOR_MARGIN = "#86adae"
 
 # La base BIT publica ingresos, pero no egresos ni margen. Estos porcentajes son
 # los valores de la figura 2024 y constituyen el límite de la serie completa.
@@ -380,7 +388,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     fig.subplots_adjust(left=0.075, right=0.965, top=0.84, bottom=0.245)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

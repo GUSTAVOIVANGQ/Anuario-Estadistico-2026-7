@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import csv
 import json
 import os
@@ -40,10 +48,10 @@ CSV_CONTROL_NAME = (
     "Consulta las series seleccionadas en formato separado por comas (CSV)"
 )
 
-COLOR_TEXT = "#565682"
-COLOR_INPC = "#565682"
-COLOR_IPCOM = "#F58F82"
-COLOR_BACKGROUND = "#FBFBF7"
+COLOR_TEXT = "#3c3c3b"
+COLOR_INPC = "#006157"
+COLOR_IPCOM = "#b35aba"
+COLOR_BACKGROUND = "#F8F8FA"
 
 MONTH_NUMBER = {
     "Ene": 1,
@@ -543,7 +551,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     fig.subplots_adjust(left=0.074, right=0.96, top=0.83, bottom=0.25)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

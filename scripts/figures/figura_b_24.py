@@ -1,5 +1,13 @@
 """Figura B.24: participación de mercado de televisión restringida."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys, unicodedata, zipfile
 from pathlib import Path, PurePosixPath
 import matplotlib
@@ -63,7 +71,7 @@ def _plot(data,meta,out,root):
     ax.legend(ncol=6,loc="lower center",bbox_to_anchor=(.5,-.18),frameon=False,fontsize=8,labelcolor=TEXT,handlelength=1.5,columnspacing=1.5)
     fig.text(.045,.078,"Fuente:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.086,.078,f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.",fontsize=8,color=TEXT)
     fig.text(.045,.057,"Nota:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.077,.057,"La suma de los porcentajes puede no sumar 100% por cuestiones de redondeo.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
 def generate(context):
     print("  B.24 | Adquisición o reutilización de TODO.zip de BIT/CRT"); source=context.acquire_source(SOURCE_ID)
     print("  B.24 | Lectura y agregación de participación por grupo"); data,meta=build_metrics(load_raw(source)); period=f"{meta['anio']}-12"; context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE"); context.write_data_used(data)

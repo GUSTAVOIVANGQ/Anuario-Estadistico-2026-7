@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import math
 import sys
 import textwrap
@@ -351,7 +359,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
     ax.text(0.075, 0.086, NOTE, color=TEXT, fontsize=8.5, ha="left", va="top", transform=ax.transAxes)
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output, dpi=200, facecolor="white")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white")
     plt.close(fig)
 
 

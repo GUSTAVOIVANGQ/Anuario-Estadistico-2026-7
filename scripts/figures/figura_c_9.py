@@ -1,5 +1,13 @@
 """Figura C.9: participación de mercado del servicio móvil de telefonía."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile,unicodedata
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -30,7 +38,7 @@ def _plot(d,m,out):
         for b,v,base in zip(bars,d[g],bottom):
             if v>=3:ax.text(b.get_x()+b.get_width()/2,base+v/2,f"{v:.1f}%",ha="center",va="center",fontsize=7,fontweight="bold",color="white" if c in ("#317DA3","#4B4B83") else TEXT)
         bottom+=d[g]
-    ax.set_ylim(0,103);ax.set_xticks(d.anio);ax.tick_params(colors=TEXT);ax.set_yticks([]);ax.spines[:].set_visible(False);ax.legend(ncol=4,loc="lower center",bbox_to_anchor=(.5,-.16),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"La suma puede no ser 100% por redondeo.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    ax.set_ylim(0,103);ax.set_xticks(d.anio);ax.tick_params(colors=TEXT);ax.set_yticks([]);ax.spines[:].set_visible(False);ax.legend(ncol=4,loc="lower center",bbox_to_anchor=(.5,-.16),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"La suma puede no ser 100% por redondeo.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  C.9 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);last=d.iloc[-1]
     for _,r in d.iterrows():

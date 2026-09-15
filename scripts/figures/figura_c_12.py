@@ -1,5 +1,13 @@
 """Figura C.12: teledensidad nacional del servicio móvil de acceso a Internet."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -20,7 +28,7 @@ def _plot(d,m,out):
     fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc="#FBFBF7",transform=fig.transFigure,zorder=-1));fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#F58F82",ec="none"),zorder=20);fig.text(.061,.9,"Figura C.12.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21);fig.text(.153,.9,f"Líneas del servicio móvil de acceso a Internet por cada 100 habitantes (2010-{m['anio']})",fontsize=14,color=TEXT,va="center",zorder=21);ax=fig.add_axes([.08,.20,.84,.62]);ax.fill_between(d.anio,d.teledensidad,color="#ADDCDF",alpha=.35);ax.plot(d.anio,d.teledensidad,color="#4B4B83",lw=1.5,marker="o",ms=4)
     for r in d.itertuples(index=False):
         ax.vlines(r.anio,0,r.teledensidad,color="#4B4B83",lw=.7);ax.annotate(f"{r.teledensidad:.0f}",(r.anio,r.teledensidad),xytext=(0,8),textcoords="offset points",ha="center",fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.25",fc="white",ec="none"))
-    ax.set_xticks(d.anio);ax.set_ylim(0,d.teledensidad.max()*1.18);ax.spines[:].set_visible(False);ax.set_yticks([]);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Líneas por cada 100 habitantes.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+    ax.set_xticks(d.anio);ax.set_ylim(0,d.teledensidad.max()*1.18);ax.spines[:].set_visible(False);ax.set_yticks([]);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Líneas por cada 100 habitantes.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
 def generate(context):
     print("  C.12 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"teledensidad_internet_{r.anio}","T_H_INTMOVIL_E publicado por BIT",{"anio":r.anio},r.teledensidad,"líneas por cada 100 habitantes",0) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"En diciembre de {m['anio']} había {d.iloc[-1].teledensidad:.0f} líneas móviles de acceso a Internet por cada 100 habitantes."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
 def main():

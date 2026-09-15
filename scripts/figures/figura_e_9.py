@@ -1,6 +1,14 @@
 """Figura E.9: servicios más importantes para MiPymes importadoras/exportadoras."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import re
 import sys
 import unicodedata
@@ -147,7 +155,7 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     fig.text(.055, .094, "Nota:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.09, .094, 'Debido a que se excluyen las menciones "No sabe/No contestó", la suma no da 100%.', color=TEXT, fontsize=9)
     output.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output, dpi=200)
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200)
     plt.close(fig)
 
 

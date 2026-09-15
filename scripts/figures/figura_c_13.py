@@ -1,6 +1,14 @@
 """Figura C.13: teledensidad de Internet móvil por entidad federativa."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import json, sys, unicodedata, zipfile
 from pathlib import Path, PurePosixPath
 import matplotlib
@@ -52,7 +60,7 @@ def _plot(d,m,map_path,out):
     fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc="#FBFBF7",transform=fig.transFigure,zorder=-1));fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#F58F82",ec="none"));fig.text(.061,.9,"Figura C.13.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.153,.9,f"Líneas del servicio móvil de acceso a Internet por cada 100 habitantes ({m['anio']})",fontsize=14,color=TEXT,va="center")
     ax=fig.add_axes([.18,.18,.61,.65]);ax.add_collection(PatchCollection(shapes,facecolor=colors,edgecolor="white",linewidth=.7));ax.set_xlim(-119.5,-85);ax.set_ylim(14,33.5);ax.set_aspect(1/np.cos(np.deg2rad(23.5)));ax.axis("off")
     labels=[f"{bounds[i]:.0f} a {bounds[i+1]:.0f}" for i in range(5)];handles=[patches.Patch(facecolor=c,label=l) for c,l in zip(COLORS,labels)];leg=fig.legend(handles=handles,title="Líneas por cada 100 habitantes:",loc="lower left",bbox_to_anchor=(.06,.18),frameon=False,fontsize=9,title_fontsize=9);leg._legend_box.align="left";leg.get_title().set_fontweight("bold");leg.get_title().set_color(TEXT)
-    fig.add_artist(patches.FancyBboxPatch((.76,.54),.18,.22,transform=fig.transFigure,boxstyle="round,pad=.015,rounding_size=.02",fc="white",ec="#E4E4E8"));fig.text(.85,.69,"Líneas por cada\n100 habitantes:",ha="center",fontsize=10,color=TEXT);fig.text(.85,.585,f"{m['nacional']:.0f}",ha="center",fontsize=43,fontweight="bold",color=TEXT);fig.text(.51,.18,f"Tasa de crecimiento\nanual de {m['crecimiento']:.1f}%",ha="center",va="center",fontsize=10,fontweight="bold",color="white",bbox=dict(boxstyle="round,pad=.8",fc=TEXT,ec="none"));fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"El valor nacional proviene de la serie nacional de líneas por cada 100 habitantes publicada por el CRT.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    fig.add_artist(patches.FancyBboxPatch((.76,.54),.18,.22,transform=fig.transFigure,boxstyle="round,pad=.015,rounding_size=.02",fc="white",ec="#E4E4E8"));fig.text(.85,.69,"Líneas por cada\n100 habitantes:",ha="center",fontsize=10,color=TEXT);fig.text(.85,.585,f"{m['nacional']:.0f}",ha="center",fontsize=43,fontweight="bold",color=TEXT);fig.text(.51,.18,f"Tasa de crecimiento\nanual de {m['crecimiento']:.1f}%",ha="center",va="center",fontsize=10,fontweight="bold",color="white",bbox=dict(boxstyle="round,pad=.8",fc=TEXT,ec="none"));fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"El valor nacional proviene de la serie nacional de líneas por cada 100 habitantes publicada por el CRT.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  C.13 | Adquisición o reutilización de TODO.zip y mapa estatal");source=context.acquire_source(SOURCE_ID);map_path=context.acquire_source(MAP_SOURCE_ID);states,national=load_tables(source);d,m=build_metrics(states,national);period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.record_source_period(MAP_SOURCE_ID,"geometría estatal","REFERENCIA");context.write_data_used(d)
     for r in d.itertuples(index=False):context.record_calculation(f"teledensidad_internet_{r.K_ENTIDAD:02d}","T_INTMOVIL_ITE_VA publicado por BIT",{"anio":m['anio'],"entidad":r.ENTIDAD},r.valor,"líneas por cada 100 habitantes",0)

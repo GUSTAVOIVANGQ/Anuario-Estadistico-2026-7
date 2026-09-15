@@ -1,6 +1,14 @@
 """Figura C.7: teledensidad de telefonía móvil por entidad federativa."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import json
 import math
 import sys
@@ -133,7 +141,7 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     fig.text(.091, .07, f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.", fontsize=8, color=TEXT)
     fig.text(.05, .05, "Nota:", fontsize=8, fontweight="bold", color=TEXT)
     fig.text(.082, .05, "El indicador nacional proviene de la serie nacional publicada por el CRT.", fontsize=8, color=TEXT)
-    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
+    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
 
 
 def generate(context):

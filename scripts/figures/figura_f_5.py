@@ -1,5 +1,13 @@
 """Figura F.5: víctimas de ciberacoso por sexo y grupo de edad."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,textwrap,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -71,7 +79,7 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     _fonts(root);fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1));fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc=MEN,ec="none"))
     fig.text(.066,.873,"Figura F.5.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.151,.873,"Porcentaje de la población que vivió ciberacoso por sexo y rango de edad",fontsize=14,color=TEXT,va="center")
     _panel(fig,[.055,.20,.43,.57],data,"Mujeres",WOMEN);_panel(fig,[.515,.20,.43,.57],data,"Hombres",MEN)
-    fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top");output.parent.mkdir(parents=True,exist_ok=True);fig.savefig(output,dpi=200);plt.close(fig)
+    fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top");output.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200);plt.close(fig)
 
 def generate(context):
     print("  F.5 | 1/4 Adquisición o reutilización de MOCIBA 2024 y 2025");ref_path=context.acquire_source(REFERENCE_SOURCE_ID);cur_path=context.acquire_source(CURRENT_SOURCE_ID)

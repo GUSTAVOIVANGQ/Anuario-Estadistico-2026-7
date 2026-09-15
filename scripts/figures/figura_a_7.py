@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -28,11 +36,11 @@ FIJAS_CLAVES_2024 = {
     "083403", "083404", "083405", "083924",
 }
 
-COLOR_TEXT = "#565682"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
-COLOR_PRIMARY = "#327B9E"
-COLOR_SECONDARY = "#F58F82"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
+COLOR_PRIMARY = "#335a5c"
+COLOR_SECONDARY = "#86adae"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -191,9 +199,8 @@ def build_metrics(
 
 
 def _rounded_barh(ax, y: float, width: float, height: float, color: str, label: str | None = None):
-    patch = mpatches.FancyBboxPatch(
+    patch = mpatches.Rectangle(
         (0, y - height / 2), width, height,
-        boxstyle=f"round,pad=0,rounding_size={height / 2}",
         facecolor=color, edgecolor="none", linewidth=0, label=label, zorder=3,
     )
     ax.add_patch(patch)
@@ -253,7 +260,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
              fontsize=8, color=COLOR_TEXT, va="top")
     fig.subplots_adjust(left=0.08, right=0.965, top=0.84, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

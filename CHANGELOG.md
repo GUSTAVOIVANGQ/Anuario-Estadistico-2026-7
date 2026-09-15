@@ -1,3 +1,12 @@
+# 0.25.0
+
+- Integrada la funcionalidad 1.2: ensamblaje sobre la plantilla PPTX completa del Anuario 2026.
+- Incluida la plantilla automatizable de 119 diapositivas y el manifest de 105 marcadores.
+- Nuevo comando `assemble` para insertar las figuras ya generadas sin volver a ejecutar el pipeline.
+- `run --assemble` ahora usa los marcadores `ANUARIO_FIGURE_*` y conserva el diseño de la plantilla.
+- Se genera un reporte JSON de figuras insertadas, faltantes y errores de mapeo.
+- Añadida dependencia `python-pptx`; el ensamblaje ya no depende de Node.js.
+
 # Historial de cambios
 
 Todos los cambios importantes del proyecto se documentarán aquí.

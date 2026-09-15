@@ -1,0 +1,1804 @@
+{
+  "project": "Anuario Estadístico 2026",
+  "reference_structure": "Anuario Estadístico 2024",
+  "slide_count": 119,
+  "figure_count": 105,
+  "sections": {
+    "A": "A. INDICADORES ECONÓMICOS",
+    "B": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+    "C": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+    "D": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+    "E": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+    "F": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+    "G": "G. INDICADORES DE RADIODIFUSIÓN",
+    "H": "H. CONSUMO DE RADIO Y TELEVISIÓN"
+  },
+  "fit_policy": "contain",
+  "entries": [
+    {
+      "figure_id": "A.1",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Producto Interno Bruto y contribución de telecomunicaciones y radiodifusión",
+      "token": "{{FIGURA:A.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_1",
+      "narrative_shape_name": "ANUARIO_TEXT_A_1",
+      "expected_image": "build/figures/A/figura_a_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 6
+    },
+    {
+      "figure_id": "A.2",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Empleo en los sectores de telecomunicaciones y radiodifusión",
+      "token": "{{FIGURA:A.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_2",
+      "narrative_shape_name": "ANUARIO_TEXT_A_2",
+      "expected_image": "build/figures/A/figura_a_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 7
+    },
+    {
+      "figure_id": "A.3",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Índices de precios (INPC e IPCOM)",
+      "token": "{{FIGURA:A.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_3",
+      "narrative_shape_name": "ANUARIO_TEXT_A_3",
+      "expected_image": "build/figures/A/figura_a_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 8
+    },
+    {
+      "figure_id": "A.4",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Inversión privada en Telecomunicaciones por tipo de inversión",
+      "token": "{{FIGURA:A.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_4",
+      "narrative_shape_name": "ANUARIO_TEXT_A_4",
+      "expected_image": "build/figures/A/figura_a_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 9
+    },
+    {
+      "figure_id": "A.5",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Inversión Extranjera Directa (IED) en telecomunicaciones",
+      "token": "{{FIGURA:A.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_5",
+      "narrative_shape_name": "ANUARIO_TEXT_A_5",
+      "expected_image": "build/figures/A/figura_a_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 10
+    },
+    {
+      "figure_id": "A.6",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Ingresos, egresos y margen en el sector de telecomunicaciones",
+      "token": "{{FIGURA:A.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_6",
+      "narrative_shape_name": "ANUARIO_TEXT_A_6",
+      "expected_image": "build/figures/A/figura_a_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 11
+    },
+    {
+      "figure_id": "A.7",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Porcentaje de hogares con servicios de telecomunicaciones fijas por decil de ingreso",
+      "token": "{{FIGURA:A.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_7",
+      "narrative_shape_name": "ANUARIO_TEXT_A_7",
+      "expected_image": "build/figures/A/figura_a_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 12
+    },
+    {
+      "figure_id": "A.8",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Fijas de los hogares por decil de ingreso",
+      "token": "{{FIGURA:A.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_8",
+      "narrative_shape_name": "ANUARIO_TEXT_A_8",
+      "expected_image": "build/figures/A/figura_a_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 13
+    },
+    {
+      "figure_id": "A.9",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Porcentaje de hogares con Servicios de Telecomunicaciones Móviles por decil de ingreso",
+      "token": "{{FIGURA:A.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_9",
+      "narrative_shape_name": "ANUARIO_TEXT_A_9",
+      "expected_image": "build/figures/A/figura_a_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 14
+    },
+    {
+      "figure_id": "A.10",
+      "section": "A",
+      "section_title": "A. INDICADORES ECONÓMICOS",
+      "title": "Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Móviles de los hogares por decil de ingreso",
+      "token": "{{FIGURA:A.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_A_10",
+      "narrative_shape_name": "ANUARIO_TEXT_A_10",
+      "expected_image": "build/figures/A/figura_a_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 15
+    },
+    {
+      "figure_id": "B.1",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Distribución de los Servicios Fijos con respecto del total de hogares a nivel nacional",
+      "token": "{{FIGURA:B.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_1",
+      "narrative_shape_name": "ANUARIO_TEXT_B_1",
+      "expected_image": "build/figures/B/figura_b_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 17
+    },
+    {
+      "figure_id": "B.2",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Distribución de los Servicios Fijos con respecto del total de hogares en las zonas rurales",
+      "token": "{{FIGURA:B.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_2",
+      "narrative_shape_name": "ANUARIO_TEXT_B_2",
+      "expected_image": "build/figures/B/figura_b_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 18
+    },
+    {
+      "figure_id": "B.3",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Distribución de los Servicios Fijos con respecto del total de hogares en las zonas urbanas",
+      "token": "{{FIGURA:B.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_3",
+      "narrative_shape_name": "ANUARIO_TEXT_B_3",
+      "expected_image": "build/figures/B/figura_b_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 19
+    },
+    {
+      "figure_id": "B.4",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Líneas del Servicio Fijo de Telefonía",
+      "token": "{{FIGURA:B.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_4",
+      "narrative_shape_name": "ANUARIO_TEXT_B_4",
+      "expected_image": "build/figures/B/figura_b_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 20
+    },
+    {
+      "figure_id": "B.5",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Líneas del Servicio Fijo de Telefonía por cada 100 hogares",
+      "token": "{{FIGURA:B.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_5",
+      "narrative_shape_name": "ANUARIO_TEXT_B_5",
+      "expected_image": "build/figures/B/figura_b_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 21
+    },
+    {
+      "figure_id": "B.6",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Líneas del Servicio Fijo de Telefonía Residencial por cada 100 hogares por entidad federativa",
+      "token": "{{FIGURA:B.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_6",
+      "narrative_shape_name": "ANUARIO_TEXT_B_6",
+      "expected_image": "build/figures/B/figura_b_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 22
+    },
+    {
+      "figure_id": "B.7",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Líneas del Servicio Fijo de Telefonía No Residencial por cada 100 unidades económicas por entidad federativa",
+      "token": "{{FIGURA:B.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_7",
+      "narrative_shape_name": "ANUARIO_TEXT_B_7",
+      "expected_image": "build/figures/B/figura_b_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 23
+    },
+    {
+      "figure_id": "B.8",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Tráfico de minutos del Servicio Fijo de Telefonía",
+      "token": "{{FIGURA:B.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_8",
+      "narrative_shape_name": "ANUARIO_TEXT_B_8",
+      "expected_image": "build/figures/B/figura_b_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 24
+    },
+    {
+      "figure_id": "B.9",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Participación de mercado del Servicio Fijo de Telefonía",
+      "token": "{{FIGURA:B.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_9",
+      "narrative_shape_name": "ANUARIO_TEXT_B_9",
+      "expected_image": "build/figures/B/figura_b_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 25
+    },
+    {
+      "figure_id": "B.10",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Herfindahl-Hirschman (IHH) del Servicio Fijo de Telefonía",
+      "token": "{{FIGURA:B.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_10",
+      "narrative_shape_name": "ANUARIO_TEXT_B_10",
+      "expected_image": "build/figures/B/figura_b_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 26
+    },
+    {
+      "figure_id": "B.11",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio Fijo de Internet",
+      "token": "{{FIGURA:B.11}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_11",
+      "narrative_shape_name": "ANUARIO_TEXT_B_11",
+      "expected_image": "build/figures/B/figura_b_11.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 27
+    },
+    {
+      "figure_id": "B.12",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio Fijo de Internet por cada 100 hogares",
+      "token": "{{FIGURA:B.12}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_12",
+      "narrative_shape_name": "ANUARIO_TEXT_B_12",
+      "expected_image": "build/figures/B/figura_b_12.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 28
+    },
+    {
+      "figure_id": "B.13",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio Fijo de Internet Residencial por cada 100 hogares por entidad federativa",
+      "token": "{{FIGURA:B.13}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_13",
+      "narrative_shape_name": "ANUARIO_TEXT_B_13",
+      "expected_image": "build/figures/B/figura_b_13.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 29
+    },
+    {
+      "figure_id": "B.14",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio Fijo de Internet No Residencial por cada 100 unidades económicas por entidad federativa",
+      "token": "{{FIGURA:B.14}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_14",
+      "narrative_shape_name": "ANUARIO_TEXT_B_14",
+      "expected_image": "build/figures/B/figura_b_14.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 30
+    },
+    {
+      "figure_id": "B.15",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Distribución de accesos del Servicio Fijo de Internet por rangos de velocidad",
+      "token": "{{FIGURA:B.15}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_15",
+      "narrative_shape_name": "ANUARIO_TEXT_B_15",
+      "expected_image": "build/figures/B/figura_b_15.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 31
+    },
+    {
+      "figure_id": "B.16",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Distribución de accesos del Servicio Fijo de Internet por tecnología y segmento",
+      "token": "{{FIGURA:B.16}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_16",
+      "narrative_shape_name": "ANUARIO_TEXT_B_16",
+      "expected_image": "build/figures/B/figura_b_16.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 32
+    },
+    {
+      "figure_id": "B.17",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Participación de mercado del Servicio Fijo de Internet",
+      "token": "{{FIGURA:B.17}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_17",
+      "narrative_shape_name": "ANUARIO_TEXT_B_17",
+      "expected_image": "build/figures/B/figura_b_17.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 33
+    },
+    {
+      "figure_id": "B.18",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Herfindahl-Hirschman (IHH) del Servicio Fijo de Internet",
+      "token": "{{FIGURA:B.18}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_18",
+      "narrative_shape_name": "ANUARIO_TEXT_B_18",
+      "expected_image": "build/figures/B/figura_b_18.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 34
+    },
+    {
+      "figure_id": "B.19",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio de Televisión Restringida",
+      "token": "{{FIGURA:B.19}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_19",
+      "narrative_shape_name": "ANUARIO_TEXT_B_19",
+      "expected_image": "build/figures/B/figura_b_19.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 35
+    },
+    {
+      "figure_id": "B.20",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio de Televisión Restringida por cada 100 hogares",
+      "token": "{{FIGURA:B.20}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_20",
+      "narrative_shape_name": "ANUARIO_TEXT_B_20",
+      "expected_image": "build/figures/B/figura_b_20.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 36
+    },
+    {
+      "figure_id": "B.21",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio de Televisión Restringida Residencial por cada 100 hogares por entidad federativa",
+      "token": "{{FIGURA:B.21}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_21",
+      "narrative_shape_name": "ANUARIO_TEXT_B_21",
+      "expected_image": "build/figures/B/figura_b_21.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 37
+    },
+    {
+      "figure_id": "B.22",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Accesos del Servicio de Televisión Restringida No Residencial por cada 100 unidades económicas por entidad federativa",
+      "token": "{{FIGURA:B.22}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_22",
+      "narrative_shape_name": "ANUARIO_TEXT_B_22",
+      "expected_image": "build/figures/B/figura_b_22.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 38
+    },
+    {
+      "figure_id": "B.23",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Tecnologías de conexión del Servicio de Televisión Restringida por segmento",
+      "token": "{{FIGURA:B.23}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_23",
+      "narrative_shape_name": "ANUARIO_TEXT_B_23",
+      "expected_image": "build/figures/B/figura_b_23.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 39
+    },
+    {
+      "figure_id": "B.24",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Participación de mercado del Servicio de Televisión Restringida",
+      "token": "{{FIGURA:B.24}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_24",
+      "narrative_shape_name": "ANUARIO_TEXT_B_24",
+      "expected_image": "build/figures/B/figura_b_24.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 40
+    },
+    {
+      "figure_id": "B.25",
+      "section": "B",
+      "section_title": "B. SERVICIOS FIJOS DE TELECOMUNICACIONES",
+      "title": "Índice de concentración del Servicio de Televisión Restringida",
+      "token": "{{FIGURA:B.25}}",
+      "figure_shape_name": "ANUARIO_FIGURE_B_25",
+      "narrative_shape_name": "ANUARIO_TEXT_B_25",
+      "expected_image": "build/figures/B/figura_b_25.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 41
+    },
+    {
+      "figure_id": "C.1",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Espectro radioeléctrico asignado por banda de frecuencia",
+      "token": "{{FIGURA:C.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_1",
+      "narrative_shape_name": "ANUARIO_TEXT_C_1",
+      "expected_image": "build/figures/C/figura_c_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 43
+    },
+    {
+      "figure_id": "C.2",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Distribución del espectro radioeléctrico por operador y por banda de frecuencia",
+      "token": "{{FIGURA:C.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_2",
+      "narrative_shape_name": "ANUARIO_TEXT_C_2",
+      "expected_image": "build/figures/C/figura_c_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 44
+    },
+    {
+      "figure_id": "C.3",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Porcentaje del uso de los servicios móviles de telecomunicaciones",
+      "token": "{{FIGURA:C.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_3",
+      "narrative_shape_name": "ANUARIO_TEXT_C_3",
+      "expected_image": "build/figures/C/figura_c_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 45
+    },
+    {
+      "figure_id": "C.4",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Porcentaje del uso de los servicios móviles de telecomunicaciones por zona geográfica",
+      "token": "{{FIGURA:C.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_4",
+      "narrative_shape_name": "ANUARIO_TEXT_C_4",
+      "expected_image": "build/figures/C/figura_c_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 46
+    },
+    {
+      "figure_id": "C.5",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de telefonía por modalidad",
+      "token": "{{FIGURA:C.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_5",
+      "narrative_shape_name": "ANUARIO_TEXT_C_5",
+      "expected_image": "build/figures/C/figura_c_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 47
+    },
+    {
+      "figure_id": "C.6",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de telefonía por cada 100 habitantes",
+      "token": "{{FIGURA:C.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_6",
+      "narrative_shape_name": "ANUARIO_TEXT_C_6",
+      "expected_image": "build/figures/C/figura_c_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 48
+    },
+    {
+      "figure_id": "C.7",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de telefonía por cada 100 habitantes por entidad federativa",
+      "token": "{{FIGURA:C.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_7",
+      "narrative_shape_name": "ANUARIO_TEXT_C_7",
+      "expected_image": "build/figures/C/figura_c_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 49
+    },
+    {
+      "figure_id": "C.8",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Tráfico de minutos del servicio móvil de telefonía",
+      "token": "{{FIGURA:C.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_8",
+      "narrative_shape_name": "ANUARIO_TEXT_C_8",
+      "expected_image": "build/figures/C/figura_c_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 50
+    },
+    {
+      "figure_id": "C.9",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Participación de mercado del servicio móvil de telefonía",
+      "token": "{{FIGURA:C.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_9",
+      "narrative_shape_name": "ANUARIO_TEXT_C_9",
+      "expected_image": "build/figures/C/figura_c_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 51
+    },
+    {
+      "figure_id": "C.10",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Índice de concentración del servicio móvil de telefonía",
+      "token": "{{FIGURA:C.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_10",
+      "narrative_shape_name": "ANUARIO_TEXT_C_10",
+      "expected_image": "build/figures/C/figura_c_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 52
+    },
+    {
+      "figure_id": "C.11",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de acceso a Internet por modalidad",
+      "token": "{{FIGURA:C.11}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_11",
+      "narrative_shape_name": "ANUARIO_TEXT_C_11",
+      "expected_image": "build/figures/C/figura_c_11.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 53
+    },
+    {
+      "figure_id": "C.12",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de acceso a Internet por cada 100 habitantes",
+      "token": "{{FIGURA:C.12}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_12",
+      "narrative_shape_name": "ANUARIO_TEXT_C_12",
+      "expected_image": "build/figures/C/figura_c_12.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 54
+    },
+    {
+      "figure_id": "C.13",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Líneas del servicio móvil de acceso a Internet por cada 100 habitantes por entidad federativa",
+      "token": "{{FIGURA:C.13}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_13",
+      "narrative_shape_name": "ANUARIO_TEXT_C_13",
+      "expected_image": "build/figures/C/figura_c_13.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 55
+    },
+    {
+      "figure_id": "C.14",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Tráfico del servicio móvil de acceso a Internet por tecnología",
+      "token": "{{FIGURA:C.14}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_14",
+      "narrative_shape_name": "ANUARIO_TEXT_C_14",
+      "expected_image": "build/figures/C/figura_c_14.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 56
+    },
+    {
+      "figure_id": "C.15",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Participación de mercado del servicio móvil de acceso a Internet",
+      "token": "{{FIGURA:C.15}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_15",
+      "narrative_shape_name": "ANUARIO_TEXT_C_15",
+      "expected_image": "build/figures/C/figura_c_15.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 57
+    },
+    {
+      "figure_id": "C.16",
+      "section": "C",
+      "section_title": "C. SERVICIOS MÓVILES DE TELECOMUNICACIONES",
+      "title": "Índice de concentración del servicio móvil de acceso a Internet",
+      "token": "{{FIGURA:C.16}}",
+      "figure_shape_name": "ANUARIO_FIGURE_C_16",
+      "narrative_shape_name": "ANUARIO_TEXT_C_16",
+      "expected_image": "build/figures/C/figura_c_16.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 58
+    },
+    {
+      "figure_id": "D.1",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Disponibilidad de las TIC en los hogares",
+      "token": "{{FIGURA:D.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_1",
+      "narrative_shape_name": "ANUARIO_TEXT_D_1",
+      "expected_image": "build/figures/D/figura_d_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 60
+    },
+    {
+      "figure_id": "D.2",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Uso de Smartphone e Internet por grupos de edad",
+      "token": "{{FIGURA:D.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_2",
+      "narrative_shape_name": "ANUARIO_TEXT_D_2",
+      "expected_image": "build/figures/D/figura_d_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 61
+    },
+    {
+      "figure_id": "D.3",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Horas promedio de uso de internet por grupos de edad",
+      "token": "{{FIGURA:D.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_3",
+      "narrative_shape_name": "ANUARIO_TEXT_D_3",
+      "expected_image": "build/figures/D/figura_d_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 62
+    },
+    {
+      "figure_id": "D.4",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Uso de dispositivos inteligentes conectados a Internet",
+      "token": "{{FIGURA:D.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_4",
+      "narrative_shape_name": "ANUARIO_TEXT_D_4",
+      "expected_image": "build/figures/D/figura_d_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 63
+    },
+    {
+      "figure_id": "D.5",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Forma en que las personas aprendieron a buscar información o usar Internet",
+      "token": "{{FIGURA:D.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_5",
+      "narrative_shape_name": "ANUARIO_TEXT_D_5",
+      "expected_image": "build/figures/D/figura_d_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 64
+    },
+    {
+      "figure_id": "D.6",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Experiencias negativas en Internet por sexo",
+      "token": "{{FIGURA:D.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_6",
+      "narrative_shape_name": "ANUARIO_TEXT_D_6",
+      "expected_image": "build/figures/D/figura_d_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 65
+    },
+    {
+      "figure_id": "D.7",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Experiencias negativas en Internet por grupo de edad",
+      "token": "{{FIGURA:D.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_7",
+      "narrative_shape_name": "ANUARIO_TEXT_D_7",
+      "expected_image": "build/figures/D/figura_d_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 66
+    },
+    {
+      "figure_id": "D.8",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Influencia de la confianza en Internet sobre su uso",
+      "token": "{{FIGURA:D.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_8",
+      "narrative_shape_name": "ANUARIO_TEXT_D_8",
+      "expected_image": "build/figures/D/figura_d_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 67
+    },
+    {
+      "figure_id": "D.9",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Percepción de seguridad al realizar compras por Internet por grupo de edad",
+      "token": "{{FIGURA:D.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_9",
+      "narrative_shape_name": "ANUARIO_TEXT_D_9",
+      "expected_image": "build/figures/D/figura_d_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 68
+    },
+    {
+      "figure_id": "D.10",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Percepción de seguridad al usar banca por Internet por grupo de edad",
+      "token": "{{FIGURA:D.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_10",
+      "narrative_shape_name": "ANUARIO_TEXT_D_10",
+      "expected_image": "build/figures/D/figura_d_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 69
+    },
+    {
+      "figure_id": "D.11",
+      "section": "D",
+      "section_title": "D. TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIÓN (TIC)",
+      "title": "Percepción de seguridad al compartir información en redes sociales por sexo",
+      "token": "{{FIGURA:D.11}}",
+      "figure_shape_name": "ANUARIO_FIGURE_D_11",
+      "narrative_shape_name": "ANUARIO_TEXT_D_11",
+      "expected_image": "build/figures/D/figura_d_11.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 70
+    },
+    {
+      "figure_id": "E.1",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Índice General de Satisfacción por servicio de telecomunicaciones",
+      "token": "{{FIGURA:E.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_1",
+      "narrative_shape_name": "ANUARIO_TEXT_E_1",
+      "expected_image": "build/figures/E/figura_e_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 72
+    },
+    {
+      "figure_id": "E.2",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Principales hallazgos de la Inteligencia Artificial y ChatGPT",
+      "token": "{{FIGURA:E.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_2",
+      "narrative_shape_name": "ANUARIO_TEXT_E_2",
+      "expected_image": "build/figures/E/figura_e_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 73
+    },
+    {
+      "figure_id": "E.3",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Índice General de Satisfacción por servicio y tamaño de empresa",
+      "token": "{{FIGURA:E.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_3",
+      "narrative_shape_name": "ANUARIO_TEXT_E_3",
+      "expected_image": "build/figures/E/figura_e_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 74
+    },
+    {
+      "figure_id": "E.4",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Servicios de telecomunicaciones contratados por las MiPymes",
+      "token": "{{FIGURA:E.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_4",
+      "narrative_shape_name": "ANUARIO_TEXT_E_4",
+      "expected_image": "build/figures/E/figura_e_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 75
+    },
+    {
+      "figure_id": "E.5",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Percepción de beneficios de Internet fijo y telefonía fija",
+      "token": "{{FIGURA:E.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_5",
+      "narrative_shape_name": "ANUARIO_TEXT_E_5",
+      "expected_image": "build/figures/E/figura_e_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 76
+    },
+    {
+      "figure_id": "E.6",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Beneficios de vender mediante Internet fijo",
+      "token": "{{FIGURA:E.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_6",
+      "narrative_shape_name": "ANUARIO_TEXT_E_6",
+      "expected_image": "build/figures/E/figura_e_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 77
+    },
+    {
+      "figure_id": "E.7",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Dispositivos utilizados por las MiPymes",
+      "token": "{{FIGURA:E.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_7",
+      "narrative_shape_name": "ANUARIO_TEXT_E_7",
+      "expected_image": "build/figures/E/figura_e_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 78
+    },
+    {
+      "figure_id": "E.8",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Beneficios de contar con una aplicación móvil",
+      "token": "{{FIGURA:E.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_8",
+      "narrative_shape_name": "ANUARIO_TEXT_E_8",
+      "expected_image": "build/figures/E/figura_e_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 79
+    },
+    {
+      "figure_id": "E.9",
+      "section": "E",
+      "section_title": "E. PERSONAS USUARIAS DE SERVICIOS DE TELECOMUNICACIONES",
+      "title": "Servicios de telecomunicaciones más importantes para MiPymes importadoras y exportadoras",
+      "token": "{{FIGURA:E.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_E_9",
+      "narrative_shape_name": "ANUARIO_TEXT_E_9",
+      "expected_image": "build/figures/E/figura_e_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 80
+    },
+    {
+      "figure_id": "F.1.1",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Aplicaciones instaladas mediante Smartphone",
+      "token": "{{FIGURA:F.1.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_1_1",
+      "narrative_shape_name": "ANUARIO_TEXT_F_1_1",
+      "expected_image": "build/figures/F/figura_f_1_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 82
+    },
+    {
+      "figure_id": "F.1.2",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Actividades realizadas en Internet",
+      "token": "{{FIGURA:F.1.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_1_2",
+      "narrative_shape_name": "ANUARIO_TEXT_F_1_2",
+      "expected_image": "build/figures/F/figura_f_1_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 83
+    },
+    {
+      "figure_id": "F.1.3",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Habilidades en la computadora",
+      "token": "{{FIGURA:F.1.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_1_3",
+      "narrative_shape_name": "ANUARIO_TEXT_F_1_3",
+      "expected_image": "build/figures/F/figura_f_1_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 84
+    },
+    {
+      "figure_id": "F.1.4",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Uso de redes sociales",
+      "token": "{{FIGURA:F.1.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_1_4",
+      "narrative_shape_name": "ANUARIO_TEXT_F_1_4",
+      "expected_image": "build/figures/F/figura_f_1_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 85
+    },
+    {
+      "figure_id": "F.2",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Porcentaje de personas empleadas en telecomunicaciones y radiodifusión",
+      "token": "{{FIGURA:F.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_2",
+      "narrative_shape_name": "ANUARIO_TEXT_F_2",
+      "expected_image": "build/figures/F/figura_f_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 86
+    },
+    {
+      "figure_id": "F.3",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa",
+      "token": "{{FIGURA:F.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_3",
+      "narrative_shape_name": "ANUARIO_TEXT_F_3",
+      "expected_image": "build/figures/F/figura_f_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 87
+    },
+    {
+      "figure_id": "F.4",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa y sexo",
+      "token": "{{FIGURA:F.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_4",
+      "narrative_shape_name": "ANUARIO_TEXT_F_4",
+      "expected_image": "build/figures/F/figura_f_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 88
+    },
+    {
+      "figure_id": "F.5",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Porcentaje de la población que vivió ciberacoso por sexo y rango de edad",
+      "token": "{{FIGURA:F.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_5",
+      "narrative_shape_name": "ANUARIO_TEXT_F_5",
+      "expected_image": "build/figures/F/figura_f_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 89
+    },
+    {
+      "figure_id": "F.6",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Distribución de las situaciones de ciberacoso experimentadas por sexo",
+      "token": "{{FIGURA:F.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_6",
+      "narrative_shape_name": "ANUARIO_TEXT_F_6",
+      "expected_image": "build/figures/F/figura_f_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 90
+    },
+    {
+      "figure_id": "F.7",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Medidas de seguridad para proteger equipos o cuentas de Internet por sexo",
+      "token": "{{FIGURA:F.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_7",
+      "narrative_shape_name": "ANUARIO_TEXT_F_7",
+      "expected_image": "build/figures/F/figura_f_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 91
+    },
+    {
+      "figure_id": "F.8",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Porcentaje de población que vivió ciberacoso por medios digitales",
+      "token": "{{FIGURA:F.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_8",
+      "narrative_shape_name": "ANUARIO_TEXT_F_8",
+      "expected_image": "build/figures/F/figura_f_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 92
+    },
+    {
+      "figure_id": "F.9",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Medidas tomadas contra el ciberacoso experimentado",
+      "token": "{{FIGURA:F.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_9",
+      "narrative_shape_name": "ANUARIO_TEXT_F_9",
+      "expected_image": "build/figures/F/figura_f_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 93
+    },
+    {
+      "figure_id": "F.10",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Personas con mayor riesgo de ser víctimas de violencia en Internet",
+      "token": "{{FIGURA:F.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_10",
+      "narrative_shape_name": "ANUARIO_TEXT_F_10",
+      "expected_image": "build/figures/F/figura_f_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 94
+    },
+    {
+      "figure_id": "F.11",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Personas con mayor riesgo de ser víctimas de violencia en Internet por sexo",
+      "token": "{{FIGURA:F.11}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_11",
+      "narrative_shape_name": "ANUARIO_TEXT_F_11",
+      "expected_image": "build/figures/F/figura_f_11.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 95
+    },
+    {
+      "figure_id": "F.12",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Personas con mayor riesgo de violencia a través del teléfono móvil",
+      "token": "{{FIGURA:F.12}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_12",
+      "narrative_shape_name": "ANUARIO_TEXT_F_12",
+      "expected_image": "build/figures/F/figura_f_12.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 96
+    },
+    {
+      "figure_id": "F.13",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Personas con mayor riesgo de violencia mediante telefonía móvil por sexo",
+      "token": "{{FIGURA:F.13}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_13",
+      "narrative_shape_name": "ANUARIO_TEXT_F_13",
+      "expected_image": "build/figures/F/figura_f_13.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 97
+    },
+    {
+      "figure_id": "F.14",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Medidas preventivas y de protección ante la violencia digital",
+      "token": "{{FIGURA:F.14}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_14",
+      "narrative_shape_name": "ANUARIO_TEXT_F_14",
+      "expected_image": "build/figures/F/figura_f_14.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 98
+    },
+    {
+      "figure_id": "F.15",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Acciones para protegerse o prevenir la violencia en Internet por sexo",
+      "token": "{{FIGURA:F.15}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_15",
+      "narrative_shape_name": "ANUARIO_TEXT_F_15",
+      "expected_image": "build/figures/F/figura_f_15.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 99
+    },
+    {
+      "figure_id": "F.16",
+      "section": "F",
+      "section_title": "F. INDICADORES CON PERSPECTIVA DE GÉNERO",
+      "title": "Medidas que se tomarían ante violencia en Internet por sexo",
+      "token": "{{FIGURA:F.16}}",
+      "figure_shape_name": "ANUARIO_FIGURE_F_16",
+      "narrative_shape_name": "ANUARIO_TEXT_F_16",
+      "expected_image": "build/figures/F/figura_f_16.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 100
+    },
+    {
+      "figure_id": "G.1",
+      "section": "G",
+      "section_title": "G. INDICADORES DE RADIODIFUSIÓN",
+      "title": "Concesiones otorgadas de radiodifusión para AM, FM y TDT, a nivel nacional",
+      "token": "{{FIGURA:G.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_G_1",
+      "narrative_shape_name": "ANUARIO_TEXT_G_1",
+      "expected_image": "build/figures/G/figura_g_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 102
+    },
+    {
+      "figure_id": "H.1",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Porcentaje de personas que vieron la televisión por hora a nivel nacional (28 ciudades)",
+      "token": "{{FIGURA:H.1}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_1",
+      "narrative_shape_name": "ANUARIO_TEXT_H_1",
+      "expected_image": "build/figures/H/figura_h_1.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 104
+    },
+    {
+      "figure_id": "H.2",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Horas dedicadas y Rating promedio por género en canales nacionales (28 ciudades)",
+      "token": "{{FIGURA:H.2}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_2",
+      "narrative_shape_name": "ANUARIO_TEXT_H_2",
+      "expected_image": "build/figures/H/figura_h_2.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 105
+    },
+    {
+      "figure_id": "H.3",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Porcentaje de personas que vieron la televisión por hora en Ciudad de México",
+      "token": "{{FIGURA:H.3}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_3",
+      "narrative_shape_name": "ANUARIO_TEXT_H_3",
+      "expected_image": "build/figures/H/figura_h_3.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 106
+    },
+    {
+      "figure_id": "H.4",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Horas dedicadas y Rating promedio por género en canales nacionales (CDMX)",
+      "token": "{{FIGURA:H.4}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_4",
+      "narrative_shape_name": "ANUARIO_TEXT_H_4",
+      "expected_image": "build/figures/H/figura_h_4.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 107
+    },
+    {
+      "figure_id": "H.5",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Porcentaje de personas que vieron la televisión por hora en Guadalajara",
+      "token": "{{FIGURA:H.5}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_5",
+      "narrative_shape_name": "ANUARIO_TEXT_H_5",
+      "expected_image": "build/figures/H/figura_h_5.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 108
+    },
+    {
+      "figure_id": "H.6",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Horas dedicadas y Rating promedio por género en canales nacionales (Guadalajara)",
+      "token": "{{FIGURA:H.6}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_6",
+      "narrative_shape_name": "ANUARIO_TEXT_H_6",
+      "expected_image": "build/figures/H/figura_h_6.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 109
+    },
+    {
+      "figure_id": "H.7",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Porcentaje de personas que vieron la televisión por hora en Monterrey",
+      "token": "{{FIGURA:H.7}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_7",
+      "narrative_shape_name": "ANUARIO_TEXT_H_7",
+      "expected_image": "build/figures/H/figura_h_7.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 110
+    },
+    {
+      "figure_id": "H.8",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Horas dedicadas y Rating promedio por género en canales nacionales (Monterrey)",
+      "token": "{{FIGURA:H.8}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_8",
+      "narrative_shape_name": "ANUARIO_TEXT_H_8",
+      "expected_image": "build/figures/H/figura_h_8.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 111
+    },
+    {
+      "figure_id": "H.9",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Porcentaje de personas que vieron la televisión por hora en 25 ciudades",
+      "token": "{{FIGURA:H.9}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_9",
+      "narrative_shape_name": "ANUARIO_TEXT_H_9",
+      "expected_image": "build/figures/H/figura_h_9.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 112
+    },
+    {
+      "figure_id": "H.10",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Horas dedicadas y Rating promedio por género en canales nacionales (25 ciudades)",
+      "token": "{{FIGURA:H.10}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_10",
+      "narrative_shape_name": "ANUARIO_TEXT_H_10",
+      "expected_image": "build/figures/H/figura_h_10.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 113
+    },
+    {
+      "figure_id": "H.11",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Proporción de personas que escucharon la radio por hora (%) — Nacional",
+      "token": "{{FIGURA:H.11}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_11",
+      "narrative_shape_name": "ANUARIO_TEXT_H_11",
+      "expected_image": "build/figures/H/figura_h_11.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 114
+    },
+    {
+      "figure_id": "H.12",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Proporción de personas que escucharon la radio por hora (%) — CDMX",
+      "token": "{{FIGURA:H.12}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_12",
+      "narrative_shape_name": "ANUARIO_TEXT_H_12",
+      "expected_image": "build/figures/H/figura_h_12.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 115
+    },
+    {
+      "figure_id": "H.13",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Proporción de personas que escucharon la radio por hora (%) — Guadalajara",
+      "token": "{{FIGURA:H.13}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_13",
+      "narrative_shape_name": "ANUARIO_TEXT_H_13",
+      "expected_image": "build/figures/H/figura_h_13.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 116
+    },
+    {
+      "figure_id": "H.14",
+      "section": "H",
+      "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
+      "title": "Proporción de personas que escucharon la radio por hora (%) — Monterrey",
+      "token": "{{FIGURA:H.14}}",
+      "figure_shape_name": "ANUARIO_FIGURE_H_14",
+      "narrative_shape_name": "ANUARIO_TEXT_H_14",
+      "expected_image": "build/figures/H/figura_h_14.png",
+      "figure_bounds_inches": {
+        "left": 3.5917,
+        "top": 1.0319,
+        "width": 5.9333,
+        "height": 3.9265
+      },
+      "slide_number": 117
+    }
+  ]
+}

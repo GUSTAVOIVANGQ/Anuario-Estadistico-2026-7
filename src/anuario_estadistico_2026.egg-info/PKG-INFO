@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: anuario-estadistico-2026
-Version: 0.14.0
+Version: 0.25.0
 Summary: Pipeline reproducible para generar el Anuario Estadístico 2026
 License: MIT License
         
@@ -37,6 +37,7 @@ Requires-Dist: numpy<3,>=1.26
 Requires-Dist: openpyxl<4,>=3.1
 Requires-Dist: pandas<3,>=2.1
 Requires-Dist: Pillow<13,>=10
+Requires-Dist: python-pptx<2,>=1.0
 Provides-Extra: mapas
 Requires-Dist: geopandas<2,>=0.14; extra == "mapas"
 Requires-Dist: shapely<3,>=2; extra == "mapas"
@@ -53,8 +54,8 @@ Proyecto reproducible para actualizar, calcular, documentar y ensamblar las 105
 figuras del Anuario Estadístico 2026. El anuario 2024 es el referente visual y
 metodológico. Los códigos originales permanecen intactos en la carpeta padre.
 
-Esta versión entrega la base operativa, las figuras A.1 a A.10, B.1 a B.22,
-C.3, C.4 y D.2 a D.4 actualizadas. Los demás scripts se incorporarán uno por
+Esta versión entrega la base operativa, las figuras A.1 a A.10, B.1 a B.25,
+C.1 a C.16, D.2 a D.11, E.1, E.3 a E.9 y F.1.1 a F.16 actualizadas. Los demás scripts se incorporarán uno por
 uno cuando el responsable del proyecto lo autorice. El pipeline sólo ejecuta
 los scripts de `scripts/figures/`; la carpeta `scripts/legacy/` fue eliminada.
 
@@ -87,6 +88,12 @@ referencias.
 
 # Ensamblar el PPTX al terminar
 .\ejecutar.ps1 run --assemble
+
+# Ensamblar únicamente, usando las figuras que ya existen en build/figures
+.\ejecutar.ps1 assemble
+
+# Exigir que estén disponibles las 105 figuras
+.\ejecutar.ps1 assemble --strict
 ```
 
 La corrida continúa cuando encuentra una figura aún pendiente y registra su
@@ -215,6 +222,65 @@ las tablas de usuarios para identificar smartphone e Internet; D.3 calcula
 horas promedio ponderadas; D.4 calcula cada dispositivo respecto de las
 personas que usaron al menos uno. Cada script imprime y registra sus resultados.
 
+## Figuras D.5 a D.11
+
+```powershell
+.\ejecutar.ps1 run --from D.5 --until D.11
+```
+
+Cada figura dispone de un script autónomo con descarga o reutilización de la
+base abierta de la Encuesta de Confianza en el Servicio de Internet (ECSI)
+2024, validación del CSV, cálculo ponderado con `fac_per`, contraste contra el
+resultado publicado, impresión, auditoría, texto y PNG. La base se descarga
+una sola vez y las siguientes figuras usan la copia verificada.
+
+ECSI 2024 es la edición más reciente publicada por el IFT y fue difundida el
+16 de junio de 2025. D.5 calcula formas de aprendizaje; D.6 y D.7 experiencias
+negativas por sexo y edad; D.8 influencia de la confianza; D.9, D.10 y D.11
+niveles de seguridad en compras, banca y redes sociales. Las diferencias
+máximas frente a las cifras del anuario son de 0.1 puntos porcentuales y se
+explican por redondeo.
+
+## Figuras E.1 y E.9
+
+```powershell
+.\ejecutar.ps1 run --only E.1
+.\ejecutar.ps1 run --only E.9
+```
+
+E.1 reutiliza la Tercera Encuesta 2023 a Personas Usuarias para comprobar el
+método y aplica el mismo promedio ponderado a la Segunda Encuesta 2025. Esta
+última contiene entrevistas aplicadas durante 2024 y es el último corte anual
+compatible localizado. El script elige los factores anuales, imprime los cuatro
+IGS y genera el PNG.
+
+E.9 usa el último estudio específico disponible sobre MiPymes que realizan
+importación y/o exportación. La base es 2022 y fue difundida en 2023; no se
+sustituye por la encuesta MiPymes general de 2024 porque ésta no contiene la
+misma pregunta ni el mismo universo. El porcentaje se calcula directamente con
+el factor de expansión final y reproduce exactamente la figura anterior.
+
+## Figuras E.3 a E.8
+
+```powershell
+.\ejecutar.ps1 run --from E.3 --until E.8
+```
+
+Cada figura contiene en un único script la descarga o reutilización, validación
+del ZIP, lectura del libro, cálculo ponderado, impresión de resultados, registro
+de evidencia, texto y gráfica PNG. Las seis reutilizan las bases oficiales de
+la Cuarta Encuesta a MiPymes del IFT: E.3 además usa 2022 como control y E.4,
+E.5, E.7 y E.8 usan 2023 para contraste o comparación. El dato más reciente y
+compatible es 2024; la primera figura que lo necesite descarga el archivo y las
+siguientes usan la copia verificada.
+
+E.3 calcula el Índice General de Satisfacción; E.4 los servicios contratados;
+E.5 sus beneficios promedio; E.6 los beneficios de vender por Internet; E.7
+los dispositivos utilizados; y E.8 los beneficios de contar con una aplicación
+móvil. Las cifras históricas reproducen la publicación con diferencias máximas
+de 0.1 puntos por redondeo. La metodología y la excepción editorial detectada
+en E.4 están documentadas en `docs/METODOLOGIA_E3_E8.md`.
+
 ## Figuras B.4 a B.20
 
 ```powershell
@@ -238,6 +304,83 @@ ENDUTIH 2025. B.14 divide los accesos no residenciales entre las unidades
 económicas del desglose estatal DENUE disponible en el repositorio, cuya
 edición es noviembre de 2023. El periodo de cada numerador y denominador queda
 registrado en el reporte de la corrida.
+
+## Figuras C.5 a C.16
+
+```powershell
+.\ejecutar.ps1 run --from C.5 --until C.16
+```
+
+Cada figura cuenta con su propio script y reutiliza la copia verificada de
+`CRT_BIT_TODO.zip`; si ya existe no vuelve a descargarla. Los scripts abren
+solamente las tablas móviles necesarias, seleccionan el último dato publicado,
+imprimen los resultados, registran cada cálculo y generan un PNG. Con el
+archivo actual, las doce figuras utilizan diciembre de 2024.
+
+## Figuras F.1.1 a F.1.4
+
+```powershell
+.\ejecutar.ps1 run --from F.1.1 --until F.1.4
+```
+
+Las cuatro láminas que el anuario rotula de manera inconsistente como F.1 se
+registran como F.1.1, F.1.2, F.1.3 y F.1.4. Cada una tiene un solo script con
+adquisición o reutilización de ENDUTIH, selección de tabla, cálculo ponderado
+con `FAC_PER`, impresión, auditoría, texto y PNG.
+
+F.1.1, F.1.2 y F.1.4 usan ENDUTIH 2025. F.1.3 usa ENDUTIH 2024 porque es el
+último corte que conserva las nueve variables de habilidades informáticas; el
+script también inspecciona 2025 y registra las variables que desaparecieron.
+ENDUTIH 2023 se usa para contrastar el modelo contra las cifras del anuario.
+La metodología detallada está en `docs/METODOLOGIA_F1.md`.
+
+## Figura F.2
+
+```powershell
+.\ejecutar.ps1 run --only F.2
+```
+
+F.2 reutiliza los ZIP oficiales ENOE 2024-T2 y 2026-T2 si ya están verificados.
+Antes de calcular el corte actual, cruza SDEM y COE1 con la llave completa y
+exige reproducir exactamente los totales y porcentajes de la figura publicada
+en 2024. Después aplica el mismo universo, códigos SCIAN y factor trimestral al
+segundo trimestre de 2026, imprime la tabla usada y genera el PNG. La metodología
+detallada está en `docs/METODOLOGIA_F2.md`.
+
+## Figuras F.3 a F.9
+
+```powershell
+.\ejecutar.ps1 run --from F.3 --until F.9
+```
+
+Cada figura tiene un único script con adquisición, cálculo, impresión en
+terminal, auditoría, texto y PNG. Los siete scripts reutilizan la misma copia
+verificada de los microdatos MOCIBA. Procesan primero la edición 2024 para
+validar el modelo y después aplican las mismas variables y el factor de
+expansión a MOCIBA 2025, la edición anual más reciente publicada.
+
+F.3 y F.4 calculan la distribución de las víctimas entre las 32 entidades; F.5
+la distribución por edad y sexo; F.6 las situaciones experimentadas; F.7 las
+medidas de seguridad; F.8 los medios digitales y F.9 las medidas tomadas. La
+metodología completa está en `docs/METODOLOGIA_F3_F9.md`.
+
+## Figuras F.10 a F.16
+
+```powershell
+.\ejecutar.ps1 run --from F.10 --until F.16
+```
+
+Las figuras revisan las bases de las encuestas a personas usuarias en orden de
+actualidad. Las publicaciones 2025 no contienen la batería comparable de
+violencia digital; por ello se utiliza la Tercera Encuesta 2023, que es la
+última fuente compatible. Cada script reutiliza el ZIP o PDF ya verificado,
+calcula porcentajes ponderados desde microdatos, imprime los resultados y
+genera su PNG. F.14 conserva el carácter cualitativo de la fuente.
+
+C.7 y C.13 también reutilizan la geometría estatal. Las tablas estatales sólo
+publican el corte de 2024 en esta descarga, mientras que C.6, C.7 y C.13 toman
+sus indicadores nacionales de las series nacionales correspondientes. No se
+construyen observaciones históricas ficticias.
 
 ## Figura B.21
 
@@ -274,15 +417,27 @@ reportes se generan sin cifras pegadas manualmente.
 - Tabla usada: `reportes/<corrida>/datos_usados/`
 - Referencias y cálculos: CSV dentro de `reportes/<corrida>/`
 
-El ensamblador PowerPoint usa lienzo de 1600 × 900, igual que el PDF de 2024.
-Prefiere una página completa si el script la produce; en caso contrario inserta
-la gráfica sin añadir rótulos editoriales.
+## Ensamblaje automatizado del PowerPoint (1.2)
 
-El ensamblador usa `@oai/artifact-tool`. En Codex se resuelve con el runtime
-incluido. En otra máquina, `ANUARIO_NODE_MODULES` debe apuntar a una carpeta
-`node_modules` que contenga ese paquete; `ANUARIO_NODE` puede indicar la ruta de
-Node.js. En Codex, `ANUARIO_RUNTIME_PYTHON` y `ANUARIO_RUNTIME_BIN_DIR` permiten
-activar la validación avanzada con el runtime incluido.
+La plantilla completa se incluye en
+`assets/presentation/anuario_estadistico_2026_automatizable.pptx` y contiene las
+105 etiquetas estables `ANUARIO_FIGURE_*`. El mapa figura → diapositiva → objeto
+se encuentra en `assets/presentation/anuario_estadistico_2026_manifest.json`.
+
+Al ejecutar `assemble`, el programa abre esa presentación, localiza cada tarjeta
+por su **nombre interno de PowerPoint** y coloca la imagen indicada en el
+manifest, por ejemplo `build/figures/A/figura_a_1.png`. La imagen se ajusta con
+política `contain`, sin deformarla, y se conserva la tarjeta, sombra, encabezado,
+paginación y demás diseño de la presentación. Si una figura todavía no existe,
+el marcador `{{FIGURA:...}}` queda visible para identificar el pendiente.
+
+La salida se guarda en `entrega/` y junto al PPTX se genera un archivo
+`*_ensamblaje.json` que registra cuántas figuras fueron insertadas, cuáles faltan
+y cualquier error de mapeo. `assemble --strict` cancela la exportación si falta
+una sola figura o si un marcador no coincide con la plantilla.
+
+El ensamblaje ya no requiere Node.js ni `@oai/artifact-tool`; usa `python-pptx`
+y Pillow, instalados con las dependencias normales del proyecto.
 
 ## Reglas de diseño
 
@@ -299,9 +454,15 @@ en negritas y el texto posterior en peso normal. No se agregan etiquetas como
 - [Evidencia para defensa](docs/DEFENSA_SINODALES.md)
 - [Insumos manuales](docs/INSUMOS_MANUALES.md)
 - [Metodología ENDUTIH para B.1-B.3, C.3-C.4 y D.2-D.4](docs/METODOLOGIA_ENDUTIH.md)
+- [Metodología ECSI para D.5-D.11](docs/METODOLOGIA_D5_D11.md)
+- [Metodología de E.1 y E.9](docs/METODOLOGIA_E1_E9.md)
+- [Metodología MiPymes para E.3-E.8](docs/METODOLOGIA_E3_E8.md)
 - [Metodología de B.21](docs/METODOLOGIA_B21.md)
 - [Metodología de B.22](docs/METODOLOGIA_B22.md)
+- [Metodología de B.23 a C.2](docs/METODOLOGIA_B23_C2.md)
 - [Metodología de B.4 a B.20](docs/METODOLOGIA_B4_B20.md)
+- [Metodología de C.5 a C.16](docs/METODOLOGIA_C5_C16.md)
+- [Metodología de F.10 a F.16](docs/METODOLOGIA_F10_F16.md)
 
 ## Licencia
 

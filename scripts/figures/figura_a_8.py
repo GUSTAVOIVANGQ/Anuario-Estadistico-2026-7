@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -27,11 +35,11 @@ FIJAS_CLAVES_2024 = {
     "083101", "083102", "083301", "083401", "083402",
     "083403", "083404", "083405", "083924",
 }
-COLOR_TEXT = "#565682"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
-COLOR_BAR = "#327B9E"
-COLOR_POINT = "#565682"
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
+COLOR_BAR = "#86adae"
+COLOR_POINT = "#335a5c"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -153,25 +161,10 @@ def build_metrics(concentrado: pd.DataFrame, hogares: pd.DataFrame,
 
 
 def _rounded_vertical_bar(ax, center: float, width: float, height: float, maximum: float) -> None:
-    left, right = center - width / 2, center + width / 2
-    radius_x = width / 2
-    radius_y = min(maximum * 0.035, height / 3)
-
-    def shape(offset_x: float = 0) -> mpath.Path:
-        return mpath.Path(
-            [(left + offset_x, 0), (right - radius_x + offset_x, 0),
-             (right + offset_x, 0), (right + offset_x, radius_y),
-             (right + offset_x, height - radius_y), (right + offset_x, height),
-             (right - radius_x + offset_x, height), (left + offset_x, height),
-             (left + offset_x, 0), (left + offset_x, 0)],
-            [mpath.Path.MOVETO, mpath.Path.LINETO, mpath.Path.CURVE3, mpath.Path.CURVE3,
-             mpath.Path.LINETO, mpath.Path.CURVE3, mpath.Path.CURVE3,
-             mpath.Path.LINETO, mpath.Path.LINETO, mpath.Path.CLOSEPOLY],
-        )
-
-    ax.add_patch(mpatches.PathPatch(shape(width * 0.10), facecolor="#C8C8C8",
-                                    edgecolor="none", alpha=0.22, zorder=1))
-    ax.add_patch(mpatches.PathPatch(shape(), facecolor=COLOR_BAR, edgecolor="none", zorder=2))
+    ax.add_patch(mpatches.Rectangle(
+        (center - width / 2, 0), width, height,
+        facecolor=COLOR_BAR, edgecolor="none", linewidth=0, zorder=2,
+    ))
 
 
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
@@ -233,7 +226,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
              fontsize=7.7, color=COLOR_TEXT, va="top")
     fig.subplots_adjust(left=0.08, right=0.92, top=0.84, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

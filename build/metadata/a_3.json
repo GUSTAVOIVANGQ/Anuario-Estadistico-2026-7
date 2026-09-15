@@ -3,10 +3,10 @@
   "title": "Índices de precios (INPC e IPCOM)",
   "reference_page_2024": 13,
   "figure_path": "build\\figures\\A\\figura_a_3.png",
-  "run_id": "20260909T224149161656Z_corrida",
+  "run_id": "20260915T192133067416Z_corrida",
   "result": {
-    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_3.png",
-    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\a_3.md",
+    "figure_path": "C:\\Users\\gustavo.garcia\\Downloads\\Anuario-Estadistico-2026-7-main-corregido-1.2\\Anuario-Estadistico-2026-7-main-corregido\\build\\figures\\A\\figura_a_3.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Downloads\\Anuario-Estadistico-2026-7-main-corregido-1.2\\Anuario-Estadistico-2026-7-main-corregido\\build\\text\\a_3.md",
     "detected_period": "2026-08",
     "rows_used": 17,
     "dynamic_cache_status": "REUTILIZADO",

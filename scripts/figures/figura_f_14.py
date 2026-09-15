@@ -1,5 +1,13 @@
 """Figura F.14: medidas cualitativas de prevención y protección digital."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys
 import textwrap
 from pathlib import Path
@@ -24,7 +32,7 @@ def _draw_column(fig,x,title,items,color):
     for i,item in enumerate(items,1):
         y=.63-(i-1)*.125;fig.add_artist(patches.Circle((x+.045,y+.01),.022,transform=fig.transFigure,fc=color,ec="none"));fig.text(x+.045,y+.01,str(i),ha="center",va="center",fontsize=12,fontweight="bold",color="white");fig.text(x+.082,y+.035,textwrap.fill(item,width=42),ha="left",va="top",fontsize=11,color="#222222",linespacing=1.25)
 def _plot(d,out,root):
-    plt.rcParams.update({"font.family":_font(root)});fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.055),.95,.87,boxstyle="round,pad=.012,rounding_size=.02",fc=BACKGROUND,ec="none",transform=fig.transFigure,zorder=-2));fig.text(.047,.887,"•",color=SALMON,fontsize=20,va="center");fig.text(.064,.887,"Figura F.14.",color=TEXT,fontsize=16,fontweight="bold",va="center");fig.text(.171,.887,"Medidas preventivas y de protección ante la violencia digital (2023)",color=TEXT,fontsize=16,va="center");_draw_column(fig,.065,"Medidas preventivas",PREVENTION,BLUE);_draw_column(fig,.525,"Medidas de protección",PROTECTION,SALMON);fig.text(.047,.102,"Fuente:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.094,.102,"IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",color=TEXT,fontsize=9);fig.text(.047,.075,"Nota:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.081,.075,"Información correspondiente al estudio cualitativo; no es representativa a nivel nacional.",color=TEXT,fontsize=9);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    plt.rcParams.update({"font.family":_font(root)});fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.055),.95,.87,boxstyle="round,pad=.012,rounding_size=.02",fc=BACKGROUND,ec="none",transform=fig.transFigure,zorder=-2));fig.text(.047,.887,"•",color=SALMON,fontsize=20,va="center");fig.text(.064,.887,"Figura F.14.",color=TEXT,fontsize=16,fontweight="bold",va="center");fig.text(.171,.887,"Medidas preventivas y de protección ante la violencia digital (2023)",color=TEXT,fontsize=16,va="center");_draw_column(fig,.065,"Medidas preventivas",PREVENTION,BLUE);_draw_column(fig,.525,"Medidas de protección",PROTECTION,SALMON);fig.text(.047,.102,"Fuente:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.094,.102,"IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",color=TEXT,fontsize=9);fig.text(.047,.075,"Nota:",color=TEXT,fontsize=9,fontweight="bold");fig.text(.081,.075,"Información correspondiente al estudio cualitativo; no es representativa a nivel nacional.",color=TEXT,fontsize=9);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  F.14 | Reutilización o descarga del reporte oficial IFT");source=context.acquire_source(SOURCE_ID)
     if source.read_bytes()[:4]!=b"%PDF":raise ValueError("La fuente de F.14 no es un PDF válido")

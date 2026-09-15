@@ -1,6 +1,14 @@
 """Figura D.11: seguridad percibida en redes sociales por sexo (ECSI 2024)."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 from pathlib import Path
 import matplotlib
@@ -53,7 +61,7 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     ax.legend(ncol=3,loc="upper center",bbox_to_anchor=(.5,1.10),frameon=False,labelcolor=TEXT)
     fig.text(.055,.116,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.116,"IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.",color=TEXT,fontsize=9)
     fig.text(.055,.088,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.088,"Porcentajes ponderados entre personas usuarias de Internet; los casos sin respuesta se integran en NS/NR.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

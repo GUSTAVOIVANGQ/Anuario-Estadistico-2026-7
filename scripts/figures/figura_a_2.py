@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import sys
 import textwrap
 import zipfile
@@ -36,12 +44,12 @@ MERGE_KEYS = (
     "n_ren",
 )
 
-COLOR_TEXT = "#565682"
-COLOR_TELECOM = "#2D7298"
-COLOR_RADIO = "#ADDCDD"
-COLOR_BACKGROUND = "#FBFBF7"
-COLOR_MARKER = "#F58F82"
-COLOR_TOTAL = "#8487A6"
+COLOR_TEXT = "#3c3c3b"
+COLOR_TELECOM = "#335a5c"
+COLOR_RADIO = "#86adae"
+COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
+COLOR_TOTAL = "#7c7c7c"
 COLUMN_ALIASES = {
     # INEGI cambió esta etiqueta desde 2025-T4; el significado y la llave
     # permanecen iguales en SDEM y COE1.
@@ -176,60 +184,9 @@ def _rounded_stack(
     radio_pct: float,
     width: float,
 ) -> None:
-    left = position - width / 2
-    right = position + width / 2
-    radius_x = width / 2
-    radius_y = min(2.2, telecom_pct / 3, radio_pct / 3)
-    path_codes = [
-        mpath.Path.MOVETO,
-        mpath.Path.LINETO,
-        mpath.Path.CURVE3,
-        mpath.Path.CURVE3,
-        mpath.Path.LINETO,
-        mpath.Path.LINETO,
-        mpath.Path.CURVE3,
-        mpath.Path.CURVE3,
-        mpath.Path.CLOSEPOLY,
-    ]
-    dark_path = mpath.Path(
-        [
-            (left + radius_x, 0),
-            (right - radius_x, 0),
-            (right, 0),
-            (right, radius_y),
-            (right, telecom_pct),
-            (left, telecom_pct),
-            (left, radius_y),
-            (left, 0),
-            (left + radius_x, 0),
-        ],
-        path_codes,
-    )
-    ax.add_patch(
-        mpatches.PathPatch(
-            dark_path, facecolor=COLOR_TELECOM, edgecolor="none", zorder=2
-        )
-    )
-    top = telecom_pct + radio_pct
-    light_path = mpath.Path(
-        [
-            (left, telecom_pct),
-            (right, telecom_pct),
-            (right, top - radius_y),
-            (right, top),
-            (right - radius_x, top),
-            (left + radius_x, top),
-            (left, top),
-            (left, top - radius_y),
-            (left, telecom_pct),
-        ],
-        path_codes,
-    )
-    ax.add_patch(
-        mpatches.PathPatch(
-            light_path, facecolor=COLOR_RADIO, edgecolor="none", zorder=2
-        )
-    )
+    """Barras apiladas rectangulares, como en la figura 2024."""
+    ax.bar(position, telecom_pct, width=width, color=COLOR_TELECOM, edgecolor="none", zorder=2)
+    ax.bar(position, radio_pct, bottom=telecom_pct, width=width, color=COLOR_RADIO, edgecolor="none", zorder=2)
 
 
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
@@ -393,7 +350,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     fig.subplots_adjust(left=0.078, right=0.965, top=0.83, bottom=0.25)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

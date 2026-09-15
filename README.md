@@ -38,6 +38,12 @@ referencias.
 
 # Ensamblar el PPTX al terminar
 .\ejecutar.ps1 run --assemble
+
+# Ensamblar únicamente, usando las figuras que ya existen en build/figures
+.\ejecutar.ps1 assemble
+
+# Exigir que estén disponibles las 105 figuras
+.\ejecutar.ps1 assemble --strict
 ```
 
 La corrida continúa cuando encuentra una figura aún pendiente y registra su
@@ -361,15 +367,27 @@ reportes se generan sin cifras pegadas manualmente.
 - Tabla usada: `reportes/<corrida>/datos_usados/`
 - Referencias y cálculos: CSV dentro de `reportes/<corrida>/`
 
-El ensamblador PowerPoint usa lienzo de 1600 × 900, igual que el PDF de 2024.
-Prefiere una página completa si el script la produce; en caso contrario inserta
-la gráfica sin añadir rótulos editoriales.
+## Ensamblaje automatizado del PowerPoint (1.2)
 
-El ensamblador usa `@oai/artifact-tool`. En Codex se resuelve con el runtime
-incluido. En otra máquina, `ANUARIO_NODE_MODULES` debe apuntar a una carpeta
-`node_modules` que contenga ese paquete; `ANUARIO_NODE` puede indicar la ruta de
-Node.js. En Codex, `ANUARIO_RUNTIME_PYTHON` y `ANUARIO_RUNTIME_BIN_DIR` permiten
-activar la validación avanzada con el runtime incluido.
+La plantilla completa se incluye en
+`assets/presentation/anuario_estadistico_2026_automatizable.pptx` y contiene las
+105 etiquetas estables `ANUARIO_FIGURE_*`. El mapa figura → diapositiva → objeto
+se encuentra en `assets/presentation/anuario_estadistico_2026_manifest.json`.
+
+Al ejecutar `assemble`, el programa abre esa presentación, localiza cada tarjeta
+por su **nombre interno de PowerPoint** y coloca la imagen indicada en el
+manifest, por ejemplo `build/figures/A/figura_a_1.png`. La imagen se ajusta con
+política `contain`, sin deformarla, y se conserva la tarjeta, sombra, encabezado,
+paginación y demás diseño de la presentación. Si una figura todavía no existe,
+el marcador `{{FIGURA:...}}` queda visible para identificar el pendiente.
+
+La salida se guarda en `entrega/` y junto al PPTX se genera un archivo
+`*_ensamblaje.json` que registra cuántas figuras fueron insertadas, cuáles faltan
+y cualquier error de mapeo. `assemble --strict` cancela la exportación si falta
+una sola figura o si un marcador no coincide con la plantilla.
+
+El ensamblaje ya no requiere Node.js ni `@oai/artifact-tool`; usa `python-pptx`
+y Pillow, instalados con las dependencias normales del proyecto.
 
 ## Reglas de diseño
 

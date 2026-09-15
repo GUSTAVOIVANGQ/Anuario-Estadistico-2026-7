@@ -1,6 +1,14 @@
 """Figura F.10: percepción del riesgo de violencia en Internet."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import re
 import sys
 import textwrap
@@ -14,6 +22,7 @@ matplotlib.use("Agg")
 import matplotlib.font_manager as fm
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 FIGURE_ID = "F.10"
@@ -112,34 +121,19 @@ def _font(project_root: Path) -> str:
 
 
 def _plot(data: pd.DataFrame, output: Path, project_root: Path) -> None:
-    family = _font(project_root)
-    plt.rcParams.update({"font.family": family})
-    fig = plt.figure(figsize=(16, 9), facecolor="white")
-    fig.add_artist(patches.FancyBboxPatch((.025, .055), .95, .87, boxstyle="round,pad=.012,rounding_size=.02", fc=BACKGROUND, ec="none", transform=fig.transFigure, zorder=-2))
-    fig.text(.047, .887, "•", color=SALMON, fontsize=20, va="center")
-    fig.text(.064, .887, "Figura F.10.", color=TEXT, fontsize=16, fontweight="bold", va="center")
-    fig.text(.171, .887, "Personas con mayor riesgo de ser víctimas de violencia en Internet (2023)", color=TEXT, fontsize=16, va="center")
-    top = data.iloc[0]
-    narrative = (f"La percepción de mayor riesgo se concentra en {top.categoria.lower()} "
-                 f"({top.porcentaje:.1f}%). Los porcentajes se calcularon con el factor de expansión "
-                 "normalizado entre personas usuarias de Internet fijo.")
-    fig.add_artist(patches.FancyBboxPatch((.045, .245), .19, .46, boxstyle="round,pad=.012,rounding_size=.02", fc="white", ec="none", transform=fig.transFigure, zorder=-1))
-    fig.text(.063, .64, "VIOLENCIA DIGITAL", color=TEXT, fontsize=16, fontweight="bold")
-    fig.text(.063, .59, textwrap.fill(narrative, width=31), color="#222222", fontsize=11.5, va="top", linespacing=1.4)
-    ax = fig.add_axes([.44, .17, .49, .63])
-    ordered = data.sort_values("porcentaje", ascending=True)
-    bars = ax.barh(ordered["categoria"], ordered["porcentaje"], color=BLUE, height=.62)
-    ax.set_xlim(0, max(60, ordered["porcentaje"].max() * 1.16)); ax.set_xticks([])
-    ax.tick_params(axis="y", length=0, labelsize=11, colors=TEXT, pad=10)
-    ax.spines[:].set_visible(False); ax.set_facecolor(BACKGROUND)
-    for bar, value in zip(bars, ordered["porcentaje"]):
-        ax.text(value + .8, bar.get_y() + bar.get_height()/2, f"{value:.1f}%", va="center", color=TEXT, fontsize=12, fontweight="bold", bbox=dict(boxstyle="round,pad=.25", fc="white", ec="none"))
-    fig.text(.047, .09, "Fuente:", color=TEXT, fontsize=9, fontweight="bold")
-    fig.text(.094, .09, "IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.", color=TEXT, fontsize=9)
-    fig.text(.047, .067, "Nota:", color=TEXT, fontsize=9, fontweight="bold")
-    fig.text(.081, .067, "Porcentajes ponderados; las respuestas son de selección múltiple y no suman 100%.", color=TEXT, fontsize=9)
-    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
-
+    family=_font(project_root); plt.rcParams.update({"font.family":family})
+    fig,ax=plt.subplots(figsize=(16,8.5)); fig.patch.set_facecolor("white"); ax.set_facecolor("#F8F8FA")
+    text="#3c3c3b"; dark="#335a5c"; light="#86adae"
+    x=np.arange(len(data)); values=data["porcentaje"].to_numpy(float); colors=[dark if i<2 else light for i in range(len(data))]
+    bars=ax.bar(x,values,color=colors,width=.60,edgecolor="none",zorder=2)
+    ax.set_ylim(0,max(values)*1.15); ticks=np.arange(0, int(max(values)*1.15//10+1)*10+1,10); ax.set_yticks(ticks,[f"{int(v)}%" for v in ticks])
+    ax.set_xticks(x,data["categoria"].astype(str),fontsize=8.3,color=text); ax.tick_params(axis="y",labelsize=9,colors=text,length=0); ax.tick_params(axis="x",length=0)
+    ax.grid(axis="y",color="#d1d1d1",linewidth=1,zorder=0); ax.set_axisbelow(True); ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False); ax.spines["left"].set_color("#7c7c7c"); ax.spines["bottom"].set_color("#7c7c7c")
+    for bar,value,color in zip(bars,values,colors,strict=True):
+        ax.annotate(f"{value:.1f}%",(bar.get_x()+bar.get_width()/2,value),xytext=(0,6),textcoords="offset points",ha="center",va="bottom",fontsize=8.2,color=text,bbox=dict(boxstyle="round,pad=.3,rounding_size=.8",facecolor="white",edgecolor=color,linewidth=.8))
+    fig.add_artist(patches.Rectangle((.060,.916),.009,.020,transform=fig.transFigure,facecolor="#4a7d75",edgecolor="none")); fig.text(.075,.926,"Figura F.10.",fontsize=14,fontweight="bold",color=text,va="center"); fig.text(.168,.926,"Personas con mayor riesgo de ser víctimas de violencia en Internet (2023)",fontsize=14,color=text,va="center")
+    fig.text(.06,.065,"Fuente:",fontsize=8,fontweight="bold",color=text,va="top"); fig.text(.098,.065,"IFT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",fontsize=8,color=text,va="top"); fig.text(.06,.043,"Nota:",fontsize=8,fontweight="bold",color=text,va="top"); fig.text(.091,.043,"Porcentajes ponderados; las respuestas son de selección múltiple y no suman 100%.",fontsize=8,color=text,va="top")
+    fig.subplots_adjust(left=.075,right=.94,top=.81,bottom=.24); output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200,facecolor="white"); plt.close(fig)
 
 def generate(context):
     print("  F.10 | Reutilización o descarga de la base oficial IFT")

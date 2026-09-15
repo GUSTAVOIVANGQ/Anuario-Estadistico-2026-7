@@ -1,6 +1,14 @@
 """Figura E.3: IGS por servicio y tamaño de empresa, 2023-2024."""
 from __future__ import annotations
 
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
+
 import re, sys, unicodedata, zipfile
 from io import BytesIO
 from pathlib import Path
@@ -85,7 +93,7 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
         ax.set_ylim(0,100); ax.set_xticks(x,SIZES,color=TEXT,fontsize=11); ax.set_yticks([]); ax.tick_params(length=0); ax.spines[:].set_visible(False); ax.set_title(service,color=TEXT,fontsize=18,fontweight="bold",pad=32); ax.legend(ncol=2,loc="upper center",bbox_to_anchor=(.5,1.08),frameon=False,labelcolor=TEXT)
     fig.text(.055,.112,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.112,"IFT, Cuarta Encuesta 2023 y 2024, Usuarios de Servicios de Telecomunicaciones (MiPymes).",color=TEXT,fontsize=9)
     fig.text(.055,.084,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.084,"Indicadores medidos en una escala de 0 a 100 puntos.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

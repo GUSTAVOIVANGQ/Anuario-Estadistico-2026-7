@@ -1,5 +1,13 @@
 """Figura C.14: tráfico del servicio móvil de acceso a Internet por tecnología."""
 from __future__ import annotations
+
+# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
+import sys as _ui_sys
+from pathlib import Path as _UIPath
+_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
+if str(_UI_SRC) not in _ui_sys.path:
+    _ui_sys.path.insert(0, str(_UI_SRC))
+from anuario2026.ui_2024 import apply_reference_ui
 import sys,zipfile
 from pathlib import Path,PurePosixPath
 import matplotlib
@@ -32,7 +40,7 @@ def _plot(d,m,out):
             if v>=.1:ax.text(b.get_x()+b.get_width()/2,base+v/2,f"{v:.1f}%",ha="center",va="center",fontsize=8,fontweight="bold",color="white" if c=="#4B4B83" else TEXT)
         bottom+=d[col].to_numpy()
     for x,t in zip(d.anio,d.TOTAL_TB_E):ax.text(x,102,f"{t:,.0f}",ha="center",fontweight="bold",fontsize=8,color=TEXT)
-    ax.set_ylim(0,108);ax.set_xticks(d.anio);ax.set_yticks([]);ax.spines[:].set_visible(False);ax.legend(ncol=3,loc="lower center",bbox_to_anchor=(.5,-.14),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores; acumulado a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Los porcentajes se calculan respecto del tráfico total; el tráfico sin tecnología especificada no se representa.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+    ax.set_ylim(0,108);ax.set_xticks(d.anio);ax.set_yticks([]);ax.spines[:].set_visible(False);ax.legend(ncol=3,loc="lower center",bbox_to_anchor=(.5,-.14),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores; acumulado a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Los porcentajes se calculan respecto del tráfico total; el tráfico sin tecnología especificada no se representa.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200);plt.close(fig)
 def generate(context):
     print("  C.14 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d)
     for r in d.itertuples(index=False):
