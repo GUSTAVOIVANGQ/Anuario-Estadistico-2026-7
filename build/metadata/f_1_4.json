@@ -1,0 +1,18 @@
+{
+  "figure_id": "F.1.4",
+  "title": "Uso de redes sociales",
+  "reference_page_2024": 85,
+  "figure_path": "build\\figures\\F\\figura_f_1_4.png",
+  "run_id": "20260914T224432165772Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_4.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\f_1_4.md",
+    "detected_period": "2025",
+    "rows_used": 22,
+    "reference_validation": "REPRODUCIDA_EXACTAMENTE",
+    "source_table": "conjunto_de_datos/tr_endutih_usuarios_anual_2025.csv",
+    "compatibility": {
+      "seleccionado": "2025"
+    }
+  }
+}

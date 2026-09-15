@@ -1,0 +1,18 @@
+{
+  "figure_id": "A.5",
+  "title": "Inversión Extranjera Directa (IED) en telecomunicaciones",
+  "reference_page_2024": 15,
+  "figure_path": "build\\figures\\A\\figura_a_5.png",
+  "run_id": "20260910T041753873206Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_5.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\a_5.md",
+    "detected_period": "2026-T1",
+    "rows_used": 14,
+    "total_input": "Datos_originales_y_actualizacion__1_.xlsx",
+    "activity_input": "2026_2T_Flujos_TI_AC_3.xlsx",
+    "latest_telecom": -22.36,
+    "latest_mexico": 24503.05,
+    "latest_share": -0.09
+  }
+}

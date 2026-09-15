@@ -1,0 +1,17 @@
+{
+  "figure_id": "A.2",
+  "title": "Empleo en los sectores de telecomunicaciones y radiodifusión",
+  "reference_page_2024": 12,
+  "figure_path": "build\\figures\\A\\figura_a_2.png",
+  "run_id": "20260909T215952075918Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_2.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\a_2.md",
+    "detected_period": "2026-T2",
+    "source_files": 27,
+    "rows_used": 27,
+    "latest_total_personas": 279069,
+    "latest_telecom_pct": 86.84,
+    "latest_radio_pct": 13.16
+  }
+}

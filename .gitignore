@@ -7,7 +7,7 @@ __pycache__/
 # Descargas, resultados y reportes reproducibles
 data/raw/**
 !data/raw/.gitkeep
-build/**
+#build/**
 !build/.gitkeep
 reportes/**
 !reportes/.gitkeep

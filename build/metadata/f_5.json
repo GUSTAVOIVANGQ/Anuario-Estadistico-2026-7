@@ -1,0 +1,14 @@
+{
+  "figure_id": "F.5",
+  "title": "Porcentaje de la población que vivió ciberacoso por sexo y rango de edad",
+  "reference_page_2024": 89,
+  "figure_path": "build\\figures\\F\\figura_f_5.png",
+  "run_id": "20260914T221738740049Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_5.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\f_5.md",
+    "detected_period": "2025",
+    "rows_used": 6,
+    "reference_validation": "aprobada"
+  }
+}

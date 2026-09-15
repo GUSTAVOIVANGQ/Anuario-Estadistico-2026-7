@@ -1,0 +1,13 @@
+{
+  "figure_id": "C.4",
+  "title": "Porcentaje del uso de los servicios móviles de telecomunicaciones por zona geográfica",
+  "reference_page_2024": 48,
+  "figure_path": "build\\figures\\C\\figura_c_4.png",
+  "run_id": "20260910T165446270714Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_4.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\c_4.md",
+    "source_latest_period": "2025",
+    "rows_used": 3
+  }
+}

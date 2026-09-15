@@ -1,0 +1,18 @@
+{
+  "figure_id": "F.1.1",
+  "title": "Aplicaciones instaladas mediante Smartphone",
+  "reference_page_2024": 82,
+  "figure_path": "build\\figures\\F\\figura_f_1_1.png",
+  "run_id": "20260914T224432165772Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_1.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\f_1_1.md",
+    "detected_period": "2025",
+    "rows_used": 20,
+    "reference_validation": "MODELO_OFICIAL_CORREGIDO; la lámina 2024 no coincide plenamente con los microdatos",
+    "source_table": "conjunto_de_datos/tr_endutih_usuarios2_anual_2025.csv",
+    "compatibility": {
+      "seleccionado": "2025"
+    }
+  }
+}

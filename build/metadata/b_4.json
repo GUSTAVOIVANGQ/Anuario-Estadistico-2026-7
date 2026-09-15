@@ -1,0 +1,14 @@
+{
+  "figure_id": "B.4",
+  "title": "Líneas del Servicio Fijo de Telefonía",
+  "reference_page_2024": 24,
+  "figure_path": "build\\figures\\B\\figura_b_4.png",
+  "run_id": "20260911T165305646742Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_4.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\build\\text\\b_4.md",
+    "source_latest_period": "2024-12",
+    "rows_used": 25,
+    "latest_value": 31361393.0
+  }
+}

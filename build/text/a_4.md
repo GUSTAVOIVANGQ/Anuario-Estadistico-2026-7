@@ -1,0 +1,1 @@
+En 2024, la inversión privada total realizada por los operadores de telecomunicaciones fue de 43.4 miles de millones de pesos, una variación de -23.1% respecto de 2023. La mayor proporción correspondió a infraestructura, con el 77.8% del total.
