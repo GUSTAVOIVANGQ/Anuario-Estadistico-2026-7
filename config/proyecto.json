@@ -1,6 +1,6 @@
 {
   "project_name": "Anuario Estadístico 2026",
-  "version": "0.21.0",
+  "version": "0.24.0",
   "reference_pdf": "../anuario2024.pdf",
   "slide_size": {
     "width": 1600,
@@ -277,6 +277,11 @@
       "status": "ready",
       "instruction": "Reutiliza TODO.zip, valida la serie IHH de Internet móvil y genera el PNG."
     },
+    "D.1": {
+      "path": "scripts/figures/figura_d_1.py",
+      "status": "ready",
+      "instruction": "Reutiliza tabulados 2010-2023 y microdatos ENDUTIH 2023-2025, valida el modelo histórico y genera el PNG con el último periodo disponible."
+    },
     "D.2": {
       "path": "scripts/figures/figura_d_2.py",
       "status": "ready",
@@ -326,6 +331,51 @@
       "path": "scripts/figures/figura_d_11.py",
       "status": "ready",
       "instruction": "Reutiliza ECSI 2024 y calcula la seguridad percibida en redes sociales por sexo y total."
+    },
+    "E.1": {
+      "path": "scripts/figures/figura_e_1.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas de personas usuarias 2023 y 2025, valida el IGS histórico y genera el corte anual 2024."
+    },
+    "E.2": {
+      "path": "scripts/figures/figura_e_2.py",
+      "status": "ready",
+      "instruction": "Descarga o reutiliza el estudio cualitativo oficial 2023 y genera la infografía de hallazgos."
+    },
+    "E.3": {
+      "path": "scripts/figures/figura_e_3.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas MiPymes 2022 a 2024, valida el IGS histórico y genera la comparación 2023-2024."
+    },
+    "E.4": {
+      "path": "scripts/figures/figura_e_4.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas MiPymes 2023 y 2024 y calcula servicios contratados desde la pregunta principal."
+    },
+    "E.5": {
+      "path": "scripts/figures/figura_e_5.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas MiPymes 2023 y 2024, valida el promedio ponderado y genera el corte 2024."
+    },
+    "E.6": {
+      "path": "scripts/figures/figura_e_6.py",
+      "status": "ready",
+      "instruction": "Reutiliza la encuesta MiPymes 2024 y calcula beneficios entre empresas que venden por Internet."
+    },
+    "E.7": {
+      "path": "scripts/figures/figura_e_7.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas MiPymes 2023 y 2024 y calcula el uso de dispositivos por tamaño."
+    },
+    "E.8": {
+      "path": "scripts/figures/figura_e_8.py",
+      "status": "ready",
+      "instruction": "Reutiliza las encuestas MiPymes 2023 y 2024 y calcula beneficios de las aplicaciones móviles."
+    },
+    "E.9": {
+      "path": "scripts/figures/figura_e_9.py",
+      "status": "ready",
+      "instruction": "Reutiliza la base específica de MiPymes importadoras y exportadoras y reproduce los servicios considerados más importantes."
     },
     "F.1.1": {
       "path": "scripts/figures/figura_f_1_1.py",

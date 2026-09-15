@@ -2,6 +2,56 @@
 
 Todos los cambios importantes del proyecto se documentarán aquí.
 
+## [0.23.0] - 2026-09-15
+
+### Agregado
+
+- E.1 como script autónomo con las encuestas de personas usuarias 2023 y 2025,
+  selección explícita de factores anuales, cálculo ponderado, validación,
+  impresión, auditoría, texto y PNG.
+- E.9 como script autónomo con la base específica de MiPymes importadoras y
+  exportadoras, cálculo con factor final, validación e imagen final.
+- Documentación de los universos, periodos, variables y fórmulas de ambas
+  figuras.
+
+### Validado
+
+- E.1 reproduce los cuatro IGS de 2023 y los resultados oficiales del corte
+  2024 sin desviación a una décima.
+- E.9 reproduce 63.4%, 20.8%, 6.6%, 6.3% y 0.7% desde los microdatos.
+- La Segunda Encuesta 2025 es el último corte anual comparable localizado para
+  E.1; la base específica 2022 continúa siendo la última comparable para E.9.
+
+### Diseño
+
+- Barras horizontales redondeadas, chips, tipografía, paleta y pies de figura
+  reconstruidos a partir de las páginas 72 y 80 del Anuario 2024.
+
+## [0.22.0] - 2026-09-15
+
+### Agregado
+
+- E.3 a E.8 como seis scripts autónomos con descarga o reutilización de las
+  bases oficiales MiPymes 2022, 2023 y 2024 del IFT, cálculo ponderado,
+  impresión, auditoría, texto y gráfica PNG.
+- Registro de las tres fuentes en el inventario y metodología de variables,
+  universos, fórmulas y controles contra la edición anterior.
+
+### Validado
+
+- Los resultados de E.3 a E.8 se reconstruyen desde los microdatos y reproducen
+  las referencias publicadas con una diferencia máxima de 0.1 puntos por
+  redondeo.
+- La Cuarta Encuesta 2024, difundida el 17 de enero de 2025, es el último corte
+  oficial localizado y compatible con estas figuras.
+- E.4 usa 89.4% para Internet fijo en 2023: coincide con la base y el texto del
+  anuario; el 84.4% de la celda publicada es una inconsistencia editorial.
+
+### Diseño
+
+- Tablas, barras agrupadas, pequeños múltiples y tarjetas con paleta,
+  tipografía, jerarquía y pies de figura de la familia visual del anuario.
+
 ## [0.21.0] - 2026-09-14
 
 ### Agregado

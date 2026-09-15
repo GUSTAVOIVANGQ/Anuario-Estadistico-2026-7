@@ -38,6 +38,8 @@ def doctor(project_root: Path) -> int:
         "F.1.1 a F.1.4, B.1 a B.21, C.3, C.4 y D.2 a D.4"
     )
     print("Base oficial ECSI 2024 verificada y reutilizable: D.5 a D.11")
+    print("Bases oficiales MiPymes 2022 a 2024 verificadas y reutilizables: E.3 a E.8")
+    print("Encuestas de satisfacción 2023-2025 y estudio MiPymes importadoras/exportadoras: E.1 y E.9")
     print("Estado base: correcto")
     return 0
 

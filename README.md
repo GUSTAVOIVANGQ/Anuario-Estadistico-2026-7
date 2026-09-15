@@ -5,7 +5,7 @@ figuras del Anuario Estadístico 2026. El anuario 2024 es el referente visual y
 metodológico. Los códigos originales permanecen intactos en la carpeta padre.
 
 Esta versión entrega la base operativa, las figuras A.1 a A.10, B.1 a B.25,
-C.1 a C.16, D.2 a D.11 y F.1.1 a F.16 actualizadas. Los demás scripts se incorporarán uno por
+C.1 a C.16, D.2 a D.11, E.1, E.3 a E.9 y F.1.1 a F.16 actualizadas. Los demás scripts se incorporarán uno por
 uno cuando el responsable del proyecto lo autorice. El pipeline sólo ejecuta
 los scripts de `scripts/figures/`; la carpeta `scripts/legacy/` fue eliminada.
 
@@ -185,6 +185,46 @@ niveles de seguridad en compras, banca y redes sociales. Las diferencias
 máximas frente a las cifras del anuario son de 0.1 puntos porcentuales y se
 explican por redondeo.
 
+## Figuras E.1 y E.9
+
+```powershell
+.\ejecutar.ps1 run --only E.1
+.\ejecutar.ps1 run --only E.9
+```
+
+E.1 reutiliza la Tercera Encuesta 2023 a Personas Usuarias para comprobar el
+método y aplica el mismo promedio ponderado a la Segunda Encuesta 2025. Esta
+última contiene entrevistas aplicadas durante 2024 y es el último corte anual
+compatible localizado. El script elige los factores anuales, imprime los cuatro
+IGS y genera el PNG.
+
+E.9 usa el último estudio específico disponible sobre MiPymes que realizan
+importación y/o exportación. La base es 2022 y fue difundida en 2023; no se
+sustituye por la encuesta MiPymes general de 2024 porque ésta no contiene la
+misma pregunta ni el mismo universo. El porcentaje se calcula directamente con
+el factor de expansión final y reproduce exactamente la figura anterior.
+
+## Figuras E.3 a E.8
+
+```powershell
+.\ejecutar.ps1 run --from E.3 --until E.8
+```
+
+Cada figura contiene en un único script la descarga o reutilización, validación
+del ZIP, lectura del libro, cálculo ponderado, impresión de resultados, registro
+de evidencia, texto y gráfica PNG. Las seis reutilizan las bases oficiales de
+la Cuarta Encuesta a MiPymes del IFT: E.3 además usa 2022 como control y E.4,
+E.5, E.7 y E.8 usan 2023 para contraste o comparación. El dato más reciente y
+compatible es 2024; la primera figura que lo necesite descarga el archivo y las
+siguientes usan la copia verificada.
+
+E.3 calcula el Índice General de Satisfacción; E.4 los servicios contratados;
+E.5 sus beneficios promedio; E.6 los beneficios de vender por Internet; E.7
+los dispositivos utilizados; y E.8 los beneficios de contar con una aplicación
+móvil. Las cifras históricas reproducen la publicación con diferencias máximas
+de 0.1 puntos por redondeo. La metodología y la excepción editorial detectada
+en E.4 están documentadas en `docs/METODOLOGIA_E3_E8.md`.
+
 ## Figuras B.4 a B.20
 
 ```powershell
@@ -347,6 +387,8 @@ en negritas y el texto posterior en peso normal. No se agregan etiquetas como
 - [Insumos manuales](docs/INSUMOS_MANUALES.md)
 - [Metodología ENDUTIH para B.1-B.3, C.3-C.4 y D.2-D.4](docs/METODOLOGIA_ENDUTIH.md)
 - [Metodología ECSI para D.5-D.11](docs/METODOLOGIA_D5_D11.md)
+- [Metodología de E.1 y E.9](docs/METODOLOGIA_E1_E9.md)
+- [Metodología MiPymes para E.3-E.8](docs/METODOLOGIA_E3_E8.md)
 - [Metodología de B.21](docs/METODOLOGIA_B21.md)
 - [Metodología de B.22](docs/METODOLOGIA_B22.md)
 - [Metodología de B.23 a C.2](docs/METODOLOGIA_B23_C2.md)
