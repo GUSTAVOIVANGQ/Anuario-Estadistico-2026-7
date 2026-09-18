@@ -9,7 +9,7 @@ data/raw/**
 !data/raw/.gitkeep
 #build/**
 !build/.gitkeep
-reportes/**
+#reportes/**
 !reportes/.gitkeep
 entrega/*.pptx
 entrega/*.pdf

@@ -6,14 +6,7 @@ microdatos, calcula los porcentajes con FAC_PER y genera el PNG.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
+import math
 import sys
 import zipfile
 from decimal import Decimal, ROUND_HALF_UP
@@ -35,13 +28,13 @@ SOURCE_YEAR = 2025
 SOURCE_URL = "https://www.inegi.org.mx/programas/endutih/2025/"
 REQUIRED_COLUMNS = ["EDAD", "P8_1", "P8_4_2", "FAC_PER", "DOMINIO"]
 
-COLOR_TEXT = "#4B4B83"
-COLOR_PANEL = "#FCFCF8"
-COLOR_BORDER = "#8A8AAF"
-COLOR_URBAN_USE = "#F58F82"
-COLOR_URBAN_NO_USE = "#F2535A"
-COLOR_RURAL_USE = "#ADDCDF"
-COLOR_RURAL_NO_USE = "#317DA3"
+COLOR_TEXT = "#3c3c3b"
+COLOR_PANEL = "#F8F9FA"
+COLOR_BORDER = "#b5b7c8"
+COLOR_URBAN_USE = "#86adae"
+COLOR_URBAN_NO_USE = "#3b6667"
+COLOR_RURAL_USE = "#86adae"
+COLOR_RURAL_NO_USE = "#3b6667"
 COLOR_CHIP_BORDER = "#E6E6EA"
 
 
@@ -137,6 +130,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     rural_use = int(values.loc["Rural", "porcentaje_uso_grafica"])
     rural_no_use = int(values.loc["Rural", "porcentaje_no_uso_grafica"])
 
+    leader_color = "#8C8C9A"
+    chip_border = "#9E9EAF"
+
     fig = plt.figure(figsize=(16, 8.5), facecolor="white")
     background = fig.add_axes([0, 0, 1, 1], zorder=0)
     background.axis("off")
@@ -153,7 +149,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(
         0.02, 0.93, " ", fontsize=2, va="center",
         bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                  facecolor="#F58F82", edgecolor="none"),
+                  facecolor="#4a7d75", edgecolor="none"),
     )
     fig.text(0.036, 0.93, "Figura C.4.", fontsize=16, fontweight="bold",
              color=COLOR_TEXT, va="center")
@@ -164,49 +160,67 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     )
 
     fig.text(
-        0.355, 0.77,
+        0.355, 0.785,
         "Porcentaje de la población de 6\naños o más en zonas urbanas\n"
         "que usan servicios móviles de\nTelecomunicaciones",
         fontsize=14, fontweight="bold", color=COLOR_TEXT, ha="center", va="center",
         linespacing=1.35,
     )
     fig.text(
-        0.835, 0.77,
+        0.835, 0.785,
         "Porcentaje de la población de 6\naños o más en zonas rurales\n"
         "que usan servicios móviles de\nTelecomunicaciones",
         fontsize=14, fontweight="bold", color=COLOR_TEXT, ha="center", va="center",
         linespacing=1.35,
     )
 
-    urban_ax = fig.add_axes([0.015, 0.16, 0.33, 0.57], zorder=4)
-    rural_ax = fig.add_axes([0.495, 0.16, 0.33, 0.57], zorder=4)
+    urban_ax = fig.add_axes([0.045, 0.145, 0.38, 0.59], zorder=4)
+    rural_ax = fig.add_axes([0.525, 0.145, 0.38, 0.59], zorder=4)
     for axis in (urban_ax, rural_ax):
         axis.axis("off")
         axis.set_facecolor("none")
+        axis.set_xlim(-1.42, 1.42)
+        axis.set_ylim(-1.32, 1.42)
 
-    urban_ax.pie(
+    urban_wedges, _ = urban_ax.pie(
         [urban_no_use, urban_use], colors=[COLOR_URBAN_NO_USE, COLOR_URBAN_USE],
-        startangle=90, counterclock=True, explode=(0, 0.025),
+        startangle=90, counterclock=True,
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
-    rural_ax.pie(
+    rural_wedges, _ = rural_ax.pie(
         [rural_no_use, rural_use], colors=[COLOR_RURAL_NO_USE, COLOR_RURAL_USE],
-        startangle=90, counterclock=True, explode=(0, 0.025),
+        startangle=90, counterclock=True,
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
 
-    chip = dict(boxstyle="round,pad=0.5", facecolor="white",
-                edgecolor=COLOR_CHIP_BORDER, linewidth=1.2)
-    label = dict(ha="center", va="center", fontweight="bold", color=COLOR_TEXT)
-    fig.text(0.18, 0.805, "No hacen uso de\nservicios móviles", fontsize=12, **label)
-    fig.text(0.18, 0.725, f"{urban_no_use}%", fontsize=28, bbox=chip, **label)
-    fig.text(0.285, 0.22, f"{urban_use}%", fontsize=31, bbox=chip, **label)
-    fig.text(0.285, 0.145, "Hacen uso de\nservicios móviles", fontsize=12, **label)
+    chip = dict(boxstyle="round,pad=0.40,rounding_size=0.22",
+                facecolor="white", edgecolor=chip_border, linewidth=1.25)
+    arrow = dict(arrowstyle="-", color=leader_color, linewidth=1.30,
+                 shrinkA=7, shrinkB=0, connectionstyle="arc3,rad=0")
 
-    fig.text(0.66, 0.805, "No hacen uso de\nservicios móviles", fontsize=12, **label)
-    fig.text(0.66, 0.725, f"{rural_no_use}%", fontsize=28, bbox=chip, **label)
-    fig.text(0.765, 0.22, f"{rural_use}%", fontsize=31, bbox=chip, **label)
-    fig.text(0.765, 0.145, "Hacen uso de\nservicios móviles", fontsize=12, **label)
+    def add_callouts(axis, wedges, no_use, use):
+        specs = [
+            (wedges[0], (-0.88, 1.18), (-1.13, 1.42), f"{no_use}%",
+             "No hacen uso de\nservicios móviles", "left"),
+            (wedges[1], (1.00, -0.92), (0.72, -0.61), f"{use}%",
+             "Hacen uso de\nservicios móviles", "left"),
+        ]
+        for wedge, chip_xy, label_xy, pct, label, align in specs:
+            angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
+            target = (0.74 * math.cos(angle), 0.74 * math.sin(angle))
+            axis.annotate(
+                pct, xy=target, xytext=chip_xy, ha="center", va="center",
+                fontsize=18, fontweight="bold", color=COLOR_TEXT,
+                bbox=chip, arrowprops=arrow, annotation_clip=False, zorder=8,
+            )
+            axis.scatter(*target, s=30, facecolor="#A8A8B7", edgecolor="white",
+                         linewidth=0.8, zorder=9, clip_on=False)
+            axis.text(label_xy[0], label_xy[1], label, ha=align, va="center",
+                      fontsize=10.5, fontweight="bold", color=COLOR_TEXT,
+                      linespacing=1.2, clip_on=False, zorder=9)
+
+    add_callouts(urban_ax, urban_wedges, urban_no_use, urban_use)
+    add_callouts(rural_ax, rural_wedges, rural_no_use, rural_use)
 
     fig.text(0.02, 0.03, "Fuente:", fontweight="bold", fontsize=10, color=COLOR_TEXT)
     fig.text(
@@ -216,9 +230,8 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
-
 
 def generate(context):
     print("  C.4 | Adquisición o reutilización del ZIP ENDUTIH 2025")

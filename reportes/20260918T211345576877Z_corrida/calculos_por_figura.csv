@@ -1,0 +1,2 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+C.3,uso_servicios_moviles_nacional,"suma(FAC_PER donde EDAD>=6, P8_1=1 y P8_4_2=1) / suma(FAC_PER donde EDAD>=6) * 100","{""anio"": 2025, ""universo"": ""personas de 6 años o más"", ""poblacion_expandida"": 121906757, ""usuarios_expandidos"": 100159203}",82.16050157088503,porcentaje,0

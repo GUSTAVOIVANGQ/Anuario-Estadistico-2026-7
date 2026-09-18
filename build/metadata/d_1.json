@@ -1,0 +1,14 @@
+{
+  "figure_id": "D.1",
+  "title": "Disponibilidad de las TIC en los hogares",
+  "reference_page_2024": 61,
+  "figure_path": "build\\figures\\D\\figura_d_1.png",
+  "run_id": "20260918T224147559523Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_1.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\d_1.md",
+    "source_latest_period": "2025",
+    "rows_used": 80,
+    "historical_validation_max_deviation_pp": 0.0
+  }
+}

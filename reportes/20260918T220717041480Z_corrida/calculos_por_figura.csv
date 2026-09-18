@@ -1,0 +1,12 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+B.1,total_hogares,suma(FAC_HOG),"{""dominio"": ""Nacional""}",39677498,hogares,0
+B.1,total_Tres servicios,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 6124737}",15.436298427889783,porcentaje,1
+B.1,total_Dos servicios,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 12066255}",30.410826307646715,porcentaje,1
+B.1,total_Un servicio,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 13473482}",33.957488952554414,porcentaje,1
+B.1,total_Ninguno,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 8013024}",20.195386311909083,porcentaje,1
+B.1,un_servicio_Solo TV Restringida,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 1231664}",3.104187668284931,porcentaje,1
+B.1,un_servicio_Solo Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 325253}",0.8197417085119632,porcentaje,1
+B.1,un_servicio_Solo Internet,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 11916565}",30.033559575757522,porcentaje,1
+B.1,dos_servicios_Internet + Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 6809336}",17.161707121754503,porcentaje,1
+B.1,dos_servicios_TV Restringida + Internet,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 5128072}",12.924383488091914,porcentaje,1
+B.1,dos_servicios_TV Restringida + Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""Nacional"", ""hogares_expandidos"": 128847}",0.32473569780029976,porcentaje,1

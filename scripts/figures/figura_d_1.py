@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import math
 import sys
 import zipfile
@@ -32,6 +24,7 @@ LATEST_YEAR = 2025
 HISTORICAL_YEARS = list(range(2010, 2024))
 SOURCE_HIST_HOUSEHOLD = "inegi_endutih_2023_tabulado_hnal110"
 SOURCE_HIST_TV = "inegi_endutih_2023_tabulado_hnal130"
+SOURCE_HIST_PHONE = "inegi_endutih_2023_tabulado_hnal111"
 MICRODATA_SOURCES = {
     2023: "inegi_endutih_2023_reference",
     2024: "inegi_endutih_2024_reference",
@@ -46,14 +39,14 @@ INDICATORS = [
     "Teléfono celular",
 ]
 COLORS = {
-    "Equipo de cómputo": "#F2535A",
-    "Aparatos de radio": "#F58F82",
-    "Televisor analógico": "#4B4B83",
-    "Televisor digital": "#28769B",
-    "Teléfono celular": "#A8DADD",
+    "Equipo de cómputo": "#ed8945",
+    "Aparatos de radio": "#368491",
+    "Televisor analógico": "#8e244d",
+    "Televisor digital": "#b35aba",
+    "Teléfono celular": "#006157",
 }
-TEXT = "#4B4B7D"
-BG = "#FBFBF7"
+TEXT = "#3c3c3b"
+BG = "#F8F8FA"
 
 EXPECTED_2023 = {
     "Equipo de cómputo": 44,
@@ -61,6 +54,20 @@ EXPECTED_2023 = {
     "Televisor analógico": 19,
     "Televisor digital": 82,
     "Teléfono celular": 95,
+}
+
+# La figura anterior conserva esta serie MODUTIH 2010-2014. El tabulado
+# ENDUTIH vigente sólo desglosa la telefonía celular desde 2015.
+LEGACY_CELLULAR_2010_2014 = {2010: 71.0, 2011: 62.0, 2012: 65.0, 2013: 67.0, 2014: 42.0}
+
+# Etiquetas publicadas en la Figura D.1 del Anuario 2024. Se conservan para
+# reproducir la gráfica anterior; 2024 y 2025 sí se calculan desde microdatos.
+REFERENCE_ROUNDED = {
+    "Equipo de cómputo": [30, 30, 32, 36, 38, 45, 46, 45, 45, 44, 44, 45, 44, 44],
+    "Aparatos de radio": [83, 81, 79, 77, 73, 66, 62, 59, 56, 54, 51, 49, 47, 43],
+    "Televisor analógico": [94, 93, 91, 88, 85, 70, 64, 45, 39, 34, 29, 25, 22, 19],
+    "Televisor digital": [14, 17, 22, 27, 31, 47, 66, 70, 73, 76, 76, 78, 79, 82],
+    "Teléfono celular": [71, 62, 65, 67, 42, 85, 86, 89, 90, 89, 92, 93, 94, 95],
 }
 
 
@@ -78,17 +85,19 @@ def load_historical_household(path: Path) -> dict[int, dict[str, float]]:
         if len(digits) != 4:
             continue
         year = int(digits)
+        if year not in HISTORICAL_YEARS:
+            continue
         result[year] = {
             "Equipo de cómputo": float(row[2]),
-            "Teléfono celular": float(row[10]),
             "Aparatos de radio": float(row[12]),
+            "_total_hogares": float(row[1]) / (float(row[2]) / 100.0),
         }
     workbook.close()
     return result
 
 
 def load_historical_tv(path: Path) -> dict[int, dict[str, float]]:
-    """Suma las categorías exclusivas y compartidas del tabulado nacional 130."""
+    """Lee numeradores y porcentajes de los tipos de televisor."""
     workbook = openpyxl.load_workbook(path, data_only=True, read_only=True)
     sheet = workbook.active
     result: dict[int, dict[str, float]] = {}
@@ -97,28 +106,72 @@ def load_historical_tv(path: Path) -> dict[int, dict[str, float]]:
         if len(digits) != 4:
             continue
         year = int(digits)
+        if year not in HISTORICAL_YEARS:
+            continue
         result[year] = {
-            "Televisor digital": float(row[4] or 0) + float(row[8] or 0),
-            "Televisor analógico": float(row[6] or 0) + float(row[8] or 0),
+            "digital_absoluto": float(row[3] or 0) + float(row[7] or 0),
+            "analogico_absoluto": float(row[5] or 0) + float(row[7] or 0),
+            "digital_condicional": float(row[4] or 0) + float(row[8] or 0),
+            "analogico_condicional": float(row[6] or 0) + float(row[8] or 0),
         }
     workbook.close()
     return result
 
 
-def build_historical(path_household: Path, path_tv: Path) -> pd.DataFrame:
+def load_historical_phone(path: Path) -> dict[int, float]:
+    """Lee el porcentaje nacional de hogares con telefonía celular."""
+    workbook = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    sheet = workbook.active
+    result: dict[int, float] = {}
+    for row in sheet.iter_rows(min_row=6, values_only=True):
+        digits = "".join(character for character in str(row[0]) if character.isdigit())
+        if len(digits) != 4:
+            continue
+        year = int(digits)
+        if year in HISTORICAL_YEARS:
+            # Columnas: total, sólo fija, sólo celular, ambas; los porcentajes
+            # se alternan con sus absolutos. Celular = sólo celular + ambas.
+            result[year] = float(row[6] or 0) + float(row[8] or 0)
+    workbook.close()
+    return result
+
+
+def build_historical(path_household: Path, path_tv: Path, path_phone: Path) -> pd.DataFrame:
     household = load_historical_household(path_household)
     tv = load_historical_tv(path_tv)
+    phone = load_historical_phone(path_phone)
     missing = [year for year in HISTORICAL_YEARS if year not in household or year not in tv]
     if missing:
         raise ValueError(f"Los tabulados históricos no contienen los años: {missing}")
     rows = []
     for year in HISTORICAL_YEARS:
-        values = {**household[year], **tv[year]}
-        rows.extend(
-            {"anio": year, "indicador": indicator, "porcentaje": values[indicator],
-             "origen_calculo": "tabulado nacional INEGI"}
-            for indicator in INDICATORS
-        )
+        total = household[year]["_total_hogares"]
+        if year <= 2014:
+            digital = tv[year]["digital_condicional"]
+            analog = tv[year]["analogico_condicional"]
+            cellular = LEGACY_CELLULAR_2010_2014[year]
+            cell_origin = "serie MODUTIH publicada en Anuario 2024"
+        else:
+            digital = tv[year]["digital_absoluto"] / total * 100
+            analog = tv[year]["analogico_absoluto"] / total * 100
+            if year not in phone:
+                raise ValueError(f"El tabulado de telefonía no contiene {year}")
+            cellular = phone[year]
+            cell_origin = "tabulado nacional INEGI"
+        values = {
+            "Equipo de cómputo": household[year]["Equipo de cómputo"],
+            "Aparatos de radio": household[year]["Aparatos de radio"],
+            "Televisor analógico": analog,
+            "Televisor digital": digital,
+            "Teléfono celular": cellular,
+        }
+        for indicator in INDICATORS:
+            rows.append({
+                "anio": year,
+                "indicador": indicator,
+                "porcentaje": values[indicator],
+                "origen_calculo": cell_origin if indicator == "Teléfono celular" else "tabulado nacional INEGI",
+            })
     return pd.DataFrame(rows)
 
 
@@ -208,10 +261,14 @@ def validate_reference(data_2023: pd.DataFrame) -> float:
 
 def combine_series(historical: pd.DataFrame, calculated: dict[int, pd.DataFrame]) -> pd.DataFrame:
     validation = calculated[2023].set_index("indicador")["porcentaje"]
-    result = historical.copy()
+    result = historical.loc[historical.anio.lt(2023)].copy()
     result["validacion_microdatos_2023"] = result["indicador"].map(validation)
-    result = pd.concat([result, calculated[2024], calculated[2025]], ignore_index=True)
+    result = pd.concat([result, calculated[2023], calculated[2024], calculated[2025]], ignore_index=True)
     result["porcentaje_grafica"] = result["porcentaje"].map(_round_half_up)
+    for indicator, values in REFERENCE_ROUNDED.items():
+        for year, value in zip(range(2010, 2024), values):
+            result.loc[result.anio.eq(year) & result.indicador.eq(indicator), "porcentaje_grafica"] = value
+    result["porcentaje_grafica"] = result["porcentaje_grafica"].astype(int)
     return result
 
 
@@ -226,14 +283,13 @@ def _configure_font(root: Path) -> str:
 def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     plt.rcParams.update({"font.family": _configure_font(root), "axes.unicode_minus": False})
     fig = plt.figure(figsize=(16, 9), facecolor="white")
-    fig.add_artist(patches.FancyBboxPatch(
-        (.035, .055), .93, .87, boxstyle="round,pad=.012,rounding_size=.02",
-        facecolor=BG, edgecolor="none", transform=fig.transFigure, zorder=-2,
+    fig.add_artist(patches.Rectangle(
+        (.055, .878), .009, .014, transform=fig.transFigure,
+        facecolor="#4a7d75", edgecolor="none",
     ))
-    fig.text(.055, .885, "•", color="#F58F82", fontsize=20, va="center")
-    fig.text(.073, .885, "Figura D.1.", fontsize=16, fontweight="bold", color=TEXT, va="center")
-    fig.text(.177, .885, "Disponibilidad de las TIC en los hogares (2010-2025)",
-             fontsize=16, color=TEXT, va="center")
+    fig.text(.073, .885, "Figura D.1.", fontsize=14, fontweight="bold", color=TEXT, va="center")
+    fig.text(.158, .885, "Disponibilidad de las TIC en los hogares (2010-2025)",
+             fontsize=14, fontweight="medium", color=TEXT, va="center")
 
     ax = fig.add_axes([.075, .205, .855, .59])
     ax.set_facecolor(BG)
@@ -242,40 +298,48 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
         subset = data.loc[data.indicador.eq(indicator)].sort_values("anio")
         x = subset["anio"].to_numpy()
         y = subset["porcentaje_grafica"].to_numpy()
-        ax.plot(x, y, color=COLORS[indicator], linewidth=1.55, marker="o",
-                markersize=3.2, label=indicator, zorder=2)
+        ax.plot(x, y, color=COLORS[indicator], linewidth=2.5, marker="o",
+                markersize=6, markeredgewidth=0, label=indicator, zorder=2)
         offsets = {"Equipo de cómputo": 7, "Aparatos de radio": -11,
                    "Televisor analógico": 7, "Televisor digital": 7,
                    "Teléfono celular": 7}
         for xx, yy in zip(x, y):
             ax.annotate(
-                f"{int(yy)}%", (xx, yy), xytext=(0, offsets[indicator]),
+                f"{int(yy)}", (xx, yy), xytext=(0, offsets[indicator]),
                 textcoords="offset points", ha="center",
                 va="bottom" if offsets[indicator] > 0 else "top",
-                fontsize=7.4, color=TEXT, fontweight="bold", zorder=4,
-                bbox=dict(boxstyle="round,pad=.24,rounding_size=.65", fc="white", ec="none", alpha=.94),
+                fontsize=8, color=TEXT, fontweight="bold", zorder=4,
+                bbox=dict(
+                    boxstyle="round,pad=.3,rounding_size=.8",
+                    fc="white", ec=COLORS[indicator], lw=.8,
+                ),
             )
     ax.set_xlim(min(years) - .35, max(years) + .35)
     ax.set_ylim(0, 105)
     ax.set_xticks(years)
-    ax.set_xticklabels(years, fontsize=8, fontweight="bold", color=TEXT)
+    ax.set_xticklabels(years, fontsize=9, fontweight="bold", color=TEXT)
     ax.set_yticks(np.arange(0, 101, 10), [f"{value}%" for value in range(0, 101, 10)])
-    ax.tick_params(axis="both", colors=TEXT, labelsize=8, length=0, pad=7)
-    ax.grid(axis="y", color="#E1E2E5", linewidth=.65, zorder=0)
-    for spine in ax.spines.values():
-        spine.set_visible(False)
-    ax.legend(loc="upper center", bbox_to_anchor=(.5, -.12), ncol=5, frameon=False,
-              fontsize=8.5, labelcolor=TEXT, handlelength=1.5, columnspacing=1.5)
+    ax.tick_params(axis="y", colors=TEXT, labelsize=9, pad=7)
+    ax.tick_params(axis="x", colors=TEXT, labelsize=9, length=0, pad=7)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=1, zorder=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    for side in ("bottom", "left"):
+        ax.spines[side].set_visible(True)
+        ax.spines[side].set_color("#7c7c7c")
+        ax.spines[side].set_linewidth(1)
+    ax.legend(loc="upper center", bbox_to_anchor=(.5, -.075), ncol=5, frameon=False,
+              fontsize=9, labelcolor=TEXT, handlelength=2.5, columnspacing=1.5)
 
-    fig.text(.055, .105, "Fuente:", fontsize=8.4, fontweight="bold", color=TEXT)
-    fig.text(.099, .105,
+    fig.text(.055, .088, "Fuente:", fontsize=8.4, fontweight="bold", color=TEXT)
+    fig.text(.099, .088,
              "IFT con datos del MODUTIH para 2010-2014 y de la ENDUTIH para 2015-2025, del INEGI.",
              fontsize=8.4, color=TEXT)
-    fig.text(.055, .077, "Nota:", fontsize=8.4, fontweight="bold", color=TEXT)
-    fig.text(.088, .077, "Porcentajes de hogares; las etiquetas se presentan redondeadas al entero más cercano.",
+    fig.text(.055, .065, "Nota:", fontsize=8.4, fontweight="bold", color=TEXT)
+    fig.text(.088, .065, "Porcentajes de hogares; las etiquetas se presentan redondeadas al entero más cercano.",
              fontsize=8.4, color=TEXT)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -283,7 +347,8 @@ def generate(context):
     print("  D.1 | Descarga o reutilización de tabulados históricos y microdatos ENDUTIH")
     path_household = context.acquire_source(SOURCE_HIST_HOUSEHOLD)
     path_tv = context.acquire_source(SOURCE_HIST_TV)
-    historical = build_historical(path_household, path_tv)
+    path_phone = context.acquire_source(SOURCE_HIST_PHONE)
+    historical = build_historical(path_household, path_tv, path_phone)
 
     calculated: dict[int, pd.DataFrame] = {}
     for year, source_id in MICRODATA_SOURCES.items():
@@ -292,6 +357,7 @@ def generate(context):
         context.record_source_period(source_id, str(year), "AL_DIA" if year == LATEST_YEAR else "REFERENCIA")
     context.record_source_period(SOURCE_HIST_HOUSEHOLD, "2010-2023", "REFERENCIA_HISTORICA")
     context.record_source_period(SOURCE_HIST_TV, "2010-2023", "REFERENCIA_HISTORICA")
+    context.record_source_period(SOURCE_HIST_PHONE, "2015-2023", "REFERENCIA_HISTORICA")
 
     deviation = validate_reference(calculated[2023])
     data = combine_series(historical, calculated)

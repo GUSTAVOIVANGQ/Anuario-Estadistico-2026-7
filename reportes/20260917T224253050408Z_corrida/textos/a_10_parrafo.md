@@ -1,0 +1,1 @@
+En 2024, los hogares del decil 1 que disponen y gastan en servicios móviles destinaron en promedio $178 pesos mensuales, equivalentes al 3.0% de su ingreso. En el decil 10, el gasto fue de $948 pesos y representó el 1.2% del ingreso.

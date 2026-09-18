@@ -1,14 +1,6 @@
 """Figura D.11: seguridad percibida en redes sociales por sexo (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 from pathlib import Path
 import matplotlib
@@ -20,10 +12,10 @@ import numpy as np
 import pandas as pd
 
 FIGURE_ID, SOURCE_ID, PERIOD = "D.11", "ift_ecsi_2024_base", "2024"
-TEXT, BG = "#4B4B7D", "#FBFBF7"
+TEXT, BG = "#3c3c3b", "#F8F8FA"
 GROUPS = [("Total", None), ("Mujeres", 1), ("Hombres", 2)]
 LEVELS = [(9,"NS/NR"),(4,"Inseguro"),(3,"Ni seguro ni inseguro"),(2,"Seguro"),(1,"Muy seguro")]
-COLORS = ["#65B9D8","#F0535A","#F48D7E","#A9DADF","#327BA0"]
+COLORS = ["#86adae","#64a0a1","#4c7d7e","#335a5c","#132b2d"]
 REFERENCE = {"Total":{"Muy seguro":3.5,"Seguro":48.8,"Ni seguro ni inseguro":15.5,"Inseguro":18.3,"NS/NR":12.8},
              "Mujeres":{"Muy seguro":2.8,"Seguro":43.1,"Ni seguro ni inseguro":16.2,"Inseguro":22.1,"NS/NR":14.7},
              "Hombres":{"Muy seguro":4.4,"Seguro":55.4,"Ni seguro ni inseguro":14.6,"Inseguro":14.0,"NS/NR":10.5}}
@@ -49,19 +41,19 @@ def _font(root:Path)->str:
 def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     plt.rcParams.update({"font.family":_font(root)}); fig=plt.figure(figsize=(16,9),facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035,.06),.93,.86,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
-    fig.text(.055,.88,"•",color="#F58F82",fontsize=20,va="center"); fig.text(.073,.88,"Figura D.11.",color=TEXT,fontsize=16,fontweight="bold",va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none")); fig.text(.073,.88,"Figura D.11.",color=TEXT,fontsize=16,fontweight="bold",va="center")
     fig.text(.195,.88,"Seguridad percibida al compartir información en redes sociales, por sexo (2024)",color=TEXT,fontsize=16,va="center")
     ax=fig.add_axes([.19,.19,.72,.60]); ax.set_facecolor(BG); y=np.arange(len(LEVELS)); height=.22
-    group_colors={"Total":"#4F5082","Mujeres":"#F48D7E","Hombres":"#327BA0"}
+    group_colors={"Total":"#335a5c","Mujeres":"#4a7d75","Hombres":"#86adae"}
     for i,(group,_) in enumerate(GROUPS):
         values=data.loc[data.grupo.eq(group),"porcentaje"].to_numpy(); bars=ax.barh(y+(i-1)*height,values,height,color=group_colors[group],label=group,zorder=2)
-        for bar,value in zip(bars,values): ax.text(value+.7,bar.get_y()+bar.get_height()/2,f"{value:.1f}%",va="center",color=TEXT,fontsize=10,fontweight="bold",bbox=dict(boxstyle="round,pad=.2",fc="white",ec="none"))
+        for bar,value in zip(bars,values): ax.text(value+.7,bar.get_y()+bar.get_height()/2,f"{value:.1f}%",va="center",color=TEXT,fontsize=10)
     ax.set_xlim(0,65); ax.set_xticks(range(0,61,10),[f"{x}%" for x in range(0,61,10)]); ax.set_yticks(y,[x[1] for x in LEVELS],color=TEXT,fontsize=11); ax.invert_yaxis()
-    ax.tick_params(axis="both",length=0,pad=8,colors=TEXT); ax.grid(axis="x",color="#DADAE3",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
+    ax.tick_params(axis="both",length=0,pad=8,colors=TEXT); ax.grid(axis="x",color="#d1d1d1",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
     ax.legend(ncol=3,loc="upper center",bbox_to_anchor=(.5,1.10),frameon=False,labelcolor=TEXT)
     fig.text(.055,.116,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.116,"IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.",color=TEXT,fontsize=9)
     fig.text(.055,.088,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.088,"Porcentajes ponderados entre personas usuarias de Internet; los casos sin respuesta se integran en NS/NR.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

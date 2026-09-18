@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import textwrap
 import zipfile
@@ -21,8 +13,8 @@ matplotlib.use("Agg")
 
 import matplotlib.font_manager as font_manager
 import matplotlib.patches as mpatches
-import matplotlib.path as mpath
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 
@@ -49,7 +41,7 @@ COLOR_TELECOM = "#335a5c"
 COLOR_RADIO = "#86adae"
 COLOR_BACKGROUND = "#F8F8FA"
 COLOR_MARKER = "#4a7d75"
-COLOR_TOTAL = "#7c7c7c"
+COLOR_TOTAL = "#3c3c3b"
 COLUMN_ALIASES = {
     # INEGI cambió esta etiqueta desde 2025-T4; el significado y la llave
     # permanecen iguales en SDEM y COE1.
@@ -177,36 +169,42 @@ def extract_period(path: Path, year: int, quarter: int) -> dict[str, int | float
     }
 
 
-def _rounded_stack(
-    ax: plt.Axes,
-    position: float,
-    telecom_pct: float,
-    radio_pct: float,
-    width: float,
-) -> None:
-    """Barras apiladas rectangulares, como en la figura 2024."""
-    ax.bar(position, telecom_pct, width=width, color=COLOR_TELECOM, edgecolor="none", zorder=2)
-    ax.bar(position, radio_pct, bottom=telecom_pct, width=width, color=COLOR_RADIO, edgecolor="none", zorder=2)
-
-
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     font_family = _configure_fonts(project_root)
     fig, ax = plt.subplots(figsize=(16, 8.5))
     fig.patch.set_facecolor("white")
     ax.set_facecolor(COLOR_BACKGROUND)
     x = np.arange(len(data), dtype=float)
-    width = 0.68
+    width = 0.72
+
+    ax.bar(
+        x,
+        data["telecomunicaciones_pct"],
+        width=width,
+        color=COLOR_TELECOM,
+        edgecolor="none",
+        label="Telecomunicaciones",
+        zorder=2,
+    )
+    ax.bar(
+        x,
+        data["radiodifusion_pct"],
+        width=width,
+        bottom=data["telecomunicaciones_pct"],
+        color=COLOR_RADIO,
+        edgecolor="none",
+        label="Radiodifusión",
+        zorder=2,
+    )
 
     for position, row in zip(x, data.itertuples(index=False), strict=True):
         telecom_pct = float(row.telecomunicaciones_pct)
         radio_pct = float(row.radiodifusion_pct)
-        _rounded_stack(ax, position, telecom_pct, radio_pct, width)
         chip_style = {
-            "boxstyle": "round,pad=0.38,rounding_size=0.7",
+            "boxstyle": "round,pad=0.3,rounding_size=0.8",
             "facecolor": "white",
-            "edgecolor": COLOR_TEXT,
-            "linewidth": 0.7,
-            "alpha": 0.99,
+            "edgecolor": COLOR_TELECOM,
+            "linewidth": 0.8,
         }
         ax.text(
             position,
@@ -232,14 +230,14 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             bbox=chip_style,
             zorder=4,
         )
-        ax.vlines(position, 100.3, 102.1, color=COLOR_TOTAL, linewidth=0.6, zorder=1)
         ax.text(
             position,
-            103.1,
+            102,
             f"{int(row.total_personas):,}",
+            rotation=90,
             ha="center",
             va="bottom",
-            fontsize=7.2,
+            fontsize=9,
             color=COLOR_TOTAL,
         )
 
@@ -250,43 +248,40 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         fontsize=8,
         color=COLOR_TEXT,
     )
-    ax.tick_params(axis="x", length=0, pad=8)
-    ax.set_ylim(0, 112)
-    ax.set_xlim(-0.7, len(data) - 0.3)
-    ax.set_yticks([])
+    ax.tick_params(axis="x", length=3, pad=4, colors=COLOR_TEXT)
+    ax.set_ylim(0, 125)
+    ax.set_xlim(-0.8, len(data) - 0.2)
+    ax.yaxis.set_major_locator(mticker.MultipleLocator(20))
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda value, _: f"{int(value)}%"))
+    ax.tick_params(axis="y", labelsize=9, colors=COLOR_TEXT)
     ax.set_ylabel(
-        "Población ocupada en TyR y distribución por sector",
-        fontsize=9.5,
+        "Distribución porcentual del empleo",
+        fontsize=11,
+        fontweight="medium",
         color=COLOR_TEXT,
-        labelpad=22,
+        labelpad=15,
         fontfamily=font_family,
     )
-    for spine in ax.spines.values():
-        spine.set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_color("#7c7c7c")
+    ax.spines["left"].set_color("#7c7c7c")
+    ax.grid(axis="y", color="#d1d1d1", linewidth=1, zorder=0)
 
     for year, group in data.groupby("anio", sort=True):
         positions = [float(data.index.get_loc(index)) for index in group.index]
         center = sum(positions) / len(positions)
         ax.text(
             center,
-            -8.5,
+            -9,
             str(int(year)),
             ha="center",
             va="top",
-            fontsize=8.5,
+            fontsize=10,
             fontweight="bold",
             color=COLOR_TEXT,
             clip_on=False,
         )
-        if max(positions) < len(data) - 1:
-            ax.vlines(
-                max(positions) + 0.5,
-                -7.0,
-                -2.6,
-                color=COLOR_TEXT,
-                linewidth=0.55,
-                clip_on=False,
-            )
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -305,24 +300,22 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.927,
         "Empleo en los sectores de telecomunicaciones y radiodifusión",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
 
-    handles = [
-        mpatches.Patch(facecolor=COLOR_TELECOM, edgecolor="none", label="Telecomunicaciones"),
-        mpatches.Patch(facecolor=COLOR_RADIO, edgecolor="none", label="Radiodifusión"),
-    ]
+    handles, labels = ax.get_legend_handles_labels()
     fig.legend(
         handles=handles,
+        labels=labels,
         loc="lower center",
-        bbox_to_anchor=(0.5, 0.11),
+        bbox_to_anchor=(0.5, 0.08),
         ncol=2,
-        fontsize=9.5,
+        fontsize=10,
         frameon=False,
         labelcolor=COLOR_TEXT,
-        handlelength=1.8,
-        columnspacing=2.4,
+        handlelength=2.5,
     )
 
     latest = data.iloc[-1]
@@ -348,9 +341,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(0.055, 0.048, "Notas:", fontsize=8.2, fontweight="bold", color=COLOR_TEXT, va="top")
     fig.text(0.091, 0.048, notes_body, fontsize=8.2, color=COLOR_TEXT, va="top")
 
-    fig.subplots_adjust(left=0.078, right=0.965, top=0.83, bottom=0.25)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

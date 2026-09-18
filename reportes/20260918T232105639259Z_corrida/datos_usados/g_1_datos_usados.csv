@@ -1,0 +1,16 @@
+﻿anio,servicio,tipo_uso,categoria,orden,concesiones,formula
+2023,TDT,COMERCIAL,Comerciales,0,569,conteo distinto de DISTINTIVO
+2023,TDT,PUBLICO,Públicas,1,280,conteo distinto de DISTINTIVO
+2023,TDT,SOCIAL,Sociales,2,53,conteo distinto de DISTINTIVO
+2023,TDT,SOCIAL COMUNITARIA,Sociales Comunitarias,3,7,conteo distinto de DISTINTIVO
+2023,TDT,SOCIAL INDIGENA,Sociales Indígenas,4,0,conteo distinto de DISTINTIVO
+2023,FM,COMERCIAL,Comerciales,0,1165,suma de NO_ESTACIONES
+2023,FM,PUBLICO,Públicas,1,300,suma de NO_ESTACIONES
+2023,FM,SOCIAL,Sociales,2,267,suma de NO_ESTACIONES
+2023,FM,SOCIAL COMUNITARIA,Sociales Comunitarias,3,139,suma de NO_ESTACIONES
+2023,FM,SOCIAL INDIGENA,Sociales Indígenas,4,27,suma de NO_ESTACIONES
+2023,AM,COMERCIAL,Comerciales,0,161,suma de NO_ESTACIONES
+2023,AM,PUBLICO,Públicas,1,56,suma de NO_ESTACIONES
+2023,AM,SOCIAL,Sociales,2,42,suma de NO_ESTACIONES
+2023,AM,SOCIAL COMUNITARIA,Sociales Comunitarias,3,4,suma de NO_ESTACIONES
+2023,AM,SOCIAL INDIGENA,Sociales Indígenas,4,3,suma de NO_ESTACIONES

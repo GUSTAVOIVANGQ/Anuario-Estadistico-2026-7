@@ -1,0 +1,16 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+G.1,concesiones_tdt_comercial,conteo distinto de DISTINTIVO,"{""anio"": 2023, ""servicio"": ""TDT"", ""tipo_uso"": ""COMERCIAL""}",569,concesiones,0
+G.1,concesiones_tdt_publico,conteo distinto de DISTINTIVO,"{""anio"": 2023, ""servicio"": ""TDT"", ""tipo_uso"": ""PUBLICO""}",280,concesiones,0
+G.1,concesiones_tdt_social,conteo distinto de DISTINTIVO,"{""anio"": 2023, ""servicio"": ""TDT"", ""tipo_uso"": ""SOCIAL""}",53,concesiones,0
+G.1,concesiones_tdt_social_comunitaria,conteo distinto de DISTINTIVO,"{""anio"": 2023, ""servicio"": ""TDT"", ""tipo_uso"": ""SOCIAL COMUNITARIA""}",7,concesiones,0
+G.1,concesiones_tdt_social_indigena,conteo distinto de DISTINTIVO,"{""anio"": 2023, ""servicio"": ""TDT"", ""tipo_uso"": ""SOCIAL INDIGENA""}",0,concesiones,0
+G.1,concesiones_fm_comercial,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""FM"", ""tipo_uso"": ""COMERCIAL""}",1165,concesiones,0
+G.1,concesiones_fm_publico,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""FM"", ""tipo_uso"": ""PUBLICO""}",300,concesiones,0
+G.1,concesiones_fm_social,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""FM"", ""tipo_uso"": ""SOCIAL""}",267,concesiones,0
+G.1,concesiones_fm_social_comunitaria,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""FM"", ""tipo_uso"": ""SOCIAL COMUNITARIA""}",139,concesiones,0
+G.1,concesiones_fm_social_indigena,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""FM"", ""tipo_uso"": ""SOCIAL INDIGENA""}",27,concesiones,0
+G.1,concesiones_am_comercial,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""AM"", ""tipo_uso"": ""COMERCIAL""}",161,concesiones,0
+G.1,concesiones_am_publico,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""AM"", ""tipo_uso"": ""PUBLICO""}",56,concesiones,0
+G.1,concesiones_am_social,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""AM"", ""tipo_uso"": ""SOCIAL""}",42,concesiones,0
+G.1,concesiones_am_social_comunitaria,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""AM"", ""tipo_uso"": ""SOCIAL COMUNITARIA""}",4,concesiones,0
+G.1,concesiones_am_social_indigena,suma de NO_ESTACIONES,"{""anio"": 2023, ""servicio"": ""AM"", ""tipo_uso"": ""SOCIAL INDIGENA""}",3,concesiones,0

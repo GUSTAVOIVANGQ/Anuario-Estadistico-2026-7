@@ -1,3 +1,10 @@
+# 0.26.0
+
+- Normalizado el marcador verde de todos los títulos de figura con el patrón exacto de A.1 (`#4a7d75`, ancho 0.007 y alto 0.018 en coordenadas de figura).
+- Cada corrida genera ahora `referencias_fuentes_figuras.csv` dentro de `reportes/<corrida>/`, conservando figura, source ID, propietario, ZIP/archivo real y portal de origen.
+- Sustituidos los scripts E.4, F.14 y F.1.1 a F.1.4 por las versiones CRT/sinodales suministradas para esta revisión.
+- Añadidas pruebas de regresión para el marcador de título y el nuevo reporte de referencias.
+
 # 0.25.0
 
 - Integrada la funcionalidad 1.2: ensamblaje sobre la plantilla PPTX completa del Anuario 2026.

@@ -16,6 +16,7 @@ from .presentation import assemble_from_template
 from .registry import load_figures, load_project_config
 from .reports import RunReports, utc_now
 from .sources import SourceCatalog
+from .ui_2024 import install_source_credit_normalizer, install_title_marker_normalizer
 
 
 LOGGER = logging.getLogger("anuario2026")
@@ -145,6 +146,8 @@ def run_pipeline(
     stop_on_error: bool = False,
     assemble: bool = False,
 ) -> Path:
+    install_source_credit_normalizer()
+    install_title_marker_normalizer()
     config = load_project_config(project_root)
     all_figures = load_figures(project_root, config)
     figures = select_figures(all_figures, only, start_from, until)
@@ -153,6 +156,7 @@ def run_pipeline(
     configure_logging(reports.run_dir / "pipeline.log")
     sources = SourceCatalog(project_root)
     reports.write_source_matrix(all_figures, sources.sources)
+    reports.write_figure_source_reference_report()
     show_manual_instructions(project_root, all_figures)
 
     LOGGER.info("Anuario Estadístico 2026 | corrida %s", run_id)

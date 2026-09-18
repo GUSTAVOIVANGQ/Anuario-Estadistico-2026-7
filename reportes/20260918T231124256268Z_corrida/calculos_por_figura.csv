@@ -1,0 +1,12 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+B.3,total_hogares,suma(FAC_HOG),"{""dominio"": ""R""}",31622749,hogares,0
+B.3,total_Tres servicios,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 5919544}",18.7192580885362,porcentaje,1
+B.3,total_Dos servicios,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 10936428}",34.584052132849045,porcentaje,1
+B.3,total_Un servicio,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 9870710}",31.213952967846026,porcentaje,1
+B.3,total_Ninguno,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 4896067}",15.48273681076873,porcentaje,1
+B.3,un_servicio_Solo TV Restringida,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 599247}",1.8949870550469854,porcentaje,1
+B.3,un_servicio_Solo Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 267683}",0.8464887097576494,porcentaje,1
+B.3,un_servicio_Solo Internet,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 9003780}",28.47247720304139,porcentaje,1
+B.3,dos_servicios_Internet + Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 6501141}",20.558430894164196,porcentaje,1
+B.3,dos_servicios_TV Restringida + Internet,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 4341925}",13.730384414081144,porcentaje,1
+B.3,dos_servicios_TV Restringida + Telefonía,suma(FAC_HOG donde se cumple la combinación) / suma(FAC_HOG) * 100,"{""anio"": 2025, ""dominio"": ""U"", ""hogares_expandidos"": 93362}",0.2952368246037054,porcentaje,1

@@ -1,13 +1,5 @@
 """Figura C.2: distribución del espectro por operador y banda."""
 from __future__ import annotations
-
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
 import sys,unicodedata,re
 from pathlib import Path
 import matplotlib
@@ -16,8 +8,8 @@ import matplotlib.font_manager as fm
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
-FIGURE_ID="C.2"; OP_SOURCE="crt_bit_espectro_banda_actual"; DIST_SOURCE="crt_bit_dist_espectro_actual"; TEXT="#4B4B83"; CREAM="#FBFBF7"
-BANDS={"B_700_MHZ":"700 MHz","B_800_MHZ":"800 MHz","B_850_MHZ":"850 MHz","B_PCS":"1900 MHz","B_AWS":"AWS","B_2_5_GHZ":"2500 MHz","B_3_3_GHZ":"3300 MHz","B_3_5_GHZ":"3500 MHz"}; OPS=["TELCEL","AT&T","ALTÁN"]; COLORS={"TELCEL":"#317DA3","AT&T":"#ADDCDF","ALTÁN":"#4B4B83"}
+FIGURE_ID="C.2"; OP_SOURCE="crt_bit_espectro_banda_actual"; DIST_SOURCE="crt_bit_dist_espectro_actual"; TEXT="#3c3c3b"; CREAM="#F8F8FA"
+BANDS={"B_700_MHZ":"700 MHz","B_800_MHZ":"800 MHz","B_850_MHZ":"850 MHz","B_PCS":"1900 MHz","B_AWS":"AWS","B_2_5_GHZ":"2500 MHz","B_3_3_GHZ":"3300 MHz","B_3_5_GHZ":"3500 MHz"}; OPS=["TELCEL","AT&T","ALTÁN"]; COLORS={"TELCEL":"#753d6a","AT&T":"#667489","ALTÁN":"#8e244d"}
 def load_raw(path):
     try:return pd.read_csv(path,encoding="utf-8-sig")
     except UnicodeDecodeError:return pd.read_csv(path,encoding="latin-1")
@@ -55,19 +47,16 @@ def build_metrics(raw):
     return pd.DataFrame(rows)
 def _plot(d,m,out,root):
     for p in (root/"assets"/"fonts"/"Noto_Sans").glob("*.ttf"):fm.fontManager.addfont(p)
-    plt.rcParams["font.family"]="Noto Sans"; fig=plt.figure(figsize=(16,8.5),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc=CREAM,transform=fig.transFigure,zorder=-1)); fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#F58F82",ec="none"),zorder=20); fig.text(.061,.9,"Figura C.2.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21); fig.text(.143,.9,"Distribución del espectro radioeléctrico por operador y banda",fontsize=14,color=TEXT,va="center",zorder=21)
-    ax=fig.add_axes([.07,.20,.86,.62]); labels=list(BANDS.values()); x=list(range(len(labels))); bottoms=[0.]*len(labels); clips=[]
-    for i in x:
-        cp=patches.FancyBboxPatch((i-.2,0),.4,100,boxstyle="round,pad=0,rounding_size=.2",transform=ax.transData,fc="none",ec="none");ax.add_patch(cp);clips.append(cp)
+    plt.rcParams["font.family"]="Noto Sans"; fig=plt.figure(figsize=(16,8.5),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc=CREAM,transform=fig.transFigure,zorder=-1)); fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#4a7d75",ec="none"),zorder=20); fig.text(.061,.9,"Figura C.2.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21); fig.text(.143,.9,"Distribución del espectro radioeléctrico por operador y banda",fontsize=14,color=TEXT,va="center",zorder=21)
+    ax=fig.add_axes([.07,.20,.86,.62]); labels=list(BANDS.values()); x=list(range(len(labels))); bottoms=[0.]*len(labels)
     for op in OPS:
         vals=[float(d.loc[(d.operador.eq(op))&(d.banda.eq(b)),"participacion"].iloc[0]) for b in labels]; bars=ax.bar(x,vals,.4,bottom=bottoms,color=COLORS[op],edgecolor="none",label=op)
         for i,(bar,v,base) in enumerate(zip(bars,vals,bottoms)):
-            bar.set_clip_path(clips[i]);
-            if v>=.5:ax.annotate(f"{v:.0f}%",xy=(i,base+v/2),xytext=(i+.34,base+v/2),ha="center",va="center",fontsize=9,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.3",fc="white",ec="none"),arrowprops=dict(arrowstyle="-",color=COLORS[op],lw=.8))
+            if v>=.5:ax.annotate(f"{v:.0f}%",xy=(i,base+v/2),xytext=(i+.34,base+v/2),ha="center",va="center",fontsize=9,fontweight="bold",color=COLORS[op],bbox=dict(boxstyle="round,pad=.3",fc="white",ec="#D1D1DF",lw=1.2),arrowprops=dict(arrowstyle="-",color="#A0A0B0",lw=.8))
         bottoms=[a+b for a,b in zip(bottoms,vals)]
     ax.set_xlim(-.6,len(labels)-.35);ax.set_ylim(-5,103);ax.set_xticks(x,labels,fontsize=10,fontweight="bold",color=TEXT);ax.set_yticks([]);[s.set_visible(False) for s in ax.spines.values()];ax.legend(ncol=3,loc="lower center",bbox_to_anchor=(.5,-.17),frameon=False,fontsize=10,labelcolor=TEXT)
     months={1:"enero",2:"febrero",3:"marzo",4:"abril",5:"mayo",6:"junio",7:"julio",8:"agosto",9:"septiembre",10:"octubre",11:"noviembre",12:"diciembre"};fig.text(.045,.075,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.086,.075,f"CRT, distribución del espectro radioeléctrico a {months[m['mes']]} de {m['anio']}.",fontsize=8,color=TEXT);fig.text(.045,.054,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.077,.054,"Participación respecto del total asignado en cada banda.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white");plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white");plt.close(fig)
 def generate(context):
     print("  C.2 | Adquisición o reutilización de los CSV directos actualizados de BIT/CRT");op=context.acquire_source(OP_SOURCE);dist=context.acquire_source(DIST_SOURCE);m=latest_period(load_raw(dist));d=build_metrics(load_raw(op));period=f"{m['anio']}-{m['mes']:02d}";context.record_source_period(OP_SOURCE,period,"ULTIMO_DISPONIBLE");context.record_source_period(DIST_SOURCE,period,"ULTIMO_DISPONIBLE");context.write_data_used(d)
     for r in d.itertuples(index=False):context.record_calculation(f"participacion_{r.operador}_{r.banda}","fracción BIT del operador en la banda * 100",{"periodo":period,"operador":r.operador,"banda":r.banda},r.participacion,"%",0)

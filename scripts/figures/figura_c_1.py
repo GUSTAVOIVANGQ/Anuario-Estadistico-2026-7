@@ -1,13 +1,5 @@
 """Figura C.1: espectro asignado por banda con fuente directa BIT/CRT."""
 from __future__ import annotations
-
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
 import sys,re
 from pathlib import Path
 import matplotlib
@@ -16,9 +8,9 @@ import matplotlib.font_manager as fm
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
-FIGURE_ID="C.1"; SOURCE_ID="crt_bit_dist_espectro_actual"; TEXT="#4B4B83"; CREAM="#FBFBF7"
+FIGURE_ID="C.1"; SOURCE_ID="crt_bit_dist_espectro_actual"; TEXT="#3c3c3b"; CREAM="#F8F8FA"
 BANDS={"B_700_MHZ":"Banda de 700 MHz","B_800_MHZ":"Banda de 800 MHz","B_850_MHZ":"Banda de 850 MHz","B_PCS":"Banda PCS","B_AWS":"Banda AWS","B_2_5_GHZ":"Banda de 2500 MHz","B_3_3_GHZ":"Banda de 3300 MHz","B_3_5_GHZ":"Banda de 3500 MHz"}
-COLORS=["#F2535A","#F58F82","#4B4B83","#317DA3","#ADDCDF","#3E93AE","#55ABC6","#65BED8"]
+COLORS=["#132b2d","#234244","#335a5c","#3b6667","#4c7d7e","#5c9596","#64a0a1","#86adae"]
 MONTHS={"ene":1,"feb":2,"mar":3,"abr":4,"may":5,"jun":6,"jul":7,"ago":8,"sep":9,"oct":10,"nov":11,"dic":12}
 def load_raw(path):
     try:return pd.read_csv(path,encoding="utf-8-sig")
@@ -50,7 +42,7 @@ def _layout(items,x,y,w,h):
     ha=h*sa/total; return _layout(a,x,y,w,ha)+_layout(b,x,y+ha,w,h-ha)
 def _plot(d,m,out,root):
     for p in (root/"assets"/"fonts"/"Noto_Sans").glob("*.ttf"): fm.fontManager.addfont(p)
-    plt.rcParams["font.family"]="Noto Sans"; fig=plt.figure(figsize=(16,8.5),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc=CREAM,transform=fig.transFigure,zorder=-1)); fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#F58F82",ec="none"),zorder=20); fig.text(.061,.9,"Figura C.1.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21); fig.text(.143,.9,"Espectro radioeléctrico asignado por banda de frecuencia",fontsize=14,color=TEXT,va="center",zorder=21)
+    plt.rcParams["font.family"]="Noto Sans"; fig=plt.figure(figsize=(16,8.5),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc=CREAM,transform=fig.transFigure,zorder=-1)); fig.text(.045,.9," ",bbox=dict(boxstyle="round,pad=1.5",fc="#4a7d75",ec="none"),zorder=20); fig.text(.061,.9,"Figura C.1.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21); fig.text(.143,.9,"Espectro radioeléctrico asignado por banda de frecuencia",fontsize=14,color=TEXT,va="center",zorder=21)
     ax=fig.add_axes([.055,.15,.89,.68]); items=sorted([(r.banda,r.mhz) for r in d.itertuples(index=False)],key=lambda q:q[1],reverse=True)
     for i,(item,x,y,w,h) in enumerate(_layout(items,0,0,100,100)):
         label,val=item; ax.add_patch(patches.Rectangle((x,y),w,h,fc=COLORS[i%len(COLORS)],ec="white",lw=3)); fs=max(7,min(16,7+min(w,h)/3)); shown=label
@@ -58,7 +50,7 @@ def _plot(d,m,out,root):
         ax.text(x+w/2,y+h/2,f"{shown}\n{val:,.0f} MHz",ha="center",va="center",fontsize=fs,fontweight="bold",color="white",wrap=True,clip_on=True)
     ax.set_xlim(0,100); ax.set_ylim(0,100); ax.axis("off"); fig.text(.055,.105,f"Total: {m['total']:,.0f} MHz",fontsize=15,fontweight="bold",color=TEXT)
     months={1:"enero",2:"febrero",3:"marzo",4:"abril",5:"mayo",6:"junio",7:"julio",8:"agosto",9:"septiembre",10:"octubre",11:"noviembre",12:"diciembre"}; fig.text(.045,.068,"Fuente:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.086,.068,f"CRT, distribución de espectro radioeléctrico a {months[m['mes']]} de {m['anio']}.",fontsize=8,color=TEXT); fig.text(.045,.048,"Nota:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.077,.048,"Las superficies son proporcionales a los MHz asignados.",fontsize=8,color=TEXT)
-    out.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
 def generate(context):
     print("  C.1 | Adquisición o reutilización del CSV directo actualizado de BIT/CRT"); src=context.acquire_source(SOURCE_ID); print("  C.1 | Selección de la fecha más reciente y cálculo de MHz por banda"); d,m=build_metrics(load_raw(src)); period=f"{m['anio']}-{m['mes']:02d}"; context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE"); context.write_data_used(d)
     for r in d.itertuples(index=False): context.record_calculation("mhz_"+r.banda.lower().replace(" ","_"),"valor de MHz publicado por banda en la fila más reciente",{"periodo":period,"banda":r.banda},r.mhz,"MHz",0)

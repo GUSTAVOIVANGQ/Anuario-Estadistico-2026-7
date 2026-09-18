@@ -27,15 +27,15 @@ ENDUTIH_SOURCE_ID = "inegi_endutih_2025"
 DENUE_SOURCE_ID = "inegi_denue_2023_state_counts"
 MAP_SOURCE_ID = "mexico_geojson_legacy"
 
-TEXT = "#4B4B83"
-TEAL = "#317DA3"
-LIGHT = "#ADDCDF"
-CORAL = "#F2535A"
-SALMON = "#F58F82"
-CREAM = "#FBFBF7"
-GRID = "#DCEFF0"
+TEXT = "#3c3c3b"
+TEAL = "#006157"
+LIGHT = "#86adae"
+CORAL = "#3b6667"
+SALMON = "#4a7d75"
+CREAM = "#F8F8FA"
+GRID = "#d1d1d1"
 MAP_COLORS = [LIGHT, TEAL, TEXT, SALMON, CORAL]
-STACK_COLORS = [TEAL, LIGHT, TEXT, SALMON, CORAL, "#6CBFC4", "#9A9ABC"]
+STACK_COLORS = [TEAL, LIGHT, TEXT, SALMON, CORAL, "#64a0a1", "#728781"]
 
 MONTHS = {
     1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo",
@@ -454,7 +454,7 @@ def _plot_series(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -
     y = data[column].to_numpy(float)
     ax.fill_between(x, 0, y, color=LIGHT, alpha=0.18)
     ax.vlines(x, 0, y, color=TEAL, linewidth=0.65, alpha=0.75)
-    ax.plot(x, y, color=TEXT, linewidth=1.2, marker="o", markersize=3.2, label=legend)
+    ax.plot(x, y, color=TEAL, linewidth=1.2, marker="o", markersize=3.2, label=legend)
     step = 1 if len(data) <= 30 else 2
     ax.set_xticks(x[::step], data["ANIO"].astype(str).iloc[::step], rotation=90, fontsize=7.5, fontweight="bold")
     ax.grid(axis="y", color=GRID, linewidth=0.7)

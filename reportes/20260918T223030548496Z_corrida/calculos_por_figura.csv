@@ -1,0 +1,34 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+B.6,valor_01,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Aguascalientes"", ""periodo_bit"": ""2024-12""}",56.0,por cada 100,0
+B.6,valor_02,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Baja California"", ""periodo_bit"": ""2024-12""}",79.0,por cada 100,0
+B.6,valor_03,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Baja California Sur"", ""periodo_bit"": ""2024-12""}",54.0,por cada 100,0
+B.6,valor_04,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Campeche"", ""periodo_bit"": ""2024-12""}",42.0,por cada 100,0
+B.6,valor_05,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Coahuila de Zaragoza"", ""periodo_bit"": ""2024-12""}",65.0,por cada 100,0
+B.6,valor_06,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Colima"", ""periodo_bit"": ""2024-12""}",61.0,por cada 100,0
+B.6,valor_07,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Chiapas"", ""periodo_bit"": ""2024-12""}",20.0,por cada 100,0
+B.6,valor_08,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Chihuahua"", ""periodo_bit"": ""2024-12""}",64.0,por cada 100,0
+B.6,valor_09,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Ciudad de México"", ""periodo_bit"": ""2024-12""}",87.0,por cada 100,0
+B.6,valor_10,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Durango"", ""periodo_bit"": ""2024-12""}",46.0,por cada 100,0
+B.6,valor_11,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Guanajuato"", ""periodo_bit"": ""2024-12""}",51.0,por cada 100,0
+B.6,valor_12,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Guerrero"", ""periodo_bit"": ""2024-12""}",36.0,por cada 100,0
+B.6,valor_13,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Hidalgo"", ""periodo_bit"": ""2024-12""}",34.0,por cada 100,0
+B.6,valor_14,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Jalisco"", ""periodo_bit"": ""2024-12""}",68.0,por cada 100,0
+B.6,valor_15,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""México"", ""periodo_bit"": ""2024-12""}",69.0,por cada 100,0
+B.6,valor_16,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Michoacán de Ocampo"", ""periodo_bit"": ""2024-12""}",35.0,por cada 100,0
+B.6,valor_17,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Morelos"", ""periodo_bit"": ""2024-12""}",68.0,por cada 100,0
+B.6,valor_18,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Nayarit"", ""periodo_bit"": ""2024-12""}",46.0,por cada 100,0
+B.6,valor_19,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Nuevo León"", ""periodo_bit"": ""2024-12""}",79.0,por cada 100,0
+B.6,valor_20,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Oaxaca"", ""periodo_bit"": ""2024-12""}",22.0,por cada 100,0
+B.6,valor_21,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Puebla"", ""periodo_bit"": ""2024-12""}",47.0,por cada 100,0
+B.6,valor_22,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Querétaro"", ""periodo_bit"": ""2024-12""}",64.0,por cada 100,0
+B.6,valor_23,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Quintana Roo"", ""periodo_bit"": ""2024-12""}",51.0,por cada 100,0
+B.6,valor_24,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""San Luis Potosí"", ""periodo_bit"": ""2024-12""}",48.0,por cada 100,0
+B.6,valor_25,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Sinaloa"", ""periodo_bit"": ""2024-12""}",56.0,por cada 100,0
+B.6,valor_26,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Sonora"", ""periodo_bit"": ""2024-12""}",55.0,por cada 100,0
+B.6,valor_27,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Tabasco"", ""periodo_bit"": ""2024-12""}",25.0,por cada 100,0
+B.6,valor_28,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Tamaulipas"", ""periodo_bit"": ""2024-12""}",59.0,por cada 100,0
+B.6,valor_29,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Tlaxcala"", ""periodo_bit"": ""2024-12""}",43.0,por cada 100,0
+B.6,valor_30,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Veracruz de Ignacio de la Llave"", ""periodo_bit"": ""2024-12""}",39.0,por cada 100,0
+B.6,valor_31,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Yucatán"", ""periodo_bit"": ""2024-12""}",44.0,por cada 100,0
+B.6,valor_32,indicador estatal conforme a la fuente y denominador declarados,"{""entidad"": ""Zacatecas"", ""periodo_bit"": ""2024-12""}",36.0,por cada 100,0
+B.6,valor_ultimo_periodo,selección del último diciembre disponible y aplicación de la fórmula de la figura,"{""periodo"": ""2024-12"", ""filas"": 32}",56.0,valor de la figura,2

@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import re
 import sys
 import textwrap
@@ -22,7 +14,6 @@ matplotlib.use("Agg")
 
 import matplotlib.font_manager as font_manager
 import matplotlib.patches as mpatches
-import matplotlib.path as mpath
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
@@ -178,10 +169,9 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
     ax1.bar(
         x,
         plotted["pib_miles_millones_pesos"].to_numpy(dtype=float),
-        width=0.68,
+        width=0.72,
         color=COLOR_BAR,
         edgecolor="none",
-        linewidth=0,
         zorder=2,
     )
 
@@ -197,19 +187,19 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
     ax1.yaxis.set_major_formatter(
         mticker.FuncFormatter(lambda value, _: f"{int(value):,}")
     )
-    ax1.tick_params(axis="y", colors=COLOR_TEXT, labelsize=9, length=0)
-    ax1.grid(axis="y", color=COLOR_GRID, linewidth=0.8, zorder=0)
+    ax1.tick_params(axis="y", colors=COLOR_TEXT, labelsize=9)
+    ax1.grid(axis="y", color=COLOR_GRID, linewidth=1, zorder=0)
 
     quarter_labels = ["II" if value == 2 else "IV" for value in plotted["trimestre"]]
-    ax1.set_xticks(x, quarter_labels, fontsize=9, color=COLOR_TEXT)
-    ax1.tick_params(axis="x", length=0, pad=8)
+    ax1.set_xticks(x, quarter_labels, fontsize=8, color=COLOR_TEXT)
+    ax1.tick_params(axis="x", length=3, color=COLOR_TEXT, pad=4)
 
     for year, group in plotted.groupby("anio", sort=True):
         visible = [float(plotted.index.get_loc(index)) for index in group.index]
         center = sum(visible) / len(visible)
         ax1.text(
             center,
-            -3_650,
+            -1_700,
             str(int(year)),
             ha="center",
             va="top",
@@ -218,15 +208,6 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
             color=COLOR_TEXT,
             clip_on=False,
         )
-        if max(visible) < len(plotted) - 1:
-            ax1.vlines(
-                max(visible) + 0.5,
-                -3_250,
-                -1_550,
-                color=COLOR_TEXT,
-                linewidth=0.6,
-                clip_on=False,
-            )
 
     ax2 = ax1.twinx()
     percentages = plotted["participacion_tyr_pct"].to_numpy(dtype=float)
@@ -234,9 +215,9 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
         x,
         percentages,
         color=COLOR_LINE,
-        linewidth=1.2,
+        linewidth=1,
         marker="o",
-        markersize=4.5,
+        markersize=6,
         markerfacecolor=COLOR_LINE,
         markeredgecolor=COLOR_LINE,
         zorder=4,
@@ -251,33 +232,34 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
     ax2.set_ylim(0, 1.8)
     ax2.yaxis.set_major_locator(mticker.MultipleLocator(0.2))
     ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda value, _: f"{value:.1f}%"))
-    ax2.tick_params(axis="y", colors=COLOR_TEXT, labelsize=9, length=0)
+    ax2.tick_params(axis="y", colors=COLOR_TEXT, labelsize=9)
 
     for position, percentage in zip(x, percentages, strict=True):
         ax2.annotate(
             f"{percentage:.1f}%",
             xy=(position, percentage),
-            xytext=(0, 13),
+            xytext=(0, 12),
             textcoords="offset points",
             ha="center",
             va="bottom",
-            fontsize=8.5,
+            fontsize=8,
             fontweight="bold",
             color=COLOR_TEXT,
             bbox={
-                "boxstyle": "round,pad=0.45,rounding_size=0.7",
+                "boxstyle": "round,pad=0.3,rounding_size=0.8",
                 "facecolor": "white",
                 "edgecolor": COLOR_LINE,
                 "linewidth": 0.8,
-                "alpha": 0.98,
             },
             zorder=5,
         )
 
+    ax1.spines["top"].set_visible(False)
+    ax2.spines["top"].set_visible(False)
     for axis in (ax1, ax2):
-        for spine in axis.spines.values():
-            spine.set_visible(False)
-    ax1.set_xlim(-0.65, len(plotted) - 0.35)
+        for side in ("bottom", "left", "right"):
+            axis.spines[side].set_color("#7c7c7c")
+    ax1.set_xlim(-0.8, len(plotted) - 0.2)
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -304,6 +286,7 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
         0.925,
         "Producto Interno Bruto (PIB) y contribución del PIB de los subsectores de telecomunicaciones y radiodifusión",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
@@ -315,19 +298,18 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
         color=COLOR_LINE,
         marker="o",
         markersize=5,
-        linewidth=1.2,
+        linewidth=1,
         label="Participación TyR",
     )
     fig.legend(
         handles=[legend_bar, legend_line],
         loc="lower center",
-        bbox_to_anchor=(0.5, 0.112),
+        bbox_to_anchor=(0.5, 0.08),
         ncol=2,
         fontsize=10,
         frameon=False,
         labelcolor=COLOR_TEXT,
-        handlelength=1.8,
-        columnspacing=5,
+        handlelength=2.5,
     )
 
     latest = reference_data.iloc[-1]
@@ -371,9 +353,9 @@ def _plot(reference_data: pd.DataFrame, output_path: Path, project_root: Path) -
         linespacing=1.35,
     )
 
-    fig.subplots_adjust(left=0.075, right=0.93, top=0.82, bottom=0.25)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

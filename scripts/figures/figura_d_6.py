@@ -1,14 +1,6 @@
 """Figura D.6: experiencias negativas en Internet por sexo (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys, textwrap
 from pathlib import Path
 import matplotlib
@@ -20,8 +12,8 @@ import numpy as np
 import pandas as pd
 
 FIGURE_ID, SOURCE_ID, PERIOD = "D.6", "ift_ecsi_2024_base", "2024"
-TEXT, BG = "#4B4B7D", "#FBFBF7"
-COLORS = {"Hombres": "#327BA0", "Mujeres": "#F48D7E", "Total": "#4F5082"}
+TEXT, BG = "#3c3c3b", "#F8F8FA"
+COLORS = {"Hombres": "#335a5c", "Mujeres": "#86adae", "Total": "#afafaf"}
 VARIABLES = [
     ("expp_mensnd", "Recibir mensajes no deseados"),
     ("expp_pubipi", "Publicación de información personal sin permiso"),
@@ -59,7 +51,7 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     plt.rcParams.update({"font.family": _font(root)})
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035, .06), .93, .86, boxstyle="round,pad=.012,rounding_size=.02", fc=BG, ec="none", transform=fig.transFigure, zorder=-2))
-    fig.text(.055, .88, "•", color="#F58F82", fontsize=20, va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none"))
     fig.text(.073, .88, "Figura D.6.", color=TEXT, fontsize=16, fontweight="bold", va="center")
     fig.text(.18, .88, "Experiencias negativas en Internet por sexo (2024)", color=TEXT, fontsize=16, va="center")
     ax = fig.add_axes([.075, .24, .86, .53]); ax.set_facecolor(BG)
@@ -69,17 +61,17 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
         bars = ax.bar(x + (offset-1)*width, values, width, color=COLORS[group], label=group, zorder=2)
         for bar, value in zip(bars, values):
             ax.text(bar.get_x()+bar.get_width()/2, value+1.1, f"{value:.1f}%", ha="center", color=TEXT,
-                    fontsize=9, fontweight="bold", bbox=dict(boxstyle="round,pad=.22", fc="white", ec="none"))
+                    fontsize=9, fontweight="bold", bbox=dict(boxstyle="round,pad=.22", fc="white", ec=COLORS[group], lw=.8))
     ax.set_ylim(0, 72); ax.set_yticks(range(0, 71, 10), [f"{x}%" for x in range(0, 71, 10)])
     ax.set_xticks(x, [textwrap.fill(label, 24) for _, label in VARIABLES], fontsize=9.5, color=TEXT)
     ax.tick_params(axis="x", length=0, pad=10); ax.tick_params(axis="y", length=0, colors=TEXT)
-    ax.grid(axis="y", color="#DADAE3", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
     ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(.5, 1.09), frameon=False, labelcolor=TEXT)
     fig.text(.055, .122, "Fuente:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.101, .122, "IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.", color=TEXT, fontsize=9)
     fig.text(.055, .094, "Nota:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.09, .094, "Porcentajes ponderados entre personas usuarias de Internet; las respuestas no son excluyentes.", color=TEXT, fontsize=9)
-    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
 
 
 def generate(context):

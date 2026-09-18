@@ -1,0 +1,1 @@
+En 2024, los hogares del decil 1 que disponen y gastan en servicios fijos destinaron en promedio $340 pesos mensuales, equivalentes al 5.8% de su ingreso. En el decil 10, el gasto fue de $691 pesos y representó el 0.9% del ingreso.
