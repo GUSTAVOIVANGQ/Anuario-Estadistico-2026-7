@@ -32,6 +32,7 @@ def doctor(project_root: Path) -> int:
     print("Caché global TODO.zip de BIT integrada y reutilizable: A.4, A.6, B.4 a B.25 y C.5 a C.16")
     print("Descarga masiva DENUE integrada y reutilizable: B.22")
     print("CSV individuales de espectro BIT integrados y reutilizables: C.1 y C.2")
+    print("CSV individuales de concesiones de radiodifusión BIT integrados y reutilizables: G.1")
     print("Caché integral ENIGH 2024 verificada y reutilizable: A.7 a A.10")
     print(
         "Caché ENDUTIH 2023 a 2025 verificada y reutilizable: "

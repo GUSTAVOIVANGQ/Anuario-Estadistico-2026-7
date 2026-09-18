@@ -20,6 +20,7 @@ src/anuario_estadistico_2026.egg-info/entry_points.txt
 src/anuario_estadistico_2026.egg-info/requires.txt
 src/anuario_estadistico_2026.egg-info/top_level.txt
 tests/test_bit_b4_b20.py
+tests/test_d1_source_inventory.py
 tests/test_figura_a_1.py
 tests/test_figura_a_2.py
 tests/test_figura_a_3.py
@@ -29,6 +30,7 @@ tests/test_figura_a_6.py
 tests/test_figura_b21.py
 tests/test_figura_b22.py
 tests/test_figura_f_2.py
+tests/test_figura_g1.py
 tests/test_figuras_a_7_a_10.py
 tests/test_figuras_b23_c2.py
 tests/test_figuras_b_d_endutih.py
@@ -43,3 +45,4 @@ tests/test_presentation_assembly.py
 tests/test_registry.py
 tests/test_sources.py
 tests/test_text_engine.py
+tests/test_ui_2024_source_credit.py

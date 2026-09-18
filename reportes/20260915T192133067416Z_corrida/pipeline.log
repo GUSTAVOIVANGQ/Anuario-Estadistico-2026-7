@@ -1,0 +1,143 @@
+2026-09-15 13:21:33,074 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-09-15 13:21:33,075 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\data\manual\A.5
+2026-09-15 13:21:33,075 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-09-15 13:21:33,075 | INFO | 
+2026-09-15 13:21:33,075 | INFO | Anuario Estadístico 2026 | corrida 20260915T192133067416Z_corrida
+2026-09-15 13:21:33,076 | INFO | Figuras seleccionadas: 105 de 105
+2026-09-15 13:21:33,076 | INFO | 
+2026-09-15 13:21:33,076 | INFO | [001/105] A.1 | LISTA
+2026-09-15 13:21:39,367 | INFO | [002/105] A.2 | LISTA
+2026-09-15 13:24:39,005 | INFO | [003/105] A.3 | LISTA
+2026-09-15 13:24:39,567 | INFO | [004/105] A.4 | LISTA
+2026-09-15 13:24:41,060 | INFO | [005/105] A.5 | LISTA
+2026-09-15 13:24:56,900 | INFO | [006/105] A.6 | LISTA
+2026-09-15 13:24:58,544 | INFO | [007/105] A.7 | LISTA
+2026-09-15 13:25:14,700 | INFO | [008/105] A.8 | LISTA
+2026-09-15 13:25:29,990 | INFO | [009/105] A.9 | LISTA
+2026-09-15 13:25:45,151 | INFO | [010/105] A.10 | LISTA
+2026-09-15 13:26:00,627 | INFO | [011/105] B.1 | LISTA
+2026-09-15 13:26:09,042 | INFO | [012/105] B.2 | LISTA
+2026-09-15 13:26:09,810 | INFO | [013/105] B.3 | LISTA
+2026-09-15 13:26:10,588 | INFO | [014/105] B.4 | LISTA
+2026-09-15 13:26:12,465 | INFO | [015/105] B.5 | LISTA
+2026-09-15 13:26:14,073 | INFO | [016/105] B.6 | LISTA
+2026-09-15 13:26:15,790 | INFO | [017/105] B.7 | LISTA
+2026-09-15 13:26:17,465 | INFO | [018/105] B.8 | LISTA
+2026-09-15 13:26:19,105 | INFO | [019/105] B.9 | LISTA
+2026-09-15 13:26:21,073 | INFO | [020/105] B.10 | LISTA
+2026-09-15 13:26:22,556 | INFO | [021/105] B.11 | LISTA
+2026-09-15 13:26:24,166 | INFO | [022/105] B.12 | LISTA
+2026-09-15 13:26:25,810 | INFO | [023/105] B.13 | LISTA
+2026-09-15 13:26:28,125 | INFO | [024/105] B.14 | LISTA
+2026-09-15 13:26:30,152 | INFO | [025/105] B.15 | LISTA
+2026-09-15 13:26:31,832 | INFO | [026/105] B.16 | LISTA
+2026-09-15 13:26:34,361 | INFO | [027/105] B.17 | LISTA
+2026-09-15 13:26:36,393 | INFO | [028/105] B.18 | LISTA
+2026-09-15 13:26:38,255 | INFO | [029/105] B.19 | LISTA
+2026-09-15 13:26:40,607 | INFO | [030/105] B.20 | LISTA
+2026-09-15 13:26:42,511 | INFO | [031/105] B.21 | LISTA
+2026-09-15 13:26:46,905 | INFO | [032/105] B.22 | LISTA
+2026-09-15 13:27:47,759 | INFO | [033/105] B.23 | LISTA
+2026-09-15 13:27:56,618 | INFO | [034/105] B.24 | LISTA
+2026-09-15 13:27:59,019 | INFO | [035/105] B.25 | LISTA
+2026-09-15 13:28:00,948 | INFO | [036/105] C.1 | LISTA
+2026-09-15 13:28:01,434 | INFO | [037/105] C.2 | LISTA
+2026-09-15 13:28:02,205 | INFO | [038/105] C.3 | LISTA
+2026-09-15 13:28:03,068 | INFO | [039/105] C.4 | LISTA
+2026-09-15 13:28:04,017 | INFO | [040/105] C.5 | LISTA
+2026-09-15 13:28:06,181 | INFO | [041/105] C.6 | LISTA
+2026-09-15 13:28:08,412 | INFO | [042/105] C.7 | LISTA
+2026-09-15 13:28:10,384 | INFO | [043/105] C.8 | LISTA
+2026-09-15 13:28:12,385 | INFO | [044/105] C.9 | LISTA
+2026-09-15 13:28:14,460 | INFO | [045/105] C.10 | LISTA
+2026-09-15 13:28:16,273 | INFO | [046/105] C.11 | LISTA
+2026-09-15 13:28:18,121 | INFO | [047/105] C.12 | LISTA
+2026-09-15 13:28:19,803 | INFO | [048/105] C.13 | LISTA
+2026-09-15 13:28:21,501 | INFO | [049/105] C.14 | LISTA
+2026-09-15 13:28:23,218 | INFO | [050/105] C.15 | LISTA
+2026-09-15 13:28:25,145 | INFO | [051/105] C.16 | LISTA
+2026-09-15 13:28:26,803 | INFO | [052/105] D.1 | LISTA
+2026-09-15 13:28:27,135 | ERROR |   Falló D.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\src\anuario2026\sources.py", line 34, in verify_raw_file
+    with zipfile.ZipFile(path) as archive:
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py", line 1371, in __init__
+    self._RealGetContents()
+  File "C:\Users\gustavo.garcia\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py", line 1438, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\src\anuario2026\pipeline.py", line 191, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\scripts\figures\figura_d_1.py", line 284, in generate
+    path_household = context.acquire_source(SOURCE_HIST_HOUSEHOLD)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\src\anuario2026\context.py", line 36, in acquire_source
+    path, metadata = self.sources.acquire(source_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\src\anuario2026\sources.py", line 152, in acquire
+    verification = verify_raw_file(path)
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\src\anuario2026\sources.py", line 39, in verify_raw_file
+    raise SourceError(f"Archivo ZIP/Office inválido: {path}") from exc
+anuario2026.sources.SourceError: Archivo ZIP/Office inválido: C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\data\raw\inegi_endutih_2023_tabulado_hnal110\objects\fed624b555d1816d475b\27_2023_hnal110.xlsx
+2026-09-15 13:28:27,151 | INFO | [053/105] D.2 | LISTA
+2026-09-15 13:28:28,384 | INFO | [054/105] D.3 | LISTA
+2026-09-15 13:28:29,086 | INFO | [055/105] D.4 | LISTA
+2026-09-15 13:28:29,951 | INFO | [056/105] D.5 | LISTA
+2026-09-15 13:28:30,387 | INFO | [057/105] D.6 | LISTA
+2026-09-15 13:28:30,833 | INFO | [058/105] D.7 | LISTA
+2026-09-15 13:28:31,391 | INFO | [059/105] D.8 | LISTA
+2026-09-15 13:28:31,802 | INFO | [060/105] D.9 | LISTA
+2026-09-15 13:28:32,350 | INFO | [061/105] D.10 | LISTA
+2026-09-15 13:28:32,854 | INFO | [062/105] D.11 | LISTA
+2026-09-15 13:28:33,400 | INFO | [063/105] E.1 | LISTA
+2026-09-15 13:29:50,647 | INFO | [064/105] E.2 | LISTA
+2026-09-15 13:29:56,688 | INFO | [065/105] E.3 | LISTA
+2026-09-15 13:30:13,133 | INFO | [066/105] E.4 | LISTA
+2026-09-15 13:30:25,601 | INFO | [067/105] E.5 | LISTA
+2026-09-15 13:30:36,335 | INFO | [068/105] E.6 | LISTA
+2026-09-15 13:30:41,423 | INFO | [069/105] E.7 | LISTA
+2026-09-15 13:30:54,072 | INFO | [070/105] E.8 | LISTA
+2026-09-15 13:31:05,826 | INFO | [071/105] E.9 | LISTA
+2026-09-15 13:31:07,340 | INFO | [072/105] F.1.1 | LISTA
+2026-09-15 13:31:15,949 | INFO | [073/105] F.1.2 | LISTA
+2026-09-15 13:31:18,016 | INFO | [074/105] F.1.3 | LISTA
+2026-09-15 13:31:29,753 | INFO | [075/105] F.1.4 | LISTA
+2026-09-15 13:31:31,783 | INFO | [076/105] F.2 | LISTA
+2026-09-15 13:31:48,996 | INFO | [077/105] F.3 | LISTA
+2026-09-15 13:31:51,348 | INFO | [078/105] F.4 | LISTA
+2026-09-15 13:31:53,921 | INFO | [079/105] F.5 | LISTA
+2026-09-15 13:31:55,941 | INFO | [080/105] F.6 | LISTA
+2026-09-15 13:31:58,121 | INFO | [081/105] F.7 | LISTA
+2026-09-15 13:32:00,387 | INFO | [082/105] F.8 | LISTA
+2026-09-15 13:32:02,534 | INFO | [083/105] F.9 | LISTA
+2026-09-15 13:32:05,055 | INFO | [084/105] F.10 | LISTA
+2026-09-15 13:32:22,349 | INFO | [085/105] F.11 | LISTA
+2026-09-15 13:32:39,531 | INFO | [086/105] F.12 | LISTA
+2026-09-15 13:32:45,318 | INFO | [087/105] F.13 | LISTA
+2026-09-15 13:32:51,843 | INFO | [088/105] F.14 | LISTA
+2026-09-15 13:32:54,242 | INFO | [089/105] F.15 | LISTA
+2026-09-15 13:33:10,570 | INFO | [090/105] F.16 | LISTA
+2026-09-15 13:33:24,593 | INFO | [091/105] G.1 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,595 | INFO | [092/105] H.1 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,598 | INFO | [093/105] H.2 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,601 | INFO | [094/105] H.3 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,603 | INFO | [095/105] H.4 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,607 | INFO | [096/105] H.5 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,609 | INFO | [097/105] H.6 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,610 | INFO | [098/105] H.7 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,611 | INFO | [099/105] H.8 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,612 | INFO | [100/105] H.9 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,614 | INFO | [101/105] H.10 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,616 | INFO | [102/105] H.11 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,618 | INFO | [103/105] H.12 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,621 | INFO | [104/105] H.13 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,624 | INFO | [105/105] H.14 | PENDIENTE_CODIGO
+2026-09-15 13:33:24,633 | INFO | 
+2026-09-15 13:33:24,633 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Downloads\Anuario-Estadistico-2026-7-main-corregido-1.2\Anuario-Estadistico-2026-7-main-corregido\reportes\20260915T192133067416Z_corrida

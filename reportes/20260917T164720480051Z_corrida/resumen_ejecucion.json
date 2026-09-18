@@ -1,0 +1,19 @@
+{
+  "run_id": "20260917T164720480051Z_corrida",
+  "dry_run": false,
+  "started_at": "2026-09-17T16:47:20+00:00",
+  "finished_at": "2026-09-17T16:47:23+00:00",
+  "statuses": [
+    {
+      "order": 52,
+      "figure_id": "D.1",
+      "status": "OK",
+      "message": "Gráfica generada y verificada.",
+      "script_path": "scripts\\figures\\figura_d_1.py",
+      "output_path": "build\\figures\\D\\figura_d_1.png",
+      "started_at": "2026-09-17T16:47:20+00:00",
+      "finished_at": "2026-09-17T16:47:23+00:00",
+      "duration_seconds": 2.654
+    }
+  ]
+}

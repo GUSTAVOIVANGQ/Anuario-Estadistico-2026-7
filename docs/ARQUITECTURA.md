@@ -28,9 +28,8 @@ reportes de corrida + PPTX
 - `templates/text/`: párrafos Jinja2 con cálculos automáticos.
 - `build/figures/`: gráficas generadas.
 - `build/slides/`: páginas completas opcionales, 1600 × 900.
-- `assets/presentation/`: plantilla PPTX automatizable y manifest de 105 figuras.
 - `reportes/<corrida>/`: evidencia para revisión y defensa.
-- `entrega/`: PowerPoint final y reporte JSON de ensamblaje.
+- `entrega/`: PowerPoint final.
 
 ## Principio de aislamiento
 
@@ -38,12 +37,3 @@ Una falla no borra resultados previos. Cada figura registra su estado y la
 corrida continúa por defecto. `--stop-on-error` permite detenerse en la primera
 falla cuando se investiga una figura concreta.
 
-
-## Ensamblaje de presentación
-
-`anuario2026.presentation` abre la plantilla completa del Anuario 2026 y usa el
-manifest para localizar cada marcador por nombre interno (`ANUARIO_FIGURE_*`).
-La figura se inserta encima de la tarjeta, centrada y sin deformación. Los
-marcadores de figuras que aún no existen se conservan, de modo que una entrega
-parcial sigue siendo auditable. El modo `assemble --strict` exige las 105
-figuras antes de producir la salida.

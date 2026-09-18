@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -34,11 +26,11 @@ TITLE = "Distribución de los Servicios Fijos con respecto del total de hogares 
 TOTAL_LABEL = "Total de hogares en México:"
 MAP_BACKGROUND = "Mapa_de_México_verde_background_202605131702.jpeg"
 
-C_TRES = "#317DA1"
-C_DOS = "#F2535A"
-C_UNO = "#A8DCE0"
-C_NINGUNO = "#F28D7D"
-C_TEXT = "#4B4B7D"
+C_TRES = "#132b2d"
+C_DOS = "#3b6667"
+C_UNO = "#64a0a1"
+C_NINGUNO = "#86adae"
+C_TEXT = "#3c3c3b"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -152,39 +144,30 @@ def _draw_panel(fig, left, bottom, width, height, categories, values, colors, ti
     background.axis("off")
     background.add_patch(FancyBboxPatch(
         (0, 0), 1, 1, boxstyle="round,pad=0,rounding_size=0.025",
-        linewidth=1.15, edgecolor="#8585A6", facecolor="#FBFBF7",
+        linewidth=1.15, edgecolor="#8585A6", facecolor="#F8F8FA",
         transform=background.transAxes, clip_on=False,
     ))
     # Punta de llamada del panel, como en la composición editorial del anuario.
     background.add_patch(plt.Polygon(
         [(0.0, 0.58), (-0.035, 0.52), (0.0, 0.46)], closed=True,
-        facecolor="#FBFBF7", edgecolor="#8585A6", linewidth=1.0,
+        facecolor="#F8F8FA", edgecolor="#8585A6", linewidth=1.0,
         transform=background.transAxes, clip_on=False, zorder=2,
     ))
-    background.plot([0.0, 0.0], [0.465, 0.575], color="#FBFBF7",
+    background.plot([0.0, 0.0], [0.465, 0.575], color="#F8F8FA",
                     linewidth=2.4, transform=background.transAxes, zorder=3)
     background.text(0.06, 0.91, title, fontsize=10, color=C_TEXT,
                     fontweight="bold", va="center", zorder=5)
 
-    # Barras editoriales del referente: cuerpo en forma de "D" y etiqueta
-    # blanca con punta, en lugar de columnas rectangulares convencionales.
+    # Barras rectangulares, como en la figura equivalente del anuario 2024.
     positions = np.linspace(0.22, 0.80, len(categories))
     baseline = 0.22
     maximum = max(max(values), 1)
     bar_width = 0.085
     for x, category, value, color in zip(positions, categories, values, colors):
         bar_height = max(0.025, 0.46 * value / maximum)
-        rounding = min(0.042, bar_height * 0.48)
-        background.add_patch(FancyBboxPatch(
-            (x - bar_width / 2, baseline), bar_width, bar_height,
-            boxstyle=f"round,pad=0,rounding_size={rounding}",
-            linewidth=0, facecolor=color, transform=background.transAxes, zorder=4,
-        ))
-        # Rectifica el costado izquierdo y conserva el remate semicircular del
-        # costado derecho, como las barras del diseño 2024.
         background.add_patch(plt.Rectangle(
-            (x - bar_width / 2, baseline), bar_width / 2, bar_height,
-            linewidth=0, facecolor=color, transform=background.transAxes, zorder=5,
+            (x - bar_width / 2, baseline), bar_width, bar_height,
+            linewidth=0, facecolor=color, transform=background.transAxes, zorder=4,
         ))
 
         chip_width, chip_height = 0.14, 0.115
@@ -221,11 +204,11 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.add_artist(FancyBboxPatch(
         (0.025, 0.105), 0.95, 0.81, transform=fig.transFigure,
         boxstyle="round,pad=0.008,rounding_size=0.018",
-        linewidth=0.8, edgecolor="#EFF0ED", facecolor="#FBFBF7", zorder=-10,
+        linewidth=0.8, edgecolor="#EFF0ED", facecolor="#F8F8FA", zorder=-10,
     ))
     fig.text(0.028, 0.952, "   ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.046, 0.952, "Figura B.1.", fontsize=13, fontweight="bold", color=C_TEXT, va="center")
     fig.text(0.126, 0.952, TITLE, fontsize=13, color=C_TEXT, va="center")
 
@@ -257,19 +240,19 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
         ax_pie.text(bx + bw / 2, by + bh * 0.25, label, ha="center", va="center",
                     fontsize=7, color=C_TEXT, linespacing=1.25, zorder=7)
     ax_pie.add_patch(FancyBboxPatch(
-        (-1.28, -0.25), 0.88, 0.40, boxstyle="round,pad=0,rounding_size=0.06",
+        (-1.28, -1.30), 0.88, 0.40, boxstyle="round,pad=0,rounding_size=0.06",
         linewidth=0.9, edgecolor="#B7B7C5", facecolor="white", zorder=5,
     ))
-    ax_pie.text(-0.84, 0.005, TOTAL_LABEL, ha="center", fontsize=7.5, color=C_TEXT, zorder=7)
-    ax_pie.text(-0.84, -0.15, f"{total_hogares:,}", ha="center", fontsize=13.5,
+    ax_pie.text(-0.84, -1.045, TOTAL_LABEL, ha="center", fontsize=7.5, color=C_TEXT, zorder=7)
+    ax_pie.text(-0.84, -1.20, f"{total_hogares:,}", ha="center", fontsize=13.5,
                 fontweight="bold", color=C_TEXT, zorder=7)
     ax_pie.set_xlim(-1.55, 1.55)
-    ax_pie.set_ylim(-1.18, 1.18)
+    ax_pie.set_ylim(-1.42, 1.18)
 
     _draw_panel(fig, 0.555, 0.515, 0.405, 0.335,
                 ["Solo\nTV Restringida", "Solo\nTelefonía", "Solo\nInternet"],
                 [one["Solo TV Restringida"], one["Solo Telefonía"], one["Solo Internet"]],
-                ["#74BEC7", "#8BCDD3", C_UNO], "Un servicio", C_UNO)
+                ["#64a0a1", "#86adae", C_UNO], "Un servicio", C_UNO)
     _draw_panel(fig, 0.555, 0.155, 0.405, 0.335,
                 ["Internet +\nTelefonía", "TV Restringida\n+ Internet", "TV Restringida\n+ Telefonía"],
                 [two["Internet + Telefonía"], two["TV Restringida + Internet"], two["TV Restringida + Telefonía"]],
@@ -283,7 +266,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.text(0.073, 0.033, "Los porcentajes pueden no sumar 100% debido al redondeo.",
              fontsize=8, color=C_TEXT)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

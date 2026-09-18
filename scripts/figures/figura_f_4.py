@@ -1,13 +1,5 @@
 """Figura F.4: distribución estatal de víctimas de ciberacoso por sexo."""
 from __future__ import annotations
-
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
 import sys, textwrap, zipfile
 from io import BytesIO
 from pathlib import Path
@@ -21,7 +13,7 @@ import pandas as pd
 
 FIGURE_ID="F.4"; CURRENT_SOURCE_ID="inegi_mociba_2025"; REFERENCE_SOURCE_ID="inegi_mociba_2024_reference"; PERIOD="2025"
 LANDING_PAGE="https://www.inegi.org.mx/programas/mociba/2025/"
-TEXT="#50517F"; MEN="#2F7C9F"; WOMEN="#F58F82"; BG="#FBFBF7"
+TEXT="#3c3c3b"; MEN="#335a5c"; WOMEN="#86adae"; BG="#F8F8FA"
 
 def _fonts(root:Path)->None:
     d=root/"assets"/"fonts"/"Noto_Sans"
@@ -77,15 +69,15 @@ def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     _fonts(root); fig,ax=plt.subplots(figsize=(16,9)); fig.patch.set_facecolor("white"); ax.set_facecolor(BG)
     x=np.arange(len(data)); width=.34; bh=ax.bar(x-width/2,data["Hombres"],width,color=MEN,label="Hombres"); bw=ax.bar(x+width/2,data["Mujeres"],width,color=WOMEN,label="Mujeres")
     for bars in (bh,bw):
-        for i,b in enumerate(bars): ax.text(b.get_x()+b.get_width()/2,b.get_height()+.22+(i%2)*.24,f"{b.get_height():.1f}%",ha="center",fontsize=5.5,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.18",fc="white",ec="none"))
+        for i,b in enumerate(bars): ax.text(b.get_x()+b.get_width()/2,b.get_height()+.22+(i%2)*.24,f"{b.get_height():.1f}%",ha="center",fontsize=5.5,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.18",fc="white",ec=b.get_facecolor(),lw=.6))
     labels=[str(v).title().replace(" De "," de ") for v in data.NOM_ENT]
     ax.set_xticks(x,labels,rotation=90,fontsize=6.1,color=TEXT); ax.set_ylim(0,max(data[["Hombres","Mujeres"]].max())*1.22); ax.set_yticks([]); ax.tick_params(axis="x",length=0,pad=7)
     for s in ax.spines.values(): s.set_visible(False)
     fig.legend(loc="upper center",bbox_to_anchor=(.5,.805),ncol=2,frameon=False,labelcolor=TEXT,fontsize=9)
-    fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1)); fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc=WOMEN,ec="none"))
+    fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1)); fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc="#4a7d75",ec="none"))
     fig.text(.066,.873,"Figura F.4.",fontsize=14,fontweight="bold",color=TEXT,va="center"); fig.text(.151,.873,"Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa y sexo",fontsize=14,color=TEXT,va="center")
     fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top"); fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top")
-    fig.subplots_adjust(left=.055,right=.958,top=.74,bottom=.25); output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
+    fig.subplots_adjust(left=.055,right=.958,top=.74,bottom=.25); output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
 
 def generate(context):
     print("  F.4 | 1/4 Adquisición o reutilización de MOCIBA 2024 y 2025"); ref_path=context.acquire_source(REFERENCE_SOURCE_ID); cur_path=context.acquire_source(CURRENT_SOURCE_ID)

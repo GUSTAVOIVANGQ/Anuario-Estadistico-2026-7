@@ -1,0 +1,106 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+1,A.1,OK,Gráfica generada y verificada.,scripts\figures\figura_a_1.py,build\figures\A\figura_a_1.png,2026-09-17T18:07:23+00:00,2026-09-17T18:07:29+00:00,5.659
+2,A.2,OK,Gráfica generada y verificada.,scripts\figures\figura_a_2.py,build\figures\A\figura_a_2.png,2026-09-17T18:07:29+00:00,2026-09-17T18:10:17+00:00,168.563
+3,A.3,OK,Gráfica generada y verificada.,scripts\figures\figura_a_3.py,build\figures\A\figura_a_3.png,2026-09-17T18:10:17+00:00,2026-09-17T18:10:18+00:00,0.546
+4,A.4,OK,Gráfica generada y verificada.,scripts\figures\figura_a_4.py,build\figures\A\figura_a_4.png,2026-09-17T18:10:18+00:00,2026-09-17T18:10:19+00:00,1.552
+5,A.5,OK,Gráfica generada y verificada.,scripts\figures\figura_a_5.py,build\figures\A\figura_a_5.png,2026-09-17T18:10:19+00:00,2026-09-17T18:10:35+00:00,15.39
+6,A.6,OK,Gráfica generada y verificada.,scripts\figures\figura_a_6.py,build\figures\A\figura_a_6.png,2026-09-17T18:10:35+00:00,2026-09-17T18:10:36+00:00,1.56
+7,A.7,OK,Gráfica generada y verificada.,scripts\figures\figura_a_7.py,build\figures\A\figura_a_7.png,2026-09-17T18:10:36+00:00,2026-09-17T18:10:52+00:00,15.331
+8,A.8,OK,Gráfica generada y verificada.,scripts\figures\figura_a_8.py,build\figures\A\figura_a_8.png,2026-09-17T18:10:52+00:00,2026-09-17T18:11:07+00:00,14.908
+9,A.9,OK,Gráfica generada y verificada.,scripts\figures\figura_a_9.py,build\figures\A\figura_a_9.png,2026-09-17T18:11:07+00:00,2026-09-17T18:11:22+00:00,14.921
+10,A.10,OK,Gráfica generada y verificada.,scripts\figures\figura_a_10.py,build\figures\A\figura_a_10.png,2026-09-17T18:11:22+00:00,2026-09-17T18:11:37+00:00,15.541
+11,B.1,OK,Gráfica generada y verificada.,scripts\figures\figura_b_1.py,build\figures\B\figura_b_1.png,2026-09-17T18:11:37+00:00,2026-09-17T18:11:38+00:00,0.908
+12,B.2,OK,Gráfica generada y verificada.,scripts\figures\figura_b_2.py,build\figures\B\figura_b_2.png,2026-09-17T18:11:38+00:00,2026-09-17T18:11:39+00:00,0.725
+13,B.3,OK,Gráfica generada y verificada.,scripts\figures\figura_b_3.py,build\figures\B\figura_b_3.png,2026-09-17T18:11:39+00:00,2026-09-17T18:11:40+00:00,0.871
+14,B.4,OK,Gráfica generada y verificada.,scripts\figures\figura_b_4.py,build\figures\B\figura_b_4.png,2026-09-17T18:11:40+00:00,2026-09-17T18:11:42+00:00,2.12
+15,B.5,OK,Gráfica generada y verificada.,scripts\figures\figura_b_5.py,build\figures\B\figura_b_5.png,2026-09-17T18:11:42+00:00,2026-09-17T18:11:43+00:00,1.569
+16,B.6,OK,Gráfica generada y verificada.,scripts\figures\figura_b_6.py,build\figures\B\figura_b_6.png,2026-09-17T18:11:43+00:00,2026-09-17T18:11:45+00:00,1.563
+17,B.7,OK,Gráfica generada y verificada.,scripts\figures\figura_b_7.py,build\figures\B\figura_b_7.png,2026-09-17T18:11:45+00:00,2026-09-17T18:11:47+00:00,1.657
+18,B.8,OK,Gráfica generada y verificada.,scripts\figures\figura_b_8.py,build\figures\B\figura_b_8.png,2026-09-17T18:11:47+00:00,2026-09-17T18:11:48+00:00,1.722
+19,B.9,OK,Gráfica generada y verificada.,scripts\figures\figura_b_9.py,build\figures\B\figura_b_9.png,2026-09-17T18:11:48+00:00,2026-09-17T18:11:50+00:00,2.029
+20,B.10,OK,Gráfica generada y verificada.,scripts\figures\figura_b_10.py,build\figures\B\figura_b_10.png,2026-09-17T18:11:50+00:00,2026-09-17T18:11:52+00:00,1.515
+21,B.11,OK,Gráfica generada y verificada.,scripts\figures\figura_b_11.py,build\figures\B\figura_b_11.png,2026-09-17T18:11:52+00:00,2026-09-17T18:11:53+00:00,1.644
+22,B.12,OK,Gráfica generada y verificada.,scripts\figures\figura_b_12.py,build\figures\B\figura_b_12.png,2026-09-17T18:11:53+00:00,2026-09-17T18:11:55+00:00,1.507
+23,B.13,OK,Gráfica generada y verificada.,scripts\figures\figura_b_13.py,build\figures\B\figura_b_13.png,2026-09-17T18:11:55+00:00,2026-09-17T18:11:57+00:00,2.33
+24,B.14,OK,Gráfica generada y verificada.,scripts\figures\figura_b_14.py,build\figures\B\figura_b_14.png,2026-09-17T18:11:57+00:00,2026-09-17T18:12:00+00:00,2.238
+25,B.15,OK,Gráfica generada y verificada.,scripts\figures\figura_b_15.py,build\figures\B\figura_b_15.png,2026-09-17T18:12:00+00:00,2026-09-17T18:12:01+00:00,1.786
+26,B.16,OK,Gráfica generada y verificada.,scripts\figures\figura_b_16.py,build\figures\B\figura_b_16.png,2026-09-17T18:12:01+00:00,2026-09-17T18:12:04+00:00,2.363
+27,B.17,OK,Gráfica generada y verificada.,scripts\figures\figura_b_17.py,build\figures\B\figura_b_17.png,2026-09-17T18:12:04+00:00,2026-09-17T18:12:05+00:00,1.733
+28,B.18,OK,Gráfica generada y verificada.,scripts\figures\figura_b_18.py,build\figures\B\figura_b_18.png,2026-09-17T18:12:05+00:00,2026-09-17T18:12:07+00:00,1.465
+29,B.19,OK,Gráfica generada y verificada.,scripts\figures\figura_b_19.py,build\figures\B\figura_b_19.png,2026-09-17T18:12:07+00:00,2026-09-17T18:12:09+00:00,1.98
+30,B.20,OK,Gráfica generada y verificada.,scripts\figures\figura_b_20.py,build\figures\B\figura_b_20.png,2026-09-17T18:12:09+00:00,2026-09-17T18:12:11+00:00,1.768
+31,B.21,OK,Gráfica generada y verificada.,scripts\figures\figura_b_21.py,build\figures\B\figura_b_21.png,2026-09-17T18:12:11+00:00,2026-09-17T18:12:14+00:00,3.176
+32,B.22,OK,Gráfica generada y verificada.,scripts\figures\figura_b_22.py,build\figures\B\figura_b_22.png,2026-09-17T18:12:14+00:00,2026-09-17T18:12:59+00:00,45.274
+33,B.23,OK,Gráfica generada y verificada.,scripts\figures\figura_b_23.py,build\figures\B\figura_b_23.png,2026-09-17T18:12:59+00:00,2026-09-17T18:13:06+00:00,6.474
+34,B.24,OK,Gráfica generada y verificada.,scripts\figures\figura_b_24.py,build\figures\B\figura_b_24.png,2026-09-17T18:13:06+00:00,2026-09-17T18:13:07+00:00,1.958
+35,B.25,OK,Gráfica generada y verificada.,scripts\figures\figura_b_25.py,build\figures\B\figura_b_25.png,2026-09-17T18:13:07+00:00,2026-09-17T18:13:09+00:00,1.513
+36,C.1,OK,Gráfica generada y verificada.,scripts\figures\figura_c_1.py,build\figures\C\figura_c_1.png,2026-09-17T18:13:09+00:00,2026-09-17T18:13:09+00:00,0.368
+37,C.2,OK,Gráfica generada y verificada.,scripts\figures\figura_c_2.py,build\figures\C\figura_c_2.png,2026-09-17T18:13:09+00:00,2026-09-17T18:13:10+00:00,0.645
+38,C.3,OK,Gráfica generada y verificada.,scripts\figures\figura_c_3.py,build\figures\C\figura_c_3.png,2026-09-17T18:13:10+00:00,2026-09-17T18:13:11+00:00,0.652
+39,C.4,OK,Gráfica generada y verificada.,scripts\figures\figura_c_4.py,build\figures\C\figura_c_4.png,2026-09-17T18:13:11+00:00,2026-09-17T18:13:11+00:00,0.713
+40,C.5,OK,Gráfica generada y verificada.,scripts\figures\figura_c_5.py,build\figures\C\figura_c_5.png,2026-09-17T18:13:11+00:00,2026-09-17T18:13:13+00:00,1.806
+41,C.6,OK,Gráfica generada y verificada.,scripts\figures\figura_c_6.py,build\figures\C\figura_c_6.png,2026-09-17T18:13:13+00:00,2026-09-17T18:13:15+00:00,1.653
+42,C.7,OK,Gráfica generada y verificada.,scripts\figures\figura_c_7.py,build\figures\C\figura_c_7.png,2026-09-17T18:13:15+00:00,2026-09-17T18:13:17+00:00,1.654
+43,C.8,OK,Gráfica generada y verificada.,scripts\figures\figura_c_8.py,build\figures\C\figura_c_8.png,2026-09-17T18:13:17+00:00,2026-09-17T18:13:18+00:00,1.697
+44,C.9,OK,Gráfica generada y verificada.,scripts\figures\figura_c_9.py,build\figures\C\figura_c_9.png,2026-09-17T18:13:18+00:00,2026-09-17T18:13:20+00:00,1.852
+45,C.10,OK,Gráfica generada y verificada.,scripts\figures\figura_c_10.py,build\figures\C\figura_c_10.png,2026-09-17T18:13:20+00:00,2026-09-17T18:13:22+00:00,1.518
+46,C.11,OK,Gráfica generada y verificada.,scripts\figures\figura_c_11.py,build\figures\C\figura_c_11.png,2026-09-17T18:13:22+00:00,2026-09-17T18:13:23+00:00,1.756
+47,C.12,OK,Gráfica generada y verificada.,scripts\figures\figura_c_12.py,build\figures\C\figura_c_12.png,2026-09-17T18:13:23+00:00,2026-09-17T18:13:25+00:00,1.733
+48,C.13,OK,Gráfica generada y verificada.,scripts\figures\figura_c_13.py,build\figures\C\figura_c_13.png,2026-09-17T18:13:25+00:00,2026-09-17T18:13:27+00:00,1.858
+49,C.14,OK,Gráfica generada y verificada.,scripts\figures\figura_c_14.py,build\figures\C\figura_c_14.png,2026-09-17T18:13:27+00:00,2026-09-17T18:13:29+00:00,1.783
+50,C.15,OK,Gráfica generada y verificada.,scripts\figures\figura_c_15.py,build\figures\C\figura_c_15.png,2026-09-17T18:13:29+00:00,2026-09-17T18:13:31+00:00,1.883
+51,C.16,OK,Gráfica generada y verificada.,scripts\figures\figura_c_16.py,build\figures\C\figura_c_16.png,2026-09-17T18:13:31+00:00,2026-09-17T18:13:32+00:00,1.566
+52,D.1,OK,Gráfica generada y verificada.,scripts\figures\figura_d_1.py,build\figures\D\figura_d_1.png,2026-09-17T18:13:32+00:00,2026-09-17T18:13:34+00:00,1.675
+53,D.2,OK,Gráfica generada y verificada.,scripts\figures\figura_d_2.py,build\figures\D\figura_d_2.png,2026-09-17T18:13:34+00:00,2026-09-17T18:13:35+00:00,1.325
+54,D.3,OK,Gráfica generada y verificada.,scripts\figures\figura_d_3.py,build\figures\D\figura_d_3.png,2026-09-17T18:13:35+00:00,2026-09-17T18:13:36+00:00,0.859
+55,D.4,OK,Gráfica generada y verificada.,scripts\figures\figura_d_4.py,build\figures\D\figura_d_4.png,2026-09-17T18:13:36+00:00,2026-09-17T18:13:37+00:00,0.875
+56,D.5,OK,Gráfica generada y verificada.,scripts\figures\figura_d_5.py,build\figures\D\figura_d_5.png,2026-09-17T18:13:37+00:00,2026-09-17T18:13:37+00:00,0.585
+57,D.6,OK,Gráfica generada y verificada.,scripts\figures\figura_d_6.py,build\figures\D\figura_d_6.png,2026-09-17T18:13:37+00:00,2026-09-17T18:13:38+00:00,0.551
+58,D.7,OK,Gráfica generada y verificada.,scripts\figures\figura_d_7.py,build\figures\D\figura_d_7.png,2026-09-17T18:13:38+00:00,2026-09-17T18:13:39+00:00,0.623
+59,D.8,OK,Gráfica generada y verificada.,scripts\figures\figura_d_8.py,build\figures\D\figura_d_8.png,2026-09-17T18:13:39+00:00,2026-09-17T18:13:39+00:00,0.452
+60,D.9,OK,Gráfica generada y verificada.,scripts\figures\figura_d_9.py,build\figures\D\figura_d_9.png,2026-09-17T18:13:39+00:00,2026-09-17T18:13:40+00:00,0.651
+61,D.10,OK,Gráfica generada y verificada.,scripts\figures\figura_d_10.py,build\figures\D\figura_d_10.png,2026-09-17T18:13:40+00:00,2026-09-17T18:13:40+00:00,0.679
+62,D.11,OK,Gráfica generada y verificada.,scripts\figures\figura_d_11.py,build\figures\D\figura_d_11.png,2026-09-17T18:13:40+00:00,2026-09-17T18:13:41+00:00,0.537
+63,E.1,OK,Gráfica generada y verificada.,scripts\figures\figura_e_1.py,build\figures\E\figura_e_1.png,2026-09-17T18:13:41+00:00,2026-09-17T18:14:33+00:00,52.423
+64,E.2,OK,Gráfica generada y verificada.,scripts\figures\figura_e_2.py,build\figures\E\figura_e_2.png,2026-09-17T18:14:33+00:00,2026-09-17T18:14:34+00:00,0.645
+65,E.3,OK,Gráfica generada y verificada.,scripts\figures\figura_e_3.py,build\figures\E\figura_e_3.png,2026-09-17T18:14:34+00:00,2026-09-17T18:14:45+00:00,10.63
+66,E.4,OK,Gráfica generada y verificada.,scripts\figures\figura_e_4.py,build\figures\E\figura_e_4.png,2026-09-17T18:14:45+00:00,2026-09-17T18:14:53+00:00,8.722
+67,E.5,OK,Gráfica generada y verificada.,scripts\figures\figura_e_5.py,build\figures\E\figura_e_5.png,2026-09-17T18:14:53+00:00,2026-09-17T18:15:02+00:00,8.998
+68,E.6,OK,Gráfica generada y verificada.,scripts\figures\figura_e_6.py,build\figures\E\figura_e_6.png,2026-09-17T18:15:02+00:00,2026-09-17T18:15:07+00:00,4.92
+69,E.7,OK,Gráfica generada y verificada.,scripts\figures\figura_e_7.py,build\figures\E\figura_e_7.png,2026-09-17T18:15:07+00:00,2026-09-17T18:15:17+00:00,9.927
+70,E.8,OK,Gráfica generada y verificada.,scripts\figures\figura_e_8.py,build\figures\E\figura_e_8.png,2026-09-17T18:15:17+00:00,2026-09-17T18:15:26+00:00,9.05
+71,E.9,OK,Gráfica generada y verificada.,scripts\figures\figura_e_9.py,build\figures\E\figura_e_9.png,2026-09-17T18:15:26+00:00,2026-09-17T18:15:27+00:00,1.182
+72,F.1.1,OK,Gráfica generada y verificada.,scripts\figures\figura_f_1_1.py,build\figures\F\figura_f_1_1.png,2026-09-17T18:15:27+00:00,2026-09-17T18:15:29+00:00,1.01
+73,F.1.2,OK,Gráfica generada y verificada.,scripts\figures\figura_f_1_2.py,build\figures\F\figura_f_1_2.png,2026-09-17T18:15:29+00:00,2026-09-17T18:15:30+00:00,1.635
+74,F.1.3,OK,Gráfica generada y verificada.,scripts\figures\figura_f_1_3.py,build\figures\F\figura_f_1_3.png,2026-09-17T18:15:30+00:00,2026-09-17T18:15:32+00:00,1.554
+75,F.1.4,OK,Gráfica generada y verificada.,scripts\figures\figura_f_1_4.py,build\figures\F\figura_f_1_4.png,2026-09-17T18:15:32+00:00,2026-09-17T18:15:33+00:00,1.616
+76,F.2,OK,Gráfica generada y verificada.,scripts\figures\figura_f_2.py,build\figures\F\figura_f_2.png,2026-09-17T18:15:33+00:00,2026-09-17T18:15:47+00:00,13.654
+77,F.3,OK,Gráfica generada y verificada.,scripts\figures\figura_f_3.py,build\figures\F\figura_f_3.png,2026-09-17T18:15:47+00:00,2026-09-17T18:15:49+00:00,1.846
+78,F.4,OK,Gráfica generada y verificada.,scripts\figures\figura_f_4.py,build\figures\F\figura_f_4.png,2026-09-17T18:15:49+00:00,2026-09-17T18:15:51+00:00,2.076
+79,F.5,OK,Gráfica generada y verificada.,scripts\figures\figura_f_5.py,build\figures\F\figura_f_5.png,2026-09-17T18:15:51+00:00,2026-09-17T18:15:53+00:00,1.712
+80,F.6,OK,Gráfica generada y verificada.,scripts\figures\figura_f_6.py,build\figures\F\figura_f_6.png,2026-09-17T18:15:53+00:00,2026-09-17T18:15:54+00:00,1.772
+81,F.7,OK,Gráfica generada y verificada.,scripts\figures\figura_f_7.py,build\figures\F\figura_f_7.png,2026-09-17T18:15:54+00:00,2026-09-17T18:15:56+00:00,1.925
+82,F.8,OK,Gráfica generada y verificada.,scripts\figures\figura_f_8.py,build\figures\F\figura_f_8.png,2026-09-17T18:15:56+00:00,2026-09-17T18:15:58+00:00,1.745
+83,F.9,OK,Gráfica generada y verificada.,scripts\figures\figura_f_9.py,build\figures\F\figura_f_9.png,2026-09-17T18:15:58+00:00,2026-09-17T18:16:00+00:00,2.003
+84,F.10,OK,Gráfica generada y verificada.,scripts\figures\figura_f_10.py,build\figures\F\figura_f_10.png,2026-09-17T18:16:00+00:00,2026-09-17T18:16:13+00:00,12.508
+85,F.11,OK,Gráfica generada y verificada.,scripts\figures\figura_f_11.py,build\figures\F\figura_f_11.png,2026-09-17T18:16:13+00:00,2026-09-17T18:16:25+00:00,12.161
+86,F.12,OK,Gráfica generada y verificada.,scripts\figures\figura_f_12.py,build\figures\F\figura_f_12.png,2026-09-17T18:16:25+00:00,2026-09-17T18:16:29+00:00,4.574
+87,F.13,OK,Gráfica generada y verificada.,scripts\figures\figura_f_13.py,build\figures\F\figura_f_13.png,2026-09-17T18:16:29+00:00,2026-09-17T18:16:34+00:00,5.105
+88,F.14,OK,Gráfica generada y verificada.,scripts\figures\figura_f_14.py,build\figures\F\figura_f_14.png,2026-09-17T18:16:34+00:00,2026-09-17T18:16:35+00:00,0.456
+89,F.15,OK,Gráfica generada y verificada.,scripts\figures\figura_f_15.py,build\figures\F\figura_f_15.png,2026-09-17T18:16:35+00:00,2026-09-17T18:16:48+00:00,13.091
+90,F.16,OK,Gráfica generada y verificada.,scripts\figures\figura_f_16.py,build\figures\F\figura_f_16.png,2026-09-17T18:16:48+00:00,2026-09-17T18:17:00+00:00,11.949
+91,G.1,OK,Gráfica generada y verificada.,scripts\figures\figura_g_1.py,build\figures\G\figura_g_1.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.519
+92,H.1,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_1.py,build\figures\H\figura_h_1.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+93,H.2,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_2.py,build\figures\H\figura_h_2.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+94,H.3,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_3.py,build\figures\H\figura_h_3.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+95,H.4,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_4.py,build\figures\H\figura_h_4.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+96,H.5,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_5.py,build\figures\H\figura_h_5.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.001
+97,H.6,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_6.py,build\figures\H\figura_h_6.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+98,H.7,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_7.py,build\figures\H\figura_h_7.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+99,H.8,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_8.py,build\figures\H\figura_h_8.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.001
+100,H.9,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_9.py,build\figures\H\figura_h_9.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+101,H.10,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_10.py,build\figures\H\figura_h_10.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+102,H.11,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_11.py,build\figures\H\figura_h_11.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+103,H.12,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_12.py,build\figures\H\figura_h_12.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+104,H.13,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_13.py,build\figures\H\figura_h_13.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0
+105,H.14,PENDIENTE_CODIGO,Falta actualizar el script de la figura.,scripts\figures\figura_h_14.py,build\figures\H\figura_h_14.png,2026-09-17T18:17:00+00:00,2026-09-17T18:17:00+00:00,0.0

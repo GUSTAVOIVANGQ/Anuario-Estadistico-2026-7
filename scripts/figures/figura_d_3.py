@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -33,9 +25,9 @@ SOURCE_URL = "https://www.inegi.org.mx/programas/endutih/2025/"
 GROUPS = ["6 a 11", "12 a 17", "18 a 24", "25 a 34", "35 a 44", "45 a 54", "55 a 64", "65 o más"]
 BINS = [5, 11, 17, 24, 34, 44, 54, 64, 999]
 DISPLAY_ORDER = ["18 a 24", "25 a 34", "12 a 17", "35 a 44", "45 a 54", "55 a 64", "65 o más", "6 a 11"]
-COLORS = ["#F2535A", "#F28D7D", "#4B4B83", "#317DA1", "#A8DCE0", "#646CB0", "#8490C7", "#4CA8CF"]
-COLOR_TEXT = "#4B4B7D"
-COLOR_BACKGROUND = "#FBFBF7"
+COLORS = ["#86adae", "#64a0a1", "#5c9596", "#4c7d7e", "#3b6667", "#335a5c", "#234244", "#132b2d"]
+COLOR_TEXT = "#3c3c3b"
+COLOR_BACKGROUND = "#F8F8FA"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -109,7 +101,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     ax.yaxis.set_major_formatter(mticker.FormatStrFormatter("%.0f"))
     ax.tick_params(axis="y", labelsize=9, colors=COLOR_TEXT, length=0)
     ax.tick_params(axis="x", length=0)
-    ax.grid(axis="y", color="#DADAE3", linewidth=0.7, zorder=0)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=0.7, zorder=0)
     for spine in ax.spines.values():
         spine.set_visible(False)
     handles = [mpatches.Patch(facecolor=color, edgecolor="none", label=group)
@@ -119,7 +111,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
                handlelength=1.5, columnspacing=1.8)
     fig.text(0.055, 0.93, "   ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.073, 0.93, "Figura D.3.", fontsize=14, fontweight="bold", color=COLOR_TEXT, va="center")
     fig.text(0.151, 0.93, "Horas promedio de uso de internet por grupos de edad",
              fontsize=14, color=COLOR_TEXT, va="center")
@@ -129,7 +121,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
              fontsize=8, color=COLOR_TEXT)
     fig.subplots_adjust(left=0.07, right=0.96, top=0.83, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

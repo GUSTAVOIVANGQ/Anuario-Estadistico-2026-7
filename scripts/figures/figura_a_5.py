@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import math
 import sys
 import textwrap
@@ -214,7 +206,7 @@ def _input_paths(manual_files: tuple[Path, ...], directory: Path) -> tuple[Path,
 
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     _configure_fonts(project_root)
-    plotted = data.sort_values("anio", ascending=False).reset_index(drop=True)
+    plotted = data.sort_values("anio").reset_index(drop=True)
     years = plotted["anio"].to_numpy(dtype=int)
     mexico = plotted["ied_mexico_millones_usd"].to_numpy(dtype=float)
     telecom = plotted["ied_telecom_millones_usd"].to_numpy(dtype=float)
@@ -223,47 +215,48 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.patch.set_facecolor("white")
     ax.set_facecolor(COLOR_BACKGROUND)
     y = np.arange(len(plotted), dtype=float)
-    offset = 0.16
+    bar_height = 0.38
+    offset = bar_height / 2
 
-    for position, value in zip(y - offset, mexico, strict=True):
-        ax.plot(
-            [0, value],
-            [position, position],
-            color=COLOR_MEXICO,
-            linewidth=9.2,
-            solid_capstyle="butt",
-            zorder=3,
-        )
-    for position, value in zip(y + offset, telecom, strict=True):
-        ax.plot(
-            [0, value],
-            [position, position],
-            color=COLOR_TELECOM,
-            linewidth=9.2,
-            solid_capstyle="butt",
-            zorder=4,
-        )
+    ax.barh(
+        y - offset,
+        mexico,
+        height=bar_height,
+        color=COLOR_MEXICO,
+        edgecolor="none",
+        label="Inversión Extranjera Directa de México",
+        zorder=2,
+    )
+    ax.barh(
+        y + offset,
+        telecom,
+        height=bar_height,
+        color=COLOR_TELECOM,
+        edgecolor="none",
+        label="Inversión Extranjera Directa en Telecomunicaciones",
+        zorder=2,
+    )
 
     for index, (total_value, telecom_value) in enumerate(
         zip(mexico, telecom, strict=True)
     ):
         ax.text(
-            total_value + 650,
+            total_value + 300,
             y[index] - offset,
             f"{total_value:,.0f}",
             va="center",
             ha="left",
-            fontsize=8.6,
+            fontsize=9,
             color=COLOR_TEXT,
         )
-        telecom_x = telecom_value + 650 if telecom_value >= 0 else telecom_value - 650
+        telecom_x = telecom_value + 300 if telecom_value >= 0 else telecom_value - 300
         ax.text(
             telecom_x,
             y[index] + offset,
             f"{telecom_value:,.2f}",
             va="center",
             ha="left" if telecom_value >= 0 else "right",
-            fontsize=8.6,
+            fontsize=9,
             color=COLOR_TEXT,
         )
 
@@ -274,17 +267,19 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     ax.set_xlim(x_min, x_max)
     ax.set_ylim(-0.72, len(plotted) - 0.28)
     ax.invert_yaxis()
-    ax.set_yticks(y, years.astype(str), fontsize=8.8, color=COLOR_TEXT)
-    ax.tick_params(axis="y", length=0, pad=10)
-    ax.tick_params(axis="x", labelsize=8.6, colors=COLOR_TEXT, length=0, pad=7)
+    ax.set_yticks(y, years.astype(str), fontsize=9, color=COLOR_TEXT)
+    ax.tick_params(axis="y", pad=10)
+    ax.tick_params(axis="x", labelsize=9, colors=COLOR_TEXT, pad=7)
     ax.xaxis.set_major_locator(mticker.MultipleLocator(10000))
     ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda value, _: f"{int(value):,}"))
-    ax.set_xlabel("Millones de dólares", fontsize=10, color=COLOR_TEXT, labelpad=12)
-    ax.set_ylabel("AÑO", fontsize=9.5, color=COLOR_TEXT, labelpad=16)
-    ax.grid(axis="x", color="#DADAE3", linewidth=0.7, zorder=0)
-    ax.axvline(0, color="#B3B3C2", linewidth=0.8, zorder=1)
-    for spine in ax.spines.values():
-        spine.set_visible(False)
+    ax.set_xlabel("Millones de dólares", fontsize=11, fontweight="medium", color=COLOR_TEXT, labelpad=15)
+    ax.set_ylabel("Año", fontsize=11, fontweight="medium", color=COLOR_TEXT, labelpad=15)
+    ax.grid(axis="x", color="#d1d1d1", linewidth=1, zorder=0)
+    ax.axvline(0, color="#999999", linewidth=0.8, zorder=1)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_color("#7c7c7c")
+    ax.spines["left"].set_color("#7c7c7c")
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -311,35 +306,29 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.927,
         "Inversión Extranjera Directa (IED) en telecomunicaciones",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
 
-    legend_handles = [
-        mlines.Line2D([], [], color=COLOR_TELECOM, linewidth=8, solid_capstyle="butt"),
-        mlines.Line2D([], [], color=COLOR_MEXICO, linewidth=8, solid_capstyle="butt"),
-    ]
+    legend_handles, legend_labels = ax.get_legend_handles_labels()
     fig.legend(
         legend_handles,
-        [
-            "Inversión Extranjera Directa en Telecomunicaciones",
-            "Inversión Extranjera Directa de México",
-        ],
+        legend_labels,
         loc="lower center",
-        bbox_to_anchor=(0.5, 0.115),
+        bbox_to_anchor=(0.5, 0.08),
         ncol=2,
-        fontsize=8.8,
+        fontsize=10,
         frameon=False,
         labelcolor=COLOR_TEXT,
-        handlelength=2.2,
-        columnspacing=2.5,
+        handlelength=2.5,
     )
 
     source_body = (
         "CRT con datos de la Secretaría de Economía, actualizados al segundo trimestre "
         f"de 2026. Datos disponibles en: {SOURCE_PAGE}."
     )
-    latest = plotted.iloc[0]
+    latest = plotted.iloc[-1]
     latest_year = int(latest["anio"])
     latest_period = str(latest["periodo"])
     notes_body = (
@@ -367,9 +356,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         va="top",
     )
 
-    fig.subplots_adjust(left=0.09, right=0.955, top=0.85, bottom=0.23)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

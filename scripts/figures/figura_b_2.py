@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -33,11 +25,11 @@ DOMAIN = "R"
 TITLE = "Distribución de los Servicios Fijos con respecto del total de hogares en las zonas rurales"
 TOTAL_LABEL = "Total de hogares en zonas\nrurales en México:"
 
-C_TRES = "#317DA1"
-C_DOS = "#F2535A"
-C_UNO = "#A8DCE0"
-C_NINGUNO = "#F28D7D"
-C_TEXT = "#4B4B7D"
+C_TRES = "#132b2d"
+C_DOS = "#3b6667"
+C_UNO = "#64a0a1"
+C_NINGUNO = "#86adae"
+C_TEXT = "#3c3c3b"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -151,7 +143,7 @@ def _draw_panel(fig, left, bottom, width, height, categories, values, colors, ti
     background.axis("off")
     background.add_patch(FancyBboxPatch(
         (0, 0), 1, 1, boxstyle="round,pad=0,rounding_size=0.025",
-        linewidth=1, edgecolor="#C3C3D0", facecolor="#FBFBF7",
+        linewidth=1, edgecolor="#C3C3D0", facecolor="#F8F8FA",
         transform=background.transAxes, clip_on=False,
     ))
     fig.text(left + width * 0.06, bottom + height * 0.91, title,
@@ -184,7 +176,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.text(0.028, 0.952, "   ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.046, 0.952, "Figura B.2.", fontsize=13, fontweight="bold", color=C_TEXT, va="center")
     fig.text(0.126, 0.952, TITLE, fontsize=13, color=C_TEXT, va="center")
 
@@ -221,7 +213,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     _draw_panel(fig, 0.527, 0.510, 0.448, 0.388,
                 ["Solo\nTV Restringida", "Solo\nTelefonía", "Solo\nInternet"],
                 [one["Solo TV Restringida"], one["Solo Telefonía"], one["Solo Internet"]],
-                ["#74BEC7", "#8BCDD3", C_UNO], "Un servicio", C_UNO)
+                ["#64a0a1", "#86adae", C_UNO], "Un servicio", C_UNO)
     _draw_panel(fig, 0.527, 0.103, 0.448, 0.388,
                 ["Internet +\nTelefonía", "TV Restringida\n+ Internet", "TV Restringida\n+ Telefonía"],
                 [two["Internet + Telefonía"], two["TV Restringida + Internet"], two["TV Restringida + Telefonía"]],
@@ -235,7 +227,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.text(0.073, 0.033, "Los porcentajes pueden no sumar 100% debido al redondeo.",
              fontsize=8, color=C_TEXT)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

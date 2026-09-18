@@ -6,14 +6,7 @@ microdatos, calcula los porcentajes con FAC_PER y genera el PNG.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
+import math
 import sys
 import zipfile
 from decimal import Decimal, ROUND_HALF_UP
@@ -35,13 +28,13 @@ SOURCE_YEAR = 2025
 SOURCE_URL = "https://www.inegi.org.mx/programas/endutih/2025/"
 REQUIRED_COLUMNS = ["EDAD", "P8_1", "P8_4_2", "FAC_PER", "DOMINIO"]
 
-COLOR_TEXT = "#4B4B83"
-COLOR_PANEL = "#FCFCF8"
-COLOR_BORDER = "#8A8AAF"
-COLOR_URBAN_USE = "#F58F82"
-COLOR_URBAN_NO_USE = "#F2535A"
-COLOR_RURAL_USE = "#ADDCDF"
-COLOR_RURAL_NO_USE = "#317DA3"
+COLOR_TEXT = "#3c3c3b"
+COLOR_PANEL = "#F8F9FA"
+COLOR_BORDER = "#b5b7c8"
+COLOR_URBAN_USE = "#86adae"
+COLOR_URBAN_NO_USE = "#3b6667"
+COLOR_RURAL_USE = "#86adae"
+COLOR_RURAL_NO_USE = "#3b6667"
 COLOR_CHIP_BORDER = "#E6E6EA"
 
 
@@ -153,7 +146,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(
         0.02, 0.93, " ", fontsize=2, va="center",
         bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                  facecolor="#F58F82", edgecolor="none"),
+                  facecolor="#4a7d75", edgecolor="none"),
     )
     fig.text(0.036, 0.93, "Figura C.4.", fontsize=16, fontweight="bold",
              color=COLOR_TEXT, va="center")
@@ -184,16 +177,25 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         axis.axis("off")
         axis.set_facecolor("none")
 
-    urban_ax.pie(
+    urban_wedges, _ = urban_ax.pie(
         [urban_no_use, urban_use], colors=[COLOR_URBAN_NO_USE, COLOR_URBAN_USE],
         startangle=90, counterclock=True, explode=(0, 0.025),
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
-    rural_ax.pie(
+    rural_wedges, _ = rural_ax.pie(
         [rural_no_use, rural_use], colors=[COLOR_RURAL_NO_USE, COLOR_RURAL_USE],
         startangle=90, counterclock=True, explode=(0, 0.025),
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
+    for axis, wedges in ((urban_ax, urban_wedges), (rural_ax, rural_wedges)):
+        for wedge, target in zip(wedges, ((0.35, 1.12), (0.92, -0.86))):
+            angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
+            axis.annotate(
+                "", xy=(0.78 * math.cos(angle), 0.78 * math.sin(angle)),
+                xytext=target,
+                arrowprops=dict(arrowstyle="-", color="#8c8c98", linewidth=1.1,
+                                connectionstyle="arc3,rad=0"),
+            )
 
     chip = dict(boxstyle="round,pad=0.5", facecolor="white",
                 edgecolor=COLOR_CHIP_BORDER, linewidth=1.2)
@@ -216,7 +218,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

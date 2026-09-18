@@ -1,14 +1,6 @@
 """Figura C.7: teledensidad de telefonía móvil por entidad federativa."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import json
 import math
 import sys
@@ -29,8 +21,8 @@ SOURCE_ID = "crt_bit_todo_2025_q2"
 MAP_SOURCE_ID = "mexico_geojson_legacy"
 TABLE = "TD_TELEDENSIDAD_TELMOVIL_ITE_VA.csv"
 NATIONAL_TABLE = "TD_TELEDENSIDAD_H_TMOVIL_ITE_VA.csv"
-TEXT = "#4B4B83"
-COLORS = ["#ADDCDF", "#6CBFC4", "#317DA3", "#F58F82", "#F2535A"]
+TEXT = "#3c3c3b"
+COLORS = ["#afafaf", "#737f7c", "#63918b", "#2d4f4b", "#012f2a"]
 
 
 def _member(archive: zipfile.ZipFile, table: str) -> str:
@@ -117,8 +109,8 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     shape_list, facecolors = _shapes(map_path, values, bounds)
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.025, .045), .95, .89, boxstyle="round,pad=.01,rounding_size=.018",
-                                          lw=0, fc="#FBFBF7", transform=fig.transFigure, zorder=-1))
-    fig.text(.045, .9, " ", bbox=dict(boxstyle="round,pad=1.5", fc="#F58F82", ec="none"))
+                                          lw=0, fc="#F8F8FA", transform=fig.transFigure, zorder=-1))
+    fig.text(.045, .9, " ", bbox=dict(boxstyle="round,pad=1.5", fc="#4a7d75", ec="none"))
     fig.text(.061, .9, "Figura C.7.", fontsize=14, fontweight="bold", color=TEXT, va="center")
     fig.text(.145, .9, f"Líneas del servicio móvil de telefonía por cada 100 habitantes ({meta['anio']})",
              fontsize=14, color=TEXT, va="center")
@@ -141,7 +133,7 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     fig.text(.091, .07, f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.", fontsize=8, color=TEXT)
     fig.text(.05, .05, "Nota:", fontsize=8, fontweight="bold", color=TEXT)
     fig.text(.082, .05, "El indicador nacional proviene de la serie nacional publicada por el CRT.", fontsize=8, color=TEXT)
-    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
 
 
 def generate(context):

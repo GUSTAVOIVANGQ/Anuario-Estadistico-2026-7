@@ -16,6 +16,7 @@ from .presentation import assemble_from_template
 from .registry import load_figures, load_project_config
 from .reports import RunReports, utc_now
 from .sources import SourceCatalog
+from .ui_2024 import install_source_credit_normalizer
 
 
 LOGGER = logging.getLogger("anuario2026")
@@ -145,6 +146,7 @@ def run_pipeline(
     stop_on_error: bool = False,
     assemble: bool = False,
 ) -> Path:
+    install_source_credit_normalizer()
     config = load_project_config(project_root)
     all_figures = load_figures(project_root, config)
     figures = select_figures(all_figures, only, start_from, until)

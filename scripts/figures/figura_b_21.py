@@ -7,14 +7,6 @@ registra la auditoría y genera la gráfica PNG.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import json
 import sys
 import unicodedata
@@ -54,9 +46,9 @@ ENTITIES = {
     30: "Veracruz de Ignacio de la Llave", 31: "Yucatán", 32: "Zacatecas",
 }
 
-COLORS = ["#ADDCDF", "#317DA3", "#4B4B83", "#F58F82", "#F2535A"]
+COLORS = ["#afafaf", "#737f7c", "#63918b", "#2d4f4b", "#012f2a"]
 LABELS = ["Menos de 55", "56-65", "66-75", "76-85", "Más de 85"]
-COLOR_TEXT = "#4B4B83"
+COLOR_TEXT = "#3c3c3b"
 
 def _configure_fonts(project_root: Path) -> None:
     font_dir = project_root / "assets" / "fonts" / "Noto_Sans"
@@ -236,22 +228,22 @@ def _draw_home_tv(fig: plt.Figure) -> None:
     icon.set_xlim(0, 10)
     icon.set_ylim(0, 7)
     icon.axis("off")
-    icon.add_patch(patches.Rectangle((0.5, 0.5), 7.9, 5.2, facecolor="#ADDCDF",
+    icon.add_patch(patches.Rectangle((0.5, 0.5), 7.9, 5.2, facecolor="#86adae",
                                      edgecolor=COLOR_TEXT, linewidth=3))
     icon.add_patch(patches.Rectangle((1.0, 0.65), 6.9, 0.18, facecolor=COLOR_TEXT,
                                      edgecolor="none"))
-    icon.add_patch(patches.Rectangle((2.6, 0.8), 3.8, 3.8, facecolor="#F58F82",
+    icon.add_patch(patches.Rectangle((2.6, 0.8), 3.8, 3.8, facecolor="#4a7d75",
                                      edgecolor="none"))
     icon.add_patch(patches.Polygon([[2.15, 4.55], [4.5, 6.7], [6.85, 4.55]],
-                                   facecolor="#F58F82", edgecolor=COLOR_TEXT, linewidth=3))
-    icon.add_patch(patches.Rectangle((3.7, 0.8), 1.6, 2.25, facecolor="#317DA3",
+                                   facecolor="#4a7d75", edgecolor=COLOR_TEXT, linewidth=3))
+    icon.add_patch(patches.Rectangle((3.7, 0.8), 1.6, 2.25, facecolor="#335a5c",
                                      edgecolor=COLOR_TEXT, linewidth=2))
     for x in (2.9, 5.35):
         icon.add_patch(patches.Rectangle((x, 3.1), 0.85, 0.85, facecolor="white",
-                                         edgecolor="#ADDCDF", linewidth=2))
+                                         edgecolor="#86adae", linewidth=2))
     icon.add_patch(patches.Rectangle((8.9, 0.3), 0.85, 3.7, facecolor=COLOR_TEXT,
                                      edgecolor="none"))
-    for y, color in ((3.6, "#F2535A"), (3.15, "#317DA3"), (2.7, "#317DA3")):
+    for y, color in ((3.6, "#3b6667"), (3.15, "#335a5c"), (2.7, "#335a5c")):
         icon.add_patch(patches.Circle((9.32, y), 0.12, facecolor=color, edgecolor="none"))
     icon.plot([0.9, 0.9], [0.15, 0.5], color=COLOR_TEXT, linewidth=3)
     icon.plot([8.0, 8.0], [0.15, 0.5], color=COLOR_TEXT, linewidth=3)
@@ -281,7 +273,7 @@ def _plot(
 
     fig.text(0.055, 0.93, " ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.072, 0.93, "Figura B.21.", fontsize=14, fontweight="bold",
              color=COLOR_TEXT, va="center")
     fig.text(
@@ -344,7 +336,7 @@ def _plot(
     )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

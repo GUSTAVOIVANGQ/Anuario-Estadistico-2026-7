@@ -10,6 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import pandas as pd
 
 FIGURE_ID = "F.3"
@@ -17,7 +18,7 @@ CURRENT_SOURCE_ID = "inegi_mociba_2025"
 REFERENCE_SOURCE_ID = "inegi_mociba_2024_reference"
 PERIOD = "2025"
 LANDING_PAGE = "https://www.inegi.org.mx/programas/mociba/2025/"
-TEXT, BLUE, ACCENT, BG = "#50517F", "#2F7C9F", "#F58F82", "#FBFBF7"
+TEXT, BLUE, ACCENT, BG = "#3c3c3b", "#86adae", "#4a7d75", "#F8F8FA"
 
 
 def _fonts(root: Path) -> None:
@@ -83,23 +84,38 @@ def validate_reference(frame: pd.DataFrame) -> dict[str, float]:
 
 
 def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
-    _fonts(root); fig, ax = plt.subplots(figsize=(16, 9)); fig.patch.set_facecolor("white"); ax.set_facecolor(BG)
-    values = data["porcentaje"].tolist(); x = range(len(data))
-    bars = ax.bar(x, values, width=.43, color=BLUE, edgecolor="none")
-    for i, (bar, value) in enumerate(zip(bars, values)):
-        bar.set_clip_path(mpatches.FancyBboxPatch((bar.get_x(), 0), bar.get_width(), value, boxstyle="round,pad=0,rounding_size=.18", transform=ax.transData))
-        ax.text(bar.get_x()+bar.get_width()/2, value+.28+(i%2)*.43, f"{value:.1f}%", ha="center", fontsize=6.8, fontweight="bold", color=TEXT,
-                bbox=dict(boxstyle="round,pad=.25", fc="white", ec="none"))
-    ax.set_xticks(list(x), [str(v).replace(" ", "\n", 1) for v in data["NOM_ENT"]], rotation=90, fontsize=6.6, color=TEXT)
-    ax.set_ylim(0, max(values)*1.23); ax.set_yticks([]); ax.tick_params(axis="x", length=0, pad=7)
-    for spine in ax.spines.values(): spine.set_visible(False)
-    fig.add_artist(mpatches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1))
-    fig.add_artist(mpatches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc=ACCENT,ec="none"))
-    fig.text(.066,.873,"Figura F.3.",fontsize=14,fontweight="bold",color=TEXT,va="center")
-    fig.text(.151,.873,"Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa",fontsize=14,color=TEXT,va="center")
-    fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top")
-    fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top")
-    fig.subplots_adjust(left=.055,right=.958,top=.80,bottom=.25); output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+    _fonts(root)
+    fig, ax = plt.subplots(figsize=(16, 8.5))
+    fig.patch.set_facecolor("white")
+    ax.set_facecolor(BG)
+    values = data["porcentaje"].to_numpy(float)
+    x = range(len(data))
+    bars = ax.bar(x, values, width=.56, color=BLUE, edgecolor="none", zorder=2)
+    ax.set_ylim(0, max(values) * 1.28)
+    for bar, value in zip(bars, values):
+        ax.annotate(
+            f"{value:.1f}%", (bar.get_x() + bar.get_width() / 2, value),
+            xytext=(0, 6), textcoords="offset points", ha="center", va="bottom",
+            fontsize=6.7, fontweight="bold", color=TEXT,
+            bbox=dict(boxstyle="round,pad=.24,rounding_size=.7", fc="white", ec=BLUE, lw=.7),
+        )
+    labels = [textwrap.fill(str(value), 12) for value in data["NOM_ENT"]]
+    ax.set_xticks(list(x), labels, rotation=90, fontsize=6.4, color=TEXT)
+    ax.tick_params(axis="x", length=0, pad=7)
+    ax.tick_params(axis="y", labelsize=8, colors=TEXT, length=0)
+    ax.yaxis.set_major_formatter(mticker.PercentFormatter(100, decimals=1))
+    ax.grid(axis="y", color="#d1d1d1", linewidth=.7, zorder=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    fig.text(.055,.93,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc=ACCENT,ec="none"))
+    fig.text(.073,.93,"Figura F.3.",fontsize=14,fontweight="bold",color=TEXT,va="center")
+    fig.text(.158,.93,"Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa",fontsize=14,color=TEXT,va="center")
+    fig.text(.055,.058,"Fuente:",fontsize=8,fontweight="bold",color=TEXT)
+    fig.text(.096,.058,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",205),fontsize=8,color=TEXT)
+    fig.subplots_adjust(left=.065,right=.965,top=.82,bottom=.28)
+    output.parent.mkdir(parents=True,exist_ok=True)
+    fig.savefig(output,dpi=200,facecolor="white",edgecolor="none")
+    plt.close(fig)
 
 
 def generate(context):

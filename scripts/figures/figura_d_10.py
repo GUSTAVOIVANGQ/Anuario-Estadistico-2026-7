@@ -1,14 +1,6 @@
 """Figura D.10: seguridad percibida en banca por Internet (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 from pathlib import Path
 import matplotlib
@@ -20,10 +12,10 @@ import numpy as np
 import pandas as pd
 
 FIGURE_ID, SOURCE_ID, PERIOD = "D.10", "ift_ecsi_2024_base", "2024"
-TEXT, BG = "#4B4B7D", "#FBFBF7"
+TEXT, BG = "#3c3c3b", "#F8F8FA"
 AGES=[(1,"18 a 24 años"),(2,"25 a 34 años"),(3,"35 a 44 años"),(4,"45 a 54 años"),(5,"55 años o más")]
 LEVELS=[(1,"Muy seguro"),(2,"Seguro"),(3,"Ni seguro ni inseguro"),(4,"Inseguro"),(9,"NS/NR")]
-COLORS=["#327BA0","#A9DADF","#4F5082","#F48D7E","#F0535A"]
+COLORS=["#86adae","#64a0a1","#4c7d7e","#335a5c","#132b2d"]
 REFERENCE=[[5.2,58.8,9.6,11.3,14.9],[4.8,52.8,7.5,16.4,17.1],[4.4,47.4,7.4,19.8,20.1],[6.8,45.4,7.9,18.5,20.0],[3.5,33.9,6.8,21.0,32.1]]
 
 
@@ -47,18 +39,18 @@ def _font(root:Path)->str:
 def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     plt.rcParams.update({"font.family":_font(root)}); fig=plt.figure(figsize=(16,9),facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035,.06),.93,.86,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
-    fig.text(.055,.88,"•",color="#F58F82",fontsize=20,va="center"); fig.text(.073,.88,"Figura D.10.",color=TEXT,fontsize=16,fontweight="bold",va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none")); fig.text(.073,.88,"Figura D.10.",color=TEXT,fontsize=16,fontweight="bold",va="center")
     fig.text(.19,.88,"Seguridad percibida al usar banca por Internet, por grupo de edad (2024)",color=TEXT,fontsize=16,va="center")
     ax=fig.add_axes([.075,.23,.86,.54]); ax.set_facecolor(BG); x=np.arange(len(AGES)); width=.15
     for i,(code,level) in enumerate(LEVELS):
         values=data.loc[data.codigo_nivel.eq(code),"porcentaje"].to_numpy(); bars=ax.bar(x+(i-2)*width,values,width,color=COLORS[i],label=level,zorder=2)
-        for bar,value in zip(bars,values): ax.text(bar.get_x()+bar.get_width()/2,value+1,f"{value:.1f}%",ha="center",fontsize=7.8,color=TEXT,fontweight="bold",rotation=90 if value<10 else 0,bbox=dict(boxstyle="round,pad=.16",fc="white",ec="none"))
+        for bar,value in zip(bars,values): ax.text(bar.get_x()+bar.get_width()/2,value+1,f"{value:.1f}%",ha="center",fontsize=7.8,color=TEXT,fontweight="bold",rotation=90 if value<10 else 0,bbox=dict(boxstyle="round,pad=.16",fc="white",ec=bar.get_facecolor(),lw=.8))
     ax.set_ylim(0,70); ax.set_yticks(range(0,71,10),[f"{x}%" for x in range(0,71,10)]); ax.set_xticks(x,[x[1] for x in AGES],color=TEXT)
-    ax.tick_params(axis="both",length=0,pad=9,colors=TEXT); ax.grid(axis="y",color="#DADAE3",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
+    ax.tick_params(axis="both",length=0,pad=9,colors=TEXT); ax.grid(axis="y",color="#d1d1d1",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
     ax.legend(ncol=5,loc="upper center",bbox_to_anchor=(.5,1.12),frameon=False,labelcolor=TEXT,fontsize=9)
     fig.text(.055,.116,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.116,"IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.",color=TEXT,fontsize=9)
     fig.text(.055,.088,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.088,"Porcentajes ponderados entre personas usuarias de Internet; los casos sin respuesta se integran en NS/NR.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

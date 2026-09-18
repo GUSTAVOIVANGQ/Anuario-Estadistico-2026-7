@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import textwrap
 import zipfile
@@ -21,7 +13,6 @@ matplotlib.use("Agg")
 
 import matplotlib.font_manager as font_manager
 import matplotlib.patches as mpatches
-import matplotlib.path as mpath
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -36,6 +27,7 @@ COLOR_BACKGROUND = "#F8F8FA"
 COLOR_MARKER = "#4a7d75"
 COLOR_EXPENSES = "#335a5c"
 COLOR_MARGIN = "#86adae"
+COLOR_INCOME_ONLY = "#afafaf"
 
 # La base BIT publica ingresos, pero no egresos ni margen. Estos porcentajes son
 # los valores de la figura 2024 y constituyen el límite de la serie completa.
@@ -193,65 +185,23 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         zorder=3,
     )
 
-    for index, (position, total) in enumerate(zip(x, incomes, strict=True)):
-        left = position - width / 2
-        right = position + width / 2
-        radius_x = width / 2
-        radius_y = min(maximum * 0.03, total / 4)
-        clip_path = mpath.Path(
-            [
-                (left + radius_x, 0),
-                (right - radius_x, 0),
-                (right, 0),
-                (right, radius_y),
-                (right, total - radius_y),
-                (right, total),
-                (right - radius_x, total),
-                (left + radius_x, total),
-                (left, total),
-                (left, total - radius_y),
-                (left, radius_y),
-                (left, 0),
-                (left + radius_x, 0),
-                (left + radius_x, 0),
-            ],
-            [
-                mpath.Path.MOVETO,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.CLOSEPOLY,
-            ],
-        )
-        clip = mpatches.PathPatch(clip_path, transform=ax.transData)
-        expense_bars.patches[index].set_clip_path(clip)
-        margin_bars.patches[index].set_clip_path(clip)
+    for index, total in enumerate(incomes):
         if not complete[index]:
-            ax.add_patch(
-                mpatches.PathPatch(
-                    clip_path,
-                    transform=ax.transData,
-                    facecolor="white",
-                    edgecolor=COLOR_EXPENSES,
-                    linewidth=1.6,
-                    zorder=3,
-                )
+            ax.bar(
+                index,
+                total,
+                width=width,
+                color=COLOR_INCOME_ONLY,
+                edgecolor=COLOR_EXPENSES,
+                linewidth=1.0,
+                zorder=3,
             )
 
     chip_style = {
-        "boxstyle": "round,pad=0.29,rounding_size=0.5",
+        "boxstyle": "round,pad=0.3,rounding_size=0.8",
         "facecolor": "white",
-        "edgecolor": "#E2E3EA",
-        "linewidth": 0.75,
+        "edgecolor": COLOR_EXPENSES,
+        "linewidth": 0.8,
     }
     for index, row in data.iterrows():
         if bool(row["desglose_disponible"]):
@@ -261,14 +211,14 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             chip_text = f"{int(row['margen_pct'])}%"
         else:
             center = float(row["ingresos_miles_millones_pesos"]) / 2
-            chip_text = "n.d."
+            chip_text = "Total"
         ax.text(
             index,
             center,
             chip_text,
             ha="center",
             va="center",
-            fontsize=7.8,
+            fontsize=8,
             fontweight="bold",
             color=COLOR_TEXT,
             bbox=chip_style,
@@ -281,7 +231,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             rotation=90,
             ha="center",
             va="bottom",
-            fontsize=7.7,
+            fontsize=9,
             color=COLOR_TEXT,
         )
 
@@ -289,35 +239,38 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     ax.set_xticks(
         x,
         ["I", "II", "III", "IV"] * len(years),
-        fontsize=8.2,
+        fontsize=8,
         color=COLOR_TEXT,
     )
-    ax.tick_params(axis="x", length=0, pad=7)
+    ax.tick_params(axis="x", length=3, pad=4, colors=COLOR_TEXT)
     for group, year in enumerate(years):
         ax.text(
             group * 4 + 1.5,
-            -maximum * 0.105,
+            -9,
             str(year),
             ha="center",
             va="top",
-            fontsize=8.8,
+            fontsize=10,
             fontweight="bold",
             color=COLOR_TEXT,
             clip_on=False,
         )
 
     ax.set_xlim(-0.75, len(data) - 0.25)
-    ax.set_ylim(0, maximum * 1.23)
+    ax.set_ylim(0, maximum * 1.25)
     ax.set_ylabel(
         "Miles de millones de pesos",
-        fontsize=9.5,
+        fontsize=11,
+        fontweight="medium",
         color=COLOR_TEXT,
-        labelpad=13,
+        labelpad=15,
     )
-    ax.tick_params(axis="y", labelsize=8.2, colors=COLOR_TEXT, length=0)
-    ax.grid(axis="y", color="#DADAE3", linewidth=0.7, zorder=0)
-    for spine in ax.spines.values():
-        spine.set_visible(False)
+    ax.tick_params(axis="y", labelsize=9, colors=COLOR_TEXT)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=1, zorder=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_color("#7c7c7c")
+    ax.spines["left"].set_color("#7c7c7c")
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -344,25 +297,26 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.927,
         "Ingresos, egresos y margen en el sector de telecomunicaciones",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
 
     handles, labels = ax.get_legend_handles_labels()
     handles.append(
-        mpatches.Patch(facecolor="white", edgecolor=COLOR_EXPENSES, linewidth=1.4)
+        mpatches.Patch(facecolor=COLOR_INCOME_ONLY, edgecolor=COLOR_EXPENSES, linewidth=1.0)
     )
-    labels.append("Ingresos sin desglose")
+    labels.append("Ingresos totales (sin desglose)")
     fig.legend(
         handles,
         labels,
         loc="lower center",
-        bbox_to_anchor=(0.5, 0.112),
+        bbox_to_anchor=(0.5, 0.08),
         ncol=3,
-        fontsize=8.8,
+        fontsize=10,
         frameon=False,
         labelcolor=COLOR_TEXT,
-        handlelength=1.8,
+        handlelength=2.5,
         columnspacing=4.0,
     )
 
@@ -386,9 +340,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(0.055, 0.043, "Notas:", fontsize=8.0, fontweight="bold", color=COLOR_TEXT, va="top")
     fig.text(0.091, 0.043, notes_body, fontsize=8.0, color=COLOR_TEXT, va="top")
 
-    fig.subplots_adjust(left=0.075, right=0.965, top=0.84, bottom=0.245)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

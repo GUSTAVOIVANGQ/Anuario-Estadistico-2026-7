@@ -15,6 +15,7 @@ from collections.abc import Iterable
 import matplotlib.colors as mcolors
 import matplotlib.patches as mpatches
 from matplotlib.container import BarContainer
+from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 from matplotlib.lines import Line2D
 
@@ -95,7 +96,7 @@ PALETTES: dict[str, tuple[str, ...]] = {
     "E.3": ("#afafaf", "#86adae"),
     # E.4 y E.5 conservan sus paletas editoriales particulares del 2024.
     "E.4": ("#ea746a", "#d8e8e2", "#f0f5f8", "#f9dfd6", "#f4ae9d", "#f4bcad", "#ec7c6f", "#c0d5e0", "#80a8ba", "#5b6770"),
-    "E.5": ("#3a7ca5", "#c8dcea", "#2d5a6b", "#b0c8d0", "#f5f5f5", "#fafafa", "#e8f0f5", "#d0d8de", "#4a5568", "#e53e3e", "#b0bec5"),
+    "E.5": ("#335a5c", "#86adae"),
     "E.6": ("#afafaf", "#86adae", "#5c9596", "#335a5c"),
     "E.7": ("#86adae", "#335a5c"),
     "E.8": ("#335a5c",),
@@ -130,6 +131,121 @@ RECTANGULAR_BAR_IDS = {
 # Las paletas especiales de E.4/E.5 contienen tarjetas y diagramas propios;
 # no se fuerza el fondo de todos sus ejes para no alterar su composición.
 KEEP_SPECIAL_BACKGROUNDS = {"E.4", "E.5"}
+
+
+def format_source_credit(value: object) -> object:
+    """Normaliza únicamente el organismo que encabeza los pies de fuente."""
+    if not isinstance(value, str):
+        return value
+    leading = value[: len(value) - len(value.lstrip())]
+    body = value.lstrip()
+    if body.startswith("Elaborado por CRT"):
+        return value
+    if body.startswith("IFT "):
+        return leading + "Elaborado por CRT " + body[4:]
+    if body.startswith("IFT,"):
+        return leading + "Elaborado por CRT," + body[4:]
+    if body.startswith("CRT "):
+        return leading + "Elaborado por CRT " + body[4:]
+    if body.startswith("CRT,"):
+        return leading + "Elaborado por CRT," + body[4:]
+    return value
+
+
+def install_source_credit_normalizer() -> None:
+    """Aplica el crédito institucional a texto de figura y de ejes.
+
+    Se instala una sola vez antes de cargar los generadores. Así cubre también
+    figuras históricas que construyen el pie directamente con ``fig.text`` o
+    ``ax.text`` y mantiene intactos títulos, notas y datos.
+    """
+    if getattr(Figure.text, "_crt_source_credit", False):
+        return
+
+    original_figure_text = Figure.text
+    original_axes_text = Axes.text
+
+    def figure_text(self, x, y, s, *args, **kwargs):
+        return original_figure_text(self, x, y, format_source_credit(s), *args, **kwargs)
+
+    def axes_text(self, x, y, s, *args, **kwargs):
+        return original_axes_text(self, x, y, format_source_credit(s), *args, **kwargs)
+
+    figure_text._crt_source_credit = True
+    axes_text._crt_source_credit = True
+    Figure.text = figure_text
+    Axes.text = axes_text
+
+
+def annotate_stacked_segments_outside(
+    ax,
+    bar_x: float,
+    segments: list[dict[str, float | int | str]],
+    *,
+    bar_width: float,
+    x_offset: float = 0.22,
+    lower: float = 2.0,
+    upper: float = 98.0,
+    min_gap: float = 6.0,
+    fontsize: float = 6.2,
+    decimals: int = 1,
+) -> None:
+    """Coloca todos los porcentajes fuera de una barra apilada con guías.
+
+    Cada segmento requiere ``index``, ``value``, ``center`` y ``color``. Los
+    segmentos se alternan a izquierda/derecha y sus alturas se redistribuyen
+    por costado para evitar superposiciones sin alterar las barras.
+    """
+    visible = [item for item in segments if float(item["value"]) > 0.005]
+    for side in (-1, 1):
+        group = [item for item in visible if (-1 if int(item["index"]) % 2 == 0 else 1) == side]
+        group.sort(key=lambda item: float(item["center"]))
+        positions: list[float] = []
+        for item in group:
+            center = float(item["center"])
+            positions.append(max(center, positions[-1] + min_gap if positions else center))
+        if positions and positions[-1] > upper:
+            shift = positions[-1] - upper
+            positions = [position - shift for position in positions]
+        for index in range(len(positions) - 2, -1, -1):
+            positions[index] = min(positions[index], positions[index + 1] - min_gap)
+        if positions and positions[0] < lower:
+            shift = lower - positions[0]
+            positions = [position + shift for position in positions]
+
+        for item, label_y in zip(group, positions, strict=False):
+            center = float(item["center"])
+            value = float(item["value"])
+            precision = 2 if value < 0.1 else decimals
+            edge_x = bar_x + side * bar_width / 2
+            label_x = edge_x + side * x_offset
+            ax.annotate(
+                f"{value:.{precision}f}%",
+                xy=(edge_x, center),
+                xytext=(label_x, label_y),
+                textcoords="data",
+                ha="right" if side < 0 else "left",
+                va="center",
+                fontsize=fontsize,
+                fontweight="bold",
+                color=TEXT,
+                zorder=8,
+                bbox=dict(
+                    boxstyle="round,pad=0.20,rounding_size=0.35",
+                    facecolor="white",
+                    edgecolor="none",
+                    alpha=0.98,
+                ),
+                arrowprops=dict(
+                    arrowstyle="-",
+                    color=str(item["color"]),
+                    linewidth=0.75,
+                    shrinkA=0,
+                    shrinkB=0,
+                    connectionstyle="arc3,rad=0",
+                ),
+                annotation_clip=False,
+            )
 
 
 def _is_white(color) -> bool:

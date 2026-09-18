@@ -7,14 +7,6 @@ calcula los indicadores, registra la auditoría y genera el mapa PNG.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import base64
 import json
 import math
@@ -66,11 +58,11 @@ ENTITIES = {
     30: "Veracruz de Ignacio de la Llave", 31: "Yucatán", 32: "Zacatecas",
 }
 
-COLORS = ["#ADDCDF", "#317DA3", "#4B4B83", "#F58F82", "#F2535A"]
+COLORS = ["#afafaf", "#737f7c", "#63918b", "#2d4f4b", "#012f2a"]
 LABELS = ["Menos de 4", "4 a 6", "7 a 9", "10 a 12", "Más de 13"]
 BREAKS = [0, 4, 7, 10, 13, math.inf]
-TEXT = "#4B4B83"
-CREAM = "#FBFBF7"
+TEXT = "#3c3c3b"
+CREAM = "#F8F8FA"
 
 MONTHS = {
     1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo",
@@ -452,7 +444,7 @@ def _plot(
     ))
     fig.text(0.055, 0.875, " ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.5,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.071, 0.875, "Figura B.22.", fontsize=14, fontweight="bold",
              color=TEXT, va="center")
     fig.text(
@@ -547,7 +539,7 @@ def _plot(
         fontsize=8, fontweight="normal", color=TEXT,
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

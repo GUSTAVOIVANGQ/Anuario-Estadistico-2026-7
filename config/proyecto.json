@@ -588,6 +588,11 @@
       "path": "scripts/figures/figura_f_16.py",
       "status": "ready",
       "instruction": "Reutiliza la Tercera Encuesta 2023 y calcula las medidas ante violencia digital para el total y por sexo."
+    },
+    "G.1": {
+      "path": "scripts/figures/figura_g_1.py",
+      "status": "ready",
+      "instruction": "Descarga o reutiliza los CSV individuales vigentes de BIT, calcula AM, FM y TDT por tipo de uso y genera el PNG."
     }
   },
   "design_rules": {

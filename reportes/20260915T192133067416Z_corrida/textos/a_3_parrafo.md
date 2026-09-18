@@ -1,0 +1,1 @@
+En agosto de 2026, el Índice Nacional de Precios al Consumidor (INPC) se ubicó en 145.462 puntos y registró una variación anual de 3.26%. Para el Índice de Precios de Comunicaciones (IPCOM), la última observación comparable disponible corresponde a julio de 2024, cuando alcanzó 90.402 puntos, una variación de -1.54% respecto de diciembre de 2023.

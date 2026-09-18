@@ -6,14 +6,6 @@ texto y generación del PNG sin depender de código de otras figuras.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import math
 import sys
 import unicodedata
@@ -34,17 +26,17 @@ import pandas as pd
 FIGURE_ID = "B.23"
 SOURCE_ID = "crt_bit_todo_2025_q2"
 TABLE = "TD_ACC_TVRES_ITE_VA.csv"
-TEXT = "#4B4B83"
-CREAM = "#FBFBF7"
+TEXT = "#3c3c3b"
+CREAM = "#F8F8FA"
 TECHNOLOGIES = [
     "Cable", "Direct-to-home (DTH)", "IPTV Terrestre",
     "Sin información de tecnología",
 ]
 COLORS = {
-    "Cable": "#4B4B83",
-    "Direct-to-home (DTH)": "#317DA3",
-    "IPTV Terrestre": "#ADDCDF",
-    "Sin información de tecnología": "#F58F82",
+    "Cable": "#132b2d",
+    "Direct-to-home (DTH)": "#3b6667",
+    "IPTV Terrestre": "#64a0a1",
+    "Sin información de tecnología": "#86adae",
 }
 
 
@@ -191,7 +183,7 @@ def _draw_panel(
 
     panel = data.loc[data["segmento"].eq(segment)]
     positive = panel.loc[panel["accesos"].gt(0)].copy()
-    ax = fig.add_axes([x + 0.015, 0.19, 0.30, 0.56], zorder=2)
+    ax = fig.add_axes([x + 0.025, 0.19, 0.29, 0.56], zorder=2)
     wedges, _ = ax.pie(
         positive["accesos"], colors=[COLORS[t] for t in positive["tecnologia"]],
         startangle=90, counterclock=False,
@@ -202,27 +194,28 @@ def _draw_panel(
     for wedge, row in zip(wedges, positive.itertuples(index=False)):
         angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
         ex, ey = math.cos(angle), math.sin(angle)
-        tx = 1.13 * (1 if ex >= 0 else -1)
-        ty = 1.05 * ey
+        tx = 0.98 * (1 if ex >= 0 else -1)
+        ty = float(np.clip(1.02 * ey, -0.92, 0.92))
         if segment == "No Residencial":
             if row.tecnologia == "Cable":
-                tx, ty = 1.12, -1.02
+                tx, ty = 0.98, -0.88
             elif row.tecnologia == "IPTV Terrestre":
-                tx, ty = -1.10, 1.03
+                tx, ty = -0.98, 0.88
             else:
-                tx, ty = -1.10, 0.60
+                tx, ty = -0.98, 0.52
+        inward_alignment = "right" if tx > 0 else "left"
         ax.annotate(
             f"{row.participacion:.1f}%", xy=(0.82 * ex, 0.82 * ey), xytext=(tx, ty),
-            ha="left" if tx > 0 else "right", va="center", fontsize=12,
+            ha=inward_alignment, va="center", fontsize=12,
             fontweight="bold", color=TEXT,
             bbox=dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="none"),
             arrowprops=dict(arrowstyle="-", color="#A0A0B0", linewidth=1.0),
-            annotation_clip=False,
+            annotation_clip=True,
         )
         label = row.tecnologia.replace("Direct-to-home (DTH)", "Direct-to-home\n(DTH)")
         ax.text(tx, ty + (-0.18 if ty < 0 else 0.18), label,
-                ha="left" if tx > 0 else "right", va="center",
-                fontsize=8.5, fontweight="bold", color=TEXT, clip_on=False)
+                ha=inward_alignment, va="center",
+                fontsize=8.5, fontweight="bold", color=TEXT, clip_on=True)
 
     bx, by, bw, bh = x + 0.285, 0.57, 0.135, 0.135
     fig.add_artist(patches.FancyBboxPatch(
@@ -246,7 +239,7 @@ def _plot(data: pd.DataFrame, metadata: dict[str, float | int], output: Path,
         linewidth=0, facecolor=CREAM, transform=fig.transFigure, zorder=-1,
     ))
     fig.text(0.045, 0.90, " ", fontsize=2, va="center",
-             bbox=dict(boxstyle="round,pad=1.5", facecolor="#F58F82", edgecolor="none"))
+             bbox=dict(boxstyle="round,pad=1.5", facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.061, 0.90, "Figura B.23.", fontsize=14, fontweight="bold", color=TEXT, va="center")
     fig.text(0.151, 0.90, "Tecnologías de conexión del Servicio de Televisión Restringida por segmento",
              fontsize=14, fontweight="medium", color=TEXT, va="center")
@@ -260,7 +253,7 @@ def _plot(data: pd.DataFrame, metadata: dict[str, float | int], output: Path,
     fig.text(0.077, 0.057, "La suma de los porcentajes puede no sumar 100% por cuestiones de redondeo.",
              fontsize=8, color=TEXT)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

@@ -1,14 +1,6 @@
 """Figura D.8: influencia de la confianza en el uso de Internet (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 from pathlib import Path
 import matplotlib
@@ -19,8 +11,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 FIGURE_ID, SOURCE_ID, PERIOD = "D.8", "ift_ecsi_2024_base", "2024"
-TEXT, BG = "#4B4B7D", "#FBFBF7"
-COLORS = ["#327BA0", "#A9DADF", "#4F5082", "#F48D7E", "#F0535A", "#65B9D8"]
+TEXT, BG = "#3c3c3b", "#F8F8FA"
+COLORS = ["#86adae", "#64a0a1", "#4c7d7e", "#3b6667", "#335a5c", "#132b2d"]
 CODES = [(1, "Nada"), (2, "Poco"), (3, "Le es indiferente"), (4, "Algo"), (5, "Mucho"), (9, "NS/NR")]
 REFERENCE = [13.6, 38.5, 8.5, 29.6, 6.6, 3.2]
 
@@ -46,7 +38,7 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     plt.rcParams.update({"font.family": _font(root)})
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035, .06), .93, .86, boxstyle="round,pad=.012,rounding_size=.02", fc=BG, ec="none", transform=fig.transFigure, zorder=-2))
-    fig.text(.055, .88, "•", color="#F58F82", fontsize=20, va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none"))
     fig.text(.073, .88, "Figura D.8.", color=TEXT, fontsize=16, fontweight="bold", va="center")
     fig.text(.18, .88, "¿Qué tanto influye la confianza en Internet para decidir usarlo? (2024)", color=TEXT, fontsize=16, va="center")
     ax = fig.add_axes([.10, .20, .80, .58]); ax.set_facecolor(BG)
@@ -54,13 +46,13 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     ax.set_ylim(0, 45); ax.set_yticks(range(0, 46, 5), [f"{x}%" for x in range(0, 46, 5)])
     ax.set_xticks(range(len(data)), data.percepcion, fontsize=11, color=TEXT)
     ax.tick_params(axis="x", length=0, pad=10); ax.tick_params(axis="y", length=0, colors=TEXT)
-    ax.grid(axis="y", color="#DADAE3", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
     for bar, value in zip(bars, data.porcentaje):
         ax.text(bar.get_x()+bar.get_width()/2, value+1, f"{value:.1f}%", ha="center", color=TEXT, fontsize=12,
-                fontweight="bold", bbox=dict(boxstyle="round,pad=.28", fc="white", ec="none"))
+                fontweight="bold", bbox=dict(boxstyle="round,pad=.28", fc="white", ec=bar.get_facecolor(), lw=.8))
     fig.text(.055, .09, "Fuente:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.101, .09, "IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.", color=TEXT, fontsize=9)
-    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
 
 
 def generate(context):
