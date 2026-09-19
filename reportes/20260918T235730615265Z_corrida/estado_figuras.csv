@@ -1,0 +1,92 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+1,A.1,OK,Gráfica generada y verificada.,scripts\figures\figura_a_1.py,build\figures\A\figura_a_1.png,2026-09-18T23:57:30+00:00,2026-09-18T23:57:33+00:00,2.749
+2,A.2,OK,Gráfica generada y verificada.,scripts\figures\figura_a_2.py,build\figures\A\figura_a_2.png,2026-09-18T23:57:33+00:00,2026-09-19T00:01:22+00:00,228.873
+3,A.3,OK,Gráfica generada y verificada.,scripts\figures\figura_a_3.py,build\figures\A\figura_a_3.png,2026-09-19T00:01:22+00:00,2026-09-19T00:01:23+00:00,1.216
+4,A.4,OK,Gráfica generada y verificada.,scripts\figures\figura_a_4.py,build\figures\A\figura_a_4.png,2026-09-19T00:01:23+00:00,2026-09-19T00:01:27+00:00,3.875
+5,A.5,OK,Gráfica generada y verificada.,scripts\figures\figura_a_5.py,build\figures\A\figura_a_5.png,2026-09-19T00:01:27+00:00,2026-09-19T00:02:24+00:00,57.029
+6,A.6,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_6.png',scripts\figures\figura_a_6.py,build\figures\A\figura_a_6.png,2026-09-19T00:02:24+00:00,2026-09-19T00:02:28+00:00,3.981
+7,A.7,OK,Gráfica generada y verificada.,scripts\figures\figura_a_7.py,build\figures\A\figura_a_7.png,2026-09-19T00:02:28+00:00,2026-09-19T00:03:09+00:00,41.127
+8,A.8,OK,Gráfica generada y verificada.,scripts\figures\figura_a_8.py,build\figures\A\figura_a_8.png,2026-09-19T00:03:09+00:00,2026-09-19T00:03:48+00:00,39.008
+9,A.9,OK,Gráfica generada y verificada.,scripts\figures\figura_a_9.py,build\figures\A\figura_a_9.png,2026-09-19T00:03:48+00:00,2026-09-19T00:04:26+00:00,38.39
+10,A.10,OK,Gráfica generada y verificada.,scripts\figures\figura_a_10.py,build\figures\A\figura_a_10.png,2026-09-19T00:04:26+00:00,2026-09-19T00:05:09+00:00,42.68
+11,B.1,ERROR,"SyntaxError: unmatched ')' (figura_b_1.py, line 270)",scripts\figures\figura_b_1.py,build\figures\B\figura_b_1.png,2026-09-19T00:05:09+00:00,2026-09-19T00:05:09+00:00,0.048
+12,B.2,OK,Gráfica generada y verificada.,scripts\figures\figura_b_2.py,build\figures\B\figura_b_2.png,2026-09-19T00:05:09+00:00,2026-09-19T00:05:11+00:00,2.143
+13,B.3,ERROR,"SyntaxError: invalid decimal literal (figura_b_3.py, line 187)",scripts\figures\figura_b_3.py,build\figures\B\figura_b_3.png,2026-09-19T00:05:11+00:00,2026-09-19T00:05:11+00:00,0.018
+14,B.4,OK,Gráfica generada y verificada.,scripts\figures\figura_b_4.py,build\figures\B\figura_b_4.png,2026-09-19T00:05:11+00:00,2026-09-19T00:05:16+00:00,4.362
+15,B.5,OK,Gráfica generada y verificada.,scripts\figures\figura_b_5.py,build\figures\B\figura_b_5.png,2026-09-19T00:05:16+00:00,2026-09-19T00:05:19+00:00,3.45
+16,B.6,ERROR,"SyntaxError: invalid decimal literal (figura_b_6.py, line 660)",scripts\figures\figura_b_6.py,build\figures\B\figura_b_6.png,2026-09-19T00:05:19+00:00,2026-09-19T00:05:19+00:00,0.044
+17,B.7,ERROR,"SyntaxError: invalid decimal literal (figura_b_7.py, line 660)",scripts\figures\figura_b_7.py,build\figures\B\figura_b_7.png,2026-09-19T00:05:19+00:00,2026-09-19T00:05:19+00:00,0.04
+18,B.8,OK,Gráfica generada y verificada.,scripts\figures\figura_b_8.py,build\figures\B\figura_b_8.png,2026-09-19T00:05:19+00:00,2026-09-19T00:05:23+00:00,3.494
+19,B.9,ERROR,"SyntaxError: invalid decimal literal (figura_b_9.py, line 698)",scripts\figures\figura_b_9.py,build\figures\B\figura_b_9.png,2026-09-19T00:05:23+00:00,2026-09-19T00:05:23+00:00,0.048
+20,B.10,OK,Gráfica generada y verificada.,scripts\figures\figura_b_10.py,build\figures\B\figura_b_10.png,2026-09-19T00:05:23+00:00,2026-09-19T00:05:26+00:00,2.863
+21,B.11,OK,Gráfica generada y verificada.,scripts\figures\figura_b_11.py,build\figures\B\figura_b_11.png,2026-09-19T00:05:26+00:00,2026-09-19T00:05:29+00:00,3.088
+22,B.12,OK,Gráfica generada y verificada.,scripts\figures\figura_b_12.py,build\figures\B\figura_b_12.png,2026-09-19T00:05:29+00:00,2026-09-19T00:05:32+00:00,2.889
+23,B.13,ERROR,"SyntaxError: invalid decimal literal (figura_b_13.py, line 660)",scripts\figures\figura_b_13.py,build\figures\B\figura_b_13.png,2026-09-19T00:05:32+00:00,2026-09-19T00:05:32+00:00,0.041
+24,B.14,ERROR,"SyntaxError: invalid decimal literal (figura_b_14.py, line 660)",scripts\figures\figura_b_14.py,build\figures\B\figura_b_14.png,2026-09-19T00:05:32+00:00,2026-09-19T00:05:32+00:00,0.03
+25,B.15,ERROR,"SyntaxError: invalid decimal literal (figura_b_15.py, line 750)",scripts\figures\figura_b_15.py,build\figures\B\figura_b_15.png,2026-09-19T00:05:32+00:00,2026-09-19T00:05:32+00:00,0.044
+26,B.16,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_16.png',scripts\figures\figura_b_16.py,build\figures\B\figura_b_16.png,2026-09-19T00:05:32+00:00,2026-09-19T00:05:36+00:00,3.981
+27,B.17,ERROR,"SyntaxError: invalid decimal literal (figura_b_17.py, line 698)",scripts\figures\figura_b_17.py,build\figures\B\figura_b_17.png,2026-09-19T00:05:36+00:00,2026-09-19T00:05:36+00:00,0.039
+28,B.18,OK,Gráfica generada y verificada.,scripts\figures\figura_b_18.py,build\figures\B\figura_b_18.png,2026-09-19T00:05:36+00:00,2026-09-19T00:05:39+00:00,2.838
+29,B.19,OK,Gráfica generada y verificada.,scripts\figures\figura_b_19.py,build\figures\B\figura_b_19.png,2026-09-19T00:05:39+00:00,2026-09-19T00:05:43+00:00,4.217
+30,B.20,OK,Gráfica generada y verificada.,scripts\figures\figura_b_20.py,build\figures\B\figura_b_20.png,2026-09-19T00:05:43+00:00,2026-09-19T00:05:46+00:00,3.447
+31,B.21,ERROR,"SyntaxError: invalid decimal literal (figura_b_21.py, line 288)",scripts\figures\figura_b_21.py,build\figures\B\figura_b_21.png,2026-09-19T00:05:46+00:00,2026-09-19T00:05:46+00:00,0.016
+32,B.22,ERROR,"SyntaxError: invalid decimal literal (figura_b_22.py, line 463)",scripts\figures\figura_b_22.py,build\figures\B\figura_b_22.png,2026-09-19T00:05:46+00:00,2026-09-19T00:05:46+00:00,0.056
+33,B.23,ERROR,"SyntaxError: invalid decimal literal (figura_b_23.py, line 193)",scripts\figures\figura_b_23.py,build\figures\B\figura_b_23.png,2026-09-19T00:05:46+00:00,2026-09-19T00:05:46+00:00,0.02
+34,B.24,ERROR,"SyntaxError: invalid decimal literal (figura_b_24.py, line 7)",scripts\figures\figura_b_24.py,build\figures\B\figura_b_24.png,2026-09-19T00:05:46+00:00,2026-09-19T00:05:46+00:00,0.03
+35,B.25,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_25.png',scripts\figures\figura_b_25.py,build\figures\B\figura_b_25.png,2026-09-19T00:05:46+00:00,2026-09-19T00:05:50+00:00,3.22
+36,C.1,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_1.png',scripts\figures\figura_c_1.py,build\figures\C\figura_c_1.png,2026-09-19T00:05:50+00:00,2026-09-19T00:05:51+00:00,0.96
+37,C.2,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_2.png',scripts\figures\figura_c_2.py,build\figures\C\figura_c_2.png,2026-09-19T00:05:51+00:00,2026-09-19T00:05:52+00:00,1.449
+38,C.3,ERROR,"SyntaxError: invalid decimal literal (figura_c_3.py, line 169)",scripts\figures\figura_c_3.py,build\figures\C\figura_c_3.png,2026-09-19T00:05:52+00:00,2026-09-19T00:05:52+00:00,0.01
+39,C.4,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_4.png',scripts\figures\figura_c_4.py,build\figures\C\figura_c_4.png,2026-09-19T00:05:52+00:00,2026-09-19T00:05:54+00:00,1.863
+40,C.5,OK,Gráfica generada y verificada.,scripts\figures\figura_c_5.py,build\figures\C\figura_c_5.png,2026-09-19T00:05:54+00:00,2026-09-19T00:05:57+00:00,3.489
+41,C.6,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_6.png',scripts\figures\figura_c_6.py,build\figures\C\figura_c_6.png,2026-09-19T00:05:57+00:00,2026-09-19T00:06:00+00:00,2.672
+42,C.7,ERROR,"SyntaxError: invalid decimal literal (figura_c_7.py, line 230)",scripts\figures\figura_c_7.py,build\figures\C\figura_c_7.png,2026-09-19T00:06:00+00:00,2026-09-19T00:06:00+00:00,0.012
+43,C.8,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_8.png',scripts\figures\figura_c_8.py,build\figures\C\figura_c_8.png,2026-09-19T00:06:00+00:00,2026-09-19T00:06:03+00:00,3.008
+44,C.9,OK,Gráfica generada y verificada.,scripts\figures\figura_c_9.py,build\figures\C\figura_c_9.png,2026-09-19T00:06:03+00:00,2026-09-19T00:06:07+00:00,3.593
+45,C.10,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_10.png',scripts\figures\figura_c_10.py,build\figures\C\figura_c_10.png,2026-09-19T00:06:07+00:00,2026-09-19T00:06:10+00:00,2.816
+46,C.11,OK,Gráfica generada y verificada.,scripts\figures\figura_c_11.py,build\figures\C\figura_c_11.png,2026-09-19T00:06:10+00:00,2026-09-19T00:06:11+00:00,1.906
+47,C.12,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_12.png',scripts\figures\figura_c_12.py,build\figures\C\figura_c_12.png,2026-09-19T00:06:11+00:00,2026-09-19T00:06:13+00:00,1.659
+48,C.13,ERROR,"SyntaxError: invalid decimal literal (figura_c_13.py, line 8)",scripts\figures\figura_c_13.py,build\figures\C\figura_c_13.png,2026-09-19T00:06:13+00:00,2026-09-19T00:06:13+00:00,0.002
+49,C.14,ERROR,"SyntaxError: invalid decimal literal (figura_c_14.py, line 7)",scripts\figures\figura_c_14.py,build\figures\C\figura_c_14.png,2026-09-19T00:06:13+00:00,2026-09-19T00:06:13+00:00,0.002
+50,C.15,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_15.png',scripts\figures\figura_c_15.py,build\figures\C\figura_c_15.png,2026-09-19T00:06:13+00:00,2026-09-19T00:06:15+00:00,1.854
+51,C.16,OK,Gráfica generada y verificada.,scripts\figures\figura_c_16.py,build\figures\C\figura_c_16.png,2026-09-19T00:06:15+00:00,2026-09-19T00:06:17+00:00,1.893
+52,D.1,OK,Gráfica generada y verificada.,scripts\figures\figura_d_1.py,build\figures\D\figura_d_1.png,2026-09-19T00:06:17+00:00,2026-09-19T00:06:19+00:00,1.928
+53,D.2,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_2.png',scripts\figures\figura_d_2.py,build\figures\D\figura_d_2.png,2026-09-19T00:06:19+00:00,2026-09-19T00:06:20+00:00,1.161
+54,D.3,OK,Gráfica generada y verificada.,scripts\figures\figura_d_3.py,build\figures\D\figura_d_3.png,2026-09-19T00:06:20+00:00,2026-09-19T00:06:21+00:00,0.886
+55,D.4,OK,Gráfica generada y verificada.,scripts\figures\figura_d_4.py,build\figures\D\figura_d_4.png,2026-09-19T00:06:21+00:00,2026-09-19T00:06:22+00:00,1.147
+56,D.5,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_5.png',scripts\figures\figura_d_5.py,build\figures\D\figura_d_5.png,2026-09-19T00:06:22+00:00,2026-09-19T00:06:22+00:00,0.476
+57,D.6,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_6.png',scripts\figures\figura_d_6.py,build\figures\D\figura_d_6.png,2026-09-19T00:06:22+00:00,2026-09-19T00:06:23+00:00,0.534
+58,D.7,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_7.png',scripts\figures\figura_d_7.py,build\figures\D\figura_d_7.png,2026-09-19T00:06:23+00:00,2026-09-19T00:06:24+00:00,0.656
+59,D.8,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_8.png',scripts\figures\figura_d_8.py,build\figures\D\figura_d_8.png,2026-09-19T00:06:24+00:00,2026-09-19T00:06:24+00:00,0.558
+60,D.9,OK,Gráfica generada y verificada.,scripts\figures\figura_d_9.py,build\figures\D\figura_d_9.png,2026-09-19T00:06:24+00:00,2026-09-19T00:06:25+00:00,0.741
+61,D.10,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_10.png',scripts\figures\figura_d_10.py,build\figures\D\figura_d_10.png,2026-09-19T00:06:25+00:00,2026-09-19T00:06:26+00:00,0.619
+62,D.11,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_11.png',scripts\figures\figura_d_11.py,build\figures\D\figura_d_11.png,2026-09-19T00:06:26+00:00,2026-09-19T00:06:26+00:00,0.527
+63,E.1,OK,Gráfica generada y verificada.,scripts\figures\figura_e_1.py,build\figures\E\figura_e_1.png,2026-09-19T00:06:26+00:00,2026-09-19T00:08:09+00:00,103.232
+64,E.2,OK,Gráfica generada y verificada.,scripts\figures\figura_e_2.py,build\figures\E\figura_e_2.png,2026-09-19T00:08:09+00:00,2026-09-19T00:08:11+00:00,1.965
+65,E.3,OK,Gráfica generada y verificada.,scripts\figures\figura_e_3.py,build\figures\E\figura_e_3.png,2026-09-19T00:08:11+00:00,2026-09-19T00:08:52+00:00,40.948
+66,E.4,OK,Gráfica generada y verificada.,scripts\figures\figura_e_4.py,build\figures\E\figura_e_4.png,2026-09-19T00:08:52+00:00,2026-09-19T00:09:25+00:00,33.182
+67,E.5,OK,Gráfica generada y verificada.,scripts\figures\figura_e_5.py,build\figures\E\figura_e_5.png,2026-09-19T00:09:25+00:00,2026-09-19T00:10:00+00:00,34.452
+68,E.6,OK,Gráfica generada y verificada.,scripts\figures\figura_e_6.py,build\figures\E\figura_e_6.png,2026-09-19T00:10:00+00:00,2026-09-19T00:10:12+00:00,12.006
+69,E.7,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\E\\figura_e_7.png',scripts\figures\figura_e_7.py,build\figures\E\figura_e_7.png,2026-09-19T00:10:12+00:00,2026-09-19T00:10:26+00:00,14.372
+70,E.8,OK,Gráfica generada y verificada.,scripts\figures\figura_e_8.py,build\figures\E\figura_e_8.png,2026-09-19T00:10:26+00:00,2026-09-19T00:10:40+00:00,13.724
+71,E.9,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\E\\figura_e_9.png',scripts\figures\figura_e_9.py,build\figures\E\figura_e_9.png,2026-09-19T00:10:40+00:00,2026-09-19T00:10:42+00:00,1.744
+72,F.1.1,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_1.png',scripts\figures\figura_f_1_1.py,build\figures\F\figura_f_1_1.png,2026-09-19T00:10:42+00:00,2026-09-19T00:10:43+00:00,0.85
+73,F.1.2,ERROR,"SyntaxError: invalid decimal literal (figura_f_1_2.py, line 75)",scripts\figures\figura_f_1_2.py,build\figures\F\figura_f_1_2.png,2026-09-19T00:10:43+00:00,2026-09-19T00:10:43+00:00,0.004
+74,F.1.3,ERROR,"SyntaxError: invalid decimal literal (figura_f_1_3.py, line 72)",scripts\figures\figura_f_1_3.py,build\figures\F\figura_f_1_3.png,2026-09-19T00:10:43+00:00,2026-09-19T00:10:43+00:00,0.003
+75,F.1.4,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_4.png',scripts\figures\figura_f_1_4.py,build\figures\F\figura_f_1_4.png,2026-09-19T00:10:43+00:00,2026-09-19T00:10:44+00:00,1.342
+76,F.2,OK,Gráfica generada y verificada.,scripts\figures\figura_f_2.py,build\figures\F\figura_f_2.png,2026-09-19T00:10:44+00:00,2026-09-19T00:10:57+00:00,12.827
+77,F.3,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_3.png',scripts\figures\figura_f_3.py,build\figures\F\figura_f_3.png,2026-09-19T00:10:57+00:00,2026-09-19T00:10:58+00:00,1.527
+78,F.4,ERROR,OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_4.png',scripts\figures\figura_f_4.py,build\figures\F\figura_f_4.png,2026-09-19T00:10:58+00:00,2026-09-19T00:11:00+00:00,1.785
+79,F.5,OK,Gráfica generada y verificada.,scripts\figures\figura_f_5.py,build\figures\F\figura_f_5.png,2026-09-19T00:11:00+00:00,2026-09-19T00:11:02+00:00,1.901
+80,F.6,OK,Gráfica generada y verificada.,scripts\figures\figura_f_6.py,build\figures\F\figura_f_6.png,2026-09-19T00:11:02+00:00,2026-09-19T00:11:04+00:00,1.932
+81,F.7,OK,Gráfica generada y verificada.,scripts\figures\figura_f_7.py,build\figures\F\figura_f_7.png,2026-09-19T00:11:04+00:00,2026-09-19T00:11:06+00:00,2.021
+82,F.8,OK,Gráfica generada y verificada.,scripts\figures\figura_f_8.py,build\figures\F\figura_f_8.png,2026-09-19T00:11:06+00:00,2026-09-19T00:11:08+00:00,1.971
+83,F.9,OK,Gráfica generada y verificada.,scripts\figures\figura_f_9.py,build\figures\F\figura_f_9.png,2026-09-19T00:11:08+00:00,2026-09-19T00:11:10+00:00,2.112
+84,F.10,OK,Gráfica generada y verificada.,scripts\figures\figura_f_10.py,build\figures\F\figura_f_10.png,2026-09-19T00:11:10+00:00,2026-09-19T00:11:28+00:00,17.775
+85,F.11,OK,Gráfica generada y verificada.,scripts\figures\figura_f_11.py,build\figures\F\figura_f_11.png,2026-09-19T00:11:28+00:00,2026-09-19T00:11:48+00:00,20.537
+86,F.12,OK,Gráfica generada y verificada.,scripts\figures\figura_f_12.py,build\figures\F\figura_f_12.png,2026-09-19T00:11:48+00:00,2026-09-19T00:11:56+00:00,7.229
+87,F.13,OK,Gráfica generada y verificada.,scripts\figures\figura_f_13.py,build\figures\F\figura_f_13.png,2026-09-19T00:11:56+00:00,2026-09-19T00:12:03+00:00,7.05
+88,F.14,ERROR,"SyntaxError: invalid decimal literal (figura_f_14.py, line 32)",scripts\figures\figura_f_14.py,build\figures\F\figura_f_14.png,2026-09-19T00:12:03+00:00,2026-09-19T00:12:03+00:00,0.002
+89,F.15,OK,Gráfica generada y verificada.,scripts\figures\figura_f_15.py,build\figures\F\figura_f_15.png,2026-09-19T00:12:03+00:00,2026-09-19T00:12:23+00:00,20.216
+90,F.16,OK,Gráfica generada y verificada.,scripts\figures\figura_f_16.py,build\figures\F\figura_f_16.png,2026-09-19T00:12:23+00:00,2026-09-19T00:12:42+00:00,19.386
+91,G.1,ERROR,"SyntaxError: invalid decimal literal (figura_g_1.py, line 51)",scripts\figures\figura_g_1.py,build\figures\G\figura_g_1.png,2026-09-19T00:12:42+00:00,2026-09-19T00:12:42+00:00,0.003

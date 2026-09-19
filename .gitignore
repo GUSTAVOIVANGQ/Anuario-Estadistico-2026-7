@@ -20,3 +20,6 @@ entrega/*.pdf
 node_modules/
 *.part
 
+
+# Frontend React compilado localmente
+web/dist/

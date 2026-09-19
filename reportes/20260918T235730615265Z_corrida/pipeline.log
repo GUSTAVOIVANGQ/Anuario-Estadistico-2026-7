@@ -1,0 +1,1452 @@
+2026-09-18 17:57:30,637 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-09-18 17:57:30,638 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-09-18 17:57:30,638 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-09-18 17:57:30,639 | INFO | 
+2026-09-18 17:57:30,639 | INFO | Anuario Estadístico 2026 | corrida 20260918T235730615265Z_corrida
+2026-09-18 17:57:30,640 | INFO | Figuras seleccionadas: 91 de 105
+2026-09-18 17:57:30,640 | INFO | 
+2026-09-18 17:57:30,640 | INFO | [001/091] A.1 | LISTA
+2026-09-18 17:57:33,390 | INFO | [002/091] A.2 | LISTA
+2026-09-18 18:01:22,269 | INFO | [003/091] A.3 | LISTA
+2026-09-18 18:01:23,487 | INFO | [004/091] A.4 | LISTA
+2026-09-18 18:01:27,365 | INFO | [005/091] A.5 | LISTA
+2026-09-18 18:02:24,396 | INFO | [006/091] A.6 | LISTA
+2026-09-18 18:02:28,363 | ERROR |   Falló A.6
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_a_6.py", line 446, in generate
+    _plot(data, output_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_a_6.py", line 370, in _plot
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_6.png'
+2026-09-18 18:02:28,378 | INFO | [007/091] A.7 | LISTA
+2026-09-18 18:03:09,508 | INFO | [008/091] A.8 | LISTA
+2026-09-18 18:03:48,519 | INFO | [009/091] A.9 | LISTA
+2026-09-18 18:04:26,911 | INFO | [010/091] A.10 | LISTA
+2026-09-18 18:05:09,593 | INFO | [011/091] B.1 | LISTA
+2026-09-18 18:05:09,638 | ERROR |   Falló B.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_1.py", line 270
+    ))
+     ^
+SyntaxError: unmatched ')'
+2026-09-18 18:05:09,644 | INFO | [012/091] B.2 | LISTA
+2026-09-18 18:05:11,788 | INFO | [013/091] B.3 | LISTA
+2026-09-18 18:05:11,803 | ERROR |   Falló B.3
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_3.py", line 187
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:11,808 | INFO | [014/091] B.4 | LISTA
+2026-09-18 18:05:16,172 | INFO | [015/091] B.5 | LISTA
+2026-09-18 18:05:19,623 | INFO | [016/091] B.6 | LISTA
+2026-09-18 18:05:19,665 | ERROR |   Falló B.6
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_6.py", line 660
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:19,669 | INFO | [017/091] B.7 | LISTA
+2026-09-18 18:05:19,706 | ERROR |   Falló B.7
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_7.py", line 660
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:19,711 | INFO | [018/091] B.8 | LISTA
+2026-09-18 18:05:23,207 | INFO | [019/091] B.9 | LISTA
+2026-09-18 18:05:23,252 | ERROR |   Falló B.9
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_9.py", line 698
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:23,258 | INFO | [020/091] B.10 | LISTA
+2026-09-18 18:05:26,123 | INFO | [021/091] B.11 | LISTA
+2026-09-18 18:05:29,214 | INFO | [022/091] B.12 | LISTA
+2026-09-18 18:05:32,103 | INFO | [023/091] B.13 | LISTA
+2026-09-18 18:05:32,142 | ERROR |   Falló B.13
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_13.py", line 660
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:32,145 | INFO | [024/091] B.14 | LISTA
+2026-09-18 18:05:32,174 | ERROR |   Falló B.14
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_14.py", line 660
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:32,177 | INFO | [025/091] B.15 | LISTA
+2026-09-18 18:05:32,216 | ERROR |   Falló B.15
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_15.py", line 750
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:32,227 | INFO | [026/091] B.16 | LISTA
+2026-09-18 18:05:36,201 | ERROR |   Falló B.16
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_16.py", line 768, in generate
+    return generate_figure(context, FIGURE_ID)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_16.py", line 757, in generate_figure
+    plot(figure_id, data, meta, context.expected_figure_path, context.project_root, geojson_path)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_16.py", line 707, in plot
+    _plot_technology(data, meta, output)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_16.py", line 688, in _plot_technology
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_16.png'
+2026-09-18 18:05:36,209 | INFO | [027/091] B.17 | LISTA
+2026-09-18 18:05:36,246 | ERROR |   Falló B.17
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_17.py", line 698
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:36,250 | INFO | [028/091] B.18 | LISTA
+2026-09-18 18:05:39,090 | INFO | [029/091] B.19 | LISTA
+2026-09-18 18:05:43,308 | INFO | [030/091] B.20 | LISTA
+2026-09-18 18:05:46,758 | INFO | [031/091] B.21 | LISTA
+2026-09-18 18:05:46,771 | ERROR |   Falló B.21
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_21.py", line 288
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:46,776 | INFO | [032/091] B.22 | LISTA
+2026-09-18 18:05:46,828 | ERROR |   Falló B.22
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_22.py", line 463
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:46,834 | INFO | [033/091] B.23 | LISTA
+2026-09-18 18:05:46,851 | ERROR |   Falló B.23
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_23.py", line 193
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:46,875 | INFO | [034/091] B.24 | LISTA
+2026-09-18 18:05:46,898 | ERROR |   Falló B.24
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_24.py", line 7
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:46,909 | INFO | [035/091] B.25 | LISTA
+2026-09-18 18:05:50,094 | ERROR |   Falló B.25
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_25.py", line 40, in generate
+    text=context.render_text("b_25.md.j2",{"anio":m["anio"],"ihh":float(d.iloc[-1]["ihh"]),"anio_inicial":int(d.iloc[0]["anio"]),"ihh_inicial":float(d.iloc[0]["ihh"])}); print("  B.25 | Generación del PNG"); _plot(d,m,context.expected_figure_path,context.project_root); return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_25.py", line 36, in _plot
+    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+                                                  ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_25.png'
+2026-09-18 18:05:50,130 | INFO | [036/091] C.1 | LISTA
+2026-09-18 18:05:51,079 | ERROR |   Falló C.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_1.py", line 57, in generate
+    leader=d.sort_values("mhz",ascending=False).iloc[0]; text=context.render_text("c_1.md.j2",{"anio":m["anio"],"mes":m["mes"],"total":m["total"],"banda_mayor":leader.banda,"mhz_mayor":leader.mhz}); print("  C.1 | Generación del PNG"); _plot(d,m,context.expected_figure_path,context.project_root); return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                            ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_1.py", line 53, in _plot
+    out.parent.mkdir(parents=True,exist_ok=True); fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
+                                                  ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_1.png'
+2026-09-18 18:05:51,093 | INFO | [037/091] C.2 | LISTA
+2026-09-18 18:05:52,534 | ERROR |   Falló C.2
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_2.py", line 63, in generate
+    text=context.render_text("c_2.md.j2",{"anio":m["anio"],"mes":m["mes"]});print("  C.2 | Generación del PNG");_plot(d,m,context.expected_figure_path,context.project_root);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_2.py", line 59, in _plot
+    out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,bbox_inches="tight",facecolor="white");plt.close(fig)
+                                                 ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_2.png'
+2026-09-18 18:05:52,544 | INFO | [038/091] C.3 | LISTA
+2026-09-18 18:05:52,552 | ERROR |   Falló C.3
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_3.py", line 169
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:05:52,556 | INFO | [039/091] C.4 | LISTA
+2026-09-18 18:05:54,410 | ERROR |   Falló C.4
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_4.py", line 275, in generate
+    _plot(data, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_4.py", line 242, in _plot
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_4.png'
+2026-09-18 18:05:54,423 | INFO | [040/091] C.5 | LISTA
+2026-09-18 18:05:57,914 | INFO | [041/091] C.6 | LISTA
+2026-09-18 18:06:00,576 | ERROR |   Falló C.6
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_6.py", line 32, in generate
+    print("  C.6 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"teledensidad_{r.anio}","T_H_TELMOVIL_E nacional publicado por BIT",{"anio":r.anio},r.teledensidad,"líneas por cada 100 habitantes",0) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"La teledensidad móvil publicada para {m['anio']} fue {d.iloc[-1].teledensidad:.0f} líneas por cada 100 habitantes."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_6.py", line 30, in _plot
+    out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+                                                 ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_6.png'
+2026-09-18 18:06:00,588 | INFO | [042/091] C.7 | LISTA
+2026-09-18 18:06:00,597 | ERROR |   Falló C.7
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_7.py", line 230
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:06:00,603 | INFO | [043/091] C.8 | LISTA
+2026-09-18 18:06:03,603 | ERROR |   Falló C.8
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_8.py", line 35, in generate
+    print("  C.8 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=str(m["anio"]);context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"trafico_{r.anio}","suma anual TRAF_SALIDA / 1,000,000",{"anio":r.anio},r.trafico_millones_minutos,"millones de minutos",1) for r in d.itertuples(index=False)];last=d.iloc[-1];text=context.render_text("c_mobile.md.j2",{"resumen":f"En {m['anio']}, el tráfico móvil de salida fue {last.trafico_millones_minutos:,.1f} millones de minutos."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_8.py", line 33, in _plot
+    out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+                                                 ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_8.png'
+2026-09-18 18:06:03,614 | INFO | [044/091] C.9 | LISTA
+2026-09-18 18:06:07,208 | INFO | [045/091] C.10 | LISTA
+2026-09-18 18:06:10,016 | ERROR |   Falló C.10
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_10.py", line 26, in generate
+    print("  C.10 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"ihh_{r.anio}","IHH_TELMOVIL_E publicado por BIT",{"anio":r.anio},r.ihh,"puntos IHH",0) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"En diciembre de {m['anio']}, el IHH móvil fue de {d.iloc[-1].ihh:,.0f} puntos."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_10.py", line 24, in _plot
+    fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"IHH estimado respecto del número de líneas móviles.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_10.png'
+2026-09-18 18:06:10,027 | INFO | [046/091] C.11 | LISTA
+2026-09-18 18:06:11,934 | INFO | [047/091] C.12 | LISTA
+2026-09-18 18:06:13,586 | ERROR |   Falló C.12
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_12.py", line 25, in generate
+    print("  C.12 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d);[context.record_calculation(f"teledensidad_internet_{r.anio}","T_H_INTMOVIL_E publicado por BIT",{"anio":r.anio},r.teledensidad,"líneas por cada 100 habitantes",0) for r in d.itertuples(index=False)];text=context.render_text("c_mobile.md.j2",{"resumen":f"En diciembre de {m['anio']} había {d.iloc[-1].teledensidad:.0f} líneas móviles de acceso a Internet por cada 100 habitantes."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_12.py", line 23, in _plot
+    ax.set_xticks(d.anio);ax.set_ylim(0,d.teledensidad.max()*1.18);ax.spines[:].set_visible(False);ax.set_yticks([]);ax.legend(loc="lower center",bbox_to_anchor=(.5,-.17),frameon=False,fontsize=9,labelcolor=TEXT);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Líneas por cada 100 habitantes.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200,facecolor="white");plt.close(fig)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_12.png'
+2026-09-18 18:06:13,594 | INFO | [048/091] C.13 | LISTA
+2026-09-18 18:06:13,596 | ERROR |   Falló C.13
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_13.py", line 8
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:06:13,598 | INFO | [049/091] C.14 | LISTA
+2026-09-18 18:06:13,599 | ERROR |   Falló C.14
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_14.py", line 7
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:06:13,601 | INFO | [050/091] C.15 | LISTA
+2026-09-18 18:06:15,450 | ERROR |   Falló C.15
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_15.py", line 51, in generate
+    last=d.iloc[-1];leader=max(ORDER,key=lambda g:last[g]);text=context.render_text("c_mobile.md.j2",{"resumen":f"En diciembre de {m['anio']}, {leader} encabezó el mercado de Internet móvil con {last[leader]:.1f}%."});print(d.to_string(index=False));_plot(d,m,context.expected_figure_path);return {"figure_path":str(context.expected_figure_path),"text_path":str(text),"source_latest_period":period,"rows_used":len(d)}
+                                                                                                                                                                                                                                                          ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_c_15.py", line 46, in _plot
+    fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"La suma puede no ser 100% por redondeo.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+                                                                                                                                                                                                                                                                                                                                                                                                                        ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_15.png'
+2026-09-18 18:06:15,456 | INFO | [051/091] C.16 | LISTA
+2026-09-18 18:06:17,350 | INFO | [052/091] D.1 | LISTA
+2026-09-18 18:06:19,280 | INFO | [053/091] D.2 | LISTA
+2026-09-18 18:06:20,439 | ERROR |   Falló D.2
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_2.py", line 182, in generate
+    _plot(data, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_2.py", line 151, in _plot
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_2.png'
+2026-09-18 18:06:20,443 | INFO | [054/091] D.3 | LISTA
+2026-09-18 18:06:21,330 | INFO | [055/091] D.4 | LISTA
+2026-09-18 18:06:22,478 | INFO | [056/091] D.5 | LISTA
+2026-09-18 18:06:22,950 | ERROR |   Falló D.5
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_5.py", line 102, in generate
+    _plot(data, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_5.py", line 88, in _plot
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
+                                                      ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_5.png'
+2026-09-18 18:06:22,955 | INFO | [057/091] D.6 | LISTA
+2026-09-18 18:06:23,485 | ERROR |   Falló D.6
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_6.py", line 89, in generate
+    print(f"Validación contra el anuario: desviación máxima {deviation:.1f} pp"); _plot(data, context.expected_figure_path, context.project_root)
+                                                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_6.py", line 74, in _plot
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
+                                                      ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_6.png'
+2026-09-18 18:06:23,491 | INFO | [058/091] D.7 | LISTA
+2026-09-18 18:06:24,143 | ERROR |   Falló D.7
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_7.py", line 69, in generate
+    print(f"Validación contra el anuario: desviación máxima {deviation:.1f} pp"); _plot(data,context.expected_figure_path,context.project_root)
+                                                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_7.py", line 58, in _plot
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+                                                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_7.png'
+2026-09-18 18:06:24,148 | INFO | [059/091] D.8 | LISTA
+2026-09-18 18:06:24,701 | ERROR |   Falló D.8
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_8.py", line 71, in generate
+    _plot(data, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_8.py", line 55, in _plot
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
+                                                      ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_8.png'
+2026-09-18 18:06:24,708 | INFO | [060/091] D.9 | LISTA
+2026-09-18 18:06:25,450 | INFO | [061/091] D.10 | LISTA
+2026-09-18 18:06:26,064 | ERROR |   Falló D.10
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_10.py", line 64, in generate
+    print(f"Validación contra el anuario: desviación máxima {deviation:.1f} pp"); _plot(data,context.expected_figure_path,context.project_root)
+                                                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_10.py", line 53, in _plot
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+                                                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_10.png'
+2026-09-18 18:06:26,071 | INFO | [062/091] D.11 | LISTA
+2026-09-18 18:06:26,594 | ERROR |   Falló D.11
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_11.py", line 67, in generate
+    print(f"Validación contra el anuario: desviación máxima {deviation:.1f} pp"); _plot(data,context.expected_figure_path,context.project_root)
+                                                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_d_11.py", line 56, in _plot
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+                                                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_11.png'
+2026-09-18 18:06:26,600 | INFO | [063/091] E.1 | LISTA
+2026-09-18 18:08:09,837 | INFO | [064/091] E.2 | LISTA
+2026-09-18 18:08:11,804 | INFO | [065/091] E.3 | LISTA
+2026-09-18 18:08:52,756 | INFO | [066/091] E.4 | LISTA
+2026-09-18 18:09:25,941 | INFO | [067/091] E.5 | LISTA
+2026-09-18 18:10:00,396 | INFO | [068/091] E.6 | LISTA
+2026-09-18 18:10:12,403 | INFO | [069/091] E.7 | LISTA
+2026-09-18 18:10:26,762 | ERROR |   Falló E.7
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_e_7.py", line 86, in generate
+    top=data.loc[data.anio.eq(2024)].sort_values("porcentaje",ascending=False).iloc[0]; text_path=context.render_text("f_digital.md.j2",{"resumen":f"En 2024 el dispositivo con mayor uso fue {top.dispositivo.lower()} ({top.porcentaje:.1f}% en {top.tamano.lower()})."}); print(f"Validación 2023-2024: desviación máxima {deviation:.1f} pp"); _plot(data,context.expected_figure_path,context.project_root)
+                                                                                                                                                                                                                                                                                                                                                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_e_7.py", line 78, in _plot
+    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
+                                                                                         ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\E\\figura_e_7.png'
+2026-09-18 18:10:26,777 | INFO | [070/091] E.8 | LISTA
+2026-09-18 18:10:40,502 | INFO | [071/091] E.9 | LISTA
+2026-09-18 18:10:42,243 | ERROR |   Falló E.9
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_e_9.py", line 183, in generate
+    _plot(data, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_e_9.py", line 158, in _plot
+    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200)
+                                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\E\\figura_e_9.png'
+2026-09-18 18:10:42,247 | INFO | [072/091] F.1.1 | LISTA
+2026-09-18 18:10:43,094 | ERROR |   Falló F.1.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_1.py", line 465, in generate
+    _plot(data, context.expected_figure_path, context.project_root, selected_period)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_1.py", line 366, in _plot
+    fig.savefig(output, dpi=200, facecolor="white")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_1.png'
+2026-09-18 18:10:43,098 | INFO | [073/091] F.1.2 | LISTA
+2026-09-18 18:10:43,101 | ERROR |   Falló F.1.2
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_2.py", line 75
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:10:43,104 | INFO | [074/091] F.1.3 | LISTA
+2026-09-18 18:10:43,106 | ERROR |   Falló F.1.3
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_3.py", line 72
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:10:43,109 | INFO | [075/091] F.1.4 | LISTA
+2026-09-18 18:10:44,448 | ERROR |   Falló F.1.4
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_4.py", line 466, in generate
+    _plot(data, context.expected_figure_path, context.project_root, selected_period)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_1_4.py", line 367, in _plot
+    fig.savefig(output, dpi=200, facecolor="white")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_1_4.png'
+2026-09-18 18:10:44,453 | INFO | [076/091] F.2 | LISTA
+2026-09-18 18:10:57,281 | INFO | [077/091] F.3 | LISTA
+2026-09-18 18:10:58,803 | ERROR |   Falló F.3
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_3.py", line 135, in generate
+    print("  F.3 | 4/4 Generación de gráfica PNG"); _plot(data,context.expected_figure_path,context.project_root)
+                                                    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_3.py", line 117, in _plot
+    fig.savefig(output,dpi=200,facecolor="white",edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_3.png'
+2026-09-18 18:10:58,811 | INFO | [078/091] F.4 | LISTA
+2026-09-18 18:11:00,592 | ERROR |   Falló F.4
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_4.py", line 91, in generate
+    print(data.to_string(index=False,formatters={"Hombres":lambda x:f"{x:.1f}%","Mujeres":lambda x:f"{x:.1f}%"})); print("  F.4 | 4/4 Generación de gráfica PNG"); _plot(data,context.expected_figure_path,context.project_root)
+                                                                                                                                                                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_4.py", line 80, in _plot
+    fig.subplots_adjust(left=.055,right=.958,top=.74,bottom=.25); output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
+                                                                                                                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_4.png'
+2026-09-18 18:11:00,598 | INFO | [079/091] F.5 | LISTA
+2026-09-18 18:11:02,500 | INFO | [080/091] F.6 | LISTA
+2026-09-18 18:11:04,433 | INFO | [081/091] F.7 | LISTA
+2026-09-18 18:11:06,455 | INFO | [082/091] F.8 | LISTA
+2026-09-18 18:11:08,429 | INFO | [083/091] F.9 | LISTA
+2026-09-18 18:11:10,542 | INFO | [084/091] F.10 | LISTA
+2026-09-18 18:11:28,320 | INFO | [085/091] F.11 | LISTA
+2026-09-18 18:11:48,858 | INFO | [086/091] F.12 | LISTA
+2026-09-18 18:11:56,088 | INFO | [087/091] F.13 | LISTA
+2026-09-18 18:12:03,139 | INFO | [088/091] F.14 | LISTA
+2026-09-18 18:12:03,140 | ERROR |   Falló F.14
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_f_14.py", line 32
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:12:03,143 | INFO | [089/091] F.15 | LISTA
+2026-09-18 18:12:23,360 | INFO | [090/091] F.16 | LISTA
+2026-09-18 18:12:42,748 | INFO | [091/091] G.1 | LISTA
+2026-09-18 18:12:42,750 | ERROR |   Falló G.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 248, in run_pipeline
+    generate = load_generator(figure)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 99, in load_generator
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 893, in get_code
+  File "<frozen importlib._bootstrap_external>", line 823, in source_to_code
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_g_1.py", line 51
+    >>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+             ^
+SyntaxError: invalid decimal literal
+2026-09-18 18:12:42,756 | INFO | 
+2026-09-18 18:12:42,756 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20260918T235730615265Z_corrida

@@ -1,0 +1,2 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+B.4,valor_ultimo_periodo,selección del último diciembre disponible y aplicación de la fórmula de la figura,"{""periodo"": ""2024-12"", ""filas"": 25}",31361393.0,valor de la figura,2
