@@ -1,6 +1,7 @@
 param(
     [string]$PythonEjecutable = "python",
-    [switch]$ConPlaywright
+    [switch]$ConPlaywright,
+    [switch]$SinFrontend
 )
 
 $ErrorActionPreference = "Stop"
@@ -27,4 +28,23 @@ if ($ConPlaywright) {
     & $python -m pip install -e $raizProyecto
 }
 
-Write-Host "Entorno listo. Prueba: .\ejecutar.ps1 doctor"
+if (-not $SinFrontend) {
+    $npm = Get-Command npm -ErrorAction SilentlyContinue
+    if ($null -eq $npm) {
+        Write-Warning "No se encontró Node.js/npm. El pipeline Python quedó listo, pero la interfaz React necesita Node.js 20 o superior para compilarse."
+    } else {
+        Push-Location (Join-Path $raizProyecto "web")
+        try {
+            & npm install --no-audit --no-fund
+            if ($LASTEXITCODE -ne 0) { throw "npm install falló." }
+            & npm run build
+            if ($LASTEXITCODE -ne 0) { throw "npm run build falló." }
+        } finally {
+            Pop-Location
+        }
+    }
+}
+
+Write-Host "Entorno listo."
+Write-Host "Pipeline: .\ejecutar.ps1 doctor"
+Write-Host "Interfaz web: .\ejecutar.ps1 web"

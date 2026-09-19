@@ -1,0 +1,7 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+B.1,dato_crudo,data/raw/inegi_endutih_2025/objects/65d219261b3890ee12eaf95cdd1185f6b7d52eefd7e698ffd335b604364fd508/conjunto_de_datos_endutih_2025_csv.zip,65d219261b3890ee12eaf95cdd1185f6b7d52eefd7e698ffd335b604364fd508,8197337,2026-09-10T12:04:22+00:00
+B.1,datos_usados,reportes/20260918T214132343498Z_corrida/datos_usados/b_1_datos_usados.csv,39eec44bcf50d134c4c1ea52562864984011fb0ffca31ae260f6fee84a00f9f5,761,2026-09-18T21:41:33+00:00
+B.1,texto_generado,build/text/b_1.md,a0e6dfdedc3c7c651221b210c8d0c49e97c6f36ebfca669f3903ff3bac1a07d4,148,2026-09-18T21:41:33+00:00
+B.1,texto_copia_corrida,reportes/20260918T214132343498Z_corrida/textos/b_1_parrafo.md,a0e6dfdedc3c7c651221b210c8d0c49e97c6f36ebfca669f3903ff3bac1a07d4,148,2026-09-18T21:41:33+00:00
+B.1,grafica,build/figures/B/figura_b_1.png,4d7a9b5636e30c6970d2e8abda7f780bd2361dc97893dd07695fd4656693d2b2,269121,2026-09-18T21:41:33+00:00
+B.1,metadatos,build/metadata/b_1.json,b95d0d2ba7c19a0c0e1bab5ac0e955a1037af85eafbaa48d56f686d19297de9d,588,2026-09-18T21:41:33+00:00

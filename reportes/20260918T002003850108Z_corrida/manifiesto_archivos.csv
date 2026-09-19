@@ -1,0 +1,7 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+F.14,dato_crudo,data/raw/ift_tercera_encuesta_usuarios_2023_pdf/objects/14f1a7450198552b9e65/3erencuesta2023.pdf,14f1a7450198552b9e65e3a0114d63644be6dc30aaba05794669197bf0a29716,8412858,2026-09-15T19:32:53+00:00
+F.14,datos_usados,reportes/20260918T002003850108Z_corrida/datos_usados/f_14_datos_usados.csv,659070d317ece9c30faf26c81200f084416fe7c120f461487b2d58a34a0cf78a,790,2026-09-18T00:20:03+00:00
+F.14,texto_generado,build/text/f_14.md,d4ed4b535edcecfa659fe479a97410efce2f90dc740fb3e50ec95f1e6de5f4ee,157,2026-09-18T00:20:03+00:00
+F.14,texto_copia_corrida,reportes/20260918T002003850108Z_corrida/textos/f_14_parrafo.md,d4ed4b535edcecfa659fe479a97410efce2f90dc740fb3e50ec95f1e6de5f4ee,157,2026-09-18T00:20:03+00:00
+F.14,grafica,build/figures/F/figura_f_14.png,8b8112608bbb07c439deb5e86894831822e8c9dd47ede17f5ea5f1685629bd8f,274892,2026-09-18T00:20:04+00:00
+F.14,metadatos,build/metadata/f_14.json,2001d3faf8aae5ab478318f8edc675c13da8e002c97344367a0c9fb7e4495c16,566,2026-09-18T00:20:04+00:00

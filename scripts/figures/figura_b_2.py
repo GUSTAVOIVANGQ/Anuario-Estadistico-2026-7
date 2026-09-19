@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -33,11 +25,11 @@ DOMAIN = "R"
 TITLE = "Distribución de los Servicios Fijos con respecto del total de hogares en las zonas rurales"
 TOTAL_LABEL = "Total de hogares en zonas\nrurales en México:"
 
-C_TRES = "#317DA1"
-C_DOS = "#F2535A"
-C_UNO = "#A8DCE0"
-C_NINGUNO = "#F28D7D"
-C_TEXT = "#4B4B7D"
+C_TRES = "#132b2d"
+C_DOS = "#3b6667"
+C_UNO = "#64a0a1"
+C_NINGUNO = "#86adae"
+C_TEXT = "#3c3c3b"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -151,7 +143,7 @@ def _draw_panel(fig, left, bottom, width, height, categories, values, colors, ti
     background.axis("off")
     background.add_patch(FancyBboxPatch(
         (0, 0), 1, 1, boxstyle="round,pad=0,rounding_size=0.025",
-        linewidth=1, edgecolor="#C3C3D0", facecolor="#FBFBF7",
+        linewidth=1, edgecolor="#C3C3D0", facecolor="#F8F8FA",
         transform=background.transAxes, clip_on=False,
     ))
     fig.text(left + width * 0.06, bottom + height * 0.91, title,
@@ -168,7 +160,7 @@ def _draw_panel(fig, left, bottom, width, height, categories, values, colors, ti
                 f"{value:.0f}%", ha="center", va="bottom", fontsize=11,
                 fontweight="bold", color=C_TEXT,
                 bbox=dict(boxstyle="round,pad=0.28,rounding_size=0.6",
-                          facecolor="white", edgecolor=title_color, linewidth=0.9))
+                          facecolor="white", edgecolor=title_color, linewidth=1.15))
     ax.set_xticks(x, categories, fontsize=8, color=C_TEXT, linespacing=1.15)
     ax.tick_params(left=False, bottom=False, labelleft=False, length=0)
     for spine in ax.spines.values():
@@ -181,38 +173,55 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     one = metrics.loc[metrics["grupo"].eq("un_servicio")].set_index("categoria")["porcentaje"]
     two = metrics.loc[metrics["grupo"].eq("dos_servicios")].set_index("categoria")["porcentaje"]
 
+    leader_color = "#8F8FA1"
+    chip_border = "#9A9AAF"
+
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.text(0.028, 0.952, "   ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                       facecolor="#F58F82", edgecolor="none"))
+                       facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.046, 0.952, "Figura B.2.", fontsize=13, fontweight="bold", color=C_TEXT, va="center")
     fig.text(0.126, 0.952, TITLE, fontsize=13, color=C_TEXT, va="center")
 
     ax_pie = fig.add_axes([0.0, 0.11, 0.53, 0.78])
     ax_pie.set_aspect("equal")
-    ax_pie.set_xlim(-1.65, 1.65)
+    ax_pie.set_xlim(-1.55, 1.55)
     ax_pie.set_ylim(-1.38, 1.38)
     ax_pie.axis("off")
     sizes = [totals["Tres servicios"], totals["Dos servicios"], totals["Un servicio"], totals["Ninguno"]]
     colors = [C_TRES, C_DOS, C_UNO, C_NINGUNO]
-    ax_pie.pie(sizes, colors=colors, explode=(0.03,) * 4, startangle=90,
-               counterclock=False, radius=0.68,
-               wedgeprops=dict(linewidth=2, edgecolor="white"))
-    bubbles = [
-        (0.60, 0.54, 0.62, 0.52, "left", sizes[0], "Tres servicios\n(Telefonía Fija +\nTV Restringida + Internet)"),
-        (0.60, -0.68, 0.50, 0.38, "left", sizes[1], "Dos servicios"),
-        (-1.23, -0.56, 0.50, 0.38, "right", sizes[2], "Un servicio"),
-        (-1.23, 0.24, 0.50, 0.32, "right", sizes[3], "Ninguno"),
+    wedges, _ = ax_pie.pie(
+        sizes, colors=colors, explode=(0.03,) * 4, startangle=90,
+        counterclock=False, radius=0.68,
+        wedgeprops=dict(linewidth=2, edgecolor="white"),
+    )
+
+    chip = dict(boxstyle="round,pad=0.36,rounding_size=0.18",
+                facecolor="white", edgecolor=chip_border, linewidth=1.15)
+    arrow = dict(arrowstyle="-", color=leader_color, linewidth=1.20,
+                 shrinkA=8, shrinkB=0, connectionstyle="arc3,rad=0")
+    labels = [
+        (1.02, 1.04, 1.02, 0.77, "Tres servicios\n(Telefonía Fija +\nTV Restringida + Internet)"),
+        (1.20, 0.34, 1.20, 0.10, "Dos servicios"),
+        (1.05, -0.82, 1.05, -1.05, "Un servicio"),
+        (-1.14, 0.88, -1.14, 0.64, "Ninguno"),
     ]
-    for bx, by, bw, bh, side, value, label in bubbles:
-        _draw_bubble(ax_pie, bx, by, bw, bh, side)
-        ax_pie.text(bx + bw / 2, by + bh * 0.68, f"{value:.0f}%", ha="center",
-                    va="center", fontsize=21, fontweight="bold", color=C_TEXT, zorder=7)
-        ax_pie.text(bx + bw / 2, by + bh * 0.25, label, ha="center", va="center",
-                    fontsize=7, color=C_TEXT, linespacing=1.25, zorder=7)
+    for wedge, value, (cx, cy, lx, ly, label) in zip(wedges, sizes, labels):
+        angle = np.deg2rad((wedge.theta1 + wedge.theta2) / 2)
+        target = (0.52 * np.cos(angle), 0.52 * np.sin(angle))
+        ax_pie.annotate(
+            f"{value:.0f}%", xy=target, xytext=(cx, cy),
+            ha="center", va="center", fontsize=18, fontweight="bold", color=C_TEXT,
+            bbox=chip, arrowprops=arrow, annotation_clip=False, zorder=8,
+        )
+        ax_pie.scatter(*target, s=30, facecolor="#A6A6B5", edgecolor="white",
+                       linewidth=0.7, zorder=9, clip_on=False)
+        ax_pie.text(lx, ly, label, ha="center", va="center", fontsize=8,
+                    color=C_TEXT, linespacing=1.18, zorder=9, clip_on=False)
+
     ax_pie.add_patch(FancyBboxPatch(
         (-1.22, -1.22), 0.82, 0.38, boxstyle="round,pad=0,rounding_size=0.06",
-        linewidth=0.9, edgecolor="#B7B7C5", facecolor="white", zorder=5,
+        linewidth=1.0, edgecolor="#A9A9B8", facecolor="white", zorder=5,
     ))
     ax_pie.text(-0.81, -0.945, TOTAL_LABEL, ha="center", fontsize=7.5, color=C_TEXT, zorder=7)
     ax_pie.text(-0.81, -1.12, f"{total_hogares:,}", ha="center", fontsize=12.5,
@@ -221,7 +230,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     _draw_panel(fig, 0.527, 0.510, 0.448, 0.388,
                 ["Solo\nTV Restringida", "Solo\nTelefonía", "Solo\nInternet"],
                 [one["Solo TV Restringida"], one["Solo Telefonía"], one["Solo Internet"]],
-                ["#74BEC7", "#8BCDD3", C_UNO], "Un servicio", C_UNO)
+                ["#64a0a1", "#86adae", C_UNO], "Un servicio", C_UNO)
     _draw_panel(fig, 0.527, 0.103, 0.448, 0.388,
                 ["Internet +\nTelefonía", "TV Restringida\n+ Internet", "TV Restringida\n+ Telefonía"],
                 [two["Internet + Telefonía"], two["TV Restringida + Internet"], two["TV Restringida + Telefonía"]],
@@ -235,9 +244,8 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.text(0.073, 0.033, "Los porcentajes pueden no sumar 100% debido al redondeo.",
              fontsize=8, color=C_TEXT)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
-
 
 def generate(context):
     print("  B.2 | Adquisición o reutilización del ZIP ENDUTIH 2025")

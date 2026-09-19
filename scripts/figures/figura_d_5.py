@@ -1,14 +1,6 @@
 """Figura D.5: forma de aprendizaje del uso de Internet (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import textwrap
 from pathlib import Path
@@ -23,7 +15,8 @@ import pandas as pd
 FIGURE_ID = "D.5"
 SOURCE_ID = "ift_ecsi_2024_base"
 PERIOD = "2024"
-TEXT, CORAL, BG = "#4B4B7D", "#F2535A", "#FBFBF7"
+TEXT, BG = "#3c3c3b", "#F8F8FA"
+COLORS = ["#86adae", "#64a0a1", "#5c9596", "#4c7d7e", "#3b6667", "#335a5c", "#234244", "#132b2d"]
 VARIABLES = [
     ("apren_uso_int_1", "Por su cuenta"),
     ("apren_uso_int_2", "Capacitación en el trabajo"),
@@ -76,23 +69,23 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035, .06), .93, .86, boxstyle="round,pad=.012,rounding_size=.02",
                                           fc=BG, ec="none", transform=fig.transFigure, zorder=-2))
-    fig.text(.055, .88, "•", color="#F58F82", fontsize=20, va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none"))
     fig.text(.073, .88, "Figura D.5.", color=TEXT, fontsize=16, fontweight="bold", va="center")
     fig.text(.18, .88, "¿Cómo aprendió a buscar información o usar Internet? (2024)", color=TEXT, fontsize=16, va="center")
     ax = fig.add_axes([.075, .21, .86, .57]); ax.set_facecolor(BG)
-    bars = ax.bar(range(len(data)), data["porcentaje"], color=CORAL, width=.58, zorder=2)
+    bars = ax.bar(range(len(data)), data["porcentaje"], color=COLORS[:len(data)], width=.58, zorder=2)
     ax.set_ylim(0, 60); ax.set_yticks(range(0, 61, 10), [f"{n}%" for n in range(0, 61, 10)])
     ax.set_xticks(range(len(data)), [textwrap.fill(x, 16) for x in data["categoria"]], fontsize=10, color=TEXT)
     ax.tick_params(axis="x", length=0, pad=10); ax.tick_params(axis="y", length=0, colors=TEXT)
-    ax.grid(axis="y", color="#DADAE3", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=.7, zorder=0); ax.spines[:].set_visible(False)
     for bar, value in zip(bars, data["porcentaje"]):
         ax.text(bar.get_x()+bar.get_width()/2, value+1, f"{value:.1f}%", ha="center", color=TEXT,
-                fontsize=11, fontweight="bold", bbox=dict(boxstyle="round,pad=.28", fc="white", ec="none"))
+                fontsize=11, fontweight="bold", bbox=dict(boxstyle="round,pad=.28", fc="white", ec=bar.get_facecolor(), lw=.8))
     fig.text(.055, .112, "Fuente:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.101, .112, "IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.", color=TEXT, fontsize=9)
     fig.text(.055, .086, "Nota:", color=TEXT, fontsize=9, fontweight="bold")
     fig.text(.09, .086, "Porcentajes ponderados entre personas usuarias de Internet; la respuesta admite más de una opción.", color=TEXT, fontsize=9)
-    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200); plt.close(fig)
 
 
 def generate(context):

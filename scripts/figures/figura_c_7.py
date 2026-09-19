@@ -1,14 +1,6 @@
 """Figura C.7: teledensidad de telefonía móvil por entidad federativa."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import json
 import math
 import sys
@@ -29,8 +21,8 @@ SOURCE_ID = "crt_bit_todo_2025_q2"
 MAP_SOURCE_ID = "mexico_geojson_legacy"
 TABLE = "TD_TELEDENSIDAD_TELMOVIL_ITE_VA.csv"
 NATIONAL_TABLE = "TD_TELEDENSIDAD_H_TMOVIL_ITE_VA.csv"
-TEXT = "#4B4B83"
-COLORS = ["#ADDCDF", "#6CBFC4", "#317DA3", "#F58F82", "#F2535A"]
+TEXT = "#3c3c3b"
+COLORS = ["#afafaf", "#737f7c", "#63918b", "#2d4f4b", "#012f2a"]
 
 
 def _member(archive: zipfile.ZipFile, table: str) -> str:
@@ -115,33 +107,97 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     if len(bounds) != 6:
         bounds = np.linspace(float(data.valor.min()), float(data.valor.max()) + .01, 6)
     shape_list, facecolors = _shapes(map_path, values, bounds)
-    fig = plt.figure(figsize=(16, 9), facecolor="white")
-    fig.add_artist(patches.FancyBboxPatch((.025, .045), .95, .89, boxstyle="round,pad=.01,rounding_size=.018",
-                                          lw=0, fc="#FBFBF7", transform=fig.transFigure, zorder=-1))
-    fig.text(.045, .9, " ", bbox=dict(boxstyle="round,pad=1.5", fc="#F58F82", ec="none"))
-    fig.text(.061, .9, "Figura C.7.", fontsize=14, fontweight="bold", color=TEXT, va="center")
-    fig.text(.145, .9, f"Líneas del servicio móvil de telefonía por cada 100 habitantes ({meta['anio']})",
-             fontsize=14, color=TEXT, va="center")
-    ax = fig.add_axes([.18, .18, .61, .65])
-    ax.add_collection(PatchCollection(shape_list, facecolor=facecolors, edgecolor="white", linewidth=.7))
-    ax.set_xlim(-119.5, -85); ax.set_ylim(14, 33.5); ax.set_aspect(1 / np.cos(np.deg2rad(23.5))); ax.axis("off")
+
+    fig, ax = plt.subplots(figsize=(16, 8.5))
+    fig.patch.set_facecolor("white")
+    ax.set_facecolor("white")
+    ax.axis("off")
+    ax.add_collection(PatchCollection(shape_list, facecolor=facecolors, edgecolor="white", linewidth=.5))
+    ax.set_xlim(-120.5, -79.0)
+    ax.set_ylim(13.5, 34.0)
+    ax.set_aspect(1 / np.cos(np.deg2rad(23.5)))
+
+    bx, by, bw, bh = 0.735, 0.56, 0.215, 0.275
+    bubble_face, bubble_edge = "#f7f7f7", "#c0c0c0"
+    fig.add_artist(patches.FancyBboxPatch(
+        (bx, by), bw, bh, boxstyle="round,pad=0.015,rounding_size=0.015",
+        linewidth=1.0, edgecolor=bubble_edge, facecolor=bubble_face,
+        transform=fig.transFigure, zorder=6, clip_on=False,
+    ))
+    fig.text(
+        bx + bw / 2, by + bh * 0.80, "Líneas por cada\n100 habitantes:",
+        transform=fig.transFigure, fontsize=9.5, color=TEXT,
+        ha="center", va="center", zorder=7, multialignment="center", clip_on=False,
+    )
+    fig.text(
+        bx + bw / 2, by + bh * 0.37, f"{meta['nacional']:.0f}",
+        transform=fig.transFigure, fontsize=60, fontweight="bold", color=TEXT,
+        ha="center", va="center", zorder=7, clip_on=False,
+    )
+    line_y = by + bh * 0.60
+    fig.add_artist(plt.Line2D(
+        [bx + 0.02, bx + bw - 0.02], [line_y, line_y], transform=fig.transFigure,
+        color="#d0d0d0", linewidth=0.8, zorder=7, clip_on=False,
+    ))
+
+    growth = float(meta["crecimiento"])
+    if not math.isnan(growth):
+        tx, ty, tw, th = 0.28, 0.155, 0.225, 0.095
+        fig.add_artist(patches.FancyBboxPatch(
+            (tx, ty), tw, th, boxstyle="round,pad=0.012,rounding_size=0.012",
+            linewidth=0, facecolor="#2d4f4b", transform=fig.transFigure, zorder=6, clip_on=False,
+        ))
+        fig.add_artist(patches.FancyBboxPatch(
+            (tx + 0.008, ty + 0.012), 0.038, th - 0.024,
+            boxstyle="round,pad=0.005,rounding_size=0.008", linewidth=0, facecolor="#012f2a",
+            transform=fig.transFigure, zorder=7, clip_on=False,
+        ))
+        icon_cx, icon_cy = tx + 0.027, ty + th / 2
+        icon_hw, icon_hh = 0.010, 0.020
+        xs = [icon_cx - icon_hw, icon_cx - icon_hw * 0.3, icon_cx + icon_hw * 0.3, icon_cx + icon_hw]
+        ys = [icon_cy - icon_hh * 0.4, icon_cy + icon_hh * 0.1, icon_cy - icon_hh * 0.15, icon_cy + icon_hh * 0.55]
+        fig.add_artist(plt.Line2D(xs, ys, transform=fig.transFigure, color="white", linewidth=2.0,
+                                 solid_capstyle="round", solid_joinstyle="round", zorder=8, clip_on=False))
+        fig.add_artist(plt.Line2D([icon_cx + icon_hw * 0.65, icon_cx + icon_hw],
+                                 [icon_cy + icon_hh * 0.20, icon_cy + icon_hh * 0.55],
+                                 transform=fig.transFigure, color="white", linewidth=2.0,
+                                 solid_capstyle="round", zorder=8, clip_on=False))
+        text_cx = tx + 0.008 + 0.038 + (tw - 0.008 - 0.038) / 2 + 0.008
+        fig.text(text_cx, ty + th * 0.65, "Tasa de crecimiento", transform=fig.transFigure,
+                 fontsize=9.5, fontweight="bold", color="white", ha="center", va="center", zorder=7)
+        fig.text(text_cx, ty + th * 0.28, f"anual de {growth:.1f}%", transform=fig.transFigure,
+                 fontsize=9.5, fontweight="bold", color="white", ha="center", va="center", zorder=7)
+
+    fig.text(0.08, 0.94, " ", bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
+             facecolor="#4a7d75", edgecolor="none"), va="center", fontsize=2)
+    fig.text(0.093, 0.94, "Figura C.7.", fontsize=14, fontweight="bold", color=TEXT, va="center")
+    fig.text(0.170, 0.94, f"Líneas del servicio móvil de telefonía por cada 100 habitantes ({meta['anio']})",
+             fontsize=14, fontweight="medium", color=TEXT, va="center")
+
     labels = [f"{bounds[i]:.0f} a {bounds[i+1]:.0f}" for i in range(5)]
-    handles = [patches.Patch(facecolor=color, label=label) for color, label in zip(COLORS, labels)]
-    legend = fig.legend(handles=handles, title="Líneas por cada 100 habitantes:", loc="lower left",
-                        bbox_to_anchor=(.06, .18), frameon=False, fontsize=9, title_fontsize=9)
-    legend._legend_box.align = "left"; legend.get_title().set_fontweight("bold"); legend.get_title().set_color(TEXT)
-    fig.add_artist(patches.FancyBboxPatch((.76, .54), .18, .22, transform=fig.transFigure,
-                   boxstyle="round,pad=.015,rounding_size=.02", fc="white", ec="#E4E4E8"))
-    fig.text(.85, .69, "Líneas por cada\n100 habitantes:", ha="center", fontsize=10, color=TEXT)
-    fig.text(.85, .585, f"{meta['nacional']:.0f}", ha="center", fontsize=43, fontweight="bold", color=TEXT)
-    if not math.isnan(meta["crecimiento"]):
-        fig.text(.51, .18, f"Tasa de crecimiento\nanual de {meta['crecimiento']:.1f}%", ha="center", va="center",
-                 fontsize=10, fontweight="bold", color="white", bbox=dict(boxstyle="round,pad=.8", fc=TEXT, ec="none"))
-    fig.text(.05, .07, "Fuente:", fontsize=8, fontweight="bold", color=TEXT)
-    fig.text(.091, .07, f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.", fontsize=8, color=TEXT)
-    fig.text(.05, .05, "Nota:", fontsize=8, fontweight="bold", color=TEXT)
-    fig.text(.082, .05, "El indicador nacional proviene de la serie nacional publicada por el CRT.", fontsize=8, color=TEXT)
-    output.parent.mkdir(parents=True, exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
+    handles = [patches.Patch(facecolor=color, edgecolor="none", label=label) for color, label in zip(COLORS, labels)]
+    legend = ax.legend(
+        handles=handles, title="Líneas por cada 100 habitantes:",
+        loc="lower left", bbox_to_anchor=(0.08, 0.12), bbox_transform=fig.transFigure,
+        prop={"weight": "normal", "size": 10}, title_fontproperties={"weight": "bold", "size": 10},
+        facecolor="white", labelcolor=TEXT, edgecolor="none", framealpha=0.0,
+        handletextpad=0.5, labelspacing=0.3, handlelength=1.2, borderpad=0.0, borderaxespad=0.0,
+    )
+    legend._legend_box.align = "left"
+    legend.get_title().set_multialignment("left")
+    legend.get_title().set_color(TEXT)
+
+    fig.text(0.08, 0.07, "Fuente:", fontsize=8, fontweight="bold", color=TEXT, ha="left", va="center")
+    fig.text(0.11, 0.07, f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.",
+             fontsize=8, color=TEXT, ha="left", va="center")
+    fig.text(0.08, 0.045, "Nota:", fontsize=8, fontweight="bold", color=TEXT, ha="left", va="center")
+    fig.text(0.105, 0.045, "El indicador nacional proviene de la serie nacional publicada por el CRT.",
+             fontsize=8, color=TEXT, ha="left", va="center")
+
+    plt.subplots_adjust(left=0.08, right=0.92, top=0.88, bottom=0.15)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
+    plt.close(fig)
 
 
 def generate(context):

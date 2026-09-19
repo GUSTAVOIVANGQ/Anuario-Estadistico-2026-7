@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import math
 import sys
 import textwrap
@@ -58,13 +50,16 @@ REFERENCE_SOURCE_ID = "inegi_endutih_2023_reference"
 PERIOD_REFERENCE = "2023"
 LANDING_PAGE = f"https://www.inegi.org.mx/programas/endutih/{PERIOD_CURRENT}/"
 
-TEXT = "#50517F"
-WOMEN = "#F48D7E"
-MEN = "#317DA1"
-ACCENT = "#F58F82"
-PANEL_PINK = "#F8E6E1"
-PANEL_BLUE = "#E8F2F1"
-BACKGROUND = "#FBFBF7"
+TEXT = "#3C3C3B"
+# Paleta institucional CRT.
+WOMEN = "#2D7B8A"
+MEN = "#1A4043"
+ACCENT = "#4A7D75"
+# Tintas auxiliares derivadas para superficies y separación visual.
+PANEL_SUMMARY = "#EEF4F3"
+PANEL_CHIP = "#FFFFFF"
+BORDER = "#BFD2CF"
+BACKGROUND = "#F7F9F8"
 WHITE = "#FFFFFF"
 
 
@@ -270,16 +265,28 @@ def validate_reference(reference: pd.DataFrame) -> dict[str, object]:
     }
 
 
-def _card(ax: plt.Axes, x: float, y: float, width: float, height: float, color: str) -> None:
+def _card(
+    ax: plt.Axes,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    color: str,
+    *,
+    edgecolor: str = BORDER,
+    linewidth: float = 0.9,
+) -> None:
+    """Dibuja un chip con borde sutil y esquinas moderadas."""
     ax.add_patch(
         patches.FancyBboxPatch(
             (x, y),
             width,
             height,
-            boxstyle="round,pad=0.006,rounding_size=0.018",
+            boxstyle="round,pad=0.004,rounding_size=0.011",
             transform=ax.transAxes,
             facecolor=color,
-            edgecolor="none",
+            edgecolor=edgecolor,
+            linewidth=linewidth,
         )
     )
 
@@ -300,7 +307,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
     ax.set_ylim(0, 1)
     ax.axis("off")
 
-    _card(ax, 0.025, 0.065, 0.95, 0.86, BACKGROUND)
+    _card(ax, 0.025, 0.065, 0.95, 0.86, BACKGROUND, edgecolor="none", linewidth=0)
     ax.add_patch(patches.FancyBboxPatch((0.038, 0.872), 0.008, 0.018, boxstyle="round,pad=0,rounding_size=.003", transform=ax.transAxes, facecolor=ACCENT, edgecolor="none"))
     ax.text(0.052, 0.881, f"Figura {FIGURE_ID}.", color=TEXT, fontsize=14, fontweight="bold", ha="left", va="center", transform=ax.transAxes)
     ax.text(0.155, 0.881, "Actividades en Smartphone, Internet, computadora y uso de redes sociales", color=TEXT, fontsize=14, ha="left", va="center", transform=ax.transAxes)
@@ -309,18 +316,18 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
     ax.text(0.1475, 0.75, textwrap.fill(REPORT_TITLE, 27), color=TEXT, fontsize=16, fontweight="bold", ha="center", va="center", transform=ax.transAxes)
 
     summary = data.loc[data["tipo"].eq("resumen")].set_index("sexo")
-    _card(ax, 0.262, 0.675, 0.39, 0.15, PANEL_PINK if PANEL_COLOR == "pink" else PANEL_BLUE)
-    ax.text(0.457, 0.794, SUMMARY_TITLE, color=TEXT, fontsize=12, fontweight="bold", ha="center", va="center", transform=ax.transAxes)
-    for x, sex in ((0.36, "Mujeres"), (0.555, "Hombres")):
+    _card(ax, 0.266, 0.675, 0.386, 0.15, PANEL_SUMMARY)
+    ax.text(0.459, 0.794, SUMMARY_TITLE, color=TEXT, fontsize=12, fontweight="bold", ha="center", va="center", transform=ax.transAxes)
+    for x, sex in ((0.362, "Mujeres"), (0.556, "Hombres")):
         row = summary.loc[sex]
         ax.text(x, 0.762, sex, color=TEXT, fontsize=9.5, fontweight="bold", ha="center", transform=ax.transAxes)
         ax.text(x, 0.724, f"{int(row['personas']):,}", color=TEXT, fontsize=18, fontweight="bold", ha="center", transform=ax.transAxes)
         ax.text(x, 0.693, f"({int(row['porcentaje_mostrado'])}% de la población de 6 años o más)", color=TEXT, fontsize=7.7, ha="center", transform=ax.transAxes)
 
     highlight = data.loc[data["tipo"].eq("destacado")].set_index("sexo")
-    _card(ax, 0.664, 0.675, 0.291, 0.15, PANEL_PINK if PANEL_COLOR == "pink" else PANEL_BLUE)
-    ax.text(0.8095, 0.788, textwrap.fill(HIGHLIGHT[0], 42), color=TEXT, fontsize=10.5, fontweight="bold", ha="center", va="center", transform=ax.transAxes)
-    _pair(ax, 0.68, 0.735, 0.26, int(highlight.loc["Mujeres", "porcentaje_mostrado"]), int(highlight.loc["Hombres", "porcentaje_mostrado"]), 22)
+    _card(ax, 0.668, 0.675, 0.287, 0.15, PANEL_SUMMARY)
+    ax.text(0.8115, 0.788, textwrap.fill(HIGHLIGHT[0], 42), color=TEXT, fontsize=10.5, fontweight="bold", ha="center", va="center", transform=ax.transAxes)
+    _pair(ax, 0.684, 0.735, 0.255, int(highlight.loc["Mujeres", "porcentaje_mostrado"]), int(highlight.loc["Hombres", "porcentaje_mostrado"]), 22)
 
     metrics = data.loc[data["tipo"].eq("indicador")]
     values = {
@@ -329,7 +336,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
     }
     if sum(GRID_ROW_COUNTS) != len(METRICS):
         raise ValueError("GRID_ROW_COUNTS no coincide con el número de indicadores")
-    x0, x1, bottom, top, gap = 0.045, 0.955, 0.155, 0.645, 0.012
+    x0, x1, bottom, top, gap = 0.045, 0.955, 0.155, 0.645, 0.018
     nrows = len(GRID_ROW_COUNTS)
     height = (top - bottom - gap * (nrows - 1)) / nrows
     metric_index = 0
@@ -343,7 +350,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
             title, _, _, _ = METRICS[metric_index]
             metric_index += 1
             x = x0 + col * (width + gap)
-            _card(ax, x, y, width, height, PANEL_PINK if PANEL_COLOR == "pink" else PANEL_BLUE)
+            _card(ax, x, y, width, height, PANEL_CHIP)
             ax.text(x + width / 2, y + height * 0.78, textwrap.fill(title, label_width), color=TEXT, fontsize=label_size, fontweight="bold", ha="center", va="center", linespacing=1.08, transform=ax.transAxes)
             _pair(ax, x, y + height * 0.42, width, values[(title, "Mujeres")], values[(title, "Hombres")], pair_size)
             ax.add_patch(patches.Rectangle((x + width * 0.14, y + height * 0.12), width * 0.27, height * 0.025, transform=ax.transAxes, facecolor=WOMEN, edgecolor="none"))
@@ -356,7 +363,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
     ax.text(0.075, 0.086, NOTE, color=TEXT, fontsize=8.5, ha="left", va="top", transform=ax.transAxes)
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white")
+    fig.savefig(output, dpi=200, facecolor="white")
     plt.close(fig)
 
 

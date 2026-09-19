@@ -1,13 +1,5 @@
 """Figura F.7: medidas de seguridad para equipos o cuentas, por sexo."""
 from __future__ import annotations
-
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
 import re,sys,textwrap,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -19,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-FIGURE_ID="F.7";CURRENT_SOURCE_ID="inegi_mociba_2025";REFERENCE_SOURCE_ID="inegi_mociba_2024_reference";PERIOD="2025";LANDING_PAGE="https://www.inegi.org.mx/programas/mociba/2025/";TEXT="#50517F";WOMEN="#50517F";MEN="#F58F82";BG="#FBFBF7"
+FIGURE_ID="F.7";CURRENT_SOURCE_ID="inegi_mociba_2025";REFERENCE_SOURCE_ID="inegi_mociba_2024_reference";PERIOD="2025";LANDING_PAGE="https://www.inegi.org.mx/programas/mociba/2025/";TEXT="#3c3c3b";WOMEN="#86adae";MEN="#335a5c";BG="#F8F8FA"
 MEASURES={1:"Crear o poner contraseñas (claves, huella digital, patrón, etcétera)",2:"Instalar o actualizar programas antivirus, cortafuegos o antiespías",3:"Bloquear ventanas emergentes del navegador",4:"Cambiar periódicamente las contraseñas",5:"No ingresar a sitios web inseguros o desconocidos",6:"No abrir ni guardar archivos que envían personas desconocidas",7:"No publicar su correo o número telefónico en redes sociales",8:"Otra"}
 OFFICIAL_H={1:95.2,2:23.2,3:9.0,4:9.0,5:7.4,6:6.6,7:5.9,8:.8};OFFICIAL_M={1:96.5,2:16.3,3:7.5,4:7.2,5:5.7,6:6.3,7:5.4,8:.8}
 def _fonts(root:Path)->None:
@@ -67,41 +59,13 @@ def validate_reference(df:pd.DataFrame)->dict[str,float]:
     if max(differences)>.25:raise RuntimeError(f"MOCIBA 2024 no reproduce las medidas oficiales; desviación {max(differences):.3f} pp")
     return {"comprobaciones":16,"tolerancia_pp":.25,"desviacion_maxima_pp":max(differences)}
 def _panel(fig:plt.Figure,rect:list[float],data:pd.DataFrame,column:str,color:str)->None:
-    l,b,w,h=rect;fig.add_artist(patches.FancyBboxPatch((l,b),w,h,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="#9296B5",lw=.8,zorder=0));ax=fig.add_axes([l+.025,b+.11,w-.05,h-.19]);ax.set_zorder(2);ax.patch.set_alpha(0);x=np.arange(len(data));bars=ax.bar(x,data[column],width=.42,color=color)
-    for bar,value in zip(bars,data[column]):ax.text(bar.get_x()+bar.get_width()/2,value+2,f"{value:.1f}%",ha="center",fontsize=7.3,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.22",fc="white",ec="none"))
+    l,b,w,h=rect;fig.add_artist(patches.FancyBboxPatch((l,b),w,h,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="#b5b7c8",lw=.8,zorder=0));ax=fig.add_axes([l+.025,b+.11,w-.05,h-.19]);ax.set_zorder(2);ax.patch.set_alpha(0);x=np.arange(len(data));bars=ax.bar(x,data[column],width=.42,color=color)
+    for bar,value in zip(bars,data[column]):ax.text(bar.get_x()+bar.get_width()/2,value+2,f"{value:.1f}%",ha="center",fontsize=7.3,color=TEXT)
     ax.set_xticks(x,[textwrap.fill(v,14) for v in data.medida],fontsize=5.4,color=TEXT);ax.set_ylim(0,112);ax.set_yticks([0,20,40,60,80,100],[f"{v:.1f}%" for v in [0,20,40,60,80,100]],fontsize=7,color=TEXT);ax.tick_params(length=0,pad=5)
     for s in ax.spines.values():s.set_visible(False)
     fig.text(l+w*.72,b+h-.055,column,ha="center",va="center",fontsize=18,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.55,rounding_size=.8",fc="white",ec="none"),zorder=5)
-def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
-    _fonts(root)
-    fig, (ax_h, ax_m) = plt.subplots(1, 2, figsize=(16, 8.5), sharey=True)
-    fig.patch.set_facecolor("white")
-    text = "#3c3c3b"; men = "#335a5c"; women = "#86adae"
-    y = np.arange(len(data)); bar_width = 0.50
-    for ax in (ax_h, ax_m):
-        ax.set_facecolor("#F8F8FA"); ax.set_xlim(0, 105)
-        ax.set_xticks(np.arange(0, 101, 20), [f"{v}%" for v in range(0,101,20)])
-        ax.tick_params(axis="x", labelsize=9, colors=text, length=0)
-        ax.grid(axis="x", color="#d1d1d1", linewidth=1, zorder=0)
-        ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-        ax.spines["bottom"].set_color("#7c7c7c"); ax.spines["left"].set_color("#7c7c7c")
-    bars_h=ax_h.barh(y, data["Hombres"], bar_width, color=men, edgecolor="none", zorder=2)
-    bars_m=ax_m.barh(y, data["Mujeres"], bar_width, color=women, edgecolor="none", zorder=2)
-    ax_h.set_title("Hombres", fontsize=11, fontweight="bold", color=text, pad=15)
-    ax_m.set_title("Mujeres", fontsize=11, fontweight="bold", color=text, pad=15)
-    labels=[textwrap.fill(str(v), 30) for v in data["medida"]]
-    ax_h.set_yticks(y, labels, fontsize=8.2, color=text); ax_m.tick_params(axis="y", length=0)
-    for bars,values,ax in ((bars_h,data["Hombres"],ax_h),(bars_m,data["Mujeres"],ax_m)):
-        for bar,value in zip(bars, values, strict=True):
-            ax.text(float(value)+1.2, bar.get_y()+bar.get_height()/2, f"{float(value):.1f}%", va="center", ha="left", fontsize=8.4, color=text)
-    fig.add_artist(patches.Rectangle((.073,.914),.009,.020,transform=fig.transFigure,facecolor="#4a7d75",edgecolor="none"))
-    fig.text(.087,.924,"Figura F.7.",fontsize=14,fontweight="bold",color=text,va="center")
-    fig.text(.171,.924,"Medidas de seguridad para proteger equipos o cuentas de Internet, por sexo",fontsize=14,color=text,va="center")
-    fig.text(.08,.065,"Fuente:",fontsize=8,fontweight="bold",color=text,va="top")
-    fig.text(.118,.065,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8,color=text,va="top")
-    fig.subplots_adjust(left=.22,right=.92,top=.82,bottom=.15,wspace=.10)
-    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200,facecolor="white"); plt.close(fig)
-
+def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
+    _fonts(root);fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1));fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc="#4a7d75",ec="none"));fig.text(.066,.873,"Figura F.7.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.151,.873,"Medidas de seguridad para proteger equipos o cuentas de Internet, por sexo",fontsize=14,color=TEXT,va="center");_panel(fig,[.055,.20,.43,.57],data,"Mujeres",WOMEN);_panel(fig,[.515,.20,.43,.57],data,"Hombres",MEN);fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top");output.parent.mkdir(parents=True,exist_ok=True);fig.savefig(output,dpi=200);plt.close(fig)
 def generate(context):
     print("  F.7 | 1/4 Adquisición o reutilización de MOCIBA 2024 y 2025");ref_path=context.acquire_source(REFERENCE_SOURCE_ID);cur_path=context.acquire_source(CURRENT_SOURCE_ID);print("  F.7 | 2/4 Validación con MOCIBA 2024");ref,ref_member=load_microdata(ref_path);validation=validate_reference(ref);del ref;print(f"  F.7 | Validación 2024 APROBADA; desviación máxima {validation['desviacion_maxima_pp']:.3f} pp");print("  F.7 | 3/4 Cálculo MOCIBA 2025");frame,member=load_microdata(cur_path);data=calculate(frame);del frame;data.insert(0,"periodo",PERIOD);context.record_source_period(REFERENCE_SOURCE_ID,"2024","REFERENCIA_REPRODUCIDA");context.record_source_period(CURRENT_SOURCE_ID,PERIOD,"AL_DIA");context.write_data_used(data);context.record_calculation("validacion_2024","sum(FACTOR de selección por medida y sexo) / sum(FACTOR de población elegible del sexo) * 100",{"miembro":ref_member},validation,"validación",3);context.record_calculation("medidas_seguridad_2025","sum(FACTOR de selección por medida y sexo) / total elegible por sexo * 100",{"miembro":member,"medidas":8},{"max_hombres":round(data.Hombres.max(),2),"max_mujeres":round(data.Mujeres.max(),2)},"porcentaje",2);summary=f"En {PERIOD}, la medida más utilizada fue {data.loc[data.Mujeres.idxmax(),'medida'].lower()}, con {data.Mujeres.max():.1f}% de las mujeres y {data.Hombres.max():.1f}% de los hombres.";text_path=context.render_text("f_mociba.md.j2",{"resumen":summary});print(data.to_string(index=False,formatters={"Hombres":lambda x:f"{x:.1f}%","Mujeres":lambda x:f"{x:.1f}%"}));print("  F.7 | 4/4 Generación de gráfica PNG");_plot(data,context.expected_figure_path,context.project_root);return {"figure_path":str(context.expected_figure_path),"text_path":str(text_path),"detected_period":PERIOD,"rows_used":len(data),"reference_validation":"aprobada"}
 def main()->int:

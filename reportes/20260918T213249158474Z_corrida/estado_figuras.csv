@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+12,B.2,OK,Gráfica generada y verificada.,scripts\figures\figura_b_2.py,build\figures\B\figura_b_2.png,2026-09-18T21:32:49+00:00,2026-09-18T21:32:50+00:00,1.144

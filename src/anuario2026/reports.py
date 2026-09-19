@@ -72,6 +72,14 @@ class RunReports:
         "bytes",
         "modified_at",
     ]
+    figure_source_reference_fields = [
+        "figura",
+        "fuente_source_id",
+        "fuente_propietario",
+        "archivo_descarga_zip",
+        "archivo_real_tabla",
+        "portal_origen",
+    ]
 
     def __init__(self, project_root: Path, run_id: str, dry_run: bool):
         self.project_root = project_root
@@ -199,6 +207,31 @@ class RunReports:
             pending,
         )
 
+    def write_figure_source_reference_report(self) -> Path:
+        """Genera en cada corrida el catálogo figura-fuente solicitado para defensa."""
+        source_path = self.project_root / "referencias_fuentes_figuras.csv"
+        rows: list[dict[str, str]] = []
+        if source_path.is_file():
+            with source_path.open("r", encoding="utf-8-sig", newline="") as stream:
+                reader = csv.DictReader(stream)
+                missing = [
+                    field
+                    for field in self.figure_source_reference_fields
+                    if field not in (reader.fieldnames or [])
+                ]
+                if missing:
+                    raise ValueError(
+                        "referencias_fuentes_figuras.csv no contiene las columnas requeridas: "
+                        + ", ".join(missing)
+                    )
+                rows = [dict(row) for row in reader]
+        self._write_csv(
+            "referencias_fuentes_figuras.csv",
+            self.figure_source_reference_fields,
+            rows,
+        )
+        return self.run_dir / "referencias_fuentes_figuras.csv"
+
     def finalize(self) -> None:
         self.summary.finished_at = utc_now()
         payload = asdict(self.summary)
@@ -230,6 +263,7 @@ class RunReports:
                 "- `fuentes_configuradas.csv`: fuente prevista para cada figura.",
                 "- `fuentes_pendientes.csv`: enlaces o fuentes aún por definir.",
                 "- `referencias_por_figura.csv`: fuentes realmente usadas.",
+                "- `referencias_fuentes_figuras.csv`: catálogo figura-fuente, archivo real y portal de origen.",
                 "- `calculos_por_figura.csv`: fórmulas y resultados registrados.",
                 "- `manifiesto_archivos.csv`: huellas SHA-256 de insumos y salidas.",
             ]

@@ -5,6 +5,8 @@ openpyxl>=3.1,<4
 pandas>=2.1,<3
 Pillow>=10,<13
 python-pptx>=1.0,<2
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
 
 # Instalar sólo cuando una figura lo requiera:
 # geopandas>=0.14,<2

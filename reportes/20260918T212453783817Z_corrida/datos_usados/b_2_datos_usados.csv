@@ -1,0 +1,11 @@
+﻿anio,dominio,grupo,categoria,hogares_expandidos,porcentaje
+2025,R,total,Tres servicios,205193,2.5474785123658106
+2025,R,total,Dos servicios,1129827,14.026843046257556
+2025,R,total,Un servicio,3602772,44.72854461386693
+2025,R,total,Ninguno,3116957,38.69713382750971
+2025,R,un_servicio,Solo TV Restringida,632417,7.851479915761497
+2025,R,un_servicio,Solo Telefonía,57570,0.7147336310541769
+2025,R,un_servicio,Solo Internet,2912785,36.16233106705125
+2025,R,dos_servicios,Internet + Telefonía,308195,3.826252065706827
+2025,R,dos_servicios,TV Restringida + Internet,786147,9.760043422830432
+2025,R,dos_servicios,TV Restringida + Telefonía,35485,0.4405475577202964

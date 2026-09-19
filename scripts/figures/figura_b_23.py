@@ -6,14 +6,6 @@ texto y generación del PNG sin depender de código de otras figuras.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import math
 import sys
 import unicodedata
@@ -34,17 +26,17 @@ import pandas as pd
 FIGURE_ID = "B.23"
 SOURCE_ID = "crt_bit_todo_2025_q2"
 TABLE = "TD_ACC_TVRES_ITE_VA.csv"
-TEXT = "#4B4B83"
-CREAM = "#FBFBF7"
+TEXT = "#3c3c3b"
+CREAM = "#F8F8FA"
 TECHNOLOGIES = [
     "Cable", "Direct-to-home (DTH)", "IPTV Terrestre",
     "Sin información de tecnología",
 ]
 COLORS = {
-    "Cable": "#4B4B83",
-    "Direct-to-home (DTH)": "#317DA3",
-    "IPTV Terrestre": "#ADDCDF",
-    "Sin información de tecnología": "#F58F82",
+    "Cable": "#132b2d",
+    "Direct-to-home (DTH)": "#3b6667",
+    "IPTV Terrestre": "#64a0a1",
+    "Sin información de tecnología": "#86adae",
 }
 
 
@@ -175,6 +167,9 @@ def _draw_panel(
     total: float,
     x: float,
 ) -> None:
+    leader_color = "#8F8FA1"
+    chip_border = "#9A9AAF"
+
     fig.add_artist(patches.FancyBboxPatch(
         (x, 0.13), 0.44, 0.70, boxstyle="round,pad=0.012,rounding_size=0.018",
         linewidth=1.0, edgecolor="#8D8DB2", facecolor="white",
@@ -183,51 +178,73 @@ def _draw_panel(
     heading_width = 0.17 if segment == "Residencial" else 0.21
     fig.add_artist(patches.FancyBboxPatch(
         (x + (0.44 - heading_width) / 2, 0.80), heading_width, 0.07,
-        boxstyle="round,pad=0.012,rounding_size=0.02", linewidth=0,
-        facecolor="white", transform=fig.transFigure, zorder=5,
+        boxstyle="round,pad=0.012,rounding_size=0.02", linewidth=1.0,
+        edgecolor="#C2C2CE", facecolor="white", transform=fig.transFigure, zorder=5,
     ))
     fig.text(x + 0.22, 0.833, segment, ha="center", va="center",
              fontsize=18, fontweight="bold", color=TEXT, zorder=6)
 
     panel = data.loc[data["segmento"].eq(segment)]
     positive = panel.loc[panel["accesos"].gt(0)].copy()
-    ax = fig.add_axes([x + 0.015, 0.19, 0.30, 0.56], zorder=2)
+    ax = fig.add_axes([x + 0.018, 0.18, 0.315, 0.57], zorder=2)
     wedges, _ = ax.pie(
         positive["accesos"], colors=[COLORS[t] for t in positive["tecnologia"]],
         startangle=90, counterclock=False,
         wedgeprops={"edgecolor": "white", "linewidth": 2},
     )
     ax.set_aspect("equal")
+    ax.set_xlim(-1.38, 1.38)
+    ax.set_ylim(-1.23, 1.28)
     ax.axis("off")
+
+    if segment == "Residencial":
+        positions = {
+            # (posición del chip %, posición del nombre, alineación del nombre)
+            "IPTV Terrestre": ((-0.98, 0.94), (-1.18, 1.20), "left"),
+            "Direct-to-home (DTH)": ((-1.01, -0.79), (-1.18, -0.57), "left"),
+            "Cable": ((1.02, -0.78), (1.02, -1.03), "center"),
+            "Sin información de tecnología": ((0.10, 1.12), (0.10, 1.30), "center"),
+        }
+    else:
+        positions = {
+            # Reacomodo de textos superiores para que no se encimen
+            "IPTV Terrestre": ((-1.00, 0.92), (-1.02, 1.23), "center"),
+            "Direct-to-home (DTH)": ((-1.10, 0.26), (-1.06, 0.68), "center"),
+            "Cable": ((0.98, -0.84), (0.98, -1.08), "center"),
+            "Sin información de tecnología": ((-0.86, -0.02), (-0.86, 0.22), "center"),
+        }
+
+    chip = dict(boxstyle="round,pad=0.34,rounding_size=0.20",
+                facecolor="white", edgecolor=chip_border, linewidth=1.15)
+    arrow = dict(arrowstyle="-", color=leader_color, linewidth=1.15,
+                 shrinkA=7, shrinkB=0, connectionstyle="arc3,rad=0")
+
     for wedge, row in zip(wedges, positive.itertuples(index=False)):
         angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
         ex, ey = math.cos(angle), math.sin(angle)
-        tx = 1.13 * (1 if ex >= 0 else -1)
-        ty = 1.05 * ey
-        if segment == "No Residencial":
-            if row.tecnologia == "Cable":
-                tx, ty = 1.12, -1.02
-            elif row.tecnologia == "IPTV Terrestre":
-                tx, ty = -1.10, 1.03
-            else:
-                tx, ty = -1.10, 0.60
-        ax.annotate(
-            f"{row.participacion:.1f}%", xy=(0.82 * ex, 0.82 * ey), xytext=(tx, ty),
-            ha="left" if tx > 0 else "right", va="center", fontsize=12,
-            fontweight="bold", color=TEXT,
-            bbox=dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="none"),
-            arrowprops=dict(arrowstyle="-", color="#A0A0B0", linewidth=1.0),
-            annotation_clip=False,
+        target = (0.76 * ex, 0.76 * ey)
+        chip_xy, label_xy, align = positions.get(
+            row.tecnologia, ((0.98 if ex >= 0 else -0.98, 0.95 * ey),
+                             (1.10 if ex >= 0 else -1.10, 1.10 * ey),
+                             "center")
         )
+        ax.annotate(
+            f"{row.participacion:.1f}%", xy=target, xytext=chip_xy,
+            ha="center", va="center", fontsize=12, fontweight="bold", color=TEXT,
+            bbox=chip, arrowprops=arrow, annotation_clip=False, zorder=8,
+        )
+        ax.scatter(*target, s=28, facecolor="#A6A6B5", edgecolor="white",
+                   linewidth=0.7, zorder=9, clip_on=False)
         label = row.tecnologia.replace("Direct-to-home (DTH)", "Direct-to-home\n(DTH)")
-        ax.text(tx, ty + (-0.18 if ty < 0 else 0.18), label,
-                ha="left" if tx > 0 else "right", va="center",
-                fontsize=8.5, fontweight="bold", color=TEXT, clip_on=False)
+        ax.text(label_xy[0], label_xy[1], label, ha=align, va="center",
+                fontsize=8.2, fontweight="bold", color=TEXT,
+                linespacing=1.1, clip_on=False, zorder=9)
 
     bx, by, bw, bh = x + 0.285, 0.57, 0.135, 0.135
     fig.add_artist(patches.FancyBboxPatch(
         (bx, by), bw, bh, boxstyle="round,pad=0.012,rounding_size=0.025",
-        linewidth=0, facecolor=CREAM, transform=fig.transFigure, zorder=4,
+        linewidth=1.0, edgecolor="#B9B9C7", facecolor=CREAM,
+        transform=fig.transFigure, zorder=4,
     ))
     fig.text(bx + bw / 2, by + bh * 0.66,
              f"Accesos {segment.lower()}es\na nivel nacional:",
@@ -235,7 +252,6 @@ def _draw_panel(
     fig.text(bx + bw / 2, by + bh * 0.30, f"{total:,.0f}",
              ha="center", va="center", fontsize=18, fontweight="bold",
              color=TEXT, zorder=5)
-
 
 def _plot(data: pd.DataFrame, metadata: dict[str, float | int], output: Path,
           project_root: Path) -> None:
@@ -246,7 +262,7 @@ def _plot(data: pd.DataFrame, metadata: dict[str, float | int], output: Path,
         linewidth=0, facecolor=CREAM, transform=fig.transFigure, zorder=-1,
     ))
     fig.text(0.045, 0.90, " ", fontsize=2, va="center",
-             bbox=dict(boxstyle="round,pad=1.5", facecolor="#F58F82", edgecolor="none"))
+             bbox=dict(boxstyle="round,pad=1.5", facecolor="#4a7d75", edgecolor="none"))
     fig.text(0.061, 0.90, "Figura B.23.", fontsize=14, fontweight="bold", color=TEXT, va="center")
     fig.text(0.151, 0.90, "Tecnologías de conexión del Servicio de Televisión Restringida por segmento",
              fontsize=14, fontweight="medium", color=TEXT, va="center")
@@ -260,7 +276,7 @@ def _plot(data: pd.DataFrame, metadata: dict[str, float | int], output: Path,
     fig.text(0.077, 0.057, "La suma de los porcentajes puede no sumar 100% por cuestiones de redondeo.",
              fontsize=8, color=TEXT)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

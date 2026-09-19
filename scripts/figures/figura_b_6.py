@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import json
 import math
 import textwrap
@@ -35,15 +27,15 @@ ENDUTIH_SOURCE_ID = "inegi_endutih_2025"
 DENUE_SOURCE_ID = "inegi_denue_2023_state_counts"
 MAP_SOURCE_ID = "mexico_geojson_legacy"
 
-TEXT = "#4B4B83"
-TEAL = "#317DA3"
-LIGHT = "#ADDCDF"
-CORAL = "#F2535A"
-SALMON = "#F58F82"
-CREAM = "#FBFBF7"
-GRID = "#DCEFF0"
-MAP_COLORS = [LIGHT, TEAL, TEXT, SALMON, CORAL]
-STACK_COLORS = [TEAL, LIGHT, TEXT, SALMON, CORAL, "#6CBFC4", "#9A9ABC"]
+TEXT = "#3c3c3b"
+TEAL = "#335a5c"
+LIGHT = "#86adae"
+CORAL = "#3b6667"
+SALMON = "#4a7d75"
+CREAM = "#F8F8FA"
+GRID = "#d1d1d1"
+MAP_COLORS = ["#afafaf", "#737f7c", "#63918b", "#2d4f4b", "#012f2a"]
+STACK_COLORS = [TEAL, LIGHT, TEXT, SALMON, CORAL, "#64a0a1", "#728781"]
 
 MONTHS = {
     1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo",
@@ -415,23 +407,26 @@ def calculate(figure_id: str, bit_path: Path, endutih_path: Path | None = None, 
 
 
 def _base(figure_id: str, year: int, start: int | None = None) -> tuple[plt.Figure, plt.Axes]:
-    """Lienzo editorial equivalente al usado por las figuras B del Anuario 2024."""
     fig = plt.figure(figsize=(16, 8.5), facecolor="white")
-    ax = fig.add_axes([0.075, 0.205, 0.88, 0.61])
-    fig.add_artist(patches.Rectangle(
-        (0.055, 0.918), 0.009, 0.020, transform=fig.transFigure,
-        facecolor="#4a7d75", edgecolor="none", linewidth=0,
+    # El rectángulo crema corresponde al área editorial de la gráfica del
+    # anuario. Al omitir ilustraciones externas, el área útil ocupa casi todo
+    # el lienzo y mantiene márgenes homogéneos para títulos y pies.
+    fig.add_artist(patches.FancyBboxPatch(
+        (0.045, 0.135), 0.91, 0.735, transform=fig.transFigure,
+        boxstyle="round,pad=0.008,rounding_size=0.018",
+        facecolor=CREAM, edgecolor="#EEF0EE", linewidth=0.9, zorder=-5,
     ))
-    fig.text(0.069, 0.927, f"Figura {figure_id}.", fontsize=13.2, fontweight="bold", color="#3c3c3b", va="center")
+    ax = fig.add_axes([0.075, 0.205, 0.88, 0.61])
+    fig.add_artist(patches.FancyBboxPatch((0.055, 0.918), 0.007, 0.018, transform=fig.transFigure,
+                   boxstyle="round,pad=0,rounding_size=0.002", facecolor=SALMON, edgecolor="none"))
+    fig.text(0.069, 0.927, f"Figura {figure_id}.", fontsize=13.2, fontweight="bold", color=TEXT, va="center")
     period = f" ({start}-{year})" if start else ""
     fig.text(0.145 if len(figure_id) == 3 else 0.153, 0.927, TITLES[figure_id] + period,
-             fontsize=11.8 if len(TITLES[figure_id]) > 82 else 13.2, color="#3c3c3b", va="center")
-    ax.set_facecolor("#F8F8FA")
+             fontsize=11.8 if len(TITLES[figure_id]) > 82 else 13.2, color=TEXT, va="center")
+    ax.set_facecolor(CREAM)
     for spine in ax.spines.values():
-        spine.set_color("#7c7c7c")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.tick_params(colors="#3c3c3b", length=0)
+        spine.set_visible(False)
+    ax.tick_params(colors=TEXT, length=0)
     return fig, ax
 
 
@@ -445,67 +440,40 @@ def _footer(fig: plt.Figure, source: str, note: str = "") -> None:
 
 def _plot_series(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> None:
     configs = {
-        "B.4": ("L_TOTAL_E", 2000, "Líneas totales", "#006157"),
-        "B.5": ("P_H_TELFIJA_E", 1971, "Líneas por cada 100 hogares", "#335a5c"),
-        "B.11": ("A_TOTAL_E", 2000, "Accesos totales", "#006157"),
-        "B.12": ("P_BAF_E", 2000, "Accesos por cada 100 hogares", "#006157"),
-        "B.19": ("A_TOTAL_E", 1998, "Accesos totales", "#006157"),
-        "B.20": ("P_H_TVRES_E", 1998, "Accesos por cada 100 hogares", "#86adae"),
+        "B.4": ("L_TOTAL_E", 2000, "Líneas totales", "entero"),
+        "B.5": ("P_H_TELFIJA_E", 1971, "Líneas por cada 100 hogares", "entero"),
+        "B.8": ("TRAFICO_MILLONES_MINUTOS", 2000, "Tráfico local del servicio fijo de telefonía", "decimal"),
+        "B.11": ("A_TOTAL_E", 2000, "Accesos totales", "entero"),
+        "B.12": ("P_BAF_E", 2000, "Accesos por cada 100 hogares", "entero"),
+        "B.19": ("A_TOTAL_E", 1998, "Accesos totales", "entero"),
+        "B.20": ("P_H_TVRES_E", 1998, "Accesos por cada 100 hogares", "entero"),
     }
-    column, start, legend, color = configs[figure_id]
+    column, start, legend, fmt = configs[figure_id]
     fig, ax = _base(figure_id, meta["year"], start)
     x = np.arange(len(data))
     y = data[column].to_numpy(float)
-
-    if figure_id in {"B.5", "B.20"}:
-        # En 2024 estas dos figuras son barras verticales rectangulares con chip numérico.
-        bars = ax.bar(x, y, width=0.70, color=color, edgecolor="none", zorder=2)
-        for bar, value in zip(bars, y, strict=True):
-            ax.annotate(
-                f"{value:,.0f}",
-                (bar.get_x() + bar.get_width() / 2, value),
-                xytext=(0, 6), textcoords="offset points", ha="center", va="bottom",
-                fontsize=7.1, color="#3c3c3b",
-                bbox=dict(boxstyle="round,pad=0.30,rounding_size=0.8", facecolor="white", edgecolor=color, linewidth=0.8),
-                zorder=4,
-            )
-        ax.grid(axis="y", color="#d1d1d1", linewidth=1.0, zorder=0)
-        ax.set_axisbelow(True)
-        ax.set_ylim(0, max(y) * (1.35 if figure_id == "B.20" else 1.15))
+    ax.fill_between(x, 0, y, color=LIGHT, alpha=0.18)
+    ax.vlines(x, 0, y, color=TEAL, linewidth=0.65, alpha=0.75)
+    ax.plot(x, y, color=TEXT, linewidth=1.2, marker="o", markersize=3.2, label=legend)
+    step = 1 if len(data) <= 30 else 2
+    ax.set_xticks(x[::step], data["ANIO"].astype(str).iloc[::step], rotation=90, fontsize=7.5, fontweight="bold")
+    ax.grid(axis="y", color=GRID, linewidth=0.7)
+    ax.set_axisbelow(True)
+    if fmt == "entero":
         ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:,.0f}"))
     else:
-        # B.4, B.11, B.12 y B.19 conservan la serie de línea + área del 2024.
-        ax.plot(x, y, color=color, linewidth=1.5, marker="o", markersize=4.0,
-                markerfacecolor=color, markeredgecolor="none", zorder=4, label=legend)
-        ax.fill_between(x, 0, y, color=color, alpha=0.16, zorder=1)
-        ax.grid(axis="y", color="#d1d1d1", linewidth=0.8, zorder=0)
-        ax.set_axisbelow(True)
         ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:,.0f}"))
-        if figure_id == "B.12":
-            # El referente coloca chip blanco delineado en cada observación.
-            for xpos, value in zip(x, y, strict=True):
-                ax.annotate(
-                    f"{value:,.0f}", (xpos, value), xytext=(0, 7), textcoords="offset points",
-                    ha="center", va="bottom", fontsize=6.6, color="#3c3c3b",
-                    bbox=dict(boxstyle="round,pad=0.30,rounding_size=0.8", facecolor="white", edgecolor=color, linewidth=0.8),
-                    zorder=5,
-                )
-        else:
-            # Los extremos se muestran como números simples, sin chip.
-            for xpos, value, ha in ((x[0], y[0], "left"), (x[-1], y[-1], "right")):
-                ax.annotate(f"{value:,.0f}", (xpos, value), xytext=(0, 9), textcoords="offset points",
-                            ha=ha, va="bottom", fontsize=7.5, fontweight="bold", color="#3c3c3b")
-        ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.21), frameon=False, fontsize=9, labelcolor="#3c3c3b")
-
-    step = 1 if len(data) <= 30 else 2
-    ax.set_xticks(x[::step], data["ANIO"].astype(str).iloc[::step], rotation=90, fontsize=7.5)
     ax.tick_params(axis="y", labelsize=8)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.21), frameon=False, fontsize=9, labelcolor=TEXT)
+    label_value = f"{y[-1]:,.0f}" if fmt == "entero" else f"{y[-1]:,.1f}"
+    ax.annotate(label_value, (x[-1], y[-1]), xytext=(-2, 12), textcoords="offset points",
+                ha="right", fontsize=8.5, fontweight="bold", color=TEXT)
     note = ""
-    if figure_id == "B.12":
-        note = "Indicador expresado por cada 100 hogares."
+    if figure_id == "B.8":
+        note = "Cifras en millones de minutos. Para cada año los datos se presentan acumulados al mes de diciembre."
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.", note)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -535,47 +503,157 @@ def _geo_shapes(path: Path, values: dict[str, float], breaks: list[float]):
 
 
 def _plot_map(figure_id: str, data: pd.DataFrame, meta: dict, geojson: Path, output: Path) -> None:
+    # Composición visual homologada con figura_b67.py. No modifica datos ni cálculos.
     configs = {
-        "B.6": ([0, 29, 43, 56, 69, math.inf], ["Menos de 29", "29 a 42", "43 a 55", "56 a 68", "Más de 68"], "Líneas residenciales por cada 100 hogares"),
-        "B.7": ([0, 39, 61, 98, 115, math.inf], ["Menos de 39", "39 a 60", "61 a 97", "98 a 114", "Más de 114"], "Líneas no residenciales por cada 100 unidades económicas"),
-        "B.13": ([0, 36, 48, 60, 71, math.inf], ["Menos de 36", "36 a 47", "48 a 59", "60 a 70", "Más de 70"], "Accesos residenciales por cada 100 hogares"),
-        "B.14": ([0, 28, 44, 60, 76, math.inf], ["Menos de 28", "28 a 43", "44 a 59", "60 a 75", "Más de 75"], "Accesos no residenciales por cada 100 unidades económicas"),
+        "B.6": (
+            [0, 29, 43, 56, 69, math.inf],
+            ["Menos de 29", "29 a 42", "43 a 55", "56 a 68", "Más de 68"],
+            "Líneas del servicio fijo de Telefonía\nResidencial por cada 100 hogares:",
+        ),
+        "B.7": (
+            [0, 39, 61, 98, 115, math.inf],
+            ["Menos de 39", "39 a 60", "61 a 97", "98 a 114", "Más de 114"],
+            "Líneas del servicio fijo de Telefonía\nNo Residencial por cada 100 unidades económicas:",
+        ),
+        "B.13": (
+            [0, 36, 48, 60, 71, math.inf],
+            ["Menos de 36", "36 a 47", "48 a 59", "60 a 70", "Más de 70"],
+            "Accesos residenciales por cada 100 hogares:",
+        ),
+        "B.14": (
+            [0, 28, 44, 60, 76, math.inf],
+            ["Menos de 28", "28 a 43", "44 a 59", "60 a 75", "Más de 75"],
+            "Accesos no residenciales por cada 100 unidades económicas:",
+        ),
     }
     breaks, labels, legend_title = configs[figure_id]
-    fig, ax = _base(figure_id, meta["year"])
-    # El mapa crece para ocupar el espacio de las ilustraciones editoriales
-    # excluidas; la leyenda y el indicador nacional permanecen dentro del área.
-    ax.set_position([0.175, 0.165, 0.65, 0.67])
+
+    fig, ax = plt.subplots(figsize=(16, 8.5))
+    fig.patch.set_facecolor("white")
+    ax.set_facecolor("white")
+    ax.axis("off")
+
     values = dict(zip(data["ENTIDAD"], data["valor"]))
     shape_list, colors = _geo_shapes(geojson, values, breaks)
-    ax.add_collection(PatchCollection(shape_list, facecolor=colors, edgecolor="white", linewidth=0.65))
-    ax.set_xlim(-119.5, -85)
-    ax.set_ylim(14, 33.5)
+    ax.add_collection(PatchCollection(shape_list, facecolor=colors, edgecolor="white", linewidth=0.5))
+
+    # El margen derecho extra replica el encuadre de figura_b67.py y deja respirar el globo.
+    ax.set_xlim(-120.5, -79.0)
+    ax.set_ylim(13.5, 34.0)
     ax.set_aspect(1 / np.cos(np.deg2rad(23.5)))
-    ax.axis("off")
-    handles = [patches.Patch(facecolor=color, edgecolor="none", label=label) for color, label in zip(MAP_COLORS, labels)]
-    legend = fig.legend(handles=handles, title=legend_title + ":", loc="lower left", bbox_to_anchor=(0.06, 0.19),
-                        frameon=False, fontsize=9.5, title_fontsize=9.5, labelcolor=TEXT)
+
+    # Globo nacional: mismas proporciones y posición que el ejemplo.
+    bx, by, bw, bh = 0.735, 0.56, 0.215, 0.275
+    bubble_face = "#f7f7f7"
+    bubble_edge = "#c0c0c0"
+    fig.add_artist(patches.FancyBboxPatch(
+        (bx, by), bw, bh,
+        boxstyle="round,pad=0.015,rounding_size=0.015",
+        linewidth=1.0, edgecolor=bubble_edge, facecolor=bubble_face,
+        transform=fig.transFigure, zorder=6, clip_on=False,
+    ))
+    bubble_title = legend_title
+    if figure_id == "B.7":
+        bubble_title = "Líneas del servicio fijo de Telefonía\nNo Residencial por cada\n100 unidades económicas:"
+    elif figure_id == "B.14":
+        bubble_title = "Accesos no residenciales por cada\n100 unidades económicas:"
+    elif figure_id == "B.13":
+        bubble_title = "Accesos residenciales por cada\n100 hogares:"
+    fig.text(
+        bx + bw / 2, by + bh * 0.80, bubble_title,
+        transform=fig.transFigure, fontsize=9.5, color=TEXT,
+        ha="center", va="center", zorder=7, multialignment="center", clip_on=False,
+    )
+    fig.text(
+        bx + bw / 2, by + bh * 0.37, f"{meta['value']:.0f}",
+        transform=fig.transFigure, fontsize=60, fontweight="bold", color=TEXT,
+        ha="center", va="center", zorder=7, clip_on=False,
+    )
+    line_y = by + bh * 0.60
+    fig.add_artist(plt.Line2D(
+        [bx + 0.02, bx + bw - 0.02], [line_y, line_y],
+        transform=fig.transFigure, color="#d0d0d0", linewidth=0.8,
+        zorder=7, clip_on=False,
+    ))
+
+    # Tarjeta de crecimiento: mismo tamaño, posición e iconografía del ejemplo.
+    growth = float(meta.get("growth", math.nan))
+    if not math.isnan(growth):
+        tx, ty, tw, th = 0.28, 0.155, 0.225, 0.095
+        fig.add_artist(patches.FancyBboxPatch(
+            (tx, ty), tw, th,
+            boxstyle="round,pad=0.012,rounding_size=0.012",
+            linewidth=0, edgecolor="none", facecolor="#2d4f4b",
+            transform=fig.transFigure, zorder=6, clip_on=False,
+        ))
+        fig.add_artist(patches.FancyBboxPatch(
+            (tx + 0.008, ty + 0.012), 0.038, th - 0.024,
+            boxstyle="round,pad=0.005,rounding_size=0.008",
+            linewidth=0, facecolor="#012f2a",
+            transform=fig.transFigure, zorder=7, clip_on=False,
+        ))
+        icon_cx = tx + 0.027
+        icon_cy = ty + th / 2
+        icon_hw, icon_hh = 0.010, 0.020
+        xs = [icon_cx - icon_hw, icon_cx - icon_hw * 0.3, icon_cx + icon_hw * 0.3, icon_cx + icon_hw]
+        ys = [icon_cy - icon_hh * 0.4, icon_cy + icon_hh * 0.1, icon_cy - icon_hh * 0.15, icon_cy + icon_hh * 0.55]
+        fig.add_artist(plt.Line2D(
+            xs, ys, transform=fig.transFigure, color="white", linewidth=2.0,
+            solid_capstyle="round", solid_joinstyle="round", zorder=8, clip_on=False,
+        ))
+        fig.add_artist(plt.Line2D(
+            [icon_cx + icon_hw * 0.65, icon_cx + icon_hw],
+            [icon_cy + icon_hh * 0.20, icon_cy + icon_hh * 0.55],
+            transform=fig.transFigure, color="white", linewidth=2.0,
+            solid_capstyle="round", zorder=8, clip_on=False,
+        ))
+        text_cx = tx + 0.008 + 0.038 + (tw - 0.008 - 0.038) / 2 + 0.008
+        fig.text(
+            text_cx, ty + th * 0.65, "Tasa de crecimiento",
+            transform=fig.transFigure, fontsize=9.5, fontweight="bold", color="white",
+            ha="center", va="center", zorder=7, clip_on=False,
+        )
+        fig.text(
+            text_cx, ty + th * 0.28, f"anual de {growth:.1f}%",
+            transform=fig.transFigure, fontsize=9.5, fontweight="bold", color="white",
+            ha="center", va="center", zorder=7, clip_on=False,
+        )
+
+    # Encabezado: marcador, número de figura y título con las coordenadas del ejemplo.
+    fig.text(
+        0.08, 0.94, " ",
+        bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2", facecolor="#4a7d75", edgecolor="none"),
+        va="center", fontsize=2,
+    )
+    fig.text(0.093, 0.94, f"Figura {figure_id}.", fontsize=14, fontweight="bold", color=TEXT, va="center")
+    fig.text(0.170, 0.94, TITLES[figure_id], fontsize=14, fontweight="medium", color=TEXT, va="center")
+
+    handles = [patches.Patch(facecolor=color, edgecolor="none", label=label)
+               for color, label in zip(MAP_COLORS, labels)]
+    legend = ax.legend(
+        handles=handles, title=legend_title,
+        loc="lower left", bbox_to_anchor=(0.08, 0.12), bbox_transform=fig.transFigure,
+        prop={"weight": "normal", "size": 10},
+        title_fontproperties={"weight": "bold", "size": 10},
+        facecolor="white", labelcolor=TEXT, edgecolor="none", framealpha=0.0,
+        ncol=1, handletextpad=0.5, labelspacing=0.3, handlelength=1.2,
+        borderpad=0.0, borderaxespad=0.0,
+    )
     legend._legend_box.align = "left"
-    legend.get_title().set_fontweight("bold")
+    legend.get_title().set_multialignment("left")
     legend.get_title().set_color(TEXT)
-    bx, by, bw, bh = 0.755, 0.555, 0.19, 0.22
-    fig.add_artist(patches.FancyBboxPatch((bx, by), bw, bh, transform=fig.transFigure,
-                   boxstyle="round,pad=0.015,rounding_size=0.02", facecolor=CREAM, edgecolor="#E4E4E8"))
-    fig.text(bx + bw / 2, by + bh * 0.73, legend_title + ":", ha="center", va="center", fontsize=9.5, color=TEXT, wrap=True)
-    fig.text(bx + bw / 2, by + bh * 0.28, f"{meta['value']:.0f}", ha="center", va="center", fontsize=42, fontweight="bold", color=TEXT)
-    if not math.isnan(meta.get("growth", math.nan)):
-        fig.text(0.46, 0.185, f"Tasa de crecimiento\nanual de {meta['growth']:.1f}%", ha="center", va="center",
-                 fontsize=9.5, fontweight="bold", color="white",
-                 bbox=dict(boxstyle="round,pad=0.8", facecolor=TEXT, edgecolor="none"))
+
     source = f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['year']}."
     if figure_id == "B.13":
         source = f"CRT con datos de los operadores a diciembre de {meta['year']} y ENDUTIH 2025 del INEGI."
     elif figure_id == "B.14":
         source = f"CRT con datos de los operadores a diciembre de {meta['year']} y DENUE del INEGI a noviembre de 2023."
-    _footer(fig, source)
+    fig.text(0.08, 0.07, "Fuente:", fontsize=8, fontweight="bold", color=TEXT, ha="left", va="center")
+    fig.text(0.11, 0.07, source, fontsize=8, fontweight="normal", color=TEXT, ha="left", va="center")
+
+    plt.subplots_adjust(left=0.08, right=0.92, top=0.88, bottom=0.15)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
 
 
@@ -601,7 +679,7 @@ def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) ->
         note = "Participación de mercado calculada con respecto al número de accesos del servicio fijo de Internet."
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.", note)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -619,7 +697,7 @@ def _plot_ihh(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> N
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.",
             "Herfindahl-Hirschman (IHH) estimado con respecto al número de líneas o accesos del servicio.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -645,7 +723,7 @@ def _plot_speed(data: pd.DataFrame, meta: dict, output: Path) -> None:
     fig.text(0.75, 0.80, f"Total nacional {meta['year']}\n{meta['value']:,.0f}", ha="center", fontsize=16, fontweight="bold", color=TEXT)
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -710,7 +788,7 @@ def _plot_technology(data: pd.DataFrame, meta: dict, output: Path) -> None:
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.",
             "Los porcentajes pueden no sumar 100% debido al redondeo.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

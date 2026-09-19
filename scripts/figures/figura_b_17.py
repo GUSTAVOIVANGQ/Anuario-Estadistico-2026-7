@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import json
 import math
 import textwrap
@@ -35,15 +27,15 @@ ENDUTIH_SOURCE_ID = "inegi_endutih_2025"
 DENUE_SOURCE_ID = "inegi_denue_2023_state_counts"
 MAP_SOURCE_ID = "mexico_geojson_legacy"
 
-TEXT = "#4B4B83"
-TEAL = "#317DA3"
-LIGHT = "#ADDCDF"
-CORAL = "#F2535A"
-SALMON = "#F58F82"
-CREAM = "#FBFBF7"
-GRID = "#DCEFF0"
+TEXT = "#3c3c3b"
+TEAL = "#335a5c"
+LIGHT = "#86adae"
+CORAL = "#3b6667"
+SALMON = "#4a7d75"
+CREAM = "#F8F8FA"
+GRID = "#d1d1d1"
 MAP_COLORS = [LIGHT, TEAL, TEXT, SALMON, CORAL]
-STACK_COLORS = [TEAL, LIGHT, TEXT, SALMON, CORAL, "#6CBFC4", "#9A9ABC"]
+STACK_COLORS = ["#1e6284", "#ed8945", "#5844a0", "#99b554", "#8e244d", "#728781", "#64a0a1"]
 
 MONTHS = {
     1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo",
@@ -415,23 +407,26 @@ def calculate(figure_id: str, bit_path: Path, endutih_path: Path | None = None, 
 
 
 def _base(figure_id: str, year: int, start: int | None = None) -> tuple[plt.Figure, plt.Axes]:
-    """Lienzo editorial equivalente al usado por las figuras B del Anuario 2024."""
     fig = plt.figure(figsize=(16, 8.5), facecolor="white")
-    ax = fig.add_axes([0.075, 0.205, 0.88, 0.61])
-    fig.add_artist(patches.Rectangle(
-        (0.055, 0.918), 0.009, 0.020, transform=fig.transFigure,
-        facecolor="#4a7d75", edgecolor="none", linewidth=0,
+    # El rectángulo crema corresponde al área editorial de la gráfica del
+    # anuario. Al omitir ilustraciones externas, el área útil ocupa casi todo
+    # el lienzo y mantiene márgenes homogéneos para títulos y pies.
+    fig.add_artist(patches.FancyBboxPatch(
+        (0.045, 0.135), 0.91, 0.735, transform=fig.transFigure,
+        boxstyle="round,pad=0.008,rounding_size=0.018",
+        facecolor=CREAM, edgecolor="#EEF0EE", linewidth=0.9, zorder=-5,
     ))
-    fig.text(0.069, 0.927, f"Figura {figure_id}.", fontsize=13.2, fontweight="bold", color="#3c3c3b", va="center")
+    ax = fig.add_axes([0.075, 0.205, 0.88, 0.61])
+    fig.add_artist(patches.FancyBboxPatch((0.055, 0.918), 0.007, 0.018, transform=fig.transFigure,
+                   boxstyle="round,pad=0,rounding_size=0.002", facecolor=SALMON, edgecolor="none"))
+    fig.text(0.069, 0.927, f"Figura {figure_id}.", fontsize=13.2, fontweight="bold", color=TEXT, va="center")
     period = f" ({start}-{year})" if start else ""
     fig.text(0.145 if len(figure_id) == 3 else 0.153, 0.927, TITLES[figure_id] + period,
-             fontsize=11.8 if len(TITLES[figure_id]) > 82 else 13.2, color="#3c3c3b", va="center")
-    ax.set_facecolor("#F8F8FA")
+             fontsize=11.8 if len(TITLES[figure_id]) > 82 else 13.2, color=TEXT, va="center")
+    ax.set_facecolor(CREAM)
     for spine in ax.spines.values():
-        spine.set_color("#7c7c7c")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.tick_params(colors="#3c3c3b", length=0)
+        spine.set_visible(False)
+    ax.tick_params(colors=TEXT, length=0)
     return fig, ax
 
 
@@ -445,67 +440,40 @@ def _footer(fig: plt.Figure, source: str, note: str = "") -> None:
 
 def _plot_series(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> None:
     configs = {
-        "B.4": ("L_TOTAL_E", 2000, "Líneas totales", "#006157"),
-        "B.5": ("P_H_TELFIJA_E", 1971, "Líneas por cada 100 hogares", "#335a5c"),
-        "B.11": ("A_TOTAL_E", 2000, "Accesos totales", "#006157"),
-        "B.12": ("P_BAF_E", 2000, "Accesos por cada 100 hogares", "#006157"),
-        "B.19": ("A_TOTAL_E", 1998, "Accesos totales", "#006157"),
-        "B.20": ("P_H_TVRES_E", 1998, "Accesos por cada 100 hogares", "#86adae"),
+        "B.4": ("L_TOTAL_E", 2000, "Líneas totales", "entero"),
+        "B.5": ("P_H_TELFIJA_E", 1971, "Líneas por cada 100 hogares", "entero"),
+        "B.8": ("TRAFICO_MILLONES_MINUTOS", 2000, "Tráfico local del servicio fijo de telefonía", "decimal"),
+        "B.11": ("A_TOTAL_E", 2000, "Accesos totales", "entero"),
+        "B.12": ("P_BAF_E", 2000, "Accesos por cada 100 hogares", "entero"),
+        "B.19": ("A_TOTAL_E", 1998, "Accesos totales", "entero"),
+        "B.20": ("P_H_TVRES_E", 1998, "Accesos por cada 100 hogares", "entero"),
     }
-    column, start, legend, color = configs[figure_id]
+    column, start, legend, fmt = configs[figure_id]
     fig, ax = _base(figure_id, meta["year"], start)
     x = np.arange(len(data))
     y = data[column].to_numpy(float)
-
-    if figure_id in {"B.5", "B.20"}:
-        # En 2024 estas dos figuras son barras verticales rectangulares con chip numérico.
-        bars = ax.bar(x, y, width=0.70, color=color, edgecolor="none", zorder=2)
-        for bar, value in zip(bars, y, strict=True):
-            ax.annotate(
-                f"{value:,.0f}",
-                (bar.get_x() + bar.get_width() / 2, value),
-                xytext=(0, 6), textcoords="offset points", ha="center", va="bottom",
-                fontsize=7.1, color="#3c3c3b",
-                bbox=dict(boxstyle="round,pad=0.30,rounding_size=0.8", facecolor="white", edgecolor=color, linewidth=0.8),
-                zorder=4,
-            )
-        ax.grid(axis="y", color="#d1d1d1", linewidth=1.0, zorder=0)
-        ax.set_axisbelow(True)
-        ax.set_ylim(0, max(y) * (1.35 if figure_id == "B.20" else 1.15))
+    ax.fill_between(x, 0, y, color=LIGHT, alpha=0.18)
+    ax.vlines(x, 0, y, color=TEAL, linewidth=0.65, alpha=0.75)
+    ax.plot(x, y, color=TEXT, linewidth=1.2, marker="o", markersize=3.2, label=legend)
+    step = 1 if len(data) <= 30 else 2
+    ax.set_xticks(x[::step], data["ANIO"].astype(str).iloc[::step], rotation=90, fontsize=7.5, fontweight="bold")
+    ax.grid(axis="y", color=GRID, linewidth=0.7)
+    ax.set_axisbelow(True)
+    if fmt == "entero":
         ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:,.0f}"))
     else:
-        # B.4, B.11, B.12 y B.19 conservan la serie de línea + área del 2024.
-        ax.plot(x, y, color=color, linewidth=1.5, marker="o", markersize=4.0,
-                markerfacecolor=color, markeredgecolor="none", zorder=4, label=legend)
-        ax.fill_between(x, 0, y, color=color, alpha=0.16, zorder=1)
-        ax.grid(axis="y", color="#d1d1d1", linewidth=0.8, zorder=0)
-        ax.set_axisbelow(True)
         ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:,.0f}"))
-        if figure_id == "B.12":
-            # El referente coloca chip blanco delineado en cada observación.
-            for xpos, value in zip(x, y, strict=True):
-                ax.annotate(
-                    f"{value:,.0f}", (xpos, value), xytext=(0, 7), textcoords="offset points",
-                    ha="center", va="bottom", fontsize=6.6, color="#3c3c3b",
-                    bbox=dict(boxstyle="round,pad=0.30,rounding_size=0.8", facecolor="white", edgecolor=color, linewidth=0.8),
-                    zorder=5,
-                )
-        else:
-            # Los extremos se muestran como números simples, sin chip.
-            for xpos, value, ha in ((x[0], y[0], "left"), (x[-1], y[-1], "right")):
-                ax.annotate(f"{value:,.0f}", (xpos, value), xytext=(0, 9), textcoords="offset points",
-                            ha=ha, va="bottom", fontsize=7.5, fontweight="bold", color="#3c3c3b")
-        ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.21), frameon=False, fontsize=9, labelcolor="#3c3c3b")
-
-    step = 1 if len(data) <= 30 else 2
-    ax.set_xticks(x[::step], data["ANIO"].astype(str).iloc[::step], rotation=90, fontsize=7.5)
     ax.tick_params(axis="y", labelsize=8)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.21), frameon=False, fontsize=9, labelcolor=TEXT)
+    label_value = f"{y[-1]:,.0f}" if fmt == "entero" else f"{y[-1]:,.1f}"
+    ax.annotate(label_value, (x[-1], y[-1]), xytext=(-2, 12), textcoords="offset points",
+                ha="right", fontsize=8.5, fontweight="bold", color=TEXT)
     note = ""
-    if figure_id == "B.12":
-        note = "Indicador expresado por cada 100 hogares."
+    if figure_id == "B.8":
+        note = "Cifras en millones de minutos. Para cada año los datos se presentan acumulados al mes de diciembre."
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.", note)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -575,8 +543,145 @@ def _plot_map(figure_id: str, data: pd.DataFrame, meta: dict, geojson: Path, out
         source = f"CRT con datos de los operadores a diciembre de {meta['year']} y DENUE del INEGI a noviembre de 2023."
     _footer(fig, source)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
+
+
+# ---------------------------------------------------------------------------
+# Etiquetas tipo "chip" (mismo estilo que la Figura C.9): recuadro blanco con
+# borde y conector recto hacia la barra. Los conectores son siempre horizontales;
+# si un chip debe desplazarse en vertical para no encimarse con otro, el
+# conector hace un quiebre a 90° (nunca una diagonal).
+# ---------------------------------------------------------------------------
+CHIP_LINE = "#A0A0B0"
+CHIP_EDGE = "#D1D1DF"
+CHIP_PAD = 0.28
+CHIP_LW = 0.8
+
+
+def _chip_text(value: float) -> str:
+    if value < 0.1:
+        text = f"{value:.2f}"
+        return "<0.01%" if text == "0.00" else f"{text}%"
+    return f"{value:.1f}%"
+
+
+def _chip_color(color: str):
+    """Color del texto: el de la serie; se oscurece si es muy claro para que se lea."""
+    r, g, b = matplotlib.colors.to_rgb(color)
+    lin = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in (r, g, b)]
+    lum = 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+    k = 1.0 if lum < 0.30 else 0.72
+    return (r * k, g * k, b * k)
+
+
+def _chip_spread(desired, gap, lo, hi):
+    """Separa posiciones ascendentes al menos `gap`, con el menor desplazamiento total."""
+    n = len(desired)
+    if n == 0:
+        return []
+    shifted = [d - i * gap for i, d in enumerate(desired)]
+    blocks = []
+    for value in shifted:
+        blocks.append([value, 1])
+        while len(blocks) > 1 and blocks[-2][0] / blocks[-2][1] > blocks[-1][0] / blocks[-1][1]:
+            total, count = blocks.pop()
+            blocks[-1][0] += total
+            blocks[-1][1] += count
+    fitted = []
+    for total, count in blocks:
+        fitted += [total / count] * count
+    top = max(lo, hi - (n - 1) * gap)
+    return [min(max(v, lo), top) + i * gap for i, v in enumerate(fitted)]
+
+
+def draw_stacked_chips(ax, xs, segments_by_bar, bar_width, *, fontsize=6.4, line_pt=7.0):
+    """Dibuja chips con conector para barras apiladas.
+
+    xs: posición x de cada barra. segments_by_bar: por barra, lista de dicts con
+    index (categoría), value, center y color. Llamar cuando xlim, ylim y la
+    posición del eje ya son definitivos. Las categorías pares van a la izquierda
+    de la barra y las impares a la derecha.
+    """
+    fig = ax.figure
+    renderer = fig.canvas.get_renderer()
+    pos = ax.get_position()
+    x0, x1 = ax.get_xlim()
+    y0, y1 = ax.get_ylim()
+    pt_x = pos.width * fig.get_figwidth() * 72 / (x1 - x0)   # puntos por unidad de x
+    pt_y = pos.height * fig.get_figheight() * 72 / (y1 - y0)  # puntos por unidad de y
+    text_kw = dict(fontsize=fontsize, fontweight="bold")
+    pad_pt = CHIP_PAD * fontsize
+
+    def measure(label):
+        probe = ax.text(0, 0, label, **text_kw)
+        extent = probe.get_window_extent(renderer)
+        probe.remove()
+        return extent.width * 72 / fig.dpi, extent.height * 72 / fig.dpi
+
+    chip_h = measure("0.0%")[1] + 2 * pad_pt + CHIP_LW
+    gap_y = (chip_h + 1.2) / pt_y
+    lo = y0 + (chip_h / 2 + 1.0) / pt_y
+    hi = y1 - (chip_h / 2 + 1.0) / pt_y
+
+    # 1) Elementos por hueco entre barras (cada chip pertenece a un solo hueco).
+    gaps = {}
+    for bar_i, segments in enumerate(segments_by_bar):
+        for seg in segments:
+            side = "left" if seg["index"] % 2 == 0 else "right"
+            label = _chip_text(seg["value"])
+            item = {"bar": bar_i, "side": side, "c": seg["center"], "k": seg["index"],
+                    "label": label, "color": seg["color"],
+                    "w": measure(label)[0] + 2 * pad_pt + CHIP_LW}
+            gaps.setdefault(bar_i - 1 if side == "left" else bar_i, []).append(item)
+
+    # 2) Posición vertical de cada chip.
+    for gap_i, items in gaps.items():
+        rights = sorted((i for i in items if i["side"] == "right"), key=lambda i: (i["c"], i["k"]))
+        lefts = sorted((i for i in items if i["side"] == "left"), key=lambda i: (i["c"], i["k"]))
+        avail = (xs[gap_i + 1] - xs[gap_i] - bar_width) * pt_x if 0 <= gap_i < len(xs) - 1 else math.inf
+        need = max([i["w"] for i in rights], default=0) + max([i["w"] for i in lefts], default=0) + 2 * line_pt
+        groups = [rights, lefts] if (need <= avail or not rights or not lefts) else [sorted(items, key=lambda i: (i["c"], i["k"]))]
+        for group in groups:
+            for item, y in zip(group, _chip_spread([i["c"] for i in group], gap_y, lo, hi)):
+                item["y"] = y
+
+    # 3) Quiebres: los chips desplazados hacia arriba (o abajo) escalonan su quiebre
+    #    para que los conectores no se crucen.
+    tol = 0.6 / pt_y
+    e_far, e_near = line_pt - 1.5, 1.5
+    per_side = {}
+    for items in gaps.values():
+        for item in items:
+            per_side.setdefault((item["bar"], item["side"]), []).append(item)
+    for items in per_side.values():
+        items.sort(key=lambda i: (i["c"], i["k"]))
+        ups = [i for i in items if i["y"] - i["c"] > tol]
+        downs = [i for i in items if i["c"] - i["y"] > tol]
+        step = min(1.5, (e_far - e_near) / max(len(items) - 1, 1))
+        for n, item in enumerate(ups):
+            item["elbow"] = e_far - n * step
+        for n, item in enumerate(downs):
+            item["elbow"] = e_near + n * step
+
+    # 4) Dibujo.
+    for items in per_side.values():
+        for item in items:
+            sign = -1 if item["side"] == "left" else 1
+            x_edge = xs[item["bar"]] + sign * bar_width / 2
+            x_chip = x_edge + sign * (line_pt + pad_pt) / pt_x
+            c, y = item["c"], item["y"]
+            if "elbow" in item:
+                x_elbow = x_edge + sign * item["elbow"] / pt_x
+                path = ([x_edge, x_elbow, x_elbow, x_chip], [c, c, y, y])
+            else:
+                path = ([x_edge, x_chip], [c, c])
+            ax.plot(*path, color=CHIP_LINE, lw=CHIP_LW, solid_capstyle="butt", zorder=5, clip_on=False)
+            ax.text(x_chip, y, item["label"], ha="right" if sign < 0 else "left", va="center",
+                    color=_chip_color(item["color"]), zorder=6, clip_on=False,
+                    bbox=dict(boxstyle=f"round,pad={CHIP_PAD},rounding_size=.6", fc="white",
+                              ec=CHIP_EDGE, lw=CHIP_LW),
+                    **text_kw)
 
 
 def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> None:
@@ -584,15 +689,23 @@ def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) ->
     categories = [column for column in data.columns if column != "ANIO"]
     x = np.arange(len(data))
     bottom = np.zeros(len(data))
+    bar_width = 0.30
+    segments_by_year = [[] for _ in range(len(data))]
     for index, category in enumerate(categories):
         values = data[category].to_numpy(float)
-        bars = ax.bar(x, values, bottom=bottom, width=0.58, color=STACK_COLORS[index % len(STACK_COLORS)], label=category)
-        for bar, value, base in zip(bars, values, bottom):
-            if value >= 2.0:
-                ax.text(bar.get_x() + bar.get_width() / 2, base + value / 2, f"{value:.1f}%", ha="center", va="center",
-                        fontsize=6.3, fontweight="bold", color="white" if index not in (1, 3) else TEXT)
+        color = STACK_COLORS[index % len(STACK_COLORS)]
+        bars = ax.bar(x, values, bottom=bottom, width=bar_width, color=color,
+                      edgecolor="none", label=category, zorder=2)
+        for year_index, (value, base) in enumerate(zip(values, bottom)):
+            if value > 0.005:
+                segments_by_year[year_index].append({
+                    "index": index, "value": float(value),
+                    "center": float(base + value / 2), "color": color,
+                })
         bottom += values
-    ax.set_ylim(0, 100)
+    ax.set_xlim(-0.66, len(data) - 0.34)
+    ax.set_ylim(-5, 106)
+    draw_stacked_chips(ax, list(x), segments_by_year, bar_width, fontsize=6.0, line_pt=6.5)
     ax.set_yticks([])
     ax.set_xticks(x, data["ANIO"].astype(str), fontsize=8, fontweight="bold")
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.20), ncol=min(8, len(categories)), frameon=False, fontsize=7.5, labelcolor=TEXT)
@@ -601,7 +714,7 @@ def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) ->
         note = "Participación de mercado calculada con respecto al número de accesos del servicio fijo de Internet."
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.", note)
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -619,7 +732,7 @@ def _plot_ihh(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> N
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.",
             "Herfindahl-Hirschman (IHH) estimado con respecto al número de líneas o accesos del servicio.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -645,7 +758,7 @@ def _plot_speed(data: pd.DataFrame, meta: dict, output: Path) -> None:
     fig.text(0.75, 0.80, f"Total nacional {meta['year']}\n{meta['value']:,.0f}", ha="center", fontsize=16, fontweight="bold", color=TEXT)
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
@@ -710,7 +823,7 @@ def _plot_technology(data: pd.DataFrame, meta: dict, output: Path) -> None:
     _footer(fig, f"CRT con datos proporcionados por los operadores de telecomunicaciones a diciembre de {meta['year']}.",
             "Los porcentajes pueden no sumar 100% debido al redondeo.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

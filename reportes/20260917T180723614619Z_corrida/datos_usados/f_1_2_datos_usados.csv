@@ -1,0 +1,27 @@
+﻿periodo,tipo,indicador,variable,sexo,personas,universo,porcentaje,porcentaje_mostrado
+2025,resumen,Usuarios de Internet,P7_1=1,Mujeres,54968122,64213725,85.60182733519976,86
+2025,destacado,Audiovisuales gratuitos (YouTube),P7_13_3=1,Mujeres,37805574,54968122,68.77727057875472,69
+2025,indicador,Escuchar música gratis,P7_13_4=1,Mujeres,33872285,54968122,61.62168865801891,62
+2025,indicador,Audiovisuales de pago,P7_13_2=1,Mujeres,26367820,54968122,47.969293911842215,48
+2025,indicador,"Leer periódicos, revistas o libros",P7_13_1=1,Mujeres,18668121,54968122,33.96172239611897,34
+2025,indicador,Compras por Internet,P7_21=1,Mujeres,19912086,54968122,36.22478861475384,36
+2025,indicador,Interacción con el gobierno,(P7_35_1=1 OR P7_35_2=1 OR P7_35_3=1 OR P7_35_4=1 OR P7_35_5=1),Mujeres,19621385,54968122,35.69593481836618,36
+2025,indicador,Jugar en línea,P7_13_5=1,Mujeres,14129044,54968122,25.70406898747605,26
+2025,indicador,Pagos por Internet,P7_28=1,Mujeres,18463457,54968122,33.58939022875841,34
+2025,indicador,Uso de banca electrónica,P7_33=1,Mujeres,10608050,54968122,19.298549075407742,19
+2025,indicador,TV en web,P7_13_7=1,Mujeres,7754444,54968122,14.107165604093222,14
+2025,indicador,Ventas por Internet,P7_19=1,Mujeres,6345647,54968122,11.544231036308645,12
+2025,indicador,Radio AM y FM,P7_13_6=1,Mujeres,4190640,54968122,7.623764188268975,8
+2025,resumen,Usuarios de Internet,P7_1=1,Hombres,49935868,57693032,86.55441787146843,87
+2025,destacado,Audiovisuales gratuitos (YouTube),P7_13_3=1,Hombres,36197868,49935868,72.48871292274323,72
+2025,indicador,Escuchar música gratis,P7_13_4=1,Hombres,31760148,49935868,63.60187430806249,64
+2025,indicador,Audiovisuales de pago,P7_13_2=1,Hombres,25425200,49935868,50.91570652181314,51
+2025,indicador,"Leer periódicos, revistas o libros",P7_13_1=1,Hombres,16585142,49935868,33.21288417375663,33
+2025,indicador,Compras por Internet,P7_21=1,Hombres,19233194,49935868,38.51578989274804,39
+2025,indicador,Interacción con el gobierno,(P7_35_1=1 OR P7_35_2=1 OR P7_35_3=1 OR P7_35_4=1 OR P7_35_5=1),Hombres,17851118,49935868,35.74808792749933,36
+2025,indicador,Jugar en línea,P7_13_5=1,Hombres,18388310,49935868,36.82385174520247,37
+2025,indicador,Pagos por Internet,P7_28=1,Hombres,18848996,49935868,37.74640705154059,38
+2025,indicador,Uso de banca electrónica,P7_33=1,Hombres,10784687,49935868,21.597075272627684,22
+2025,indicador,TV en web,P7_13_7=1,Hombres,8117089,49935868,16.255027348277995,16
+2025,indicador,Ventas por Internet,P7_19=1,Hombres,5575761,49935868,11.165843757837553,11
+2025,indicador,Radio AM y FM,P7_13_6=1,Hombres,5102046,49935868,10.217196985541536,10

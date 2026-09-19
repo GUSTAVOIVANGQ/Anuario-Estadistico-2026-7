@@ -7,14 +7,6 @@ corte comparable disponible para el Anuario 2026.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import textwrap
 import zipfile
@@ -63,14 +55,14 @@ MERGE_KEYS = (
 )
 COLUMN_ALIASES = {"ent": ("ent", "cve_ent"), "fac_tri": ("fac_tri", "fac")}
 
-TEXT = "#50517F"
-RADIO_WOMEN = "#327BA0"
-RADIO_MEN = "#4F5082"
-TELECOM_WOMEN = "#F48D7E"
-TELECOM_MEN = "#F0535A"
-BACKGROUND = "#FBFBF7"
-ACCENT = "#F58F82"
-BORDER = "#8D91B3"
+TEXT = "#3c3c3b"
+RADIO_WOMEN = "#64a0a1"
+RADIO_MEN = "#132b2d"
+TELECOM_WOMEN = "#64a0a1"
+TELECOM_MEN = "#132b2d"
+BACKGROUND = "#F8F8FA"
+ACCENT = "#4a7d75"
+BORDER = "#D1D1DF"
 
 
 def _configure_fonts(project_root: Path) -> None:
@@ -415,7 +407,7 @@ def _plot(data: pd.DataFrame, output: Path, project_root: Path, period: str) -> 
         va="top",
     )
     output.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output, dpi=200, facecolor="white", bbox_inches=None)
+    fig.savefig(output, dpi=200, facecolor="white", bbox_inches=None)
     plt.close(fig)
 
 

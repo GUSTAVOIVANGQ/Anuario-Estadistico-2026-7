@@ -1,3 +1,20 @@
+# 0.27.0
+
+- Añadida interfaz web React con visualizador central de figuras, panel lateral, selección por figura/sección y animaciones de estado.
+- Nuevo comando `anuario-2026 web` / `.\ejecutar.ps1 web` para iniciar la app local.
+- El pipeline emite eventos de progreso por figura sin alterar el comportamiento de la CLI existente.
+- Añadidos endpoints para ejecutar una figura, una selección o todas las figuras disponibles y seguir la corrida mediante Server-Sent Events.
+- Al terminar se muestra un panel de exportación estilo editor con PDF, PPTX y compendios JPG, PNG y SVG.
+- Los compendios se construyen sólo con figuras `OK` de la corrida; SVG usa el archivo nativo cuando existe y un wrapper compatible cuando la figura sólo tiene PNG.
+- La conversión PPTX a PDF usa LibreOffice o PowerPoint en Windows.
+
+# 0.26.0
+
+- Normalizado el marcador verde de todos los títulos de figura con el patrón exacto de A.1 (`#4a7d75`, ancho 0.007 y alto 0.018 en coordenadas de figura).
+- Cada corrida genera ahora `referencias_fuentes_figuras.csv` dentro de `reportes/<corrida>/`, conservando figura, source ID, propietario, ZIP/archivo real y portal de origen.
+- Sustituidos los scripts E.4, F.14 y F.1.1 a F.1.4 por las versiones CRT/sinodales suministradas para esta revisión.
+- Añadidas pruebas de regresión para el marcador de título y el nuevo reporte de referencias.
+
 # 0.25.0
 
 - Integrada la funcionalidad 1.2: ensamblaje sobre la plantilla PPTX completa del Anuario 2026.

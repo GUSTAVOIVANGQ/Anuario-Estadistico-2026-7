@@ -9,7 +9,7 @@ data/raw/**
 !data/raw/.gitkeep
 #build/**
 !build/.gitkeep
-reportes/**
+#reportes/**
 !reportes/.gitkeep
 entrega/*.pptx
 entrega/*.pdf
@@ -20,3 +20,6 @@ entrega/*.pdf
 node_modules/
 *.part
 
+
+# Frontend React compilado localmente
+web/dist/

@@ -23,7 +23,7 @@ import pandas as pd
 FIGURE_ID,PERIOD="E.5","2024"; SOURCES={2023:"ift_mipymes_2023_base",2024:"ift_mipymes_2024_base"}; SIZES=["Micro","Pequeña","Mediana"]
 BENEFITS=[("Más gente conoce la empresa",["mas","gente","conoce","empresa"]),("Están más cerca de sus clientes/consumidores",["cerca","consumidores"]),("Hay más ventas/clientes",["mas","ventas","clientes"]),("Disminución de costos al encontrar mejores proveedores",["costos","proveedores"]),("Desarrollar nuevos productos o servicios",["desarroll","nuevos","productos","servicios"]),("Entrega más rápida o menos costosa",["entrega","productos","servicios","rapida"]),("Los empleados hacen más en el mismo tiempo",["empleados","mismo","tiempo"])]
 REFERENCE_2023={"Micro":{"Internet fijo":[7.6,7.4,7.4,6.7,6.5,6.4,6.0],"Telefonía fija":[6.4,6.8,6.4,6.1,5.8,6.0,5.4]},"Pequeña":{"Internet fijo":[8.1,7.9,7.8,7.1,6.9,7.0,6.8],"Telefonía fija":[7.3,7.4,7.1,6.8,6.5,6.6,6.1]},"Mediana":{"Internet fijo":[8.3,8.1,8.0,7.4,7.4,7.6,7.3],"Telefonía fija":[7.2,7.5,7.1,6.7,6.5,6.8,6.4]}}
-TEXT,BG,CORAL,BLUE,CYAN="#4B4B7D","#FBFBF7","#F48D7E","#327BA0","#A9DADF"
+TEXT,BG,CORAL,BLUE,CYAN="#3c3c3b","#F8F8FA","#4a7d75","#335a5c","#86adae"
 
 
 def _norm(v:object)->str:
@@ -77,7 +77,7 @@ def _font(root:Path)->str:
 
 def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
     plt.rcParams.update({"font.family":_font(root)}); fig=plt.figure(figsize=(16,9),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.025,.055),.95,.87,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
-    fig.text(.045,.89,"•",color=CORAL,fontsize=20,va="center"); fig.text(.063,.89,"Figura E.5.",color=TEXT,fontsize=16,fontweight="bold",va="center"); fig.text(.17,.89,"Beneficios de contar con Internet fijo y/o telefonía fija (2024)",color=TEXT,fontsize=16,va="center")
+    fig.add_artist(patches.Rectangle((.045,.881),.009,.018,transform=fig.transFigure,fc=CORAL,ec="none")); fig.text(.063,.89,"Figura E.5.",color=TEXT,fontsize=16,fontweight="bold",va="center"); fig.text(.17,.89,"Beneficios de contar con Internet fijo y/o telefonía fija (2024)",color=TEXT,fontsize=16,va="center")
     current=data.loc[data.anio.eq(2024)]; y=np.arange(len(BENEFITS)); labels=[textwrap.fill(x[0],30) for x in BENEFITS]
     for i,(size,left) in enumerate(zip(SIZES,(.19,.47,.75))):
         ax=fig.add_axes([left,.20,.22,.58]); ax.set_facecolor(BG); a=current.loc[(current.tamano.eq(size))&(current.servicio.eq("Internet fijo")),"promedio"].to_numpy(); b=current.loc[(current.tamano.eq(size))&(current.servicio.eq("Telefonía fija")),"promedio"].to_numpy(); ax.barh(y+.18,a,.34,color=CYAN,label="Internet fijo"); ax.barh(y-.18,b,.34,color=BLUE,label="Telefonía fija")

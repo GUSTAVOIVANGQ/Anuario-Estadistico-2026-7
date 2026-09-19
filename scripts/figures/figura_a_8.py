@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -20,7 +12,6 @@ matplotlib.use("Agg")
 
 import matplotlib.font_manager as font_manager
 import matplotlib.patches as mpatches
-import matplotlib.path as mpath
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
@@ -160,13 +151,6 @@ def build_metrics(concentrado: pd.DataFrame, hogares: pd.DataFrame,
     return pd.DataFrame(rows)
 
 
-def _rounded_vertical_bar(ax, center: float, width: float, height: float, maximum: float) -> None:
-    ax.add_patch(mpatches.Rectangle(
-        (center - width / 2, 0), width, height,
-        facecolor=COLOR_BAR, edgecolor="none", linewidth=0, zorder=2,
-    ))
-
-
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     _configure_fonts(project_root)
     fig, ax_pct = plt.subplots(figsize=(16, 8.5))
@@ -176,33 +160,42 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     x = np.arange(len(data), dtype=float)
     costs = data["gasto_promedio_mensual_pesos"].to_numpy(float)
     pcts = data["gasto_pct_ingreso"].to_numpy(float)
+    ax_cost.bar(x, costs, width=0.72, color=COLOR_BAR, edgecolor="none", zorder=2)
     for position, cost in zip(x, costs, strict=True):
-        _rounded_vertical_bar(ax_cost, position, 0.52, cost, float(costs.max()))
         ax_cost.text(position, max(cost * 0.035, 8), f"${cost:,.0f}",
                      ha="center", va="bottom", fontsize=8, fontweight="bold", color="white", zorder=4)
-    ax_pct.scatter(x, pcts, color=COLOR_POINT, s=34, zorder=6)
+    ax_pct.set_zorder(ax_cost.get_zorder() + 1)
+    ax_pct.set_frame_on(False)
+    ax_pct.scatter(x, pcts, color=COLOR_POINT, s=50, zorder=6)
     for position, pct in zip(x, pcts, strict=True):
         ax_pct.annotate(f"{pct:.1f}%", (position, pct), xytext=(0, 12), textcoords="offset points",
-                        ha="center", va="bottom", fontsize=8.5, fontweight="bold", color=COLOR_TEXT,
-                        bbox={"boxstyle": "round,pad=0.35,rounding_size=0.45", "facecolor": "white",
-                              "edgecolor": "#E2E3EA", "linewidth": 0.8}, zorder=7)
-    cost_max = max(100, int(np.ceil(costs.max() * 1.18 / 100) * 100))
-    pct_max = max(1.0, float(np.ceil(pcts.max() * 1.22 * 2) / 2))
+                        ha="center", va="bottom", fontsize=8, fontweight="bold", color=COLOR_TEXT,
+                        bbox={"boxstyle": "round,pad=0.3,rounding_size=0.8", "facecolor": "white",
+                              "edgecolor": COLOR_POINT, "linewidth": 0.8}, zorder=7)
+    cost_max = max(100, int(np.ceil(costs.max() * 1.15 / 100) * 100))
+    pct_max = max(1.0, float(np.ceil(pcts.max() * 1.3 * 2) / 2))
     ax_cost.set_ylim(0, cost_max)
     ax_pct.set_ylim(0, pct_max)
+    ax_pct.yaxis.set_major_locator(mticker.MultipleLocator(1.0))
+    ax_cost.yaxis.set_major_locator(mticker.MultipleLocator(200 if cost_max > 1200 else 100))
     ax_pct.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.1f}%"))
     ax_cost.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: "$-" if v == 0 else f"${v:,.0f}"))
-    ax_pct.set_ylabel("% Gasto con respecto al ingreso", fontsize=9.5, color=COLOR_TEXT, labelpad=12)
-    ax_cost.set_ylabel("Gasto promedio mensual", fontsize=9.5, color=COLOR_TEXT, rotation=270, labelpad=17)
-    ax_pct.set_xticks(x, data["decil"].astype(int), fontsize=9, color=COLOR_TEXT)
-    ax_pct.set_xlabel("Decil de ingreso", fontsize=9.5, fontweight="bold", color=COLOR_TEXT, labelpad=9)
-    ax_pct.set_xlim(-0.65, len(data) - 0.35)
-    ax_pct.tick_params(axis="both", colors=COLOR_TEXT, labelsize=8.5, length=0)
-    ax_cost.tick_params(axis="y", colors=COLOR_TEXT, labelsize=8.5, length=0)
+    ax_pct.set_ylabel("% Gasto con respecto al ingreso", fontsize=11, color=COLOR_TEXT, labelpad=15)
+    ax_cost.set_ylabel("Gasto promedio mensual", fontsize=11, color=COLOR_TEXT, rotation=270, labelpad=20)
+    ax_pct.set_xticks(x, data["decil"].astype(int), fontsize=10, fontweight="bold", color=COLOR_TEXT)
+    ax_pct.set_xlabel("Decil de ingreso", fontsize=10, fontweight="bold", color=COLOR_TEXT, labelpad=10)
+    ax_pct.set_xlim(-0.6, len(data) - 0.4)
+    ax_pct.tick_params(axis="both", colors=COLOR_TEXT, labelsize=9, length=0)
+    ax_cost.tick_params(axis="y", colors=COLOR_TEXT, labelsize=9)
     ax_pct.grid(False); ax_cost.grid(False)
-    for axis in (ax_pct, ax_cost):
-        for spine in axis.spines.values():
-            spine.set_visible(False)
+    ax_pct.spines["top"].set_visible(False)
+    ax_cost.spines["top"].set_visible(False)
+    ax_pct.spines["bottom"].set_color("#7c7c7c")
+    ax_pct.spines["left"].set_visible(False)
+    ax_pct.spines["right"].set_visible(False)
+    ax_cost.spines["bottom"].set_color("#7c7c7c")
+    ax_cost.spines["left"].set_color("#7c7c7c")
+    ax_cost.spines["right"].set_color("#7c7c7c")
 
     fig.add_artist(mpatches.FancyBboxPatch(
         (0.055, 0.918), 0.007, 0.018, transform=fig.transFigure,
@@ -210,12 +203,12 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(0.069, 0.927, "Figura A.8.", fontsize=14, fontweight="bold", color=COLOR_TEXT, va="center")
     fig.text(0.145, 0.927,
              "Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Fijas de los hogares por decil de ingreso",
-             fontsize=13.4, color=COLOR_TEXT, va="center")
+             fontsize=14, fontweight="normal", color=COLOR_TEXT, va="center")
     handles = [mpatches.Patch(facecolor=COLOR_BAR, edgecolor="none", label="Gasto mensual promedio"),
                plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=COLOR_POINT,
                           markeredgewidth=0, label="% Gasto respecto al ingreso")]
-    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.105), ncol=2,
-               fontsize=8.8, frameon=False, labelcolor=COLOR_TEXT, columnspacing=4)
+    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.08), ncol=2,
+               fontsize=10, frameon=False, labelcolor=COLOR_TEXT, handlelength=2.5)
     fig.text(0.055, 0.057, "Fuente:", fontsize=8, fontweight="bold", color=COLOR_TEXT, va="top")
     fig.text(0.096, 0.057,
              f"IFT con datos de la ENIGH {SOURCE_YEAR}, del INEGI. Datos disponibles en: {SOURCE_URL}",
@@ -224,9 +217,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.text(0.093, 0.033,
              "El gasto e ingreso utilizados son promedios de los hogares de cada decil que disponen del servicio y gastan en él. Las cifras corresponden a 2024 y no se ajustan por inflación.",
              fontsize=7.7, color=COLOR_TEXT, va="top")
-    fig.subplots_adjust(left=0.08, right=0.92, top=0.84, bottom=0.22)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

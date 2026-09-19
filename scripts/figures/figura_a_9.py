@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import zipfile
 from pathlib import Path, PurePosixPath
@@ -150,54 +142,63 @@ def build_metrics(concentrado: pd.DataFrame, hogares: pd.DataFrame,
     return pd.DataFrame(rows)
 
 
-def _rounded_barh(ax, y: float, width: float, height: float, color: str) -> None:
-    ax.add_patch(mpatches.Rectangle(
-        (0, y - height / 2), width, height,
-        facecolor=color, edgecolor="none", linewidth=0, zorder=3,
-    ))
-
-
 def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     _configure_fonts(project_root)
     fig, ax = plt.subplots(figsize=(16, 8.5))
     fig.patch.set_facecolor("white"); ax.set_facecolor(COLOR_BACKGROUND)
-    y = np.arange(len(data), dtype=float); height = 0.28
+    y = np.arange(len(data), dtype=float); height = 0.38
+    ax.barh(
+        y - height / 2,
+        data["pct_hogares_con_telecom_moviles"],
+        height=height,
+        color=COLOR_PRIMARY,
+        edgecolor="none",
+        label="% Hogares con telecomunicaciones móviles",
+        zorder=2,
+    )
+    ax.barh(
+        y + height / 2,
+        data["pct_hogares_disponen_y_gastan"],
+        height=height,
+        color=COLOR_SECONDARY,
+        edgecolor="none",
+        label="% Hogares que disponen y gastan en telecomunicaciones móviles",
+        zorder=2,
+    )
     for index, row in data.iterrows():
-        _rounded_barh(ax, y[index] - height / 1.7, row["pct_hogares_con_telecom_moviles"], height, COLOR_PRIMARY)
-        _rounded_barh(ax, y[index] + height / 1.7, row["pct_hogares_disponen_y_gastan"], height, COLOR_SECONDARY)
-        ax.text(row["pct_hogares_con_telecom_moviles"] + 0.7, y[index] - height / 1.7,
-                f"{row['pct_hogares_con_telecom_moviles']:.1f}%", va="center", fontsize=8.5, color=COLOR_TEXT)
-        ax.text(row["pct_hogares_disponen_y_gastan"] + 0.7, y[index] + height / 1.7,
-                f"{row['pct_hogares_disponen_y_gastan']:.1f}%", va="center", fontsize=8.5, color=COLOR_TEXT)
+        ax.text(row["pct_hogares_con_telecom_moviles"] + 1.5, y[index] - height / 2,
+                f"{row['pct_hogares_con_telecom_moviles']:.1f}%", va="center", fontsize=9,
+                fontweight="normal", color=COLOR_TEXT)
+        ax.text(row["pct_hogares_disponen_y_gastan"] + 1.5, y[index] + height / 2,
+                f"{row['pct_hogares_disponen_y_gastan']:.1f}%", va="center", fontsize=9,
+                fontweight="normal", color=COLOR_TEXT)
     ax.set_yticks(y, data["decil"].astype(int), fontsize=9, color=COLOR_TEXT)
-    ax.set_ylabel("Decil de ingreso", fontsize=10, fontweight="bold", color=COLOR_TEXT, labelpad=12)
-    ax.set_xlim(0, 106); ax.set_ylim(-0.65, 9.65)
+    ax.set_ylabel("Decil de ingreso", fontsize=11, fontweight="medium", color=COLOR_TEXT, labelpad=15)
+    ax.set_xlim(0, 108); ax.set_ylim(-0.65, 9.65)
     ax.xaxis.set_major_formatter(lambda value, _: f"{value:.0f}%")
-    ax.tick_params(axis="both", labelsize=8.5, colors=COLOR_TEXT, length=0)
-    ax.grid(axis="x", color="#DADAE3", linewidth=0.7, zorder=0)
-    for spine in ax.spines.values():
-        spine.set_visible(False)
+    ax.tick_params(axis="x", labelsize=9, colors=COLOR_TEXT)
+    ax.tick_params(axis="y", labelsize=9, colors=COLOR_TEXT)
+    ax.grid(axis="x", color="#d1d1d1", linewidth=1, zorder=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_color("#7c7c7c")
+    ax.spines["left"].set_color("#7c7c7c")
     fig.add_artist(mpatches.FancyBboxPatch(
         (0.055, 0.918), 0.007, 0.018, transform=fig.transFigure,
         boxstyle="round,pad=0,rounding_size=0.002", facecolor=COLOR_MARKER, edgecolor="none"))
     fig.text(0.069, 0.927, "Figura A.9.", fontsize=14, fontweight="bold", color=COLOR_TEXT, va="center")
     fig.text(0.145, 0.927, "Porcentaje de hogares con Servicios de Telecomunicaciones Móviles por decil de ingreso",
-             fontsize=14, color=COLOR_TEXT, va="center")
-    handles = [
-        mpatches.Patch(facecolor=COLOR_SECONDARY, edgecolor="none",
-                       label="% Hogares que disponen y gastan en telecomunicaciones móviles"),
-        mpatches.Patch(facecolor=COLOR_PRIMARY, edgecolor="none",
-                       label="% Hogares con telecomunicaciones móviles"),
-    ]
-    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.105), ncol=2,
-               fontsize=8.8, frameon=False, labelcolor=COLOR_TEXT, handlelength=1.8, columnspacing=3.5)
+             fontsize=14, fontweight="medium", color=COLOR_TEXT, va="center")
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles=handles, labels=labels, loc="lower center", bbox_to_anchor=(0.5, 0.12), ncol=2,
+               fontsize=10, frameon=False, labelcolor=COLOR_TEXT, handlelength=2.5)
     fig.text(0.055, 0.057, "Fuente:", fontsize=8, fontweight="bold", color=COLOR_TEXT, va="top")
     fig.text(0.096, 0.057,
              f"IFT con datos de la ENIGH {SOURCE_YEAR}, del INEGI. Datos disponibles en: {SOURCE_URL}",
              fontsize=8, color=COLOR_TEXT, va="top")
-    fig.subplots_adjust(left=0.08, right=0.965, top=0.84, bottom=0.20)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

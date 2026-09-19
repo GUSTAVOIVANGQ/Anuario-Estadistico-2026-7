@@ -32,6 +32,7 @@ def doctor(project_root: Path) -> int:
     print("Caché global TODO.zip de BIT integrada y reutilizable: A.4, A.6, B.4 a B.25 y C.5 a C.16")
     print("Descarga masiva DENUE integrada y reutilizable: B.22")
     print("CSV individuales de espectro BIT integrados y reutilizables: C.1 y C.2")
+    print("CSV individuales de concesiones de radiodifusión BIT integrados y reutilizables: G.1")
     print("Caché integral ENIGH 2024 verificada y reutilizable: A.7 a A.10")
     print(
         "Caché ENDUTIH 2023 a 2025 verificada y reutilizable: "
@@ -49,6 +50,13 @@ def doctor(project_root: Path) -> int:
     )
     print(f"Plantilla PPTX automatizable: {'OK' if template.is_file() else 'FALTA'} | {template}")
     print(f"Manifest PPTX de figuras: {'OK' if manifest.is_file() else 'FALTA'} | {manifest}")
+    frontend_source = project_root / "web" / "src" / "App.jsx"
+    frontend_dist = project_root / "web" / "dist" / "index.html"
+    print(f"UI React fuente: {'OK' if frontend_source.is_file() else 'FALTA'} | {frontend_source}")
+    print(
+        f"UI React compilada: {'OK' if frontend_dist.is_file() else 'FALTA (ejecuta preparar_entorno.ps1)'} "
+        f"| {frontend_dist}"
+    )
     print("Estado base: correcto")
     return 0
 
@@ -81,6 +89,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="No genera el PPTX si falta una figura o un marcador de la plantilla",
     )
+
+    web = subparsers.add_parser("web", help="Abre la interfaz web del Anuario Estadístico")
+    web.add_argument("--host", default="127.0.0.1", help="Dirección de escucha")
+    web.add_argument("--port", type=int, default=8765, help="Puerto de la aplicación")
+    web.add_argument("--no-open", action="store_true", help="No abre el navegador automáticamente")
     return parser
 
 
@@ -110,5 +123,10 @@ def main(argv: list[str] | None = None) -> int:
             stop_on_error=args.stop_on_error,
             assemble=args.assemble,
         )
+        return 0
+    if args.command == "web":
+        from .web import serve
+
+        serve(project_root, host=args.host, port=args.port, open_browser=not args.no_open)
         return 0
     return 2

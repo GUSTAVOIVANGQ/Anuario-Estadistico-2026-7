@@ -1,0 +1,5 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+A.6,ingresos_ultimo_corte_completo,"suma de INGRESOS_TOTAL_E / 1,000,000,000","{""periodo"": ""2024-T4""}",163.138,miles de millones de pesos,3
+A.6,margen_ultimo_corte_completo,ingresos * margen porcentual / 100,"{""ingresos"": 163.137924, ""margen_pct"": 29.0}",47.31,miles de millones de pesos,3
+A.6,egresos_ultimo_corte_completo,ingresos - margen,"{""ingresos"": 163.137924, ""margen"": 47.309998}",115.828,miles de millones de pesos,3
+A.6,ingresos_ultimo_corte_bit,"suma de INGRESOS_TOTAL_E del último trimestre encontrado / 1,000,000,000","{""periodo"": ""2024-T4""}",163.138,miles de millones de pesos,3

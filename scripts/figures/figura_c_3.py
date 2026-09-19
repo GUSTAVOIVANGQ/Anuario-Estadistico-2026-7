@@ -8,14 +8,7 @@ edición más reciente disponible de los microdatos.
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
+import math
 import sys
 import zipfile
 from decimal import Decimal, ROUND_HALF_UP
@@ -36,9 +29,9 @@ SOURCE_YEAR = 2025
 SOURCE_URL = "https://www.inegi.org.mx/programas/endutih/2025/"
 REQUIRED_COLUMNS = ["EDAD", "P8_1", "P8_4_2", "FAC_PER", "DOMINIO"]
 
-COLOR_TEXT = "#4B4B83"
-COLOR_USE = "#4B4B83"
-COLOR_NO_USE = "#ADDCDF"
+COLOR_TEXT = "#3c3c3b"
+COLOR_USE = "#3b6667"
+COLOR_NO_USE = "#132b2d"
 COLOR_BACKGROUND = "#EAF3F2"
 COLOR_CHIP_BORDER = "#E6E6EA"
 
@@ -134,6 +127,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     uses = int(national["porcentaje_uso_grafica"])
     does_not_use = int(national["porcentaje_no_uso_grafica"])
 
+    leader_color = "#8C8C9A"
+    chip_border = "#A9A9B8"
+
     fig = plt.figure(figsize=(6, 9), facecolor="white")
     background = fig.add_axes([0, 0, 1, 1], zorder=0)
     background.axis("off")
@@ -143,7 +139,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     background.annotate(
         " ", xy=(0.04, 0.945), xytext=(0, 0), textcoords="offset points",
         bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
-                  facecolor="#F58F82", edgecolor="none"),
+                  facecolor="#4a7d75", edgecolor="none"),
         fontsize=2, va="center",
     )
     background.annotate(
@@ -159,13 +155,15 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.5, 0.82, "Población de 6 años o más:", ha="center", va="center",
         fontsize=10, fontweight="bold", color=COLOR_TEXT,
         bbox=dict(boxstyle="round,pad=0.55", facecolor="white",
-                  edgecolor=COLOR_CHIP_BORDER, linewidth=1),
+                  edgecolor=chip_border, linewidth=1.15),
     )
 
-    pie = fig.add_axes([-0.05, 0.22, 0.75, 0.62], zorder=3)
+    # El pastel se centra y se reserva espacio real para las llamadas.
+    pie = fig.add_axes([0.08, 0.22, 0.76, 0.60], zorder=3)
     pie.set_facecolor("none")
-    pie.add_patch(plt.Circle((0, 0), 1.17, facecolor=COLOR_BACKGROUND, edgecolor="none", zorder=-2))
-    pie.pie(
+    pie.add_patch(plt.Circle((0, 0), 1.17, facecolor=COLOR_BACKGROUND,
+                             edgecolor="none", zorder=-2))
+    wedges, _ = pie.pie(
         [does_not_use, uses],
         colors=[COLOR_NO_USE, COLOR_USE],
         startangle=90,
@@ -173,23 +171,35 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
     pie.set_aspect("equal")
+    pie.set_xlim(-1.42, 1.42)
+    pie.set_ylim(-1.30, 1.38)
     pie.axis("off")
 
-    label_style = dict(fontsize=9, fontweight="bold", color=COLOR_TEXT, ha="left")
-    fig.text(0.59, 0.65, "No hacen uso de\nservicios móviles", va="bottom", **label_style)
-    fig.text(
-        0.67, 0.585, f"{does_not_use}%", ha="center", va="center",
-        fontsize=15, fontweight="bold", color=COLOR_TEXT,
-        bbox=dict(boxstyle="round,pad=0.48", facecolor="white",
-                  edgecolor=COLOR_CHIP_BORDER, linewidth=1),
-    )
-    fig.text(0.67, 0.30, "Hacen uso de\nservicios móviles", va="bottom", **label_style)
-    fig.text(
-        0.76, 0.225, f"{uses}%", ha="center", va="center",
-        fontsize=18, fontweight="bold", color=COLOR_TEXT,
-        bbox=dict(boxstyle="round,pad=0.48", facecolor="white",
-                  edgecolor=COLOR_CHIP_BORDER, linewidth=1),
-    )
+    chip = dict(boxstyle="round,pad=0.45,rounding_size=0.28",
+                facecolor="white", edgecolor=chip_border, linewidth=1.25)
+    arrow = dict(arrowstyle="-", color=leader_color, linewidth=1.35,
+                 shrinkA=8, shrinkB=0, connectionstyle="arc3,rad=0")
+
+    callouts = [
+        (wedges[0], (-1.08, 1.03), (-1.30, 1.30),
+         f"{does_not_use}%", "No hacen uso de\nservicios móviles"),
+        (wedges[1], (1.10, -1.00), (0.92, -0.63),
+         f"{uses}%", "Hacen uso de\nservicios móviles"),
+    ]
+    for wedge, chip_xy, label_xy, pct, label in callouts:
+        angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
+        target = (0.74 * math.cos(angle), 0.74 * math.sin(angle))
+        pie.annotate(
+            pct, xy=target, xytext=chip_xy,
+            ha="center", va="center", fontsize=17, fontweight="bold",
+            color=COLOR_TEXT, bbox=chip, arrowprops=arrow,
+            annotation_clip=False, zorder=8,
+        )
+        pie.scatter(*target, s=36, facecolor="#A9A9B8", edgecolor="white",
+                    linewidth=0.8, zorder=9, clip_on=False)
+        pie.text(label_xy[0], label_xy[1], label, ha="left", va="center",
+                 fontsize=9, fontweight="bold", color=COLOR_TEXT,
+                 linespacing=1.25, clip_on=False, zorder=9)
 
     background.text(0.06, 0.105, "Fuente:", fontweight="bold", fontsize=7.5, color=COLOR_TEXT)
     background.text(
@@ -200,9 +210,8 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     background.text(0.06, 0.085, SOURCE_URL, fontsize=7.5, color=COLOR_TEXT)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
     plt.close(fig)
-
 
 def generate(context):
     print("  C.3 | Adquisición o reutilización del ZIP ENDUTIH 2025")

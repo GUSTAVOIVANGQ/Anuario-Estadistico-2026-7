@@ -1,0 +1,3 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+C.4,uso_servicios_moviles_urbano,"suma(FAC_PER donde EDAD>=6, P8_1=1 y P8_4_2=1) / suma(FAC_PER de la zona donde EDAD>=6) * 100","{""anio"": 2025, ""zona"": ""Urbano"", ""poblacion_expandida"": 96453697, ""usuarios_expandidos"": 82128719}",85.14833703056503,porcentaje,0
+C.4,uso_servicios_moviles_rural,"suma(FAC_PER donde EDAD>=6, P8_1=1 y P8_4_2=1) / suma(FAC_PER de la zona donde EDAD>=6) * 100","{""anio"": 2025, ""zona"": ""Rural"", ""poblacion_expandida"": 25453060, ""usuarios_expandidos"": 18030484}",70.83817819939921,porcentaje,0

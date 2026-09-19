@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+52,D.1,ERROR,SourceError: Archivo ZIP/Office inválido: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2024-1\Anuario-Estadistico-2026-7\data\raw\inegi_endutih_2023_tabulado_hnal110\objects\fed624b555d1816d475b\27_2023_hnal110.xlsx,scripts\figures\figura_d_1.py,build\figures\D\figura_d_1.png,2026-09-17T16:44:58+00:00,2026-09-17T16:44:58+00:00,0.054

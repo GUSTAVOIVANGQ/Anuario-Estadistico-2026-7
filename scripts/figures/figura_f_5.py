@@ -1,13 +1,5 @@
 """Figura F.5: víctimas de ciberacoso por sexo y grupo de edad."""
 from __future__ import annotations
-
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
 import sys,textwrap,zipfile
 from io import BytesIO
 from pathlib import Path
@@ -20,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 FIGURE_ID="F.5"; CURRENT_SOURCE_ID="inegi_mociba_2025"; REFERENCE_SOURCE_ID="inegi_mociba_2024_reference"; PERIOD="2025"; LANDING_PAGE="https://www.inegi.org.mx/programas/mociba/2025/"
-TEXT="#50517F"; WOMEN="#ADDCDD"; MEN="#F58F82"; BG="#FBFBF7"; BINS=[(12,19,"De 12 a\n19 años"),(20,29,"De 20 a\n29 años"),(30,39,"De 30 a\n39 años"),(40,49,"De 40 a\n49 años"),(50,59,"De 50 a\n59 años"),(60,200,"De 60 años\ny más")]
+TEXT="#3c3c3b"; WOMEN="#86adae"; MEN="#335a5c"; BG="#F8F8FA"; BINS=[(12,19,"De 12 a\n19 años"),(20,29,"De 20 a\n29 años"),(30,39,"De 30 a\n39 años"),(40,49,"De 40 a\n49 años"),(50,59,"De 50 a\n59 años"),(60,200,"De 60 años\ny más")]
 
 def _fonts(root:Path)->None:
     d=root/"assets"/"fonts"/"Noto_Sans"
@@ -69,17 +61,25 @@ def validate_reference(df:pd.DataFrame)->dict[str,float]:
     return {"suma_hombres":float(data.Hombres.sum()),"suma_mujeres":float(data.Mujeres.sum()),"total_hombres":totals["Hombres"],"total_mujeres":totals["Mujeres"]}
 
 def _panel(fig:plt.Figure,rect:list[float],data:pd.DataFrame,column:str,color:str)->None:
-    left,bottom,width,height=rect; fig.add_artist(patches.FancyBboxPatch((left,bottom),width,height,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="#9296B5",lw=.8,zorder=0)); ax=fig.add_axes([left+.025,bottom+.08,width-.05,height-.14]);ax.set_zorder(2);ax.patch.set_alpha(0)
+    left,bottom,width,height=rect; fig.add_artist(patches.FancyBboxPatch((left,bottom),width,height,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="#b5b7c8",lw=.8,zorder=0)); ax=fig.add_axes([left+.025,bottom+.08,width-.05,height-.14]);ax.set_zorder(2);ax.patch.set_alpha(0)
     x=np.arange(len(data));bars=ax.bar(x,data[column],width=.38,color=color)
-    for bar,value in zip(bars,data[column]):ax.text(bar.get_x()+bar.get_width()/2,value*.55,f"{value:.1f}%",ha="center",va="center",fontsize=9,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.25",fc="white",ec="none"))
+    for bar,value in zip(bars,data[column]):ax.text(bar.get_x()+bar.get_width()/2,value*.55,f"{value:.1f}%",ha="center",va="center",fontsize=9,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.25",fc="white",ec=color,lw=.8))
     ax.set_xticks(x,data.edad,fontsize=7.4,fontweight="bold",color=TEXT);ax.set_ylim(0,max(35,data[column].max()*1.2));ax.set_yticks([]);ax.tick_params(axis="x",length=0,pad=8)
     for s in ax.spines.values():s.set_visible(False)
     fig.text(left+width*.72,bottom+height-.055,column,ha="center",va="center",fontsize=18,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.55,rounding_size=.8",fc="white",ec="none"),zorder=5)
 def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
-    _fonts(root);fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1));fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc=MEN,ec="none"))
-    fig.text(.066,.873,"Figura F.5.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.151,.873,"Porcentaje de la población que vivió ciberacoso por sexo y rango de edad",fontsize=14,color=TEXT,va="center")
-    _panel(fig,[.055,.20,.43,.57],data,"Mujeres",WOMEN);_panel(fig,[.515,.20,.43,.57],data,"Hombres",MEN)
-    fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top");output.parent.mkdir(parents=True,exist_ok=True);apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200);plt.close(fig)
+    _fonts(root);fig,ax=plt.subplots(figsize=(16,9));fig.patch.set_facecolor("white");ax.set_facecolor(BG)
+    x=np.arange(len(data));width=.34
+    women=ax.bar(x-width/2,data.Mujeres,width,color=WOMEN,label="Mujeres",zorder=2)
+    men=ax.bar(x+width/2,data.Hombres,width,color=MEN,label="Hombres",zorder=2)
+    ymax=max(float(data[["Mujeres","Hombres"]].max().max())*1.25,30)
+    for bars,color in ((women,WOMEN),(men,MEN)):
+        for bar in bars:
+            value=bar.get_height();ax.text(bar.get_x()+bar.get_width()/2,value+ymax*.018,f"{value:.1f}%",ha="center",va="bottom",fontsize=8.2,fontweight="bold",color=TEXT,bbox=dict(boxstyle="round,pad=.25,rounding_size=.8",fc="white",ec=color,lw=.8))
+    ax.set_xticks(x,data.edad,fontsize=8.5,fontweight="bold",color=TEXT);ax.set_ylim(0,ymax);ax.set_yticks([]);ax.tick_params(axis="x",length=0,pad=9)
+    for spine in ax.spines.values():spine.set_visible(False)
+    ax.legend(loc="upper right",frameon=False,ncol=2,fontsize=9,labelcolor=TEXT)
+    fig.add_artist(patches.FancyBboxPatch((.035,.09),.93,.83,transform=fig.transFigure,boxstyle="round,pad=.006,rounding_size=.018",fc=BG,ec="none",zorder=-1));fig.add_artist(patches.FancyBboxPatch((.052,.864),.008,.018,transform=fig.transFigure,boxstyle="round,pad=0,rounding_size=.003",fc="#4a7d75",ec="none"));fig.text(.066,.873,"Figura F.5.",fontsize=14,fontweight="bold",color=TEXT,va="center");fig.text(.151,.873,"Porcentaje de la población que vivió ciberacoso por sexo y rango de edad",fontsize=14,color=TEXT,va="center");fig.text(.052,.125,"Fuente:",fontsize=8.5,fontweight="bold",color=TEXT,va="top");fig.text(.095,.125,textwrap.fill(f"IFT con datos del MOCIBA {PERIOD}, del INEGI. Para más información consultar {LANDING_PAGE}",190),fontsize=8.5,color=TEXT,va="top");fig.subplots_adjust(left=.075,right=.94,top=.78,bottom=.23);output.parent.mkdir(parents=True,exist_ok=True);fig.savefig(output,dpi=200);plt.close(fig)
 
 def generate(context):
     print("  F.5 | 1/4 Adquisición o reutilización de MOCIBA 2024 y 2025");ref_path=context.acquire_source(REFERENCE_SOURCE_ID);cur_path=context.acquire_source(CURRENT_SOURCE_ID)

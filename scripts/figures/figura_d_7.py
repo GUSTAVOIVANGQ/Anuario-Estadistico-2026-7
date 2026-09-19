@@ -1,14 +1,6 @@
 """Figura D.7: experiencias negativas en Internet por edad (ECSI 2024)."""
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys, textwrap
 from pathlib import Path
 import matplotlib
@@ -20,11 +12,11 @@ import numpy as np
 import pandas as pd
 
 FIGURE_ID, SOURCE_ID, PERIOD = "D.7", "ift_ecsi_2024_base", "2024"
-TEXT, BG = "#4B4B7D", "#FBFBF7"
+TEXT, BG = "#3c3c3b", "#F8F8FA"
 AGES = [(1, "18 a 24 años"), (2, "25 a 34 años"), (3, "35 a 44 años"), (4, "45 a 54 años"), (5, "55 años o más")]
 VARIABLES = [("expp_mensnd", "Mensajes no deseados"), ("expp_pubipi", "Información personal publicada sin permiso"),
              ("expp_datpre", "Datos usados para préstamos sin permiso"), ("expp_robcon", "Robo de contraseñas")]
-COLORS = ["#327BA0", "#A9DADF", "#F48D7E", "#F0535A"]
+COLORS = ["#86adae", "#64a0a1", "#335a5c", "#132b2d"]
 REFERENCE = [[64.8,16.5,8.6,23.1],[62.7,14.5,13.9,20.0],[60.8,13.1,11.9,18.2],[57.6,14.5,11.4,11.2],[53.4,9.4,8.6,9.5]]
 
 
@@ -52,18 +44,18 @@ def _plot(data: pd.DataFrame, output: Path, root: Path) -> None:
     plt.rcParams.update({"font.family": _font(root)})
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.035,.06),.93,.86,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
-    fig.text(.055,.88,"•",color="#F58F82",fontsize=20,va="center"); fig.text(.073,.88,"Figura D.7.",color=TEXT,fontsize=16,fontweight="bold",va="center")
+    fig.text(.055,.88,"   ",fontsize=2,va="center",bbox=dict(boxstyle="round,pad=1.6,rounding_size=.2",fc="#4a7d75",ec="none")); fig.text(.073,.88,"Figura D.7.",color=TEXT,fontsize=16,fontweight="bold",va="center")
     fig.text(.18,.88,"Experiencias negativas en Internet por grupo de edad (2024)",color=TEXT,fontsize=16,va="center")
     ax=fig.add_axes([.075,.23,.86,.54]); ax.set_facecolor(BG); x=np.arange(len(AGES)); width=.18
     for i,(variable,label) in enumerate(VARIABLES):
         values=data.loc[data.variable.eq(variable),"porcentaje"].to_numpy(); bars=ax.bar(x+(i-1.5)*width,values,width,color=COLORS[i],label=label,zorder=2)
-        for bar,value in zip(bars,values): ax.text(bar.get_x()+bar.get_width()/2,value+1,f"{value:.1f}%",ha="center",fontsize=8.5,color=TEXT,fontweight="bold",bbox=dict(boxstyle="round,pad=.18",fc="white",ec="none"))
+        for bar,value in zip(bars,values): ax.text(bar.get_x()+bar.get_width()/2,value+1,f"{value:.1f}%",ha="center",fontsize=8.5,color=TEXT,fontweight="bold",bbox=dict(boxstyle="round,pad=.18",fc="white",ec=COLORS[i],lw=.8))
     ax.set_ylim(0,75); ax.set_yticks(range(0,71,10),[f"{x}%" for x in range(0,71,10)]); ax.set_xticks(x,[age for _,age in AGES],color=TEXT)
-    ax.tick_params(axis="both",length=0,pad=9,colors=TEXT); ax.grid(axis="y",color="#DADAE3",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
+    ax.tick_params(axis="both",length=0,pad=9,colors=TEXT); ax.grid(axis="y",color="#d1d1d1",linewidth=.7,zorder=0); ax.spines[:].set_visible(False)
     ax.legend(ncol=2,loc="upper center",bbox_to_anchor=(.5,1.13),frameon=False,labelcolor=TEXT,fontsize=9)
     fig.text(.055,.116,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.116,"IFT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.",color=TEXT,fontsize=9)
     fig.text(.055,.088,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.088,"Porcentajes ponderados entre personas usuarias de Internet; las respuestas no son excluyentes.",color=TEXT,fontsize=9)
-    output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
+    output.parent.mkdir(parents=True,exist_ok=True); fig.savefig(output,dpi=200); plt.close(fig)
 
 
 def generate(context):

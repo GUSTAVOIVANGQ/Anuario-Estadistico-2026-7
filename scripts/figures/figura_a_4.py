@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import sys
 import textwrap
 import zipfile
@@ -21,7 +13,6 @@ matplotlib.use("Agg")
 
 import matplotlib.font_manager as font_manager
 import matplotlib.patches as mpatches
-import matplotlib.path as mpath
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -140,12 +131,11 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     fig.patch.set_facecolor("white")
     ax.set_facecolor(COLOR_BACKGROUND)
     x = np.arange(len(data), dtype=float)
-    width = 0.43
+    width = 0.45
     totals = data["total_miles_millones_pesos"].to_numpy(dtype=float)
     maximum = float(totals.max())
     bottoms = np.zeros(len(data), dtype=float)
     category_bottoms: dict[str, np.ndarray] = {}
-    bar_patches: list[list[mpatches.Rectangle]] = []
 
     for output, _, label, color in CATEGORIES:
         values = data[f"{output}_miles_millones_pesos"].to_numpy(dtype=float)
@@ -156,72 +146,29 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             width,
             bottom=bottoms,
             color=color,
-            edgecolor="none",
+            edgecolor="white",
+            linewidth=0.5,
             label=label,
             zorder=3,
         )
-        bar_patches.append(list(container.patches))
         bottoms += values
 
-    for index, (position, total) in enumerate(zip(x, totals, strict=True)):
-        left = position - width / 2
-        right = position + width / 2
-        radius_x = width / 2
-        radius_y = min(maximum * 0.025, total / 4)
-        clip_path = mpath.Path(
-            [
-                (left + radius_x, 0),
-                (right - radius_x, 0),
-                (right, 0),
-                (right, radius_y),
-                (right, total - radius_y),
-                (right, total),
-                (right - radius_x, total),
-                (left + radius_x, total),
-                (left, total),
-                (left, total - radius_y),
-                (left, radius_y),
-                (left, 0),
-                (left + radius_x, 0),
-                (left + radius_x, 0),
-            ],
-            [
-                mpath.Path.MOVETO,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.LINETO,
-                mpath.Path.CURVE3,
-                mpath.Path.CURVE3,
-                mpath.Path.CLOSEPOLY,
-            ],
-        )
-        clip = mpatches.PathPatch(clip_path, transform=ax.transData)
-        for category_patches in bar_patches:
-            category_patches[index].set_clip_path(clip)
-
     chip_style = {
-        "boxstyle": "round,pad=0.31,rounding_size=0.55",
+        "boxstyle": "round,pad=0.3,rounding_size=0.6",
         "facecolor": "white",
-        "edgecolor": "#E5E5ED",
-        "linewidth": 0.7,
+        "edgecolor": "#D1D1DF",
+        "linewidth": 1.2,
     }
-    minimum_distance = maximum * 0.053
+    minimum_distance = maximum * 0.045
     for index, position in enumerate(x):
         total = totals[index]
         ax.text(
             position,
-            total + maximum * 0.019,
+            total + maximum * 0.015,
             f"${total:.1f}",
             ha="center",
             va="bottom",
-            fontsize=8.6,
+            fontsize=9,
             fontweight="bold",
             color=COLOR_TEXT,
             zorder=6,
@@ -236,13 +183,13 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             text_y = max(center, last_y + minimum_distance)
             last_y = text_y
             text_x = position - width / 2 - 0.12
-            elbow_x = text_x + 0.035 + category_index * 0.008
+            elbow_x = text_x + 0.02 + category_index * 0.008
             target_x = position - width / 2
             ax.plot(
                 [text_x, elbow_x, elbow_x, target_x],
                 [text_y, text_y, center, center],
-                color="#8586A5",
-                linewidth=0.75,
+                color="#A0A0B0",
+                linewidth=1.2,
                 zorder=4,
             )
             ax.annotate(
@@ -250,9 +197,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
                 xy=(text_x, text_y),
                 ha="right",
                 va="center",
-                fontsize=7.6,
+                fontsize=8,
                 fontweight="bold",
-                color=COLOR_TEXT if color != "#86adae" else COLOR_TEXT,
+                color=color,
                 bbox=chip_style,
                 zorder=5,
             )
@@ -260,17 +207,20 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     ax.set_xticks(
         x,
         data["anio"].astype(int).astype(str),
-        fontsize=8.8,
+        fontsize=10,
         fontweight="bold",
         color=COLOR_TEXT,
     )
     ax.tick_params(axis="x", length=0, pad=9)
-    ax.set_xlim(-0.75, len(data) - 0.22)
-    ax.set_ylim(0, maximum * 1.20)
+    ax.set_xlim(-0.8, len(data) - 0.2)
+    ax.set_ylim(0, maximum * 1.15)
     ax.set_yticks([])
-    ax.grid(False)
-    for spine in ax.spines.values():
-        spine.set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+    ax.spines["bottom"].set_color("#7c7c7c")
+    ax.spines["bottom"].set_linewidth(1)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=1, zorder=0)
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -297,6 +247,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.927,
         "Inversión privada en Telecomunicaciones por tipo de inversión",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
@@ -305,13 +256,11 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         handles,
         labels,
         loc="lower center",
-        bbox_to_anchor=(0.5, 0.118),
+        bbox_to_anchor=(0.5, 0.08),
         ncol=4,
-        fontsize=8.8,
         frameon=False,
+        prop={"weight": "bold", "size": 10},
         labelcolor=COLOR_TEXT,
-        handlelength=1.8,
-        columnspacing=2.0,
     )
 
     source_body = (
@@ -341,9 +290,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         va="top",
     )
 
-    fig.subplots_adjust(left=0.065, right=0.97, top=0.83, bottom=0.25)
+    fig.subplots_adjust(left=0.10, right=0.92, top=0.85, bottom=0.18)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 

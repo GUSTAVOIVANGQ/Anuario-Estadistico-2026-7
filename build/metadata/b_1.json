@@ -3,10 +3,10 @@
   "title": "Distribución de los Servicios Fijos con respecto del total de hogares a nivel nacional",
   "reference_page_2024": 21,
   "figure_path": "build\\figures\\B\\figura_b_1.png",
-  "run_id": "20260915T192133067416Z_corrida",
+  "run_id": "20260918T224147559523Z_corrida",
   "result": {
-    "figure_path": "C:\\Users\\gustavo.garcia\\Downloads\\Anuario-Estadistico-2026-7-main-corregido-1.2\\Anuario-Estadistico-2026-7-main-corregido\\build\\figures\\B\\figura_b_1.png",
-    "text_path": "C:\\Users\\gustavo.garcia\\Downloads\\Anuario-Estadistico-2026-7-main-corregido-1.2\\Anuario-Estadistico-2026-7-main-corregido\\build\\text\\b_1.md",
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_1.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\b_1.md",
     "source_latest_period": "2025",
     "rows_used": 10
   }

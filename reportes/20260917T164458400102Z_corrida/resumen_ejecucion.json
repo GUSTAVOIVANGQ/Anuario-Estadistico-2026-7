@@ -1,0 +1,19 @@
+{
+  "run_id": "20260917T164458400102Z_corrida",
+  "dry_run": false,
+  "started_at": "2026-09-17T16:44:58+00:00",
+  "finished_at": "2026-09-17T16:44:58+00:00",
+  "statuses": [
+    {
+      "order": 52,
+      "figure_id": "D.1",
+      "status": "ERROR",
+      "message": "SourceError: Archivo ZIP/Office inválido: C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2024-1\\Anuario-Estadistico-2026-7\\data\\raw\\inegi_endutih_2023_tabulado_hnal110\\objects\\fed624b555d1816d475b\\27_2023_hnal110.xlsx",
+      "script_path": "scripts\\figures\\figura_d_1.py",
+      "output_path": "build\\figures\\D\\figura_d_1.png",
+      "started_at": "2026-09-17T16:44:58+00:00",
+      "finished_at": "2026-09-17T16:44:58+00:00",
+      "duration_seconds": 0.054
+    }
+  ]
+}

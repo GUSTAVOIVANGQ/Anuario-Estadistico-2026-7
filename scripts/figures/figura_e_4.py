@@ -22,11 +22,12 @@ import pandas as pd
 FIGURE_ID,PERIOD="E.4","2024"; SOURCES={2023:"ift_mipymes_2023_base",2024:"ift_mipymes_2024_base"}
 SIZES=["General","Micro","Pequeña","Mediana"]; SERVICES=["Internet fijo","Telefonía fija","Telefonía móvil","Televisión de paga"]
 REFERENCE={2023:{"Internet fijo":[89.4,89.3,89.8,99.5],"Telefonía fija":[78.9,78.4,85.8,94.6],"Telefonía móvil":[29.6,30.2,19.9,27.4],"Televisión de paga":[25.4,25.7,21.7,17.8]},2024:{"Internet fijo":[95.3,95.2,96.3,98.1],"Telefonía fija":[69.0,68.3,78.6,85.5],"Telefonía móvil":[29.0,28.7,34.9,31.9],"Televisión de paga":[27.0,27.4,22.1,20.9]}}
-TEXT,BG,CORAL="#4B4B7D","#FBFBF7","#F48D7E"
+TEXT,BG,TITLE_MARKER="#3C3C3B","#F8F8FA","#4A7D75"
+HEADER_BG="#E6F0EF"; YEAR_2023_BG="#F3E8E4"; YEAR_2024_BG="#D9EBED"; ROW_LABEL_BG="#FFFFFF"; BORDER="#9CB7B4"
 
 
 def _norm(value:object)->str:
-    text=unicodedata.normalize("NFKD",str(value).replace("\xa0"," ").lower()); return re.sub(r"\s+"," ",re.sub(r"[^a-z0-9]+"," ","".join(c for c in text if not unicodedata.combining(c)))).strip()
+    text=unicodedata.normalize("NFKD",str(value).replace(" "," ").lower()); return re.sub(r"\s+"," ",re.sub(r"[^a-z0-9]+"," ","".join(c for c in text if not unicodedata.combining(c)))).strip()
 
 
 def load_raw(path:Path)->pd.DataFrame:
@@ -81,18 +82,37 @@ def _font(root:Path)->str:
 
 
 def _plot(data:pd.DataFrame,output:Path,root:Path)->None:
-    plt.rcParams.update({"font.family":_font(root)}); fig=plt.figure(figsize=(16,9),facecolor="white"); fig.add_artist(patches.FancyBboxPatch((.035,.06),.93,.86,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
-    fig.text(.055,.88,"•",color=CORAL,fontsize=20,va="center"); fig.text(.073,.88,"Figura E.4.",color=TEXT,fontsize=16,fontweight="bold",va="center"); fig.text(.18,.88,"Servicios de telecomunicaciones que contratan las MiPymes (2023-2024)",color=TEXT,fontsize=16,va="center")
-    ax=fig.add_axes([.055,.20,.89,.57]); ax.axis("off"); columns=[f"{s}\n{y}" for s in SERVICES for y in (2023,2024)]; cells=[]
-    for size in SIZES: cells.append([f"{float(data.loc[(data.tamano.eq(size))&(data.servicio.eq(service))&(data.anio.eq(year)), 'porcentaje'].iloc[0]):.1f}%" for service in SERVICES for year in (2023,2024)])
-    table=ax.table(cellText=cells,rowLabels=SIZES,colLabels=columns,cellLoc="center",rowLoc="center",bbox=[0,0,1,1]); table.auto_set_font_size(False); table.set_fontsize(10.5)
+    plt.rcParams.update({"font.family":_font(root)})
+    fig=plt.figure(figsize=(16,9),facecolor="white")
+    fig.add_artist(patches.FancyBboxPatch((.035,.06),.93,.86,boxstyle="round,pad=.012,rounding_size=.02",fc=BG,ec="none",transform=fig.transFigure,zorder=-2))
+    fig.text(.055,.88,"▪",color=TITLE_MARKER,fontsize=16,va="center")
+    fig.text(.073,.88,"Figura E.4.",color=TEXT,fontsize=16,fontweight="bold",va="center")
+    fig.text(.18,.88,"Servicios de telecomunicaciones que contratan las MiPymes (2023-2024)",color=TEXT,fontsize=16,va="center")
+
+    ax=fig.add_axes([.055,.20,.89,.57]); ax.axis("off")
+    columns=[f"{s}\n{y}" for s in SERVICES for y in (2023,2024)]
+    cells=[]
+    for size in SIZES:
+        cells.append([f"{float(data.loc[(data.tamano.eq(size))&(data.servicio.eq(service))&(data.anio.eq(year)), 'porcentaje'].iloc[0]):.1f}%" for service in SERVICES for year in (2023,2024)])
+    table=ax.table(cellText=cells,rowLabels=SIZES,colLabels=columns,cellLoc="center",rowLoc="center",bbox=[0,0,1,1])
+    table.auto_set_font_size(False); table.set_fontsize(10.5)
+
     for (row,col),cell in table.get_celld().items():
-        cell.set_edgecolor("#7E82A8"); cell.set_linewidth(.8); cell.get_text().set_color(TEXT)
-        if row==0: cell.set_facecolor("#DCEFF0"); cell.get_text().set_fontweight("bold")
-        elif col==-1: cell.set_facecolor("white"); cell.get_text().set_fontweight("bold")
-        else: cell.set_facecolor("#F7DAD5" if col%2==0 else "#A9DADF"); cell.get_text().set_fontweight("bold")
-    fig.text(.055,.122,"Fuente:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.101,.122,"IFT, Cuarta Encuesta 2023 y 2024, Usuarios de Servicios de Telecomunicaciones (MiPymes).",color=TEXT,fontsize=9)
-    fig.text(.055,.094,"Nota:",color=TEXT,fontsize=9,fontweight="bold"); fig.text(.09,.094,"Respuesta múltiple, por lo que la suma no da 100%. En 2024 no se publicó Datos móviles como categoría separada.",color=TEXT,fontsize=9)
+        cell.set_edgecolor(BORDER); cell.set_linewidth(.8); cell.get_text().set_color(TEXT)
+        if row==0:
+            cell.set_facecolor(HEADER_BG)
+            cell.get_text().set_fontweight("bold")
+        elif col==-1:
+            cell.set_facecolor(ROW_LABEL_BG)
+            cell.get_text().set_fontweight("bold")
+        else:
+            cell.set_facecolor(YEAR_2023_BG if col%2==0 else YEAR_2024_BG)
+            cell.get_text().set_fontweight("bold")
+
+    fig.text(.055,.122,"Fuente:",color=TEXT,fontsize=9,fontweight="bold")
+    fig.text(.101,.122,"IFT, Cuarta Encuesta 2023 y 2024, Usuarios de Servicios de Telecomunicaciones (MiPymes).",color=TEXT,fontsize=9)
+    fig.text(.055,.094,"Nota:",color=TEXT,fontsize=9,fontweight="bold")
+    fig.text(.09,.094,"Respuesta múltiple, por lo que la suma no da 100%. En 2024 no se publicó Datos móviles como categoría separada.",color=TEXT,fontsize=9)
     output.parent.mkdir(parents=True,exist_ok=True); apply_reference_ui(fig, FIGURE_ID); fig.savefig(output,dpi=200); plt.close(fig)
 
 

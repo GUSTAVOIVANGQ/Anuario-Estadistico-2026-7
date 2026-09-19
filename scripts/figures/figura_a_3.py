@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-# Capa visual 2024: sólo modifica artistas de Matplotlib al guardar; no datos/cálculos.
-import sys as _ui_sys
-from pathlib import Path as _UIPath
-_UI_SRC = _UIPath(__file__).resolve().parents[2] / "src"
-if str(_UI_SRC) not in _ui_sys.path:
-    _ui_sys.path.insert(0, str(_UI_SRC))
-from anuario2026.ui_2024 import apply_reference_ui
-
 import csv
 import json
 import os
@@ -52,6 +44,7 @@ COLOR_TEXT = "#3c3c3b"
 COLOR_INPC = "#006157"
 COLOR_IPCOM = "#b35aba"
 COLOR_BACKGROUND = "#F8F8FA"
+COLOR_MARKER = "#4a7d75"
 
 MONTH_NUMBER = {
     "Ene": 1,
@@ -409,9 +402,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         x,
         data["inpc"],
         color=COLOR_INPC,
-        linewidth=2.2,
+        linewidth=2.5,
         marker="o",
-        markersize=5.5,
+        markersize=6,
         markeredgewidth=0,
         label="Índice Nacional de Precios al Consumidor (INPC)",
         zorder=4,
@@ -420,9 +413,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         x,
         data["ipcom"],
         color=COLOR_IPCOM,
-        linewidth=2.2,
+        linewidth=2.5,
         marker="o",
-        markersize=5.5,
+        markersize=6,
         markeredgewidth=0,
         label="Índice de Precios de Comunicaciones (IPCOM)",
         zorder=4,
@@ -473,12 +466,17 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
 
     ax.set_ylim(60, 170)
     ax.yaxis.set_major_locator(mticker.MultipleLocator(10))
-    ax.tick_params(axis="y", labelsize=9, colors=COLOR_TEXT, length=0)
-    ax.set_xticks(x, data["etiqueta"], fontsize=9, color=COLOR_TEXT, fontweight="bold")
+    ax.tick_params(axis="y", labelsize=10, colors=COLOR_TEXT)
+    for label in ax.get_yticklabels():
+        label.set_fontweight("medium")
+    ax.set_xticks(x, data["etiqueta"], fontsize=10, color=COLOR_TEXT, fontweight="bold")
     ax.tick_params(axis="x", length=0, pad=8)
-    ax.grid(False)
+    ax.grid(axis="y", color="#d1d1d1", linewidth=1, zorder=0)
     for spine in ax.spines.values():
-        spine.set_visible(False)
+        spine.set_color("#7c7c7c")
+        spine.set_linewidth(1)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
 
     fig.add_artist(
         mpatches.FancyBboxPatch(
@@ -487,7 +485,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
             0.018,
             transform=fig.transFigure,
             boxstyle="round,pad=0,rounding_size=0.002",
-            facecolor=COLOR_IPCOM,
+            facecolor=COLOR_MARKER,
             edgecolor="none",
         )
     )
@@ -505,6 +503,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         0.927,
         "Índices de precios (INPC e IPCOM)",
         fontsize=14,
+        fontweight="medium",
         color=COLOR_TEXT,
         va="center",
     )
@@ -512,11 +511,10 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         loc="lower center",
         bbox_to_anchor=(0.5, 0.125),
         ncol=2,
-        fontsize=9,
         frameon=False,
         labelcolor=COLOR_TEXT,
         handlelength=2.5,
-        columnspacing=2.2,
+        prop={"weight": "bold", "size": 10},
     )
 
     latest = data.iloc[-1]
@@ -549,9 +547,9 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         va="top",
     )
 
-    fig.subplots_adjust(left=0.074, right=0.96, top=0.83, bottom=0.25)
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.85, bottom=0.22)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    apply_reference_ui(fig, FIGURE_ID); fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)
 
 
