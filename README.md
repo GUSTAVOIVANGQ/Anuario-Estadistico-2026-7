@@ -65,6 +65,12 @@ PNG se genera un contenedor SVG compatible que conserva exactamente el render fi
 El frontend vive en `web/` y el servidor/API en `src/anuario2026/web.py`. Si se modifica
 el frontend, recompílalo con `cd web; npm run build`.
 
+### Capturas de la interfaz web
+
+![Pantalla principal](assets/web/screenshot.png)
+
+![Pantalla secundaria](assets/web/otherscreen.png)
+
 ## Resultados
 
 - Gráficas: `build/figures/<sección>/`
