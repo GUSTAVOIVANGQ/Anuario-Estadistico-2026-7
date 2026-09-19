@@ -1,6 +1,10 @@
 """Figura C.14: tráfico del servicio móvil de acceso a Internet por tecnología."""
 from __future__ import annotations
+<<<<<<< HEAD
 import math,sys,zipfile
+=======
+import sys,zipfile
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 from pathlib import Path,PurePosixPath
 import matplotlib
 matplotlib.use("Agg")
@@ -162,14 +166,24 @@ def draw_stacked_chips(ax, xs, segments_by_bar, bar_width, *, fontsize=6.4, line
 
 
 def _plot(d,m,out):
+<<<<<<< HEAD
     fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc="#F8F8FA",transform=fig.transFigure,zorder=-1));fig.add_artist(patches.Rectangle((.045,.891),.009,.018,transform=fig.transFigure,fc="#4a7d75",ec="none",zorder=20));fig.text(.061,.9,"Figura C.14.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21);fig.text(.153,.9,f"Tráfico del servicio móvil de acceso a Internet (2015-{m['anio']})",fontsize=14,color=TEXT,va="center",zorder=21);ax=fig.add_axes([.07,.20,.86,.62]);bottom=np.zeros(len(d));colors=["#1e6284","#ed8945","#5844a0"];segments_by_year=[[] for _ in range(len(d))];width=.30
+=======
+    from anuario2026.ui_2024 import annotate_stacked_segments_outside
+    fig=plt.figure(figsize=(16,9),facecolor="white");fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc="#F8F8FA",transform=fig.transFigure,zorder=-1));fig.add_artist(patches.Rectangle((.045,.891),.009,.018,transform=fig.transFigure,fc="#4a7d75",ec="none",zorder=20));fig.text(.061,.9,"Figura C.14.",fontsize=14,fontweight="bold",color=TEXT,va="center",zorder=21);fig.text(.153,.9,f"Tráfico del servicio móvil de acceso a Internet (2015-{m['anio']})",fontsize=14,color=TEXT,va="center",zorder=21);ax=fig.add_axes([.07,.20,.86,.62]);bottom=np.zeros(len(d));colors=["#1e6284","#ed8945","#5844a0"];segments_by_year=[[] for _ in range(len(d))];width=.34
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     for category_index,(col,label,c) in enumerate(zip(["pct_2g","pct_3g","pct_4g"],["Tráfico 2G","Tráfico 3G","Tráfico 4G"],colors)):
         bars=ax.bar(d.anio,d[col],bottom=bottom,width=width,color=c,edgecolor="white",linewidth=.5,label=label,zorder=3)
         for year_index,(b,v,base) in enumerate(zip(bars,d[col],bottom)):
             if v>.005:segments_by_year[year_index].append({"index":category_index,"value":float(v),"center":float(base+v/2),"color":c})
         bottom+=d[col].to_numpy()
+    for year,segments in zip(d.anio,segments_by_year):annotate_stacked_segments_outside(ax,float(year),segments,bar_width=width,x_offset=.18,min_gap=6.2,fontsize=5.8,decimals=1)
     for x,t in zip(d.anio,d.TOTAL_TB_E):ax.text(x,102,f"{t:,.0f}",ha="center",fontweight="bold",fontsize=8,color=TEXT)
+<<<<<<< HEAD
     ax.set_xlim(d.anio.min()-.8,d.anio.max()+.8);ax.set_ylim(-4,108);ax.set_xticks(d.anio);ax.set_yticks([]);ax.spines[:].set_visible(False);draw_stacked_chips(ax,[float(y) for y in d.anio],segments_by_year,width,fontsize=6.8,line_pt=8);ax.legend(ncol=3,loc="lower center",bbox_to_anchor=(.5,-.14),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores; acumulado a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Los porcentajes se calculan respecto del tráfico total; el tráfico sin tecnología especificada no se representa.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+=======
+    ax.set_ylim(0,108);ax.set_xticks(d.anio);ax.set_yticks([]);ax.spines[:].set_visible(False);ax.legend(ncol=3,loc="lower center",bbox_to_anchor=(.5,-.14),frameon=False);fig.text(.05,.07,"Fuente:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.091,.07,f"CRT con datos de los operadores; acumulado a diciembre de cada año, hasta {m['anio']}.",fontsize=8,color=TEXT);fig.text(.05,.05,"Nota:",fontsize=8,fontweight="bold",color=TEXT);fig.text(.082,.05,"Los porcentajes se calculan respecto del tráfico total; el tráfico sin tecnología especificada no se representa.",fontsize=8,color=TEXT);out.parent.mkdir(parents=True,exist_ok=True);fig.savefig(out,dpi=200);plt.close(fig)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 def generate(context):
     print("  C.14 | Adquisición o reutilización de TODO.zip de BIT/CRT");src=context.acquire_source(SOURCE_ID);d,m=build_metrics(load_raw(src));period=f"{m['anio']}-12";context.record_source_period(SOURCE_ID,period,"ULTIMO_DISPONIBLE");context.write_data_used(d)
     for r in d.itertuples(index=False):

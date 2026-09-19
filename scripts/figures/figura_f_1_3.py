@@ -50,6 +50,7 @@ REFERENCE_SOURCE_ID = "inegi_endutih_2023_reference"
 PERIOD_REFERENCE = "2023"
 LANDING_PAGE = f"https://www.inegi.org.mx/programas/endutih/{PERIOD_CURRENT}/"
 
+<<<<<<< HEAD
 TEXT = "#3C3C3B"
 # Paleta institucional CRT.
 WOMEN = "#2D7B8A"
@@ -60,6 +61,15 @@ PANEL_SUMMARY = "#EEF4F3"
 PANEL_CHIP = "#FFFFFF"
 BORDER = "#BFD2CF"
 BACKGROUND = "#F7F9F8"
+=======
+TEXT = "#3c3c3b"
+WOMEN = "#b35aba"
+MEN = "#006157"
+ACCENT = "#4a7d75"
+PANEL_PINK = "#F8E6E1"
+PANEL_BLUE = "#E8F2F1"
+BACKGROUND = "#F8F8FA"
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 WHITE = "#FFFFFF"
 
 

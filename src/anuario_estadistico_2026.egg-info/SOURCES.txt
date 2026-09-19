@@ -5,6 +5,7 @@ src/anuario2026/__init__.py
 src/anuario2026/__main__.py
 src/anuario2026/cli.py
 src/anuario2026/context.py
+src/anuario2026/exports.py
 src/anuario2026/models.py
 src/anuario2026/pipeline.py
 src/anuario2026/presentation.py
@@ -13,6 +14,7 @@ src/anuario2026/reports.py
 src/anuario2026/sources.py
 src/anuario2026/text_engine.py
 src/anuario2026/ui_2024.py
+src/anuario2026/web.py
 src/anuario_estadistico_2026.egg-info/PKG-INFO
 src/anuario_estadistico_2026.egg-info/SOURCES.txt
 src/anuario_estadistico_2026.egg-info/dependency_links.txt

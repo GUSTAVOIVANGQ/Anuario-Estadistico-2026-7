@@ -37,6 +37,7 @@ REFERENCE_2023 = {
 TEXT = "#3c3c3b"
 BG = "#F8F8FA"
 
+<<<<<<< HEAD
 # Estilo de etiquetas tipo chip, alineado con la Figura C.14.
 CHIP_LINE = "#8f9a9d"
 CHIP_EDGE = "#cbd4d8"
@@ -46,6 +47,8 @@ CHIP_LW = 0.9
 CHIP_FONTSIZE = 9.0
 TOTAL_FONTSIZE = 9.8
 
+=======
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 
 def _norm(value: object) -> str:
     text = "" if pd.isna(value) else str(value)
@@ -189,13 +192,17 @@ def _font(root: Path) -> str:
 
 def _plot(data: pd.DataFrame, year: int, output: Path, root: Path) -> None:
     plt.rcParams.update({"font.family": _font(root), "axes.unicode_minus": False})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     fig = plt.figure(figsize=(16, 9), facecolor="white")
     fig.add_artist(patches.Rectangle(
         (.055, .878), .009, .014, transform=fig.transFigure,
         facecolor="#4a7d75", edgecolor="none",
     ))
     fig.text(.073, .885, "Figura G.1.", fontsize=14, fontweight="bold", color=TEXT, va="center")
+<<<<<<< HEAD
     fig.text(
         .158, .885,
         "Concesiones otorgadas de radiodifusión para AM, FM y TDT, a nivel nacional",
@@ -316,12 +323,66 @@ def _plot(data: pd.DataFrame, year: int, output: Path, root: Path) -> None:
     ax.tick_params(axis="x", colors=TEXT, labelsize=9.5)
     ax.grid(axis="x", color="#d1d1d1", linewidth=1, zorder=0)
 
+=======
+    fig.text(.158, .885, "Concesiones otorgadas de radiodifusión para AM, FM y TDT, a nivel nacional",
+             fontsize=14, fontweight="medium", color=TEXT, va="center")
+
+    ax = fig.add_axes([.11, .22, .78, .56])
+    ax.set_facecolor(BG)
+    y_positions = {"TDT": 2, "FM": 1, "AM": 0}
+    maximum = int(data.groupby("servicio").concesiones.sum().max())
+    running = {service: 0 for service in SERVICES}
+    callouts = {service: [] for service in SERVICES}
+    for _, row in data.sort_values(["orden", "servicio"]).iterrows():
+        service = str(row.servicio)
+        value = int(row.concesiones)
+        ax.barh(y_positions[service], value, left=running[service], height=.48,
+                color=row.color, edgecolor="none", label=row.categoria if service == "TDT" else None)
+        center = running[service] + value / 2
+        if value > 0:
+            callouts[service].append((int(row.orden), center, value, str(row.color)))
+        running[service] += value
+
+    for service in SERVICES:
+        y = y_positions[service]
+        total = running[service]
+        for order, center, value, color in callouts[service]:
+            side = 1 if order % 2 == 0 else -1
+            level = order // 2
+            label_x = center
+            if value < maximum * .025:
+                label_x += (order - 2.5) * maximum * .012
+            label_y = y + side * (.34 + level * .07)
+            ax.annotate(
+                f"{value:,}", xy=(center, y + side * .24), xytext=(label_x, label_y),
+                ha="center", va="center", fontsize=7.5, color=TEXT, fontweight="bold",
+                bbox=dict(boxstyle="round,pad=.22", facecolor="white", edgecolor="none"),
+                arrowprops=dict(arrowstyle="-", color=color, linewidth=.8,
+                                connectionstyle="arc3,rad=0"),
+                annotation_clip=False, zorder=5,
+            )
+        total = running[service]
+        ax.annotate(
+            f"Total: {total:,}", xy=(total, y), xytext=(total + maximum * .045, y),
+            ha="left", va="center", fontsize=9, color=TEXT, fontweight="bold",
+            bbox=dict(boxstyle="round,pad=.24", facecolor="white", edgecolor="none"),
+            arrowprops=dict(arrowstyle="-", color="#7c7c7c", linewidth=.8,
+                            connectionstyle="arc3,rad=0"),
+        )
+    ax.set_xlim(0, maximum * 1.32)
+    ax.set_ylim(-.72, 2.82)
+    ax.set_yticks([2, 1, 0], ["TDT", "FM", "AM"])
+    ax.tick_params(axis="y", colors=TEXT, labelsize=10, length=0, pad=18)
+    ax.tick_params(axis="x", colors=TEXT, labelsize=9)
+    ax.grid(axis="x", color="#d1d1d1", linewidth=1, zorder=0)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     for side in ("bottom", "left"):
         ax.spines[side].set_visible(True)
         ax.spines[side].set_color("#7c7c7c")
         ax.spines[side].set_linewidth(1)
+<<<<<<< HEAD
 
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(
@@ -338,6 +399,16 @@ def _plot(data: pd.DataFrame, year: int, output: Path, root: Path) -> None:
         fontsize=8.5, color=TEXT,
     )
 
+=======
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, -.11), ncol=5,
+              frameon=False, fontsize=9, labelcolor=TEXT, columnspacing=1.25, handlelength=2.5)
+
+    fig.text(.055, .09, "Fuente:", fontsize=8.5, fontweight="bold", color=TEXT)
+    fig.text(.099, .09,
+             f"CRT con datos del Banco de Información de Telecomunicaciones (BIT), corte {year}.",
+             fontsize=8.5, color=TEXT)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
     plt.close(fig)

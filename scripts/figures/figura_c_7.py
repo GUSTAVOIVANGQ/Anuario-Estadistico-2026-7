@@ -107,6 +107,7 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     if len(bounds) != 6:
         bounds = np.linspace(float(data.valor.min()), float(data.valor.max()) + .01, 6)
     shape_list, facecolors = _shapes(map_path, values, bounds)
+<<<<<<< HEAD
 
     fig, ax = plt.subplots(figsize=(16, 8.5))
     fig.patch.set_facecolor("white")
@@ -198,6 +199,35 @@ def _plot(data: pd.DataFrame, meta: dict, map_path: Path, output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
+=======
+    fig = plt.figure(figsize=(16, 9), facecolor="white")
+    fig.add_artist(patches.FancyBboxPatch((.025, .045), .95, .89, boxstyle="round,pad=.01,rounding_size=.018",
+                                          lw=0, fc="#F8F8FA", transform=fig.transFigure, zorder=-1))
+    fig.text(.045, .9, " ", bbox=dict(boxstyle="round,pad=1.5", fc="#4a7d75", ec="none"))
+    fig.text(.061, .9, "Figura C.7.", fontsize=14, fontweight="bold", color=TEXT, va="center")
+    fig.text(.145, .9, f"Líneas del servicio móvil de telefonía por cada 100 habitantes ({meta['anio']})",
+             fontsize=14, color=TEXT, va="center")
+    ax = fig.add_axes([.18, .18, .61, .65])
+    ax.add_collection(PatchCollection(shape_list, facecolor=facecolors, edgecolor="white", linewidth=.7))
+    ax.set_xlim(-119.5, -85); ax.set_ylim(14, 33.5); ax.set_aspect(1 / np.cos(np.deg2rad(23.5))); ax.axis("off")
+    labels = [f"{bounds[i]:.0f} a {bounds[i+1]:.0f}" for i in range(5)]
+    handles = [patches.Patch(facecolor=color, label=label) for color, label in zip(COLORS, labels)]
+    legend = fig.legend(handles=handles, title="Líneas por cada 100 habitantes:", loc="lower left",
+                        bbox_to_anchor=(.06, .18), frameon=False, fontsize=9, title_fontsize=9)
+    legend._legend_box.align = "left"; legend.get_title().set_fontweight("bold"); legend.get_title().set_color(TEXT)
+    fig.add_artist(patches.FancyBboxPatch((.76, .54), .18, .22, transform=fig.transFigure,
+                   boxstyle="round,pad=.015,rounding_size=.02", fc="white", ec="#E4E4E8"))
+    fig.text(.85, .69, "Líneas por cada\n100 habitantes:", ha="center", fontsize=10, color=TEXT)
+    fig.text(.85, .585, f"{meta['nacional']:.0f}", ha="center", fontsize=43, fontweight="bold", color=TEXT)
+    if not math.isnan(meta["crecimiento"]):
+        fig.text(.51, .18, f"Tasa de crecimiento\nanual de {meta['crecimiento']:.1f}%", ha="center", va="center",
+                 fontsize=10, fontweight="bold", color="white", bbox=dict(boxstyle="round,pad=.8", fc=TEXT, ec="none"))
+    fig.text(.05, .07, "Fuente:", fontsize=8, fontweight="bold", color=TEXT)
+    fig.text(.091, .07, f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.", fontsize=8, color=TEXT)
+    fig.text(.05, .05, "Nota:", fontsize=8, fontweight="bold", color=TEXT)
+    fig.text(.082, .05, "El indicador nacional proviene de la serie nacional publicada por el CRT.", fontsize=8, color=TEXT)
+    output.parent.mkdir(parents=True, exist_ok=True); fig.savefig(output, dpi=200, facecolor="white"); plt.close(fig)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 
 
 def generate(context):

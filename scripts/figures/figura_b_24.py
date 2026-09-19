@@ -1,6 +1,10 @@
 """Figura B.24: participación de mercado de televisión restringida."""
 from __future__ import annotations
+<<<<<<< HEAD
 import math, sys, unicodedata, zipfile
+=======
+import sys, unicodedata, zipfile
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 from pathlib import Path, PurePosixPath
 import matplotlib
 matplotlib.use("Agg")
@@ -178,18 +182,28 @@ def draw_stacked_chips(ax, xs, segments_by_bar, bar_width, *, fontsize=6.4, line
 
 
 def _plot(data,meta,out,root):
+    from anuario2026.ui_2024 import annotate_stacked_segments_outside
     _fonts(root); fig=plt.figure(figsize=(16,8.5),facecolor="white")
     fig.add_artist(patches.FancyBboxPatch((.025,.045),.95,.89,boxstyle="round,pad=.01,rounding_size=.018",lw=0,fc=CREAM,transform=fig.transFigure,zorder=-1))
     fig.add_artist(patches.Rectangle((.045,.891),.009,.018,transform=fig.transFigure,fc="#4a7d75",ec="none")); fig.text(.061,.9,"Figura B.24.",fontsize=14,fontweight="bold",color=TEXT,va="center")
     fig.text(.154,.9,f"Participación de mercado del Servicio de Televisión Restringida (2014-{meta['anio']})",fontsize=14,color=TEXT,va="center")
+<<<<<<< HEAD
     ax=fig.add_axes([.065,.20,.87,.62]); x=range(len(data)); bottoms=pd.Series(0.,index=data.index); width=.32; segments_by_year=[[] for _ in range(len(data))]
+=======
+    ax=fig.add_axes([.065,.20,.87,.62]); x=range(len(data)); bottoms=pd.Series(0.,index=data.index); width=.34; segments_by_year=[[] for _ in range(len(data))]
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     for category_index,g in enumerate(ORDER):
         bars=ax.bar(list(x),data[g],width,bottom=bottoms,color=COLORS[g],edgecolor="none",label=g,zorder=2)
         for year_index,(bar,val,base) in enumerate(zip(bars,data[g],bottoms)):
             if val>.005: segments_by_year[year_index].append({"index":category_index,"value":float(val),"center":float(base+val/2),"color":COLORS[g]})
         bottoms=bottoms+data[g]
+<<<<<<< HEAD
     ax.set_xlim(-.7,len(data)-.3); ax.set_ylim(-8,108); ax.set_xticks(list(x),data["anio"].astype(str),fontsize=9,fontweight="bold",color=TEXT); ax.set_yticks([]); [s.set_visible(False) for s in ax.spines.values()]
     draw_stacked_chips(ax,list(x),segments_by_year,width,fontsize=6.4,line_pt=7.5)
+=======
+    for year_index,segments in enumerate(segments_by_year): annotate_stacked_segments_outside(ax,year_index,segments,bar_width=width,x_offset=.17,min_gap=6.3,fontsize=5.4,decimals=1)
+    ax.set_xlim(-.7,len(data)-.3); ax.set_ylim(-8,108); ax.set_xticks(list(x),data["anio"].astype(str),fontsize=9,fontweight="bold",color=TEXT); ax.set_yticks([]); [s.set_visible(False) for s in ax.spines.values()]
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     ax.legend(ncol=6,loc="lower center",bbox_to_anchor=(.5,-.18),frameon=False,fontsize=8,labelcolor=TEXT,handlelength=1.5,columnspacing=1.5)
     fig.text(.045,.078,"Fuente:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.086,.078,f"CRT con datos de los operadores de telecomunicaciones a diciembre de {meta['anio']}.",fontsize=8,color=TEXT)
     fig.text(.045,.057,"Nota:",fontsize=8,fontweight="bold",color=TEXT); fig.text(.077,.057,"La suma de los porcentajes puede no sumar 100% por cuestiones de redondeo.",fontsize=8,color=TEXT)

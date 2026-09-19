@@ -271,6 +271,7 @@ def _plot(
     map_ax.set_ylim(13.5, 34.0)
     map_ax.set_aspect(1 / np.cos(np.deg2rad(23.5)))
 
+<<<<<<< HEAD
     bx, by, bw, bh = 0.735, 0.56, 0.215, 0.275
     bubble_face, bubble_edge = "#f7f7f7", "#c0c0c0"
     fig.add_artist(patches.FancyBboxPatch(
@@ -278,6 +279,13 @@ def _plot(
         linewidth=1.0, edgecolor=bubble_edge, facecolor=bubble_face,
         transform=fig.transFigure, zorder=6, clip_on=False,
     ))
+=======
+    fig.text(0.055, 0.93, " ", fontsize=2, va="center",
+             bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
+                       facecolor="#4a7d75", edgecolor="none"))
+    fig.text(0.072, 0.93, "Figura B.21.", fontsize=14, fontweight="bold",
+             color=COLOR_TEXT, va="center")
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     fig.text(
         bx + bw / 2, by + bh * 0.80,
         "Accesos del servicio de televisión\nrestringida residencial por cada\n100 hogares:",
@@ -364,7 +372,11 @@ def _plot(
 
     plt.subplots_adjust(left=0.08, right=0.92, top=0.88, bottom=0.15)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+<<<<<<< HEAD
     fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
+=======
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     plt.close(fig)
 
 

@@ -653,7 +653,11 @@ def _plot_map(figure_id: str, data: pd.DataFrame, meta: dict, geojson: Path, out
 
     plt.subplots_adjust(left=0.08, right=0.92, top=0.88, bottom=0.15)
     output.parent.mkdir(parents=True, exist_ok=True)
+<<<<<<< HEAD
     fig.savefig(output, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
+=======
+    fig.savefig(output, dpi=200, facecolor="white", edgecolor="none")
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     plt.close(fig)
 
 

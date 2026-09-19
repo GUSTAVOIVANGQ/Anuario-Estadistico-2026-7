@@ -436,9 +436,31 @@ def _plot(
     project_root: Path,
 ) -> None:
     _configure_fonts(project_root)
+<<<<<<< HEAD
     fig, map_ax = plt.subplots(figsize=(16, 8.5))
     fig.patch.set_facecolor("white")
     map_ax.set_facecolor("white")
+=======
+    fig = plt.figure(figsize=(16, 8.5), facecolor="white")
+    fig.add_artist(patches.FancyBboxPatch(
+        (0.035, 0.055), 0.93, 0.86,
+        boxstyle="round,pad=0.012,rounding_size=0.018",
+        linewidth=0, facecolor=CREAM, transform=fig.transFigure, zorder=0,
+    ))
+    fig.text(0.055, 0.875, " ", fontsize=2, va="center",
+             bbox=dict(boxstyle="round,pad=1.5,rounding_size=0.2",
+                       facecolor="#4a7d75", edgecolor="none"))
+    fig.text(0.071, 0.875, "Figura B.22.", fontsize=14, fontweight="bold",
+             color=TEXT, va="center")
+    fig.text(
+        0.161, 0.875,
+        "Accesos del Servicio de Televisión Restringida No Residencial por cada "
+        "100 unidades económicas por entidad federativa",
+        fontsize=13.3, fontweight="medium", color=TEXT, va="center",
+    )
+
+    map_ax = fig.add_axes([0.20, 0.15, 0.60, 0.68])
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     map_ax.axis("off")
 
     values = data.set_index("entidad")["penetracion_grafica"].astype(int).to_dict()
@@ -541,7 +563,11 @@ def _plot(
 
     plt.subplots_adjust(left=0.08, right=0.92, top=0.88, bottom=0.15)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+<<<<<<< HEAD
     fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor=fig.get_facecolor(), edgecolor="none")
+=======
+    fig.savefig(output_path, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     plt.close(fig)
 
 

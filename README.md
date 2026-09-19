@@ -35,6 +35,36 @@ Si Windows bloquea los archivos `.ps1`, se puede ejecutar directamente:
 .\.venv\Scripts\python.exe scripts\figures\figura_g_1.py
 ```
 
+## Interfaz web React
+
+La versión 0.27.0 incorpora una interfaz local inspirada en un flujo de edición/escaneo:
+una pantalla central grande muestra cada figura conforme termina de generarse, mientras el
+panel lateral permite ejecutar la figura actual, una selección o una corrida completa.
+
+```powershell
+# Una sola vez: instala Python y compila el frontend React
+.\preparar_entorno.ps1
+
+# Abre http://127.0.0.1:8765 en el navegador
+.\ejecutar.ps1 web
+```
+
+La UI recibe eventos de avance del pipeline en tiempo real y, al concluir la corrida, abre
+automáticamente un panel de exportación con estas opciones:
+
+- PDF de la presentación completa.
+- PPTX editable de la presentación.
+- ZIP con compendio de figuras JPG.
+- ZIP con compendio de figuras PNG.
+- ZIP con compendio de figuras SVG.
+
+Para PDF se intenta primero LibreOffice y, en Windows, Microsoft PowerPoint como respaldo.
+Los SVG nativos se reutilizan cuando existen; para figuras que actualmente sólo producen
+PNG se genera un contenedor SVG compatible que conserva exactamente el render final.
+
+El frontend vive en `web/` y el servidor/API en `src/anuario2026/web.py`. Si se modifica
+el frontend, recompílalo con `cd web; npm run build`.
+
 ## Resultados
 
 - Gráficas: `build/figures/<sección>/`

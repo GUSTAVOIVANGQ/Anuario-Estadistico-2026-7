@@ -3,7 +3,11 @@
   "title": "Porcentaje de la población de 12 años y más que vivió ciberacoso por entidad federativa",
   "reference_page_2024": 87,
   "figure_path": "build\\figures\\F\\figura_f_3.png",
+<<<<<<< HEAD
   "run_id": "20260918T224147559523Z_corrida",
+=======
+  "run_id": "20260917T224253050408Z_corrida",
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_3.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\f_3.md",

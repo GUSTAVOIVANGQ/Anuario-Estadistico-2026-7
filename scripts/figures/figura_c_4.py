@@ -192,6 +192,15 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         startangle=90, counterclock=True,
         wedgeprops={"linewidth": 2.5, "edgecolor": "white"},
     )
+    for axis, wedges in ((urban_ax, urban_wedges), (rural_ax, rural_wedges)):
+        for wedge, target in zip(wedges, ((0.35, 1.12), (0.92, -0.86))):
+            angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
+            axis.annotate(
+                "", xy=(0.78 * math.cos(angle), 0.78 * math.sin(angle)),
+                xytext=target,
+                arrowprops=dict(arrowstyle="-", color="#8c8c98", linewidth=1.1,
+                                connectionstyle="arc3,rad=0"),
+            )
 
     chip = dict(boxstyle="round,pad=0.40,rounding_size=0.22",
                 facecolor="white", edgecolor=chip_border, linewidth=1.25)

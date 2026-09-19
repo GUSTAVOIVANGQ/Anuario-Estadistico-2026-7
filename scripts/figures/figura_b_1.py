@@ -258,11 +258,19 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
                     color=C_TEXT, linespacing=1.18, zorder=9, clip_on=False)
 
     ax_pie.add_patch(FancyBboxPatch(
+<<<<<<< HEAD
         (-1.28, -1.34), 0.88, 0.40, boxstyle="round,pad=0,rounding_size=0.06",
         linewidth=1.0, edgecolor="#A9A9B8", facecolor="white", zorder=5,
     ))
     ax_pie.text(-0.84, -1.09, TOTAL_LABEL, ha="center", fontsize=7.5, color=C_TEXT, zorder=7)
     ax_pie.text(-0.84, -1.24, f"{total_hogares:,}", ha="center", fontsize=13.5,
+=======
+        (-1.28, -1.30), 0.88, 0.40, boxstyle="round,pad=0,rounding_size=0.06",
+        linewidth=0.9, edgecolor="#B7B7C5", facecolor="white", zorder=5,
+    ))
+    ax_pie.text(-0.84, -1.045, TOTAL_LABEL, ha="center", fontsize=7.5, color=C_TEXT, zorder=7)
+    ax_pie.text(-0.84, -1.20, f"{total_hogares:,}", ha="center", fontsize=13.5,
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
                 fontweight="bold", color=C_TEXT, zorder=7)
     ax_pie.set_xlim(-1.55, 1.55)
     ax_pie.set_ylim(-1.42, 1.18)
@@ -283,6 +291,12 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.text(0.040, 0.047, "Nota:", fontweight="bold", fontsize=8, color=C_TEXT)
     fig.text(0.073, 0.047, "Los porcentajes pueden no sumar 100% debido al redondeo.",
              fontsize=8, color=C_TEXT)
+<<<<<<< HEAD
+=======
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")
+    plt.close(fig)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, dpi=200, facecolor="white", edgecolor="none")

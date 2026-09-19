@@ -53,16 +53,13 @@ REFERENCE_SOURCE_ID = "inegi_endutih_2023_reference"
 PERIOD_REFERENCE = "2023"
 LANDING_PAGE = f"https://www.inegi.org.mx/programas/endutih/{PERIOD_CURRENT}/"
 
-TEXT = "#3C3C3B"
-# Paleta institucional CRT.
-WOMEN = "#2D7B8A"
-MEN = "#1A4043"
-ACCENT = "#4A7D75"
-# Tintas auxiliares derivadas para superficies y separación visual.
-PANEL_SUMMARY = "#EEF4F3"
-PANEL_CHIP = "#FFFFFF"
-BORDER = "#BFD2CF"
-BACKGROUND = "#F7F9F8"
+TEXT = "#50517F"
+WOMEN = "#F48D7E"
+MEN = "#317DA1"
+ACCENT = "#F58F82"
+PANEL_PINK = "#F8E6E1"
+PANEL_BLUE = "#E8F2F1"
+BACKGROUND = "#FBFBF7"
 WHITE = "#FFFFFF"
 
 

@@ -161,8 +161,12 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     # El pastel se centra y se reserva espacio real para las llamadas.
     pie = fig.add_axes([0.08, 0.22, 0.76, 0.60], zorder=3)
     pie.set_facecolor("none")
+<<<<<<< HEAD
     pie.add_patch(plt.Circle((0, 0), 1.17, facecolor=COLOR_BACKGROUND,
                              edgecolor="none", zorder=-2))
+=======
+    pie.add_patch(plt.Circle((0, 0), 1.17, facecolor=COLOR_BACKGROUND, edgecolor="none", zorder=-2))
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     wedges, _ = pie.pie(
         [does_not_use, uses],
         colors=[COLOR_NO_USE, COLOR_USE],
@@ -174,6 +178,14 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
     pie.set_xlim(-1.42, 1.42)
     pie.set_ylim(-1.30, 1.38)
     pie.axis("off")
+    for wedge, target in zip(wedges, ((1.15, 0.45), (1.15, -0.52))):
+        angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
+        pie.annotate(
+            "", xy=(0.78 * math.cos(angle), 0.78 * math.sin(angle)),
+            xytext=target,
+            arrowprops=dict(arrowstyle="-", color="#8c8c98", linewidth=1.1,
+                            connectionstyle="arc3,rad=0"),
+        )
 
     chip = dict(boxstyle="round,pad=0.45,rounding_size=0.28",
                 facecolor="white", edgecolor=chip_border, linewidth=1.25)

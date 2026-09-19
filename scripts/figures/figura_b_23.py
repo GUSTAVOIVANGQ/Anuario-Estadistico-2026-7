@@ -186,7 +186,11 @@ def _draw_panel(
 
     panel = data.loc[data["segmento"].eq(segment)]
     positive = panel.loc[panel["accesos"].gt(0)].copy()
+<<<<<<< HEAD
     ax = fig.add_axes([x + 0.018, 0.18, 0.315, 0.57], zorder=2)
+=======
+    ax = fig.add_axes([x + 0.025, 0.19, 0.29, 0.56], zorder=2)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     wedges, _ = ax.pie(
         positive["accesos"], colors=[COLORS[t] for t in positive["tecnologia"]],
         startangle=90, counterclock=False,
@@ -222,11 +226,31 @@ def _draw_panel(
     for wedge, row in zip(wedges, positive.itertuples(index=False)):
         angle = math.radians((wedge.theta1 + wedge.theta2) / 2)
         ex, ey = math.cos(angle), math.sin(angle)
+<<<<<<< HEAD
         target = (0.76 * ex, 0.76 * ey)
         chip_xy, label_xy, align = positions.get(
             row.tecnologia, ((0.98 if ex >= 0 else -0.98, 0.95 * ey),
                              (1.10 if ex >= 0 else -1.10, 1.10 * ey),
                              "center")
+=======
+        tx = 0.98 * (1 if ex >= 0 else -1)
+        ty = float(np.clip(1.02 * ey, -0.92, 0.92))
+        if segment == "No Residencial":
+            if row.tecnologia == "Cable":
+                tx, ty = 0.98, -0.88
+            elif row.tecnologia == "IPTV Terrestre":
+                tx, ty = -0.98, 0.88
+            else:
+                tx, ty = -0.98, 0.52
+        inward_alignment = "right" if tx > 0 else "left"
+        ax.annotate(
+            f"{row.participacion:.1f}%", xy=(0.82 * ex, 0.82 * ey), xytext=(tx, ty),
+            ha=inward_alignment, va="center", fontsize=12,
+            fontweight="bold", color=TEXT,
+            bbox=dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="none"),
+            arrowprops=dict(arrowstyle="-", color="#A0A0B0", linewidth=1.0),
+            annotation_clip=True,
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
         )
         ax.annotate(
             f"{row.participacion:.1f}%", xy=target, xytext=chip_xy,
@@ -236,9 +260,15 @@ def _draw_panel(
         ax.scatter(*target, s=28, facecolor="#A6A6B5", edgecolor="white",
                    linewidth=0.7, zorder=9, clip_on=False)
         label = row.tecnologia.replace("Direct-to-home (DTH)", "Direct-to-home\n(DTH)")
+<<<<<<< HEAD
         ax.text(label_xy[0], label_xy[1], label, ha=align, va="center",
                 fontsize=8.2, fontweight="bold", color=TEXT,
                 linespacing=1.1, clip_on=False, zorder=9)
+=======
+        ax.text(tx, ty + (-0.18 if ty < 0 else 0.18), label,
+                ha=inward_alignment, va="center",
+                fontsize=8.5, fontweight="bold", color=TEXT, clip_on=True)
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
 
     bx, by, bw, bh = x + 0.285, 0.57, 0.135, 0.135
     fig.add_artist(patches.FancyBboxPatch(

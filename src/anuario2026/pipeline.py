@@ -6,7 +6,7 @@ import logging
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from PIL import Image
 
@@ -44,7 +44,16 @@ def select_figures(
     only: str | None,
     start_from: str | None,
     until: str | None,
+    figure_ids: list[str] | tuple[str, ...] | None = None,
 ) -> list[FigureDefinition]:
+    if figure_ids:
+        requested = list(dict.fromkeys(figure_ids))
+        known = {item.figure_id for item in figures}
+        unknown = [figure_id for figure_id in requested if figure_id not in known]
+        if unknown:
+            raise ValueError(f"Figura desconocida: {', '.join(unknown)}")
+        requested_set = set(requested)
+        return [item for item in figures if item.figure_id in requested_set]
     if only:
         selected = [item for item in figures if item.figure_id == only]
         if not selected:
@@ -136,6 +145,18 @@ def show_manual_instructions(project_root: Path, figures: list[FigureDefinition]
     LOGGER.info("")
 
 
+ProgressCallback = Callable[[dict[str, Any]], None]
+
+
+def _emit_event(callback: ProgressCallback | None, event_type: str, **payload: Any) -> None:
+    if callback is None:
+        return
+    try:
+        callback({"type": event_type, **payload})
+    except Exception:  # noqa: BLE001 - la UI nunca debe romper la corrida
+        LOGGER.exception("No se pudo notificar el evento %s", event_type)
+
+
 def run_pipeline(
     project_root: Path,
     *,
@@ -143,15 +164,18 @@ def run_pipeline(
     only: str | None = None,
     start_from: str | None = None,
     until: str | None = None,
+    figure_ids: list[str] | tuple[str, ...] | None = None,
     stop_on_error: bool = False,
     assemble: bool = False,
+    run_id: str | None = None,
+    progress_callback: ProgressCallback | None = None,
 ) -> Path:
     install_source_credit_normalizer()
     install_title_marker_normalizer()
     config = load_project_config(project_root)
     all_figures = load_figures(project_root, config)
-    figures = select_figures(all_figures, only, start_from, until)
-    run_id = make_run_id(dry_run)
+    figures = select_figures(all_figures, only, start_from, until, figure_ids)
+    run_id = run_id or make_run_id(dry_run)
     reports = RunReports(project_root, run_id, dry_run)
     configure_logging(reports.run_dir / "pipeline.log")
     sources = SourceCatalog(project_root)
@@ -162,12 +186,29 @@ def run_pipeline(
     LOGGER.info("Anuario Estadístico 2026 | corrida %s", run_id)
     LOGGER.info("Figuras seleccionadas: %d de %d", len(figures), len(all_figures))
     LOGGER.info("")
+    _emit_event(
+        progress_callback,
+        "run_started",
+        run_id=run_id,
+        total=len(figures),
+        selected=[item.figure_id for item in figures],
+    )
 
     for position, figure in enumerate(figures, start=1):
         started = time.perf_counter()
         started_at = utc_now()
         status, message, files = preflight_status(project_root, figure)
         LOGGER.info("[%03d/%03d] %s | %s", position, len(figures), figure.figure_id, status)
+        _emit_event(
+            progress_callback,
+            "figure_started",
+            run_id=run_id,
+            position=position,
+            total=len(figures),
+            figure_id=figure.figure_id,
+            title=figure.title,
+            preflight_status=status,
+        )
         if dry_run or status != "LISTA":
             result = FigureStatus(
                 order=figure.order,
@@ -181,6 +222,19 @@ def run_pipeline(
                 duration_seconds=round(time.perf_counter() - started, 3),
             )
             reports.add_status(result)
+            _emit_event(
+                progress_callback,
+                "figure_finished",
+                run_id=run_id,
+                position=position,
+                total=len(figures),
+                figure_id=figure.figure_id,
+                title=figure.title,
+                status=status,
+                message=message,
+                output_path=str(figure.output_path.relative_to(project_root)),
+                duration_seconds=result.duration_seconds,
+            )
             if status.startswith("BLOQUEADA"):
                 LOGGER.info("  %s", message)
             if stop_on_error and status not in {"PENDIENTE_CODIGO", "LISTA"}:
@@ -236,18 +290,30 @@ def run_pipeline(
             status = "ERROR"
             message = f"{type(exc).__name__}: {exc}"
 
-        reports.add_status(
-            FigureStatus(
-                order=figure.order,
-                figure_id=figure.figure_id,
-                status=status,
-                message=message,
-                script_path=str(figure.script_path.relative_to(project_root)),
-                output_path=str(figure.output_path.relative_to(project_root)),
-                started_at=started_at,
-                finished_at=utc_now(),
-                duration_seconds=round(time.perf_counter() - started, 3),
-            )
+        final_status = FigureStatus(
+            order=figure.order,
+            figure_id=figure.figure_id,
+            status=status,
+            message=message,
+            script_path=str(figure.script_path.relative_to(project_root)),
+            output_path=str(figure.output_path.relative_to(project_root)),
+            started_at=started_at,
+            finished_at=utc_now(),
+            duration_seconds=round(time.perf_counter() - started, 3),
+        )
+        reports.add_status(final_status)
+        _emit_event(
+            progress_callback,
+            "figure_finished",
+            run_id=run_id,
+            position=position,
+            total=len(figures),
+            figure_id=figure.figure_id,
+            title=figure.title,
+            status=status,
+            message=message,
+            output_path=str(figure.output_path.relative_to(project_root)),
+            duration_seconds=final_status.duration_seconds,
         )
         if status == "ERROR" and stop_on_error:
             break
@@ -255,8 +321,27 @@ def run_pipeline(
     reports.finalize()
     LOGGER.info("")
     LOGGER.info("Reporte de corrida: %s", reports.run_dir)
+    pptx_path: Path | None = None
     if assemble and not dry_run:
-        assemble_pptx(project_root, reports.run_dir)
+        _emit_event(progress_callback, "assembly_started", run_id=run_id)
+        pptx_path = assemble_pptx(project_root, reports.run_dir)
+        _emit_event(
+            progress_callback,
+            "assembly_finished",
+            run_id=run_id,
+            pptx_path=str(pptx_path.relative_to(project_root)),
+        )
+    counts: dict[str, int] = {}
+    for item in reports.summary.statuses:
+        counts[item.status] = counts.get(item.status, 0) + 1
+    _emit_event(
+        progress_callback,
+        "run_finished",
+        run_id=run_id,
+        report_dir=str(reports.run_dir.relative_to(project_root)),
+        counts=counts,
+        pptx_path=str(pptx_path.relative_to(project_root)) if pptx_path else None,
+    )
     return reports.run_dir
 
 

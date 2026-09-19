@@ -180,7 +180,11 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     fig.text(0.028, 0.952, "   ", fontsize=2, va="center",
              bbox=dict(boxstyle="round,pad=1.6,rounding_size=0.2",
                        facecolor="#4a7d75", edgecolor="none"))
+<<<<<<< HEAD
     fig.text(0.046, 0.952, "Figura B.2.", fontsize=13, fontweight="bold", color=C_TEXT, va="center")
+=======
+    fig.text(0.046, 0.952, "Figura B.3.", fontsize=13, fontweight="bold", color=C_TEXT, va="center")
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     fig.text(0.126, 0.952, TITLE, fontsize=13, color=C_TEXT, va="center")
 
     ax_pie = fig.add_axes([0.0, 0.11, 0.53, 0.78])

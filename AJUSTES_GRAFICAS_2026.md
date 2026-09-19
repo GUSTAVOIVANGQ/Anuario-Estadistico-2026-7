@@ -1,6 +1,6 @@
 # Ajustes de gráficas 2026
 
-Fecha de revisión: 17 de septiembre de 2026.
+Fecha de revisión: 17 de septiembre de 2026. cincuenta por ciento para consec cien pporciento pequenos ope todas las vandas la actua sovre cinco g las variavles pasar de cuatro g a cincoo o cinco g a sa otra psas de no covertura a cuviertas cuat gmicro o radiovases sin dedinir cuantas son
 
 ## Cambios aplicados
 
@@ -30,6 +30,7 @@ Fecha de revisión: 17 de septiembre de 2026.
 - La validación estructural del PPTX no encontró errores de paquete, tamaño de diapositiva, tipografías aprobadas ni geometría.
 - La compilación de los módulos Python terminó sin errores.
 - La suite obtuvo 81 pruebas aprobadas. Cuatro pruebas históricas no pudieron ejecutarse porque el archivo entregado no incluye sus bases crudas de ECSI y MiPymes.
+  <<<<<<< HEAD
 
 ## Revisión 0.26.0 — ajustes solicitados
 
@@ -44,3 +45,12 @@ Fecha de revisión: 17 de septiembre de 2026.
 - Una corrida `--dry-run` generó `referencias_fuentes_figuras.csv` con 130 registros y contenido equivalente al CSV de referencia entregado.
 - Las pruebas nuevas del marcador y del reporte pasan correctamente.
 - La suite completa obtuvo 83 pruebas aprobadas; cuatro pruebas históricas no pudieron ejecutarse porque esta copia del proyecto no incluye las bases crudas ECSI/MiPymes/encuestas que esas pruebas buscan en `data/raw/`.
+  =======
+
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>

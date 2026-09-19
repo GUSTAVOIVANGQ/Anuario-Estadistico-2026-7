@@ -685,11 +685,17 @@ def draw_stacked_chips(ax, xs, segments_by_bar, bar_width, *, fontsize=6.4, line
 
 
 def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) -> None:
+    from anuario2026.ui_2024 import annotate_stacked_segments_outside
+
     fig, ax = _base(figure_id, meta["year"], 2013)
     categories = [column for column in data.columns if column != "ANIO"]
     x = np.arange(len(data))
     bottom = np.zeros(len(data))
+<<<<<<< HEAD
     bar_width = 0.30
+=======
+    bar_width = 0.34
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     segments_by_year = [[] for _ in range(len(data))]
     for index, category in enumerate(categories):
         values = data[category].to_numpy(float)
@@ -703,9 +709,19 @@ def _plot_share(figure_id: str, data: pd.DataFrame, meta: dict, output: Path) ->
                     "center": float(base + value / 2), "color": color,
                 })
         bottom += values
+<<<<<<< HEAD
     ax.set_xlim(-0.66, len(data) - 0.34)
     ax.set_ylim(-5, 106)
     draw_stacked_chips(ax, list(x), segments_by_year, bar_width, fontsize=6.0, line_pt=6.5)
+=======
+    ax.set_xlim(-0.58, len(data) - 0.42)
+    ax.set_ylim(-5, 106)
+    for year_index, segments in enumerate(segments_by_year):
+        annotate_stacked_segments_outside(
+            ax, year_index, segments, bar_width=bar_width, x_offset=0.17,
+            min_gap=6.0, fontsize=5.1, decimals=1,
+        )
+>>>>>>> 93f2bf9f8ee9510be3d7cd1817e28eb1b7e51fc4
     ax.set_yticks([])
     ax.set_xticks(x, data["ANIO"].astype(str), fontsize=8, fontweight="bold")
     ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.20), ncol=min(8, len(categories)), frameon=False, fontsize=7.5, labelcolor=TEXT)
