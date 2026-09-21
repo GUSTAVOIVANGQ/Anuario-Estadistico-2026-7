@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+90,F.16,OK,Gráfica generada y verificada.,scripts\figures\figura_f_16.py,build\figures\F\figura_f_16.png,2026-09-21T16:17:28+00:00,2026-09-21T16:17:48+00:00,19.812

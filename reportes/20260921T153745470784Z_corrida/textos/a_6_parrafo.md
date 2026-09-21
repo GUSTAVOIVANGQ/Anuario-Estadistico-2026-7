@@ -1,0 +1,1 @@
+En 2024, los operadores de telecomunicaciones reportaron 163.1 mil millones de pesos de ingresos. El último desglose disponible corresponde a 2024, cuando registraron 163.1 mil millones de pesos de ingresos y 115.8 mil millones de pesos de egresos. El margen fue de 47.3 mil millones de pesos, equivalente al 29% de los ingresos.

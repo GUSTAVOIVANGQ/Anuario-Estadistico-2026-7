@@ -35,7 +35,6 @@ Si Windows bloquea los archivos `.ps1`, se puede ejecutar directamente:
 .\.venv\Scripts\python.exe scripts\figures\figura_g_1.py
 ```
 
-
 ## Interfaz web React
 
 La versión 0.27.0 incorpora una interfaz local inspirada en un flujo de edición/escaneo:

@@ -1,0 +1,17 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+B.23,participacion_Residencial_Cable,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""Residencial"", ""tecnologia"": ""Cable"", ""anio"": 2024, ""accesos"": 9952505.0}",52.00412646853779,%,1
+B.23,crecimiento_Residencial_Cable,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 9952505.0, ""previo"": 12120480.0}",-17.886874117196683,%,1
+B.23,participacion_Residencial_Direct-to-home (DTH),accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""Residencial"", ""tecnologia"": ""Direct-to-home (DTH)"", ""anio"": 2024, ""accesos"": 6786005.0}",35.458436065707055,%,1
+B.23,crecimiento_Residencial_Direct-to-home (DTH),(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 6786005.0, ""previo"": 7889546.0}",-13.98738279743853,%,1
+B.23,participacion_Residencial_IPTV Terrestre,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""Residencial"", ""tecnologia"": ""IPTV Terrestre"", ""anio"": 2024, ""accesos"": 2399404.0}",12.537437465755149,%,1
+B.23,crecimiento_Residencial_IPTV Terrestre,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 2399404.0, ""previo"": 2481407.0}",-3.3046976977174625,%,1
+B.23,participacion_Residencial_Sin información de tecnología,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""Residencial"", ""tecnologia"": ""Sin información de tecnología"", ""anio"": 2024, ""accesos"": 0.0}",0.0,%,1
+B.23,crecimiento_Residencial_Sin información de tecnología,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 0.0, ""previo"": 0.0}",nan,%,1
+B.23,participacion_No Residencial_Cable,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""No Residencial"", ""tecnologia"": ""Cable"", ""anio"": 2024, ""accesos"": 1983541.0}",96.00657681069211,%,1
+B.23,crecimiento_No Residencial_Cable,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 1983541.0, ""previo"": 390772.0}",407.5954776698433,%,1
+B.23,participacion_No Residencial_Direct-to-home (DTH),accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""No Residencial"", ""tecnologia"": ""Direct-to-home (DTH)"", ""anio"": 2024, ""accesos"": 3998.0}",0.19350963458236914,%,1
+B.23,crecimiento_No Residencial_Direct-to-home (DTH),(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 3998.0, ""previo"": 4253.0}",-5.995767693392895,%,1
+B.23,participacion_No Residencial_IPTV Terrestre,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""No Residencial"", ""tecnologia"": ""IPTV Terrestre"", ""anio"": 2024, ""accesos"": 78508.0}",3.7999135547255216,%,1
+B.23,crecimiento_No Residencial_IPTV Terrestre,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 78508.0, ""previo"": 60903.0}",28.906622005484127,%,1
+B.23,participacion_No Residencial_Sin información de tecnología,accesos de la tecnología / total de accesos del segmento * 100,"{""segmento"": ""No Residencial"", ""tecnologia"": ""Sin información de tecnología"", ""anio"": 2024, ""accesos"": 0.0}",0.0,%,1
+B.23,crecimiento_No Residencial_Sin información de tecnología,(accesos actuales / accesos del diciembre previo - 1) * 100,"{""actual"": 0.0, ""previo"": 0.0}",nan,%,1

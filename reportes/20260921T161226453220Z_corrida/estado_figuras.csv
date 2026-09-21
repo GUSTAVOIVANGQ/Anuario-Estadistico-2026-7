@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+39,C.4,OK,Gráfica generada y verificada.,scripts\figures\figura_c_4.py,build\figures\C\figura_c_4.png,2026-09-21T16:12:26+00:00,2026-09-21T16:12:27+00:00,1.201

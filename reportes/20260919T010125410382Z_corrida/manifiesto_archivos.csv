@@ -1,0 +1,9 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+G.1,dato_crudo,data/raw/crt_bit_srs_estaciones_entidad_actual/objects/65cddb6808c4def872ed5e95d8ce61f2e1b9b9f8ed367aa6e56c0e76cb8e61f5/SRS_Estaciones_Entidad.csv,65cddb6808c4def872ed5e95d8ce61f2e1b9b9f8ed367aa6e56c0e76cb8e61f5,46628,2026-09-15T21:34:31+00:00
+G.1,dato_crudo,data/raw/crt_bit_str_catalogo_distintivos_actual/objects/e53945496ce5eb2e523787222bcacc9da973893c872e8b065354d501547fbdfa/STR_Catalogo_Distintivos.csv,e53945496ce5eb2e523787222bcacc9da973893c872e8b065354d501547fbdfa,792020,2026-09-15T21:34:32+00:00
+G.1,datos_usados,reportes/20260919T010125410382Z_corrida/datos_usados/g_1_datos_usados.csv,691333308fac175a0c3e001ca36270a521e88721d136658a53841e3ce5c77545,1051,2026-09-19T01:01:27+00:00
+G.1,datos_usados,reportes/20260919T010125410382Z_corrida/datos_usados/g_1_control_anuario_2024.csv,237c3b2d86e2d02c4c0f7a528de1df8df4845bbf663b8236c8393b4525c0845f,568,2026-09-19T01:01:27+00:00
+G.1,texto_generado,build/text/g_1.md,fbcceb5a38b3c16794220dc091b8daaa843a65c629a3bc9022f8385a91627d01,210,2026-09-19T01:01:27+00:00
+G.1,texto_copia_corrida,reportes/20260919T010125410382Z_corrida/textos/g_1_parrafo.md,fbcceb5a38b3c16794220dc091b8daaa843a65c629a3bc9022f8385a91627d01,210,2026-09-19T01:01:27+00:00
+G.1,grafica,build/figures/G/figura_g_1.png,1f209d0b54cb499685b8cb5493cbadd35b987ba6f4f477452272c34592c296a2,133614,2026-09-19T01:01:28+00:00
+G.1,metadatos,build/metadata/g_1.json,fd2f26c46eaa83f765f9af0d3864ff27cfce8b91e01d5f3733baeda5108b6cf8,559,2026-09-19T01:01:28+00:00

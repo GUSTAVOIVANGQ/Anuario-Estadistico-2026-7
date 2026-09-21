@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+91,G.1,OK,Gráfica generada y verificada.,scripts\figures\figura_g_1.py,build\figures\G\figura_g_1.png,2026-09-19T01:01:25+00:00,2026-09-19T01:01:28+00:00,2.94

@@ -201,7 +201,7 @@ def _draw_panel(
         positions = {
             # (posición del chip %, posición del nombre, alineación del nombre)
             "IPTV Terrestre": ((-0.98, 0.94), (-1.18, 1.20), "left"),
-            "Direct-to-home (DTH)": ((-1.01, -0.79), (-1.18, -0.57), "left"),
+            "Direct-to-home (DTH)": ((-1.01, -0.79), (-1.18, -1.03), "left"),
             "Cable": ((1.02, -0.78), (1.02, -1.03), "center"),
             "Sin información de tecnología": ((0.10, 1.12), (0.10, 1.30), "center"),
         }
@@ -209,7 +209,7 @@ def _draw_panel(
         positions = {
             # Reacomodo de textos superiores para que no se encimen
             "IPTV Terrestre": ((-1.00, 0.92), (-1.02, 1.23), "center"),
-            "Direct-to-home (DTH)": ((-1.10, 0.26), (-1.06, 0.68), "center"),
+            "Direct-to-home (DTH)": ((-1.10, 0.46), (-1.06, 0.68), "center"),
             "Cable": ((0.98, -0.84), (0.98, -1.08), "center"),
             "Sin información de tecnología": ((-0.86, -0.02), (-0.86, 0.22), "center"),
         }

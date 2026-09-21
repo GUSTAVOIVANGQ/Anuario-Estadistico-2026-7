@@ -1,0 +1,53 @@
+2026-09-21 10:10:32,029 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-09-21 10:10:32,030 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-09-21 10:10:32,030 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-09-21 10:10:32,030 | INFO | 
+2026-09-21 10:10:32,031 | INFO | Anuario Estadístico 2026 | corrida 20260921T161032018762Z_corrida
+2026-09-21 10:10:32,031 | INFO | Figuras seleccionadas: 1 de 105
+2026-09-21 10:10:32,031 | INFO | 
+2026-09-21 10:10:32,031 | INFO | [001/001] B.23 | LISTA
+2026-09-21 10:10:40,258 | ERROR |   Falló B.23
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 249, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_23.py", line 315, in generate
+    _plot(data, metadata, context.expected_figure_path, context.project_root)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_b_23.py", line 279, in _plot
+    fig.savefig(output, dpi=200, bbox_inches="tight", facecolor="white", edgecolor="none")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\ui_2024.py", line 580, in savefig
+    return original_savefig(self, *args, **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\figure.py", line 3515, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2289, in print_figure
+    result = print_method(
+        filename,
+    ...<3 lines>...
+        bbox_inches_restore=_bbox_inches_restore,
+        **kwargs)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backend_bases.py", line 2146, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ~~~~^
+        *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 537, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\backends\backend_agg.py", line 486, in _print_pil
+    mpl.image.imsave(
+    ~~~~~~~~~~~~~~~~^
+        filename_or_obj, self.buffer_rgba(), format=fmt, origin="upper",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\matplotlib\image.py", line 1729, in imsave
+    image.save(fname, **pil_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\PIL\Image.py", line 2706, in save
+    fp = builtins.open(filename, "w+b")
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\B\\figura_b_23.png'
+2026-09-21 10:10:40,318 | INFO | 
+2026-09-21 10:10:40,318 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20260921T161032018762Z_corrida

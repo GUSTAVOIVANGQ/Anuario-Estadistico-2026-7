@@ -202,7 +202,7 @@ def _plot(data: pd.DataFrame, output_path: Path, project_root: Path) -> None:
         specs = [
             (wedges[0], (-0.88, 1.18), (-1.13, 1.42), f"{no_use}%",
              "No hacen uso de\nservicios móviles", "left"),
-            (wedges[1], (1.00, -0.92), (0.72, -0.61), f"{use}%",
+            (wedges[1], (1.00, -0.92), (0.92, -0.61), f"{use}%",
              "Hacen uso de\nservicios móviles", "left"),
         ]
         for wedge, chip_xy, label_xy, pct, label, align in specs:

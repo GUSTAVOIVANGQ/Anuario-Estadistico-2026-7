@@ -1,0 +1,7 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+B.23,dato_crudo,data/raw/crt_bit_todo_2025_q2/objects/f75ce7de02249b11d35b/CRT_BIT_TODO.zip,f75ce7de02249b11d35bed3399f7f06558f9e7a18cc9b320180acbe96027d284,1188168847,2026-09-09T22:17:06+00:00
+B.23,datos_usados,reportes/20260921T161043697312Z_corrida/datos_usados/b_23_datos_usados.csv,f66cfc65b4975701add43bdf516d1f5da051fb7d253dfa7a0d524343b4a62ba7,805,2026-09-21T16:10:51+00:00
+B.23,texto_generado,build/text/b_23.md,6226a1cb4c71273fbe4f934bcaa0e3f982be83fa3b35a94f24722b1b710427ab,257,2026-09-21T16:10:51+00:00
+B.23,texto_copia_corrida,reportes/20260921T161043697312Z_corrida/textos/b_23_parrafo.md,6226a1cb4c71273fbe4f934bcaa0e3f982be83fa3b35a94f24722b1b710427ab,257,2026-09-21T16:10:51+00:00
+B.23,grafica,build/figures/B/figura_b_23.png,34429e7930b867bf46c67dad5a5c4bf6b6f0bf02bcaf71a944a43c7c9ae4c5db,220061,2026-09-21T16:10:51+00:00
+B.23,metadatos,build/metadata/b_23.json,23034ea02dc34092f236b10a285cda71308adfe0749634700b7378b4c93fb982,585,2026-09-21T16:10:51+00:00

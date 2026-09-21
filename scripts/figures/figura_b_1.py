@@ -241,7 +241,7 @@ def _plot(metrics: pd.DataFrame, total_hogares: int, output_path: Path, project_
     labels = [
         (1.10, 0.96, 1.10, 0.69, "Tres servicios\n(Telefonía Fija +\nTV Restringida + Internet)"),
         (1.12, -0.61, 1.12, -0.84, "Dos servicios"),
-        (-1.13, -0.72, -1.13, -0.95, "Un servicio"),
+        (-1.13, -0.52, -1.13, -0.75, "Un servicio"),
         (-1.13, 0.88, -1.13, 0.64, "Ninguno"),
     ]
     for wedge, value, (cx, cy, lx, ly, label) in zip(wedges, sizes, labels):
