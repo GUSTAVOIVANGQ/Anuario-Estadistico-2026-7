@@ -1,3 +1,31 @@
+# 0.30.0
+
+- Corregida la exportación PDF para que **ninguna figura SVG sea convertida por PowerPoint o LibreOffice**.
+- El PPTX de entrega permanece sin cambios: sigue usando los SVG nativos originales y su capa auxiliar de texto para visores de PowerPoint.
+- Para el PDF se crea una copia temporal del PPTX sin `ANUARIO_IMAGE_*` ni `ANUARIO_TEXT_LAYER_*`; Office/LibreOffice renderiza únicamente la base visual.
+- Cada figura se toma directamente de su archivo SVG original en `build/figures`, se convierte a un fragmento PDF vectorial con CairoSVG y se coloca con pypdf en las coordenadas exactas de la figura del PPTX. No se crea un SVG alterno ni un raster de respaldo.
+- Se compara la huella SHA-256 del SVG original con el SVG incrustado en el PPTX para impedir que una figura modificada después del ensamblaje se mezcle silenciosamente con una corrida anterior.
+- La validación final comprueba páginas, dimensiones y que todos los textos `<text>` esperados de los SVG originales sean copiables, incluyendo etiquetas cortas como `II` que PowerPoint podía perder en su conversión.
+- Se añade `CairoSVG` como dependencia del proyecto y se eleva el esquema de auditoría PDF a versión 6.
+
+# 0.29.0
+
+- Se incorporan a la presentación los párrafos narrativos asociados a las 91 figuras disponibles de las secciones A a G, usando cuadros de texto nativos de PowerPoint para que el contenido sea editable, buscable y copiable.
+- La redacción base se conserva del Anuario Estadístico 2024 y se actualizan de forma prioritaria únicamente periodos, cifras, porcentajes, cantidades y registros respaldados por los `datos_usados` de cada figura; cuando cambia el sentido de una comparación o ranking se permite sólo el ajuste gramatical mínimo necesario para no producir una afirmación falsa.
+- Nuevo registro `assets/presentation/narrativas_figuras_2026.json` con texto base, texto actualizado, página fuente del PDF 2024, modo de actualización, notas, archivo de datos y huella SHA-256 por figura.
+- Nuevo módulo `anuario2026.narratives` que valida que cada narrativa corresponda exactamente a los datos de la corrida actual y genera auditorías JSON/CSV.
+- El ensamblador PPTX rechaza en modo estricto narrativas ausentes, errores de inserción o cambios de datos no revisados (`data_changed`) y comprueba tras reabrir el PPTX que el texto narrativo quedó realmente incrustado.
+- La política SVG vectorial de 0.28.0 se mantiene sin cambios: las figuras siguen insertándose como SVG directo, con transparencia y texto vectorial/copiable.
+
+# 0.28.0
+
+- Las figuras usadas para PPTX y PDF son ahora SVG directos, sin PNG/JPG de respaldo en el objeto de figura.
+- El exportador central de Matplotlib conserva el texto como elementos `<text>`, fuerza lienzo transparente y valida que el SVG sea completamente vectorial antes de aceptar la figura.
+- Se desactivan simplificaciones de trazado y composiciones raster innecesarias; cualquier artista que obligue a incrustar un bitmap hace fallar la validación en vez de degradar silenciosamente la calidad.
+- El PPTX mantiene una capa nativa auxiliar para que el texto de las figuras sea localizable/copiable en visores de PowerPoint, mientras el SVG sigue siendo el recurso visual primario.
+- El PDF se genera desde una copia temporal del PPTX sin esa capa auxiliar y valida que todos los textos copiables provengan directamente de los `<text>` de los SVG, evitando texto duplicado.
+- Los 91 SVG existentes de las secciones A a G fueron normalizados para eliminar únicamente el fondo blanco del lienzo raíz; los fondos internos intencionales del diseño se conservan.
+
 # 0.27.0
 
 - Añadida interfaz web React con visualizador central de figuras, panel lateral, selección por figura/sección y animaciones de estado.
@@ -6,7 +34,15 @@
 - Añadidos endpoints para ejecutar una figura, una selección o todas las figuras disponibles y seguir la corrida mediante Server-Sent Events.
 - Al terminar se muestra un panel de exportación estilo editor con PDF, PPTX y compendios JPG, PNG y SVG.
 - Los compendios se construyen sólo con figuras `OK` de la corrida; SVG usa el archivo nativo cuando existe y un wrapper compatible cuando la figura sólo tiene PNG.
-- La conversión PPTX a PDF usa LibreOffice o PowerPoint en Windows.
+- El PDF se convierte siempre desde el PPTX ensamblado: prioriza PowerPoint en Windows y
+  usa LibreOffice como alternativa multiplataforma. La exportación valida páginas y tamaño,
+  añade metadatos y marcadores, y registra las huellas de ambos archivos.
+- Las figuras del PPTX ahora conservan el SVG nativo con PNG de respaldo compatible; el
+  paquete OOXML se valida después de incrustar cada recurso.
+- PPTX y PDF incorporan una capa accesible con el texto de los SVG para buscar, seleccionar
+  y copiar títulos, ejes, etiquetas, leyendas y fuentes sin alterar el diseño visual.
+- El PDF verifica que todas las capas de texto esperadas sobrevivan a la conversión y deja
+  constancia de SVG incrustados, páginas buscables y figuras pendientes en su manifiesto JSON.
 
 # 0.26.0
 

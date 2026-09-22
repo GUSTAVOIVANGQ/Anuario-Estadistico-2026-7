@@ -230,13 +230,13 @@ class RunManager:
 def create_app(project_root: Path) -> FastAPI:
     project_root = project_root.resolve()
     manager = RunManager(project_root)
-    app = FastAPI(title="Anuario Estadístico 2026", version="0.27.0")
+    app = FastAPI(title="Anuario Estadístico 2026", version="0.29.0")
     app.state.project_root = project_root
     app.state.run_manager = manager
 
     @app.get("/api/health")
     def health() -> dict[str, Any]:
-        return {"ok": True, "project_root": str(project_root), "version": "0.27.0"}
+        return {"ok": True, "project_root": str(project_root), "version": "0.29.0"}
 
     @app.get("/api/figures")
     def figures() -> dict[str, Any]:
@@ -365,7 +365,12 @@ def create_app(project_root: Path) -> FastAPI:
         except Exception as exc:  # noqa: BLE001 - mostrar error de exportación sin tumbar el servidor
             raise HTTPException(status_code=500, detail=f"{type(exc).__name__}: {exc}") from exc
 
-        return FileResponse(path, media_type=media_type, filename=path.name)
+        return FileResponse(
+            path,
+            media_type=media_type,
+            filename=path.name,
+            headers={"Cache-Control": "no-store"},
+        )
 
     frontend_dist = project_root / "web" / "dist"
     if frontend_dist.is_dir():

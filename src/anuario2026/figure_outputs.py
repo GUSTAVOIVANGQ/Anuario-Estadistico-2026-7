@@ -1,11 +1,15 @@
-"""Salidas reproducibles PNG, JPG y SVG de cada figura Matplotlib.
+"""Salidas reproducibles de figuras, con SVG como artefacto maestro de entrega.
 
-Los scripts históricos guardan su salida principal como PNG. El pipeline instala
-este adaptador una sola vez para que esa misma llamada a ``Figure.savefig``
-conserve también el objeto Matplotlib como SVG nativo y genere el JPG, antes de
-que el script cierre la figura. De este modo el SVG no es un contenedor de una
-captura rasterizada: los textos permanecen como elementos ``<text>`` y las
-formas compatibles permanecen vectoriales.
+Los scripts históricos siguen llamando a ``Figure.savefig`` con una ruta PNG para
+no romper su contrato. Este adaptador aprovecha el objeto Matplotlib todavía vivo
+para emitir, en la misma llamada, un SVG nativo de alta calidad y un JPG de
+conveniencia. El PPTX y el PDF usan exclusivamente el SVG de cada figura.
+
+El SVG se genera con texto real (``<text>``), sin rasterización silenciosa, sin
+simplificación de trazos y con lienzo transparente. Después de escribirlo se
+valida de inmediato: si una figura introduce una imagen raster, convierte el
+texto en curvas o conserva un fondo opaco, la corrida falla en vez de degradar
+la entrega sin avisar.
 """
 
 from __future__ import annotations
@@ -32,6 +36,8 @@ VECTOR_ELEMENTS = {
     "use",
 }
 
+SVG_RASTER_DPI = 600
+
 _exporter_installed = False
 
 
@@ -43,6 +49,7 @@ class SvgInspection:
     positioned_text_elements: int
     vector_elements: int
     embedded_images: int
+    opaque_canvas_background: bool
 
     @property
     def editable_text(self) -> bool:
@@ -51,6 +58,10 @@ class SvgInspection:
     @property
     def fully_vector(self) -> bool:
         return self.embedded_images == 0
+
+    @property
+    def transparent_background(self) -> bool:
+        return not self.opaque_canvas_background
 
 
 def companion_paths(png_path: Path) -> dict[str, Path]:
@@ -109,6 +120,16 @@ def _companion_kwargs(
     if kind == "svg":
         options["format"] = "svg"
         options["metadata"] = _svg_metadata(figure, target)
+        # ``dpi`` no afecta a los trazos vectoriales, pero sí a cualquier
+        # artista que Matplotlib intentara rasterizar. Se fija alto y, además,
+        # la validación posterior rechaza cualquier <image> en el SVG final.
+        options["dpi"] = SVG_RASTER_DPI
+        # El fondo de la diapositiva o de su tarjeta debe verse a través del
+        # lienzo. Los parches añadidos explícitamente por una figura se
+        # conservan, pero los parches automáticos de Figure/Axes no se pintan.
+        options["transparent"] = True
+        options["facecolor"] = "none"
+        options["edgecolor"] = "none"
     elif kind == "jpg":
         options["format"] = "jpeg"
         options["transparent"] = False
@@ -148,9 +169,20 @@ def install_figure_output_exporter() -> None:
                 "svg.fonttype": "none",
                 "svg.image_inline": True,
                 "svg.hashsalt": "anuario-estadistico-2026",
+                # Evita perder detalle geométrico en líneas, mapas y contornos.
+                "path.simplify": False,
+                "agg.path.chunksize": 0,
+                # Impide que Matplotlib combine artistas de imagen en un raster
+                # compuesto. La entrega estricta rechaza cualquier raster de
+                # todos modos, pero esta opción evita crear uno innecesario.
+                "image.composite_image": False,
             }
         ):
             original_savefig(self, svg_path, **svg_options)
+
+        # El SVG es el artefacto maestro para PPTX/PDF: no se acepta degradación
+        # silenciosa a imagen, texto en curvas ni fondo de lienzo opaco.
+        validate_editable_svg(svg_path, require_fully_vector=True)
 
         jpg_options = _companion_kwargs(self, jpg_path, kwargs, "jpg")
         original_savefig(self, jpg_path, **jpg_options)
@@ -180,6 +212,7 @@ def inspect_svg(path: Path) -> SvgInspection:
     positioned_text_elements = 0
     vector_elements = 0
     embedded_images = 0
+    opaque_canvas_background = False
     for element in root.iter():
         name = element.tag.rsplit("}", 1)[-1]
         if name == "text" and "".join(element.itertext()).strip():
@@ -191,15 +224,69 @@ def inspect_svg(path: Path) -> SvgInspection:
         elif name in VECTOR_ELEMENTS:
             vector_elements += 1
 
+        # Matplotlib identifica el parche automático del lienzo como
+        # ``patch_1``. Si conserva un relleno opaco, el SVG todavía trae un
+        # rectángulo de fondo aunque todo el contenido sea vectorial.
+        if name == "g" and element.get("id") == "patch_1":
+            for child in element.iter():
+                child_name = child.tag.rsplit("}", 1)[-1]
+                if child_name not in {"path", "rect"}:
+                    continue
+                style = {
+                    key.strip(): value.strip().lower()
+                    for declaration in child.get("style", "").split(";")
+                    if ":" in declaration
+                    for key, value in [declaration.split(":", 1)]
+                }
+                fill = str(child.get("fill") or style.get("fill") or "").lower()
+                opacity = str(
+                    child.get("fill-opacity")
+                    or style.get("fill-opacity")
+                    or child.get("opacity")
+                    or style.get("opacity")
+                    or "1"
+                ).lower()
+                if fill not in {"", "none", "transparent"} and opacity not in {
+                    "0",
+                    "0.0",
+                    "0%",
+                }:
+                    opaque_canvas_background = True
+                    break
+
     return SvgInspection(
         text_elements=text_elements,
         positioned_text_elements=positioned_text_elements,
         vector_elements=vector_elements,
         embedded_images=embedded_images,
+        opaque_canvas_background=opaque_canvas_background,
     )
 
 
-def validate_editable_svg(path: Path) -> SvgInspection:
+def extract_svg_text(path: Path) -> tuple[str, ...]:
+    """Extrae el texto visible del SVG en el orden del documento."""
+    try:
+        root = ElementTree.parse(path).getroot()
+    except (ElementTree.ParseError, OSError) as exc:
+        raise ValueError(f"SVG inválido: {path}") from exc
+    if root.tag.rsplit("}", 1)[-1] != "svg":
+        raise ValueError(f"El archivo no tiene una raíz SVG: {path}")
+
+    texts: list[str] = []
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "text":
+            continue
+        content = " ".join("".join(element.itertext()).split())
+        if content:
+            texts.append(content)
+    return tuple(texts)
+
+
+def validate_editable_svg(
+    path: Path,
+    *,
+    require_fully_vector: bool = True,
+) -> SvgInspection:
     if not path.is_file():
         raise FileNotFoundError(f"La figura no generó su SVG nativo: {path}")
     inspection = inspect_svg(path)
@@ -209,6 +296,13 @@ def validate_editable_svg(path: Path) -> SvgInspection:
         raise ValueError(f"El SVG contiene texto sin posición explícita: {path}")
     if not inspection.vector_elements:
         raise ValueError(f"El SVG no contiene elementos vectoriales: {path}")
+    if require_fully_vector and not inspection.fully_vector:
+        raise ValueError(
+            f"El SVG contiene {inspection.embedded_images} imagen(es) raster incrustada(s): "
+            f"{path}"
+        )
+    if not inspection.transparent_background:
+        raise ValueError(f"El SVG conserva un fondo de lienzo opaco: {path}")
     return inspection
 
 

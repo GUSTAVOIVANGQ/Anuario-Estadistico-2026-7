@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura E.8.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura E.8.</dc:title>
+    <dc:date>2026-09-22T11:49:35.063412</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 63.36 536.544 
+L 288 536.544 
+Q 308.736 536.544 308.736 524.88 
+L 308.736 136.08 
+Q 308.736 124.416 288 124.416 
+L 63.36 124.416 
+Q 42.624 124.416 42.624 136.08 
+L 42.624 524.88 
+Q 42.624 536.544 63.36 536.544 
+z
+" style="fill: #eef6f4; stroke: #7e82a8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_3">
+   <path d="M 337.536 536.544 
+L 562.176 536.544 
+Q 582.912 536.544 582.912 524.88 
+L 582.912 136.08 
+Q 582.912 124.416 562.176 124.416 
+L 337.536 124.416 
+Q 316.8 124.416 316.8 136.08 
+L 316.8 524.88 
+Q 316.8 536.544 337.536 536.544 
+z
+" style="fill: #eef6f4; stroke: #7e82a8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_4">
+   <path d="M 611.712 536.544 
+L 836.352 536.544 
+Q 857.088 536.544 857.088 524.88 
+L 857.088 136.08 
+Q 857.088 124.416 836.352 124.416 
+L 611.712 124.416 
+Q 590.976 124.416 590.976 136.08 
+L 590.976 524.88 
+Q 590.976 536.544 611.712 536.544 
+z
+" style="fill: #eef6f4; stroke: #7e82a8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_5">
+   <path d="M 885.888 536.544 
+L 1110.528 536.544 
+Q 1131.264 536.544 1131.264 524.88 
+L 1131.264 136.08 
+Q 1131.264 124.416 1110.528 124.416 
+L 885.888 124.416 
+Q 865.152 124.416 865.152 136.08 
+L 865.152 524.88 
+Q 865.152 536.544 885.888 536.544 
+z
+" style="fill: #eef6f4; stroke: #7e82a8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_6">
+    <path d="M 84.096 486 
+L 268.416 486 
+L 268.416 285.12 
+L 84.096 285.12 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 92.474182 486 
+L 129.128727 486 
+L 129.128727 325.687007 
+L 92.474182 325.687007 
+z
+" clip-path="url(#p562dc908bf)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 157.928727 486 
+L 194.583273 486 
+L 194.583273 318.587495 
+L 157.928727 318.587495 
+z
+" clip-path="url(#p562dc908bf)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 223.383273 486 
+L 260.037818 486 
+L 260.037818 323.117634 
+L 223.383273 323.117634 
+z
+" clip-path="url(#p562dc908bf)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="110.801455" y="498.052" transform="rotate(-0 110.801455 498.052)">Micro</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="176.256" y="498.052" transform="rotate(-0 176.256 498.052)">Pequeña</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="241.710545" y="498.052" transform="rotate(-0 241.710545 498.052)">Mediana</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="110.801455" y="320.330207" transform="rotate(-0 110.801455 320.330207)">59.9%</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="176.256" y="313.230695" transform="rotate(-0 176.256 313.230695)">62.5%</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="241.710545" y="317.760834" transform="rotate(-0 241.710545 317.760834)">60.8%</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_10">
+    <path d="M 358.272 486 
+L 542.592 486 
+L 542.592 285.12 
+L 358.272 285.12 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 366.650182 486 
+L 403.304727 486 
+L 403.304727 380.879191 
+L 366.650182 380.879191 
+z
+" clip-path="url(#pfba2354fec)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 432.104727 486 
+L 468.759273 486 
+L 468.759273 365.937582 
+L 432.104727 365.937582 
+z
+" clip-path="url(#pfba2354fec)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 497.559273 486 
+L 534.213818 486 
+L 534.213818 378.56695 
+L 497.559273 378.56695 
+z
+" clip-path="url(#pfba2354fec)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="384.977455" y="498.052" transform="rotate(-0 384.977455 498.052)">Micro</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="450.432" y="498.052" transform="rotate(-0 450.432 498.052)">Pequeña</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="515.886545" y="498.052" transform="rotate(-0 515.886545 498.052)">Mediana</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="384.977455" y="375.522391" transform="rotate(-0 384.977455 375.522391)">39.2%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="450.432" y="360.580782" transform="rotate(-0 450.432 360.580782)">44.8%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="515.886545" y="373.21015" transform="rotate(-0 515.886545 373.21015)">40.1%</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_14">
+    <path d="M 632.448 486 
+L 816.768 486 
+L 816.768 285.12 
+L 632.448 285.12 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 640.826182 486 
+L 677.480727 486 
+L 677.480727 383.586165 
+L 640.826182 383.586165 
+z
+" clip-path="url(#pc480006f63)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 706.280727 486 
+L 742.935273 486 
+L 742.935273 395.65815 
+L 706.280727 395.65815 
+z
+" clip-path="url(#pc480006f63)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 771.735273 486 
+L 808.389818 486 
+L 808.389818 416.688355 
+L 771.735273 416.688355 
+z
+" clip-path="url(#pc480006f63)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_13">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="659.153455" y="498.052" transform="rotate(-0 659.153455 498.052)">Micro</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="724.608" y="498.052" transform="rotate(-0 724.608 498.052)">Pequeña</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="790.062545" y="498.052" transform="rotate(-0 790.062545 498.052)">Mediana</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6"/>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="659.153455" y="378.229365" transform="rotate(-0 659.153455 378.229365)">38.2%</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="724.608" y="390.30135" transform="rotate(-0 724.608 390.30135)">33.7%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="790.062545" y="411.331555" transform="rotate(-0 790.062545 411.331555)">25.9%</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_18">
+    <path d="M 906.624 486 
+L 1090.944 486 
+L 1090.944 285.12 
+L 906.624 285.12 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 915.002182 486 
+L 951.656727 486 
+L 951.656727 420.431084 
+L 915.002182 420.431084 
+z
+" clip-path="url(#p6f8737999e)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 980.456727 486 
+L 1017.111273 486 
+L 1017.111273 447.070647 
+L 980.456727 447.070647 
+z
+" clip-path="url(#p6f8737999e)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 1045.911273 486 
+L 1082.565818 486 
+L 1082.565818 424.114603 
+L 1045.911273 424.114603 
+z
+" clip-path="url(#p6f8737999e)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_7">
+    <g id="xtick_10">
+     <g id="line2d_10"/>
+     <g id="text_19">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="933.329455" y="498.052" transform="rotate(-0 933.329455 498.052)">Micro</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11"/>
+     <g id="text_20">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="998.784" y="498.052" transform="rotate(-0 998.784 498.052)">Pequeña</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_12"/>
+     <g id="text_21">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1064.238545" y="498.052" transform="rotate(-0 1064.238545 498.052)">Mediana</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_8"/>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="933.329455" y="415.074284" transform="rotate(-0 933.329455 415.074284)">24.5%</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="998.784" y="441.713847" transform="rotate(-0 998.784 441.713847)">14.5%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1064.238545" y="418.757803" transform="rotate(-0 1064.238545 418.757803)">23.1%</text>
+   </g>
+  </g>
+  <g id="text_25">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="72.576" y="71.008" transform="rotate(-0 72.576 71.008)">Figura E.8.</text>
+  </g>
+  <g id="text_26">
+   <text style="font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="195.84" y="71.008" transform="rotate(-0 195.84 71.008)">Beneficios de contar con una aplicación móvil para la empresa o negocio (2024)</text>
+  </g>
+  <g id="text_27">
+   <g id="patch_22">
+    <path d="M 138.455625 182.616 
+L 212.904375 182.616 
+Q 218.904375 182.616 218.904375 176.616 
+L 218.904375 139.128 
+Q 218.904375 133.128 212.904375 133.128 
+L 138.455625 133.128 
+Q 132.455625 133.128 132.455625 139.128 
+L 132.455625 176.616 
+Q 132.455625 182.616 138.455625 182.616 
+z
+" style="fill: #ffffff; opacity: 0.98; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <text style="font-weight: 700; font-size: 24px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="175.68" y="167.184" transform="rotate(-0 175.68 167.184)">60.1%</text>
+  </g>
+  <g id="text_28">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(101.280938 216.936)">Contacto más rápido con</text>
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(152.315625 233.28)">clientes</text>
+  </g>
+  <g id="text_29">
+   <g id="patch_23">
+    <path d="M 412.631625 182.616 
+L 487.080375 182.616 
+Q 493.080375 182.616 493.080375 176.616 
+L 493.080375 139.128 
+Q 493.080375 133.128 487.080375 133.128 
+L 412.631625 133.128 
+Q 406.631625 133.128 406.631625 139.128 
+L 406.631625 176.616 
+Q 406.631625 182.616 412.631625 182.616 
+z
+" style="fill: #ffffff; opacity: 0.98; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <text style="font-weight: 700; font-size: 24px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="449.856" y="167.184" transform="rotate(-0 449.856 167.184)">39.7%</text>
+  </g>
+  <g id="text_30">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(389.988187 216.936)">Solicitud de pedidos</text>
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(424.715062 233.28)">más ágil</text>
+  </g>
+  <g id="text_31">
+   <g id="patch_24">
+    <path d="M 686.807625 182.616 
+L 761.256375 182.616 
+Q 767.256375 182.616 767.256375 176.616 
+L 767.256375 139.128 
+Q 767.256375 133.128 761.256375 133.128 
+L 686.807625 133.128 
+Q 680.807625 133.128 680.807625 139.128 
+L 680.807625 176.616 
+Q 680.807625 182.616 686.807625 182.616 
+z
+" style="fill: #ffffff; opacity: 0.98; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <text style="font-weight: 700; font-size: 24px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="724.032" y="167.184" transform="rotate(-0 724.032 167.184)">37.8%</text>
+  </g>
+  <g id="text_32">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(648.921375 216.936)">Mayor competitividad en</text>
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(690.83325 233.28)">el mercado</text>
+  </g>
+  <g id="text_33">
+   <g id="patch_25">
+    <path d="M 960.983625 182.616 
+L 1035.432375 182.616 
+Q 1041.432375 182.616 1041.432375 176.616 
+L 1041.432375 139.128 
+Q 1041.432375 133.128 1035.432375 133.128 
+L 960.983625 133.128 
+Q 954.983625 133.128 954.983625 139.128 
+L 954.983625 176.616 
+Q 954.983625 182.616 960.983625 182.616 
+z
+" style="fill: #ffffff; opacity: 0.98; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <text style="font-weight: 700; font-size: 24px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="998.208" y="167.184" transform="rotate(-0 998.208 167.184)">23.7%</text>
+  </g>
+  <g id="text_34">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(937.593 216.936)">Facilita el control de</text>
+   <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(978.094875 233.28)">ventas</text>
+  </g>
+  <g id="text_35">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="51.84" y="579.96" transform="rotate(-0 51.84 579.96)">Fuente:</text>
+  </g>
+  <g id="text_36">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="104.832" y="579.96" transform="rotate(-0 104.832 579.96)">Elaborado por CRT, Cuarta Encuesta 2024, Usuarios de Servicios de Telecomunicaciones (MiPymes).</text>
+  </g>
+  <g id="text_37">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="51.84" y="598.104" transform="rotate(-0 51.84 598.104)">Nota:</text>
+  </g>
+  <g id="text_38">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="92.16" y="598.104" transform="rotate(-0 92.16 598.104)">Respuesta espontánea y múltiple, por lo que la suma no da 100%.</text>
+  </g>
+  <g id="patch_26">
+   <path d="M 58.752 70.632 
+L 62.208 70.632 
+Q 64.512 70.632 64.512 69.336 
+L 64.512 60.264 
+Q 64.512 58.968 62.208 58.968 
+L 58.752 58.968 
+Q 56.448 58.968 56.448 60.264 
+L 56.448 69.336 
+Q 56.448 70.632 58.752 70.632 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p562dc908bf">
+   <rect x="84.096" y="285.12" width="184.32" height="200.88"/>
+  </clipPath>
+  <clipPath id="pfba2354fec">
+   <rect x="358.272" y="285.12" width="184.32" height="200.88"/>
+  </clipPath>
+  <clipPath id="pc480006f63">
+   <rect x="632.448" y="285.12" width="184.32" height="200.88"/>
+  </clipPath>
+  <clipPath id="p6f8737999e">
+   <rect x="906.624" y="285.12" width="184.32" height="200.88"/>
+  </clipPath>
+ </defs>
+</svg>

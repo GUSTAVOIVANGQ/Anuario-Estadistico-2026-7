@@ -3,7 +3,19 @@
   "title": "Personas con mayor riesgo de violencia a través del teléfono móvil",
   "reference_page_2024": 96,
   "figure_path": "build\\figures\\F\\figura_f_12.png",
-  "run_id": "20260921T161817643317Z_corrida",
+  "figure_formats": {
+    "png": "build\\figures\\F\\figura_f_12.png",
+    "jpg": "build\\figures\\F\\figura_f_12.jpg",
+    "svg": "build\\figures\\F\\figura_f_12.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 25,
+    "positioned_text_elements": 25,
+    "vector_elements": 27,
+    "embedded_images": 0
+  },
+  "run_id": "20260922T173925458200Z_corrida",
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\F\\figura_f_12.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\f_12.md",

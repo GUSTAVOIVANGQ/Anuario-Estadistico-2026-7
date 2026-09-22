@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.5.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.5.</dc:title>
+    <dc:date>2026-09-22T11:50:02.803137</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 54.144 593.568 
+L 1097.856 593.568 
+Q 1118.592 593.568 1118.592 581.904 
+L 1118.592 59.616 
+Q 1118.592 47.952 1097.856 47.952 
+L 54.144 47.952 
+Q 33.408 47.952 33.408 59.616 
+L 33.408 581.904 
+Q 33.408 593.568 54.144 593.568 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_3">
+    <path d="M 86.4 498.96 
+L 1082.88 498.96 
+L 1082.88 142.56 
+L 86.4 142.56 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(170.624394 517.0465)">De 12 a</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(169.850097 528.6235)">19 años</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(330.11223 517.0465)">De 20 a</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(329.337933 528.6235)">29 años</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(489.600066 517.0465)">De 30 a</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(488.825769 528.6235)">39 años</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(649.087902 517.0465)">De 40 a</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(648.313606 528.6235)">49 años</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(808.575739 517.0465)">De 50 a</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(807.801442 528.6235)">59 años</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(960.527793 517.0465)">De 60 años</text>
+      <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(970.982793 528.6235)">y más</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_4">
+    <path d="M 131.694545 498.96 
+L 185.92041 498.96 
+L 185.92041 267.490574 
+L 131.694545 267.490574 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 291.182382 498.96 
+L 345.408246 498.96 
+L 345.408246 213.84 
+L 291.182382 213.84 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 450.670218 498.96 
+L 504.896082 498.96 
+L 504.896082 245.725183 
+L 450.670218 245.725183 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 610.158054 498.96 
+L 664.383918 498.96 
+L 664.383918 319.016925 
+L 610.158054 319.016925 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 769.64589 498.96 
+L 823.871754 498.96 
+L 823.871754 389.730408 
+L 769.64589 389.730408 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 929.133726 498.96 
+L 983.35959 498.96 
+L 983.35959 420.61823 
+L 929.133726 420.61823 
+z
+" clip-path="url(#pa85c230576)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 185.92041 498.96 
+L 240.146274 498.96 
+L 240.146274 271.766518 
+L 185.92041 271.766518 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 345.408246 498.96 
+L 399.63411 498.96 
+L 399.63411 220.378901 
+L 345.408246 220.378901 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 504.896082 498.96 
+L 559.121946 498.96 
+L 559.121946 273.92273 
+L 504.896082 273.92273 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 664.383918 498.96 
+L 718.609782 498.96 
+L 718.609782 314.844032 
+L 664.383918 314.844032 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 823.871754 498.96 
+L 878.097618 498.96 
+L 878.097618 377.570268 
+L 823.871754 377.570268 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 983.35959 498.96 
+L 1037.585455 498.96 
+L 1037.585455 397.938872 
+L 983.35959 397.938872 
+z
+" clip-path="url(#pa85c230576)" style="fill: #335a5c"/>
+   </g>
+   <g id="text_7">
+    <g id="patch_16">
+     <path d="M 151.419149 263.125374 
+L 166.195806 263.125374 
+Q 172.755806 263.125374 172.755806 256.565374 
+L 172.755806 254.416974 
+Q 172.755806 247.856974 166.195806 247.856974 
+L 151.419149 247.856974 
+Q 144.859149 247.856974 144.859149 254.416974 
+L 144.859149 256.565374 
+Q 144.859149 263.125374 151.419149 263.125374 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="158.807478" y="258.672774" transform="rotate(-0 158.807478 258.672774)">20.4%</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_17">
+     <path d="M 310.906986 209.4748 
+L 325.683642 209.4748 
+Q 332.243642 209.4748 332.243642 202.9148 
+L 332.243642 200.7664 
+Q 332.243642 194.2064 325.683642 194.2064 
+L 310.906986 194.2064 
+Q 304.346986 194.2064 304.346986 200.7664 
+L 304.346986 202.9148 
+Q 304.346986 209.4748 310.906986 209.4748 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="318.295314" y="205.0222" transform="rotate(-0 318.295314 205.0222)">25.1%</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_18">
+     <path d="M 470.394822 241.359983 
+L 485.171478 241.359983 
+Q 491.731478 241.359983 491.731478 234.799983 
+L 491.731478 232.651583 
+Q 491.731478 226.091583 485.171478 226.091583 
+L 470.394822 226.091583 
+Q 463.834822 226.091583 463.834822 232.651583 
+L 463.834822 234.799983 
+Q 463.834822 241.359983 470.394822 241.359983 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="477.78315" y="236.907383" transform="rotate(-0 477.78315 236.907383)">22.3%</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_19">
+     <path d="M 629.882658 314.651725 
+L 644.659314 314.651725 
+Q 651.219314 314.651725 651.219314 308.091725 
+L 651.219314 305.943325 
+Q 651.219314 299.383325 644.659314 299.383325 
+L 629.882658 299.383325 
+Q 623.322658 299.383325 623.322658 305.943325 
+L 623.322658 308.091725 
+Q 623.322658 314.651725 629.882658 314.651725 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="637.270986" y="310.199125" transform="rotate(-0 637.270986 310.199125)">15.8%</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_20">
+     <path d="M 791.715822 385.365208 
+L 801.801822 385.365208 
+Q 808.361822 385.365208 808.361822 378.805208 
+L 808.361822 376.656808 
+Q 808.361822 370.096808 801.801822 370.096808 
+L 791.715822 370.096808 
+Q 785.155822 370.096808 785.155822 376.656808 
+L 785.155822 378.805208 
+Q 785.155822 385.365208 791.715822 385.365208 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="796.758822" y="380.912608" transform="rotate(-0 796.758822 380.912608)">9.6%</text>
+   </g>
+   <g id="text_12">
+    <g id="patch_21">
+     <path d="M 951.203658 416.25303 
+L 961.289658 416.25303 
+Q 967.849658 416.25303 967.849658 409.69303 
+L 967.849658 407.54463 
+Q 967.849658 400.98463 961.289658 400.98463 
+L 951.203658 400.98463 
+Q 944.643658 400.98463 944.643658 407.54463 
+L 944.643658 409.69303 
+Q 944.643658 416.25303 951.203658 416.25303 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="956.246658" y="411.80043" transform="rotate(-0 956.246658 411.80043)">6.9%</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_22">
+     <path d="M 205.645014 267.401318 
+L 220.42167 267.401318 
+Q 226.98167 267.401318 226.98167 260.841318 
+L 226.98167 258.692918 
+Q 226.98167 252.132918 220.42167 252.132918 
+L 205.645014 252.132918 
+Q 199.085014 252.132918 199.085014 258.692918 
+L 199.085014 260.841318 
+Q 199.085014 267.401318 205.645014 267.401318 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="213.033342" y="262.948718" transform="rotate(-0 213.033342 262.948718)">20.0%</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_23">
+     <path d="M 365.13285 216.013701 
+L 379.909506 216.013701 
+Q 386.469506 216.013701 386.469506 209.453701 
+L 386.469506 207.305301 
+Q 386.469506 200.745301 379.909506 200.745301 
+L 365.13285 200.745301 
+Q 358.57285 200.745301 358.57285 207.305301 
+L 358.57285 209.453701 
+Q 358.57285 216.013701 365.13285 216.013701 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="372.521178" y="211.561101" transform="rotate(-0 372.521178 211.561101)">24.5%</text>
+   </g>
+   <g id="text_15">
+    <g id="patch_24">
+     <path d="M 524.620686 269.55753 
+L 539.397342 269.55753 
+Q 545.957342 269.55753 545.957342 262.99753 
+L 545.957342 260.84913 
+Q 545.957342 254.28913 539.397342 254.28913 
+L 524.620686 254.28913 
+Q 518.060686 254.28913 518.060686 260.84913 
+L 518.060686 262.99753 
+Q 518.060686 269.55753 524.620686 269.55753 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="532.009014" y="265.10493" transform="rotate(-0 532.009014 265.10493)">19.8%</text>
+   </g>
+   <g id="text_16">
+    <g id="patch_25">
+     <path d="M 684.108522 310.478832 
+L 698.885178 310.478832 
+Q 705.445178 310.478832 705.445178 303.918832 
+L 705.445178 301.770432 
+Q 705.445178 295.210432 698.885178 295.210432 
+L 684.108522 295.210432 
+Q 677.548522 295.210432 677.548522 301.770432 
+L 677.548522 303.918832 
+Q 677.548522 310.478832 684.108522 310.478832 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="691.49685" y="306.026232" transform="rotate(-0 691.49685 306.026232)">16.2%</text>
+   </g>
+   <g id="text_17">
+    <g id="patch_26">
+     <path d="M 843.596358 373.205068 
+L 858.373014 373.205068 
+Q 864.933014 373.205068 864.933014 366.645068 
+L 864.933014 364.496668 
+Q 864.933014 357.936668 858.373014 357.936668 
+L 843.596358 357.936668 
+Q 837.036358 357.936668 837.036358 364.496668 
+L 837.036358 366.645068 
+Q 837.036358 373.205068 843.596358 373.205068 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="850.984686" y="368.752468" transform="rotate(-0 850.984686 368.752468)">10.7%</text>
+   </g>
+   <g id="text_18">
+    <g id="patch_27">
+     <path d="M 1005.429522 393.573672 
+L 1015.515522 393.573672 
+Q 1022.075522 393.573672 1022.075522 387.013672 
+L 1022.075522 384.865272 
+Q 1022.075522 378.305272 1015.515522 378.305272 
+L 1005.429522 378.305272 
+Q 998.869522 378.305272 998.869522 384.865272 
+L 998.869522 387.013672 
+Q 998.869522 393.573672 1005.429522 393.573672 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1010.472522" y="389.121072" transform="rotate(-0 1010.472522 389.121072)">8.9%</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_28">
+     <path d="M 933.343594 160.281 
+L 951.343594 160.281 
+L 951.343594 153.981 
+L 933.343594 153.981 
+z
+" style="fill: #86adae"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="958.543594" y="160.281" transform="rotate(-0 958.543594 160.281)">Mujeres</text>
+    </g>
+    <g id="patch_29">
+     <path d="M 1010.591719 160.281 
+L 1028.591719 160.281 
+L 1028.591719 153.981 
+L 1010.591719 153.981 
+z
+" style="fill: #335a5c"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1035.791719" y="160.281" transform="rotate(-0 1035.791719 160.281)">Hombres</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_21">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="76.032" y="87.728" transform="rotate(-0 76.032 87.728)">Figura F.5.</text>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="173.952" y="87.728" transform="rotate(-0 173.952 87.728)">Porcentaje de la población que vivió ciberacoso por sexo y rango de edad</text>
+  </g>
+  <g id="text_23">
+   <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="576.0865" transform="rotate(-0 59.904 576.0865)">Fuente:</text>
+  </g>
+  <g id="text_24">
+   <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="109.44" y="576.0865" transform="rotate(-0 109.44 576.0865)">Elaborado por CRT con datos del MOCIBA 2025, del INEGI. Para más información consultar https://www.inegi.org.mx/programas/mociba/2025/</text>
+  </g>
+  <g id="patch_30">
+   <path d="M 62.208 88.128 
+L 65.664 88.128 
+Q 67.968 88.128 67.968 86.832 
+L 67.968 77.76 
+Q 67.968 76.464 65.664 76.464 
+L 62.208 76.464 
+Q 59.904 76.464 59.904 77.76 
+L 59.904 86.832 
+Q 59.904 88.128 62.208 88.128 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa85c230576">
+   <rect x="86.4" y="142.56" width="996.48" height="356.4"/>
+  </clipPath>
+ </defs>
+</svg>

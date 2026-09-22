@@ -3,7 +3,19 @@
   "title": "Horas promedio de uso de internet por grupos de edad",
   "reference_page_2024": 63,
   "figure_path": "build\\figures\\D\\figura_d_3.png",
-  "run_id": "20260921T161817643317Z_corrida",
+  "figure_formats": {
+    "png": "build\\figures\\D\\figura_d_3.png",
+    "jpg": "build\\figures\\D\\figura_d_3.jpg",
+    "svg": "build\\figures\\D\\figura_d_3.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 29,
+    "positioned_text_elements": 29,
+    "vector_elements": 36,
+    "embedded_images": 0
+  },
+  "run_id": "20260922T173925458200Z_corrida",
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\D\\figura_d_3.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\d_3.md",

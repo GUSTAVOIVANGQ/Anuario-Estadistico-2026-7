@@ -8,9 +8,11 @@ src/anuario2026/context.py
 src/anuario2026/exports.py
 src/anuario2026/figure_outputs.py
 src/anuario2026/models.py
+src/anuario2026/narratives.py
 src/anuario2026/pdf_export.py
 src/anuario2026/pipeline.py
 src/anuario2026/presentation.py
+src/anuario2026/presentation_svg.py
 src/anuario2026/registry.py
 src/anuario2026/reports.py
 src/anuario2026/sources.py

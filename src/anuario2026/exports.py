@@ -8,11 +8,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from .figure_outputs import companion_paths, inspect_svg, validate_editable_svg, validate_jpg
-from .pdf_export import (
-    PdfDependencyUnavailable,
-    create_portable_presentation_pdf,
-    figures_for_pdf,
-)
+from .pdf_export import PdfConversionError, PdfConverterUnavailable, convert_pptx_to_pdf
 from .pipeline import assemble_pptx
 from .reports import sha256_file
 
@@ -75,7 +71,7 @@ def _write_export_notes(temp_root: Path, project_root: Path, kind: str) -> None:
         "png": "PNG sin pérdida, generado directamente por el script de cada figura.",
         "jpg": "JPG de alta calidad, generado desde la misma figura Matplotlib que el PNG.",
         "svg": (
-            "SVG nativo y autocontenido. Los textos permanecen como elementos <text> "
+            "SVG nativo, autocontenido y con lienzo transparente. Los textos permanecen como elementos <text> "
             "seleccionables, con su posición en x/y o transform; las formas compatibles "
             "permanecen vectoriales. Los mapas o capas creadas originalmente como imagen "
             "pueden conservar imágenes incrustadas sin convertir el texto en curvas."
@@ -212,6 +208,9 @@ def create_figure_compendium(project_root: Path, run_id: str, kind: str) -> Path
                     "bytes": target.stat().st_size,
                     "editable_text": inspection.editable_text if inspection else "",
                     "fully_vector": inspection.fully_vector if inspection else "",
+                    "transparent_background": (
+                        inspection.transparent_background if inspection else ""
+                    ),
                     "text_elements": inspection.text_elements if inspection else "",
                     "positioned_text_elements": (
                         inspection.positioned_text_elements if inspection else ""
@@ -235,6 +234,7 @@ def create_figure_compendium(project_root: Path, run_id: str, kind: str) -> Path
             "bytes",
             "editable_text",
             "fully_vector",
+            "transparent_background",
             "text_elements",
             "positioned_text_elements",
             "vector_elements",
@@ -283,17 +283,15 @@ def ensure_pptx(project_root: Path, run_id: str) -> Path:
 
 
 def ensure_pdf(project_root: Path, run_id: str) -> Path:
-    rows = successful_figure_paths(project_root, run_id)
-    figures, section_titles = figures_for_pdf(project_root, rows)
+    pptx_path = ensure_pptx(project_root, run_id)
     pdf_path = project_root / "entrega" / f"anuario_estadistico_2026_{run_id}.pdf"
     try:
-        result = create_portable_presentation_pdf(
+        result = convert_pptx_to_pdf(
             project_root,
             run_id,
-            figures,
+            pptx_path,
             pdf_path,
-            section_titles=section_titles,
         )
-    except PdfDependencyUnavailable as exc:
+    except (PdfConverterUnavailable, PdfConversionError) as exc:
         raise ExportUnavailable(str(exc)) from exc
     return result.output_path

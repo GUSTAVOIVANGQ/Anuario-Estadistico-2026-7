@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.2.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.2.</dc:title>
+    <dc:date>2026-09-22T11:49:57.034877</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 56.448 583.848 
+L 1095.552 583.848 
+Q 1118.592 583.848 1118.592 570.888 
+L 1118.592 70.632 
+Q 1118.592 57.672 1095.552 57.672 
+L 56.448 57.672 
+Q 33.408 57.672 33.408 70.632 
+L 33.408 570.888 
+Q 33.408 583.848 56.448 583.848 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="patch_3">
+   <path d="M 80.64 519.048 
+L 542.592 519.048 
+Q 563.328 519.048 563.328 507.384 
+L 563.328 160.056 
+Q 563.328 148.392 542.592 148.392 
+L 80.64 148.392 
+Q 59.904 148.392 59.904 160.056 
+L 59.904 507.384 
+Q 59.904 519.048 80.64 519.048 
+z
+" style="fill: #f8f8fa; stroke: #d1d1df; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_4">
+   <path d="M 609.408 519.048 
+L 1071.36 519.048 
+Q 1092.096 519.048 1092.096 507.384 
+L 1092.096 160.056 
+Q 1092.096 148.392 1071.36 148.392 
+L 609.408 148.392 
+Q 588.672 148.392 588.672 160.056 
+L 588.672 507.384 
+Q 588.672 519.048 609.408 519.048 
+z
+" style="fill: #f8f8fa; stroke: #d1d1df; stroke-linejoin: miter"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_5">
+    <path d="M 288.4896 214.9632 
+C 265.616754 214.9632 243.206289 221.450887 223.870781 233.669937 
+C 204.535272 245.888987 189.056465 263.345377 179.238854 284.00407 
+L 288.4896 335.9232 
+z
+" clip-path="url(#p5952a0d48f)" style="fill: #64a0a1; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 179.238854 284.00407 
+C 170.477438 302.440264 166.523627 322.797699 167.747065 343.173146 
+C 168.970502 363.548594 175.331834 383.286659 186.236337 400.542019 
+C 197.14084 417.79738 212.237761 432.015001 230.115679 441.86567 
+C 247.993598 451.716339 268.077455 456.8832 288.4896 456.8832 
+L 288.4896 335.9232 
+z
+" clip-path="url(#p5952a0d48f)" style="fill: #132b2d; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="318.584448" y="243.131968" transform="rotate(-0 318.584448 243.131968)">Mujeres</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="322.382592" y="439.087168" transform="rotate(-0 322.382592 439.087168)">Hombres</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_7">
+     <path d="M 301.439448 288.890064 
+L 335.729448 288.890064 
+Q 345.629448 288.890064 345.629448 278.990064 
+L 345.629448 256.994064 
+Q 345.629448 247.094064 335.729448 247.094064 
+L 301.439448 247.094064 
+Q 291.539448 247.094064 291.539448 256.994064 
+L 291.539448 278.990064 
+Q 291.539448 288.890064 301.439448 288.890064 
+z
+" style="fill: #ffffff; opacity: 0.98"/>
+    </g>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="318.584448" y="274.976064" transform="rotate(-0 318.584448 274.976064)">36%</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_8">
+     <path d="M 305.237592 422.1396 
+L 339.527592 422.1396 
+Q 349.427592 422.1396 349.427592 412.2396 
+L 349.427592 390.2436 
+Q 349.427592 380.3436 339.527592 380.3436 
+L 305.237592 380.3436 
+Q 295.337592 380.3436 295.337592 390.2436 
+L 295.337592 412.2396 
+Q 295.337592 422.1396 305.237592 422.1396 
+z
+" style="fill: #ffffff; opacity: 0.98"/>
+    </g>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="322.382592" y="408.2256" transform="rotate(-0 322.382592 408.2256)">64%</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 817.2576 214.9632 
+C 797.807368 214.9632 778.64106 219.654563 761.38973 228.638053 
+C 744.138399 237.621544 729.305696 250.63489 718.153886 266.570656 
+L 817.2576 335.9232 
+z
+" clip-path="url(#pcd6d3595f5)" style="fill: #64a0a1; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 718.153886 266.570656 
+C 705.469243 284.696814 697.997359 305.960319 696.554955 328.036942 
+C 695.112551 350.113565 699.75417 372.16852 709.972453 391.79107 
+C 720.190737 411.41362 735.599302 427.861776 754.513899 439.337655 
+C 773.428496 450.813535 795.133907 456.8832 817.2576 456.8832 
+L 817.2576 335.9232 
+z
+" clip-path="url(#pcd6d3595f5)" style="fill: #132b2d; stroke: #ffffff; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="847.352448" y="243.131968" transform="rotate(-0 847.352448 243.131968)">Mujeres</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="851.150592" y="439.087168" transform="rotate(-0 851.150592 439.087168)">Hombres</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_11">
+     <path d="M 830.207448 288.890064 
+L 864.497448 288.890064 
+Q 874.397448 288.890064 874.397448 278.990064 
+L 874.397448 256.994064 
+Q 874.397448 247.094064 864.497448 247.094064 
+L 830.207448 247.094064 
+Q 820.307448 247.094064 820.307448 256.994064 
+L 820.307448 278.990064 
+Q 820.307448 288.890064 830.207448 288.890064 
+z
+" style="fill: #ffffff; opacity: 0.98"/>
+    </g>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="847.352448" y="274.976064" transform="rotate(-0 847.352448 274.976064)">31%</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_12">
+     <path d="M 834.005592 422.1396 
+L 868.295592 422.1396 
+Q 878.195592 422.1396 878.195592 412.2396 
+L 878.195592 390.2436 
+Q 878.195592 380.3436 868.295592 380.3436 
+L 834.005592 380.3436 
+Q 824.105592 380.3436 824.105592 390.2436 
+L 824.105592 412.2396 
+Q 824.105592 422.1396 834.005592 422.1396 
+z
+" style="fill: #ffffff; opacity: 0.98"/>
+    </g>
+    <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="851.150592" y="408.2256" transform="rotate(-0 851.150592 408.2256)">69%</text>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 700; font-size: 15px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="76.032" y="92.004" transform="rotate(-0 76.032 92.004)">Figura F.2.</text>
+  </g>
+  <g id="text_10">
+   <text style="font-size: 15px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="176.256" y="92.004" transform="rotate(-0 176.256 92.004)">Porcentaje de personas empleadas en telecomunicaciones y radiodifusión</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(401.544422 289.09485)">Total de personas</text>
+   <text style="font-size: 9px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(378.841922 303.218269)">empleadas en radiodifusión:</text>
+  </g>
+  <g id="text_12">
+   <g id="patch_13">
+    <path d="M 404.582703 363.643 
+L 473.241297 363.643 
+Q 489.341297 363.643 489.341297 347.543 
+L 489.341297 319.897 
+Q 489.341297 303.797 473.241297 303.797 
+L 404.582703 303.797 
+Q 388.482703 303.797 388.482703 319.897 
+L 388.482703 347.543 
+Q 388.482703 363.643 404.582703 363.643 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 23px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="438.912" y="342.644" transform="rotate(-0 438.912 342.644)">36,721</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(930.312422 289.09485)">Total de personas</text>
+   <text style="font-size: 9px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(893.754141 303.19155)">empleadas en telecomunicaciones:</text>
+  </g>
+  <g id="text_14">
+   <g id="patch_14">
+    <path d="M 926.772344 363.643 
+L 1008.587656 363.643 
+Q 1024.687656 363.643 1024.687656 347.543 
+L 1024.687656 319.897 
+Q 1024.687656 303.797 1008.587656 303.797 
+L 926.772344 303.797 
+Q 910.672344 303.797 910.672344 319.897 
+L 910.672344 347.543 
+Q 910.672344 363.643 926.772344 363.643 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 23px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="967.68" y="342.644" transform="rotate(-0 967.68 342.644)">242,348</text>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 9.2px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="561.9308" transform="rotate(-0 59.904 561.9308)">Fuente:</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 9.2px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="114.048" y="561.9308" transform="rotate(-0 114.048 561.9308)">Elaborado por CRT con datos de la Encuesta Nacional de Ocupación y Empleo (ENOE) a junio de 2026, del INEGI. Datos disponibles en https://www.inegi.org.mx/programas/enoe/15ymas/#microdatos</text>
+  </g>
+  <g id="text_17">
+   <g id="patch_15">
+    <path d="M 250.994125 164.005 
+L 372.237875 164.005 
+Q 387.437875 164.005 387.437875 148.805 
+L 387.437875 132.427 
+Q 387.437875 117.227 372.237875 117.227 
+L 250.994125 117.227 
+Q 235.794125 117.227 235.794125 132.427 
+L 235.794125 148.805 
+Q 235.794125 164.005 250.994125 164.005 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 19px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="311.616" y="147.988" transform="rotate(-0 311.616 147.988)">Radiodifusión</text>
+  </g>
+  <g id="text_18">
+   <g id="patch_16">
+    <path d="M 749.835641 164.005 
+L 930.932359 164.005 
+Q 946.132359 164.005 946.132359 148.805 
+L 946.132359 132.427 
+Q 946.132359 117.227 930.932359 117.227 
+L 749.835641 117.227 
+Q 734.635641 117.227 734.635641 132.427 
+L 734.635641 148.805 
+Q 734.635641 164.005 749.835641 164.005 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 19px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="840.384" y="147.988" transform="rotate(-0 840.384 147.988)">Telecomunicaciones</text>
+  </g>
+  <g id="patch_17">
+   <path d="M 62.208 92.016 
+L 65.664 92.016 
+Q 67.968 92.016 67.968 90.72 
+L 67.968 81.648 
+Q 67.968 80.352 65.664 80.352 
+L 62.208 80.352 
+Q 59.904 80.352 59.904 81.648 
+L 59.904 90.72 
+Q 59.904 92.016 62.208 92.016 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5952a0d48f">
+   <rect x="159.0624" y="205.2864" width="189.9072" height="261.2736"/>
+  </clipPath>
+  <clipPath id="pcd6d3595f5">
+   <rect x="687.8304" y="205.2864" width="189.9072" height="261.2736"/>
+  </clipPath>
+ </defs>
+</svg>

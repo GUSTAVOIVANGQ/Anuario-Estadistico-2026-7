@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.10.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.10.</dc:title>
+    <dc:date>2026-09-22T11:50:27.479096</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 38.016 620.136 
+L 1113.984 620.136 
+Q 1137.024 620.136 1137.024 607.176 
+L 1137.024 53.784 
+Q 1137.024 40.824 1113.984 40.824 
+L 38.016 40.824 
+Q 14.976 40.824 14.976 53.784 
+L 14.976 607.176 
+Q 14.976 620.136 38.016 620.136 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="patch_3">
+   <path d="M 61.056 497.016 
+L 261.504 497.016 
+Q 284.544 497.016 284.544 484.056 
+L 284.544 196.344 
+Q 284.544 183.384 261.504 183.384 
+L 61.056 183.384 
+Q 38.016 183.384 38.016 196.344 
+L 38.016 484.056 
+Q 38.016 497.016 61.056 497.016 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_4">
+    <path d="M 506.88 537.84 
+L 1071.36 537.84 
+L 1071.36 129.6 
+L 506.88 129.6 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 506.88 519.283636 
+L 538.7244 519.283636 
+L 538.7244 492.590027 
+L 506.88 492.590027 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 506.88 476.229428 
+L 549.876727 476.229428 
+L 549.876727 449.535819 
+L 506.88 449.535819 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 506.88 433.17522 
+L 552.654561 433.17522 
+L 552.654561 406.481611 
+L 506.88 406.481611 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 506.88 390.121012 
+L 584.745252 390.121012 
+L 584.745252 363.427404 
+L 506.88 363.427404 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 506.88 347.066804 
+L 592.791068 347.066804 
+L 592.791068 320.373196 
+L 506.88 320.373196 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 506.88 304.012596 
+L 599.915922 304.012596 
+L 599.915922 277.318988 
+L 506.88 277.318988 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 506.88 260.958389 
+L 758.158659 260.958389 
+L 758.158659 234.26478 
+L 506.88 234.26478 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 506.88 217.904181 
+L 880.715141 217.904181 
+L 880.715141 191.210572 
+L 506.88 191.210572 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 506.88 174.849973 
+L 993.50069 174.849973 
+L 993.50069 148.156364 
+L 506.88 148.156364 
+z
+" clip-path="url(#p3feb4e97c3)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="511.816332" transform="rotate(-0 496.88 511.816332)">Personas afrodescendientes</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="468.762124" transform="rotate(-0 496.88 468.762124)">Hombres</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="425.707916" transform="rotate(-0 496.88 425.707916)">Personas indígenas</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="382.653708" transform="rotate(-0 496.88 382.653708)">Personas de la comunidad LGBTIQ+</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="339.5995" transform="rotate(-0 496.88 339.5995)">Personas con discapacidad</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="296.545292" transform="rotate(-0 496.88 296.545292)">Personas adultas mayores</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="253.491084" transform="rotate(-0 496.88 253.491084)">Todas las personas son vulnerables</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="210.436876" transform="rotate(-0 496.88 210.436876)">Mujeres</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="496.88" y="167.382668" transform="rotate(-0 496.88 167.382668)">Niños, niñas y adolescentes</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_10">
+    <g id="patch_14">
+     <path d="M 552.239507 517.108832 
+L 566.999507 517.108832 
+Q 576.599507 517.108832 576.599507 507.508832 
+L 576.599507 504.364832 
+Q 576.599507 494.764832 566.999507 494.764832 
+L 552.239507 494.764832 
+Q 542.639507 494.764832 542.639507 504.364832 
+L 542.639507 507.508832 
+Q 542.639507 517.108832 552.239507 517.108832 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="545.639507" y="510.592832" transform="rotate(-0 545.639507 510.592832)">3.7%</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_15">
+     <path d="M 563.391833 474.054624 
+L 578.151833 474.054624 
+Q 587.751833 474.054624 587.751833 464.454624 
+L 587.751833 461.310624 
+Q 587.751833 451.710624 578.151833 451.710624 
+L 563.391833 451.710624 
+Q 553.791833 451.710624 553.791833 461.310624 
+L 553.791833 464.454624 
+Q 553.791833 474.054624 563.391833 474.054624 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="556.791833" y="467.538624" transform="rotate(-0 556.791833 467.538624)">5.0%</text>
+   </g>
+   <g id="text_12">
+    <g id="patch_16">
+     <path d="M 566.169667 431.000416 
+L 580.929667 431.000416 
+Q 590.529667 431.000416 590.529667 421.400416 
+L 590.529667 418.256416 
+Q 590.529667 408.656416 580.929667 408.656416 
+L 566.169667 408.656416 
+Q 556.569667 408.656416 556.569667 418.256416 
+L 556.569667 421.400416 
+Q 556.569667 431.000416 566.169667 431.000416 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="559.569667" y="424.484416" transform="rotate(-0 559.569667 424.484416)">5.3%</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_17">
+     <path d="M 598.260358 387.946208 
+L 613.020358 387.946208 
+Q 622.620358 387.946208 622.620358 378.346208 
+L 622.620358 375.202208 
+Q 622.620358 365.602208 613.020358 365.602208 
+L 598.260358 365.602208 
+Q 588.660358 365.602208 588.660358 375.202208 
+L 588.660358 378.346208 
+Q 588.660358 387.946208 598.260358 387.946208 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="591.660358" y="381.430208" transform="rotate(-0 591.660358 381.430208)">9.0%</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_18">
+     <path d="M 606.306174 344.892 
+L 621.066174 344.892 
+Q 630.666174 344.892 630.666174 335.292 
+L 630.666174 332.148 
+Q 630.666174 322.548 621.066174 322.548 
+L 606.306174 322.548 
+Q 596.706174 322.548 596.706174 332.148 
+L 596.706174 335.292 
+Q 596.706174 344.892 606.306174 344.892 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="599.706174" y="338.376" transform="rotate(-0 599.706174 338.376)">9.9%</text>
+   </g>
+   <g id="text_15">
+    <g id="patch_19">
+     <path d="M 613.431028 301.837792 
+L 635.055403 301.837792 
+Q 644.655403 301.837792 644.655403 292.237792 
+L 644.655403 289.093792 
+Q 644.655403 279.493792 635.055403 279.493792 
+L 613.431028 279.493792 
+Q 603.831028 279.493792 603.831028 289.093792 
+L 603.831028 292.237792 
+Q 603.831028 301.837792 613.431028 301.837792 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="606.831028" y="295.321792" transform="rotate(-0 606.831028 295.321792)">10.8%</text>
+   </g>
+   <g id="text_16">
+    <g id="patch_20">
+     <path d="M 771.673765 258.783584 
+L 793.29814 258.783584 
+Q 802.89814 258.783584 802.89814 249.183584 
+L 802.89814 246.039584 
+Q 802.89814 236.439584 793.29814 236.439584 
+L 771.673765 236.439584 
+Q 762.073765 236.439584 762.073765 246.039584 
+L 762.073765 249.183584 
+Q 762.073765 258.783584 771.673765 258.783584 
+z
+" style="fill: #ffffff; stroke: #86adae; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="765.073765" y="252.267584" transform="rotate(-0 765.073765 252.267584)">29.1%</text>
+   </g>
+   <g id="text_17">
+    <g id="patch_21">
+     <path d="M 894.230248 215.729376 
+L 915.854623 215.729376 
+Q 925.454623 215.729376 925.454623 206.129376 
+L 925.454623 202.985376 
+Q 925.454623 193.385376 915.854623 193.385376 
+L 894.230248 193.385376 
+Q 884.630248 193.385376 884.630248 202.985376 
+L 884.630248 206.129376 
+Q 884.630248 215.729376 894.230248 215.729376 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="887.630248" y="209.213376" transform="rotate(-0 887.630248 209.213376)">43.2%</text>
+   </g>
+   <g id="text_18">
+    <g id="patch_22">
+     <path d="M 1007.015796 172.675168 
+L 1028.640171 172.675168 
+Q 1038.240171 172.675168 1038.240171 163.075168 
+L 1038.240171 159.931168 
+Q 1038.240171 150.331168 1028.640171 150.331168 
+L 1007.015796 150.331168 
+Q 997.415796 150.331168 997.415796 159.931168 
+L 997.415796 163.075168 
+Q 997.415796 172.675168 1007.015796 172.675168 
+z
+" style="fill: #ffffff; stroke: #335a5c; stroke-width: 0.8; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1000.415796" y="166.159168" transform="rotate(-0 1000.415796 166.159168)">56.3%</text>
+   </g>
+  </g>
+  <g id="text_19">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="73.728" y="79.432" transform="rotate(-0 73.728 79.432)">Figura F.10.</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="196.992" y="79.432" transform="rotate(-0 196.992 79.432)">Personas con mayor riesgo de ser víctimas de violencia en Internet (2023)</text>
+  </g>
+  <g id="text_21">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="72.576" y="233.28" transform="rotate(-0 72.576 233.28)">VIOLENCIA DIGITAL</text>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 279.668241)">La percepción de mayor riesgo</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 301.43023)">se concentra en niños, niñas y</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 323.96218)">adolescentes (56.3%). Los</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 345.4187)">porcentajes se calcularon con</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 367.381041)">el factor de expansión</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 389.2751)">normalizado entre personas</text>
+   <text style="font-size: 11.5px; font-family: 'Noto Sans'; fill: #222222" transform="translate(72.576 411.23205)">usuarias de Internet fijo.</text>
+  </g>
+  <g id="text_23">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="54.144" y="589.68" transform="rotate(-0 54.144 589.68)">Fuente:</text>
+  </g>
+  <g id="text_24">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="108.288" y="589.68" transform="rotate(-0 108.288 589.68)">Elaborado por CRT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.</text>
+  </g>
+  <g id="text_25">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="54.144" y="604.584" transform="rotate(-0 54.144 604.584)">Nota:</text>
+  </g>
+  <g id="text_26">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="93.312" y="604.584" transform="rotate(-0 93.312 604.584)">Porcentajes ponderados; las respuestas son de selección múltiple y no suman 100%.</text>
+  </g>
+  <g id="patch_23">
+   <path d="M 59.904 79.056 
+L 63.36 79.056 
+Q 65.664 79.056 65.664 77.76 
+L 65.664 68.688 
+Q 65.664 67.392 63.36 67.392 
+L 59.904 67.392 
+Q 57.6 67.392 57.6 68.688 
+L 57.6 77.76 
+Q 57.6 79.056 59.904 79.056 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3feb4e97c3">
+   <rect x="506.88" y="129.6" width="564.48" height="408.24"/>
+  </clipPath>
+ </defs>
+</svg>

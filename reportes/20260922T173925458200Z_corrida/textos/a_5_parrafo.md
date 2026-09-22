@@ -1,0 +1,1 @@
+En 2026, la Inversión Extranjera Directa acumulada de enero-marzo en telecomunicaciones fue de -22.36 millones de dólares, equivalente al -0.09% de la IED total de México, que ascendió a 24,503.05 millones de dólares. En el periodo mostrado, el mayor monto de IED en telecomunicaciones se registró en 2015, con 2,749.70 millones de dólares.

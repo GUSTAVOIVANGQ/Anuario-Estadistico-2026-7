@@ -45,6 +45,26 @@ if (-not $SinFrontend) {
     }
 }
 
+$convertidoresPdf = @()
+if (Test-Path -LiteralPath 'Registry::HKEY_CLASSES_ROOT\PowerPoint.Application') {
+    $convertidoresPdf += 'Microsoft PowerPoint'
+}
+$soffice = Get-Command soffice, libreoffice -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($null -eq $soffice) {
+    $soffice = @(
+        'C:\Program Files\LibreOffice\program\soffice.exe',
+        'C:\Program Files (x86)\LibreOffice\program\soffice.exe'
+    ) | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+}
+if ($null -ne $soffice) {
+    $convertidoresPdf += 'LibreOffice'
+}
+if ($convertidoresPdf.Count -eq 0) {
+    Write-Warning 'La descarga PDF necesita Microsoft PowerPoint o LibreOffice. El resto del proyecto quedó instalado correctamente.'
+} else {
+    Write-Host "Conversión PPTX a PDF disponible: $($convertidoresPdf -join ', ')."
+}
+
 Write-Host "Entorno listo."
 Write-Host "Pipeline: .\ejecutar.ps1 doctor"
 Write-Host "Interfaz web: .\ejecutar.ps1 web"

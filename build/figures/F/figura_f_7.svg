@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.7.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.7.</dc:title>
+    <dc:date>2026-09-22T11:50:06.652294</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 54.144 593.568 
+L 1097.856 593.568 
+Q 1118.592 593.568 1118.592 581.904 
+L 1118.592 59.616 
+Q 1118.592 47.952 1097.856 47.952 
+L 54.144 47.952 
+Q 33.408 47.952 33.408 59.616 
+L 33.408 581.904 
+Q 33.408 593.568 54.144 593.568 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="patch_3">
+   <path d="M 77.184 522.288 
+L 544.896 522.288 
+Q 565.632 522.288 565.632 510.624 
+L 565.632 156.816 
+Q 565.632 145.152 544.896 145.152 
+L 77.184 145.152 
+Q 56.448 145.152 56.448 156.816 
+L 56.448 510.624 
+Q 56.448 522.288 77.184 522.288 
+z
+" style="fill: #f8f8fa; stroke: #b5b7c8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_4">
+   <path d="M 607.104 522.288 
+L 1074.816 522.288 
+Q 1095.552 522.288 1095.552 510.624 
+L 1095.552 156.816 
+Q 1095.552 145.152 1074.816 145.152 
+L 607.104 145.152 
+Q 586.368 145.152 586.368 156.816 
+L 586.368 510.624 
+Q 586.368 522.288 607.104 522.288 
+z
+" style="fill: #f8f8fa; stroke: #b5b7c8; stroke-width: 0.8; stroke-linejoin: miter"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_5">
+    <path d="M 92.16 447.12 
+L 529.92 447.12 
+L 529.92 200.88 
+L 92.16 200.88 
+L 92.16 447.12 
+z
+" style="fill: none; opacity: 0"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 112.058182 447.12 
+L 134.584425 447.12 
+L 134.584425 250.380505 
+L 112.058182 250.380505 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 165.692095 447.12 
+L 188.218339 447.12 
+L 188.218339 344.954686 
+L 165.692095 344.954686 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 219.326008 447.12 
+L 241.852252 447.12 
+L 241.852252 431.159329 
+L 219.326008 431.159329 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 272.959922 447.12 
+L 295.486165 447.12 
+L 295.486165 426.626981 
+L 272.959922 426.626981 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 326.593835 447.12 
+L 349.120078 447.12 
+L 349.120078 412.94354 
+L 326.593835 412.94354 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 380.227748 447.12 
+L 402.753992 447.12 
+L 402.753992 423.837875 
+L 380.227748 423.837875 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 433.861661 447.12 
+L 456.387905 447.12 
+L 456.387905 424.369485 
+L 433.861661 424.369485 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 487.495575 447.12 
+L 510.021818 447.12 
+L 510.021818 423.429814 
+L 487.495575 423.429814 
+z
+" clip-path="url(#pe529d58958)" style="fill: #86adae"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(105.763288 457.8926)">Crear o poner</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(107.880257 465.2474)">contraseñas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(114.092788 472.6022)">(claves,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(115.553741 479.957)">huella</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(114.698179 487.3118)">digital,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(114.085194 494.6666)">patrón,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(112.121788 502.0214)">etcétera)</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(164.927139 457.8926)">Instalar o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(164.695529 465.2474)">actualizar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(163.031654 472.6022)">programas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(165.232576 479.957)">antivirus,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(159.378217 487.3118)">cortafuegos o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(164.11967 494.6666)">antiespías</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(219.022583 457.8926)">Bloquear</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(219.060552 465.2474)">ventanas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(210.705739 472.6022)">emergentes del</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(216.927552 479.957)">navegador</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(273.490965 457.8926)">Cambiar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(264.213512 465.2474)">periódicamente</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(280.718528 472.6022)">las</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(268.781996 479.957)">contraseñas</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(320.720394 457.8926)">No ingresar a</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(325.261457 465.2474)">sitios web</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(323.022988 472.6022)">inseguros o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(320.568519 479.957)">desconocidos</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(377.934761 457.8926)">No abrir ni</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(381.296261 465.2474)">guardar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(375.401823 472.6022)">archivos que</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(383.048307 479.957)">envían</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(379.788901 487.3118)">personas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(374.321401 494.6666)">desconocidas</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(426.765205 457.8926)">No publicar su</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(434.527283 465.2474)">correo o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(435.045768 472.6022)">número</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(428.657314 479.957)">telefónico en</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(427.414893 487.3118)">redes sociales</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="498.758696" y="457.8926" transform="rotate(-0 498.758696 457.8926)">Otra</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="450.8615" transform="rotate(-0 87.16 450.8615)">0.0%</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="406.890071" transform="rotate(-0 87.16 406.890071)">20.0%</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11"/>
+     <g id="text_11">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="362.918643" transform="rotate(-0 87.16 362.918643)">40.0%</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12"/>
+     <g id="text_12">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="318.947214" transform="rotate(-0 87.16 318.947214)">60.0%</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_13"/>
+     <g id="text_13">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="274.975786" transform="rotate(-0 87.16 274.975786)">80.0%</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_14"/>
+     <g id="text_14">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="87.16" y="231.004357" transform="rotate(-0 87.16 231.004357)">100.0%</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="123.321304" y="245.983362" transform="rotate(-0 123.321304 245.983362)">89.5%</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="176.955217" y="340.557543" transform="rotate(-0 176.955217 340.557543)">46.5%</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="230.58913" y="426.762186" transform="rotate(-0 230.58913 426.762186)">7.3%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="284.223043" y="422.229839" transform="rotate(-0 284.223043 422.229839)">9.3%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="337.856957" y="408.546397" transform="rotate(-0 337.856957 408.546397)">15.5%</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="391.49087" y="419.440732" transform="rotate(-0 391.49087 419.440732)">10.6%</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="445.124783" y="419.972343" transform="rotate(-0 445.124783 419.972343)">10.3%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="498.758696" y="419.032671" transform="rotate(-0 498.758696 419.032671)">10.8%</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_14">
+    <path d="M 622.08 447.12 
+L 1059.84 447.12 
+L 1059.84 200.88 
+L 622.08 200.88 
+L 622.08 447.12 
+z
+" style="fill: none; opacity: 0"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 641.978182 447.12 
+L 664.504425 447.12 
+L 664.504425 253.091078 
+L 641.978182 253.091078 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 695.612095 447.12 
+L 718.138339 447.12 
+L 718.138339 336.87451 
+L 695.612095 336.87451 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 749.246008 447.12 
+L 771.772252 447.12 
+L 771.772252 422.600334 
+L 749.246008 422.600334 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 802.879922 447.12 
+L 825.406165 447.12 
+L 825.406165 422.324756 
+L 802.879922 422.324756 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 856.513835 447.12 
+L 879.040078 447.12 
+L 879.040078 408.321845 
+L 856.513835 408.321845 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 910.147748 447.12 
+L 932.673992 447.12 
+L 932.673992 423.788217 
+L 910.147748 423.788217 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 963.781661 447.12 
+L 986.307905 447.12 
+L 986.307905 424.118404 
+L 963.781661 424.118404 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 1017.415575 447.12 
+L 1039.941818 447.12 
+L 1039.941818 424.202674 
+L 1017.415575 424.202674 
+z
+" clip-path="url(#p48afec0b88)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_9">
+     <g id="line2d_15"/>
+     <g id="text_23">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(635.683288 457.8926)">Crear o poner</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(637.800257 465.2474)">contraseñas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(644.012788 472.6022)">(claves,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(645.473741 479.957)">huella</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(644.618179 487.3118)">digital,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(644.005194 494.6666)">patrón,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(642.041788 502.0214)">etcétera)</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_16"/>
+     <g id="text_24">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(694.847139 457.8926)">Instalar o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(694.615529 465.2474)">actualizar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(692.951654 472.6022)">programas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(695.152576 479.957)">antivirus,</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(689.298217 487.3118)">cortafuegos o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(694.03967 494.6666)">antiespías</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_17"/>
+     <g id="text_25">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(748.942583 457.8926)">Bloquear</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(748.980552 465.2474)">ventanas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(740.625739 472.6022)">emergentes del</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(746.847552 479.957)">navegador</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_18"/>
+     <g id="text_26">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(803.410965 457.8926)">Cambiar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(794.133512 465.2474)">periódicamente</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(810.638528 472.6022)">las</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(798.701996 479.957)">contraseñas</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_19"/>
+     <g id="text_27">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(850.640394 457.8926)">No ingresar a</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(855.181457 465.2474)">sitios web</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(852.942988 472.6022)">inseguros o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(850.488519 479.957)">desconocidos</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_20"/>
+     <g id="text_28">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(907.854761 457.8926)">No abrir ni</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(911.216261 465.2474)">guardar</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(905.321823 472.6022)">archivos que</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(912.968307 479.957)">envían</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(909.708901 487.3118)">personas</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(904.241401 494.6666)">desconocidas</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="line2d_21"/>
+     <g id="text_29">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(956.685205 457.8926)">No publicar su</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(964.447283 465.2474)">correo o</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(964.965768 472.6022)">número</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(958.577314 479.957)">telefónico en</text>
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(957.334893 487.3118)">redes sociales</text>
+     </g>
+    </g>
+    <g id="xtick_16">
+     <g id="line2d_22"/>
+     <g id="text_30">
+      <text style="font-size: 5.4px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1028.678696" y="457.8926" transform="rotate(-0 1028.678696 457.8926)">Otra</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_7">
+     <g id="line2d_23"/>
+     <g id="text_31">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="450.8615" transform="rotate(-0 617.08 450.8615)">0.0%</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_24"/>
+     <g id="text_32">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="406.890071" transform="rotate(-0 617.08 406.890071)">20.0%</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_25"/>
+     <g id="text_33">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="362.918643" transform="rotate(-0 617.08 362.918643)">40.0%</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_26"/>
+     <g id="text_34">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="318.947214" transform="rotate(-0 617.08 318.947214)">60.0%</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_27"/>
+     <g id="text_35">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="274.975786" transform="rotate(-0 617.08 274.975786)">80.0%</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_28"/>
+     <g id="text_36">
+      <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="617.08" y="231.004357" transform="rotate(-0 617.08 231.004357)">100.0%</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="653.241304" y="248.693935" transform="rotate(-0 653.241304 248.693935)">88.3%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="706.875217" y="332.477367" transform="rotate(-0 706.875217 332.477367)">50.1%</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="760.50913" y="418.203191" transform="rotate(-0 760.50913 418.203191)">11.2%</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="814.143043" y="417.927613" transform="rotate(-0 814.143043 417.927613)">11.3%</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="867.776957" y="403.924702" transform="rotate(-0 867.776957 403.924702)">17.6%</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="921.41087" y="419.391074" transform="rotate(-0 921.41087 419.391074)">10.6%</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="975.044783" y="419.721261" transform="rotate(-0 975.044783 419.721261)">10.5%</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 7.3px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1028.678696" y="419.805531" transform="rotate(-0 1028.678696 419.805531)">10.4%</text>
+   </g>
+  </g>
+  <g id="text_45">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="76.032" y="87.728" transform="rotate(-0 76.032 87.728)">Figura F.7.</text>
+  </g>
+  <g id="text_46">
+   <text style="font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="173.952" y="87.728" transform="rotate(-0 173.952 87.728)">Medidas de seguridad para proteger equipos o cuentas de Internet, por sexo</text>
+  </g>
+  <g id="text_47">
+   <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="576.0865" transform="rotate(-0 59.904 576.0865)">Fuente:</text>
+  </g>
+  <g id="text_48">
+   <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="109.44" y="576.0865" transform="rotate(-0 109.44 576.0865)">Elaborado por CRT con datos del MOCIBA 2025, del INEGI. Para más información consultar https://www.inegi.org.mx/programas/mociba/2025/</text>
+  </g>
+  <g id="text_49">
+   <g id="patch_23">
+    <path d="M 388.357481 206.838 
+L 451.680919 206.838 
+Q 466.080919 206.838 466.080919 192.438 
+L 466.080919 176.922 
+Q 466.080919 162.522 451.680919 162.522 
+L 388.357481 162.522 
+Q 373.957481 162.522 373.957481 176.922 
+L 373.957481 192.438 
+Q 373.957481 206.838 388.357481 206.838 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="420.0192" y="191.664" transform="rotate(-0 420.0192 191.664)">Mujeres</text>
+  </g>
+  <g id="text_50">
+   <g id="patch_24">
+    <path d="M 913.749356 206.838 
+L 986.129044 206.838 
+Q 1000.529044 206.838 1000.529044 192.438 
+L 1000.529044 176.922 
+Q 1000.529044 162.522 986.129044 162.522 
+L 913.749356 162.522 
+Q 899.349356 162.522 899.349356 176.922 
+L 899.349356 192.438 
+Q 899.349356 206.838 913.749356 206.838 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <text style="font-weight: 700; font-size: 18px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="949.9392" y="191.664" transform="rotate(-0 949.9392 191.664)">Hombres</text>
+  </g>
+  <g id="patch_25">
+   <path d="M 62.208 88.128 
+L 65.664 88.128 
+Q 67.968 88.128 67.968 86.832 
+L 67.968 77.76 
+Q 67.968 76.464 65.664 76.464 
+L 62.208 76.464 
+Q 59.904 76.464 59.904 77.76 
+L 59.904 86.832 
+Q 59.904 88.128 62.208 88.128 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe529d58958">
+   <rect x="92.16" y="200.88" width="437.76" height="246.24"/>
+  </clipPath>
+  <clipPath id="p48afec0b88">
+   <rect x="622.08" y="200.88" width="437.76" height="246.24"/>
+  </clipPath>
+ </defs>
+</svg>

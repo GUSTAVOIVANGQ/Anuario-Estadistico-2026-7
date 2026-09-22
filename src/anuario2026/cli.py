@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 
 from . import __version__
+from .pdf_export import available_pdf_converters
 from .pipeline import assemble_pptx, run_pipeline
 from .registry import load_figures, load_project_config
 from .sources import load_sources
@@ -57,14 +58,11 @@ def doctor(project_root: Path) -> int:
         f"UI React compilada: {'OK' if frontend_dist.is_file() else 'FALTA (ejecuta preparar_entorno.ps1)'} "
         f"| {frontend_dist}"
     )
-    try:
-        import pypdf  # noqa: F401
-        import reportlab  # noqa: F401
-
-        pdf_status = "OK"
-    except ImportError:
-        pdf_status = "FALTA (ejecuta preparar_entorno.ps1)"
-    print(f"Exportador PDF portátil sin Office: {pdf_status}")
+    converters = available_pdf_converters()
+    pdf_status = ", ".join(converters) if converters else (
+        "FALTA (instala Microsoft PowerPoint o LibreOffice)"
+    )
+    print(f"Exportador PDF desde PPTX: {pdf_status}")
     print("Estado base: correcto")
     return 0
 

@@ -46,8 +46,7 @@ Se abrirá `http://127.0.0.1:8765`.
 ## Requisitos adicionales de la UI
 
 - Node.js 20 o superior y npm para compilar `web/`.
-- Para exportar PDF no se requiere software externo: el proyecto lo genera directamente
-  con Python, ReportLab y pypdf, instalados por `preparar_entorno.ps1`.
+- Desde 0.30.0 la exportación PDF usa PowerPoint/LibreOffice únicamente para renderizar la base visual sin figuras. Cada figura se inserta después directamente desde su SVG original con CairoSVG. Requiere Microsoft PowerPoint en Windows o LibreOffice en Windows, macOS o Linux para la base; `preparar_entorno.ps1` detecta el motor disponible y muestra una advertencia clara cuando falta.
 
 ## Nota sobre SVG
 

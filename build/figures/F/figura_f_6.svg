@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.6.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.6.</dc:title>
+    <dc:date>2026-09-22T11:50:04.663542</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 54.144 593.568 
+L 1097.856 593.568 
+Q 1118.592 593.568 1118.592 581.904 
+L 1118.592 59.616 
+Q 1118.592 47.952 1097.856 47.952 
+L 54.144 47.952 
+Q 33.408 47.952 33.408 59.616 
+L 33.408 581.904 
+Q 33.408 593.568 54.144 593.568 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_3">
+    <path d="M 391.68 524.88 
+L 1082.88 524.88 
+L 1082.88 162 
+L 391.68 162 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 391.68 499.539799 
+L 435.523048 499.539799 
+L 435.523048 490.694144 
+L 391.68 490.694144 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 391.68 473.523166 
+L 442.552465 473.523166 
+L 442.552465 464.677511 
+L 391.68 464.677511 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 391.68 447.506533 
+L 476.41318 447.506533 
+L 476.41318 438.660878 
+L 391.68 438.660878 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 391.68 421.4899 
+L 534.097667 421.4899 
+L 534.097667 412.644244 
+L 391.68 412.644244 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 391.68 395.473266 
+L 633.84718 395.473266 
+L 633.84718 386.627611 
+L 391.68 386.627611 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 391.68 369.456633 
+L 655.113068 369.456633 
+L 655.113068 360.610978 
+L 391.68 360.610978 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 391.68 343.44 
+L 704.380798 343.44 
+L 704.380798 334.594345 
+L 391.68 334.594345 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 391.68 317.423367 
+L 705.423065 317.423367 
+L 705.423065 308.577711 
+L 391.68 308.577711 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 391.68 291.406734 
+L 741.481139 291.406734 
+L 741.481139 282.561078 
+L 391.68 282.561078 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 391.68 265.3901 
+L 772.186396 265.3901 
+L 772.186396 256.544445 
+L 391.68 256.544445 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 391.68 239.373467 
+L 799.123767 239.373467 
+L 799.123767 230.527812 
+L 391.68 230.527812 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 391.68 213.356834 
+L 889.857599 213.356834 
+L 889.857599 204.511179 
+L 391.68 204.511179 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 391.68 187.340201 
+L 985.925795 187.340201 
+L 985.925795 178.494545 
+L 391.68 178.494545 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 391.68 508.385455 
+L 440.033607 508.385455 
+L 440.033607 499.539799 
+L 391.68 499.539799 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 391.68 482.368821 
+L 434.286748 482.368821 
+L 434.286748 473.523166 
+L 391.68 473.523166 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 391.68 456.352188 
+L 471.470617 456.352188 
+L 471.470617 447.506533 
+L 391.68 447.506533 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 391.68 430.335555 
+L 566.272404 430.335555 
+L 566.272404 421.4899 
+L 391.68 421.4899 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 391.68 404.318922 
+L 595.728198 404.318922 
+L 595.728198 395.473266 
+L 391.68 395.473266 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 391.68 378.302289 
+L 721.899272 378.302289 
+L 721.899272 369.456633 
+L 391.68 369.456633 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 391.68 352.285655 
+L 682.262004 352.285655 
+L 682.262004 343.44 
+L 391.68 343.44 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 391.68 326.269022 
+L 693.21319 326.269022 
+L 693.21319 317.423367 
+L 391.68 317.423367 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 391.68 300.252389 
+L 832.47725 300.252389 
+L 832.47725 291.406734 
+L 391.68 291.406734 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 391.68 274.235756 
+L 585.449736 274.235756 
+L 585.449736 265.3901 
+L 391.68 265.3901 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 391.68 248.219122 
+L 564.136795 248.219122 
+L 564.136795 239.373467 
+L 391.68 239.373467 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 391.68 222.202489 
+L 957.227837 222.202489 
+L 957.227837 213.356834 
+L 391.68 213.356834 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 391.68 196.185856 
+L 1003.361416 196.185856 
+L 1003.361416 187.340201 
+L 391.68 187.340201 
+z
+" clip-path="url(#pbf1c06a647)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="391.68" y="536.3975" transform="rotate(-0 391.68 536.3975)">0.0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="472.518968" y="536.3975" transform="rotate(-0 472.518968 536.3975)">5.0%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="553.357936" y="536.3975" transform="rotate(-0 553.357936 536.3975)">10.0%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="634.196903" y="536.3975" transform="rotate(-0 634.196903 536.3975)">15.0%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="715.035871" y="536.3975" transform="rotate(-0 715.035871 536.3975)">20.0%</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="795.874839" y="536.3975" transform="rotate(-0 795.874839 536.3975)">25.0%</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="876.713807" y="536.3975" transform="rotate(-0 876.713807 536.3975)">30.0%</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="957.552774" y="536.3975" transform="rotate(-0 957.552774 536.3975)">35.0%</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1038.391742" y="536.3975" transform="rotate(-0 1038.391742 536.3975)">40.0%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="503.922699" transform="rotate(-0 388.18 503.922699)">Otra situación</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_11"/>
+     <g id="text_11">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(235.151344 472.321866)">Publicar o vender imágenes o videos de</text>
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(322.801656 483.490266)">contenido sexual</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_12"/>
+     <g id="text_12">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(267.709188 446.305233)">Publicar y/o enviar información</text>
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(296.429688 457.473633)">personal, fotos o videos</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13"/>
+     <g id="text_13">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(250.776188 420.2886)">Amenazar con publicar información</text>
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(290.346313 431.457)">personal, audios o videos</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14"/>
+     <g id="text_14">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="399.856166" transform="rotate(-0 388.18 399.856166)">Críticas por apariencia o clase social</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15"/>
+     <g id="text_15">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(233.358875 368.255333)">Provocaciones para reaccionar de forma</text>
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(355.004594 379.423733)">negativa</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_16"/>
+     <g id="text_16">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="347.8229" transform="rotate(-0 388.18 347.8229)">Rastreo de cuentas o sitios web</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_17"/>
+     <g id="text_17">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="321.806267" transform="rotate(-0 388.18 321.806267)">Suplantación de identidad</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_18"/>
+     <g id="text_18">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="295.789634" transform="rotate(-0 388.18 295.789634)">Llamadas ofensivas</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_19"/>
+     <g id="text_19">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="269.773" transform="rotate(-0 388.18 269.773)">Recibir contenido sexual</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_20"/>
+     <g id="text_20">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="243.756367" transform="rotate(-0 388.18 243.756367)">Insinuaciones o propuestas sexuales</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_21"/>
+     <g id="text_21">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="217.739734" transform="rotate(-0 388.18 217.739734)">Mensajes ofensivos</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_22"/>
+     <g id="text_22">
+      <text style="font-size: 8.2px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="191.723101" transform="rotate(-0 388.18 191.723101)">Contacto mediante identidades falsas</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="441.181776" y="497.832972" transform="rotate(-0 441.181776 497.832972)">2.7%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="445.692334" y="506.678627" transform="rotate(-0 445.692334 506.678627)">3.0%</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="448.211193" y="471.816338" transform="rotate(-0 448.211193 471.816338)">3.1%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="439.945475" y="480.661994" transform="rotate(-0 439.945475 480.661994)">2.6%</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="482.071908" y="445.799705" transform="rotate(-0 482.071908 445.799705)">5.2%</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="477.129345" y="454.64536" transform="rotate(-0 477.129345 454.64536)">4.9%</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="539.756394" y="419.783072" transform="rotate(-0 539.756394 419.783072)">8.8%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="571.931131" y="428.628727" transform="rotate(-0 571.931131 428.628727)">10.8%</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="639.505908" y="393.766439" transform="rotate(-0 639.505908 393.766439)">15.0%</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="601.386926" y="402.612094" transform="rotate(-0 601.386926 402.612094)">12.6%</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="660.771795" y="367.749806" transform="rotate(-0 660.771795 367.749806)">16.3%</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="727.558" y="376.595461" transform="rotate(-0 727.558 376.595461)">20.4%</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="710.039526" y="341.733172" transform="rotate(-0 710.039526 341.733172)">19.3%</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="687.920732" y="350.578828" transform="rotate(-0 687.920732 350.578828)">18.0%</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="711.081793" y="315.716539" transform="rotate(-0 711.081793 315.716539)">19.4%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="698.871918" y="324.562194" transform="rotate(-0 698.871918 324.562194)">18.7%</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="747.139867" y="289.699906" transform="rotate(-0 747.139867 289.699906)">21.6%</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="838.135978" y="298.545561" transform="rotate(-0 838.135978 298.545561)">27.3%</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="777.845124" y="263.683273" transform="rotate(-0 777.845124 263.683273)">23.5%</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="591.108464" y="272.528928" transform="rotate(-0 591.108464 272.528928)">12.0%</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="804.782495" y="237.66664" transform="rotate(-0 804.782495 237.66664)">25.2%</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="569.795523" y="246.512295" transform="rotate(-0 569.795523 246.512295)">10.7%</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="895.516327" y="211.650006" transform="rotate(-0 895.516327 211.650006)">30.8%</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="962.886565" y="220.495662" transform="rotate(-0 962.886565 220.495662)">35.0%</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="991.584522" y="185.633373" transform="rotate(-0 991.584522 185.633373)">36.8%</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 7px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1009.020144" y="194.479028" transform="rotate(-0 1009.020144 194.479028)">37.8%</text>
+   </g>
+  </g>
+  <g id="text_49">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="76.032" y="87.728" transform="rotate(-0 76.032 87.728)">Figura F.6.</text>
+  </g>
+  <g id="text_50">
+   <text style="font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="173.952" y="87.728" transform="rotate(-0 173.952 87.728)">Distribución porcentual de las situaciones de ciberacoso experimentadas por sexo</text>
+  </g>
+  <g id="text_51">
+   <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="576.0865" transform="rotate(-0 59.904 576.0865)">Fuente:</text>
+  </g>
+  <g id="text_52">
+   <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="109.44" y="576.0865" transform="rotate(-0 109.44 576.0865)">Elaborado por CRT con datos del MOCIBA 2025, del INEGI. Para más información consultar https://www.inegi.org.mx/programas/mociba/2025/</text>
+  </g>
+  <g id="legend_1">
+   <g id="patch_30">
+    <path d="M 578.064219 139.57 
+L 598.064219 139.57 
+L 598.064219 132.57 
+L 578.064219 132.57 
+z
+" style="fill: #86adae"/>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 10px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="606.064219" y="139.57" transform="rotate(-0 606.064219 139.57)">Mujeres</text>
+   </g>
+   <g id="patch_31">
+    <path d="M 663.895469 139.57 
+L 683.895469 139.57 
+L 683.895469 132.57 
+L 663.895469 132.57 
+z
+" style="fill: #335a5c"/>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 10px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="691.895469" y="139.57" transform="rotate(-0 691.895469 139.57)">Hombres</text>
+   </g>
+  </g>
+  <g id="patch_32">
+   <path d="M 62.208 88.128 
+L 65.664 88.128 
+Q 67.968 88.128 67.968 86.832 
+L 67.968 77.76 
+Q 67.968 76.464 65.664 76.464 
+L 62.208 76.464 
+Q 59.904 76.464 59.904 77.76 
+L 59.904 86.832 
+Q 59.904 88.128 62.208 88.128 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbf1c06a647">
+   <rect x="391.68" y="162" width="691.2" height="362.88"/>
+  </clipPath>
+ </defs>
+</svg>

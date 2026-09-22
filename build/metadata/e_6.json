@@ -3,7 +3,19 @@
   "title": "Beneficios de vender mediante Internet fijo",
   "reference_page_2024": 77,
   "figure_path": "build\\figures\\E\\figura_e_6.png",
-  "run_id": "20260921T161817643317Z_corrida",
+  "figure_formats": {
+    "png": "build\\figures\\E\\figura_e_6.png",
+    "jpg": "build\\figures\\E\\figura_e_6.jpg",
+    "svg": "build\\figures\\E\\figura_e_6.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 46,
+    "positioned_text_elements": 46,
+    "vector_elements": 56,
+    "embedded_images": 0
+  },
+  "run_id": "20260922T173925458200Z_corrida",
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\E\\figura_e_6.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\e_6.md",

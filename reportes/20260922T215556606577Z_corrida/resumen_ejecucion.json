@@ -1,0 +1,19 @@
+{
+  "run_id": "20260922T215556606577Z_corrida",
+  "dry_run": false,
+  "started_at": "2026-09-22T21:55:56+00:00",
+  "finished_at": "2026-09-22T21:56:00+00:00",
+  "statuses": [
+    {
+      "order": 1,
+      "figure_id": "A.1",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_a_1.py",
+      "output_path": "build\\figures\\A\\figura_a_1.png",
+      "started_at": "2026-09-22T21:55:56+00:00",
+      "finished_at": "2026-09-22T21:56:00+00:00",
+      "duration_seconds": 4.212
+    }
+  ]
+}

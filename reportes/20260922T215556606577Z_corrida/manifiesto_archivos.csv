@@ -1,0 +1,9 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+A.1,dato_crudo,data/raw/inegi_pibt_2026_q2/objects/65a7899d4106e94ddb0612919ea45f7ce356910693a6c74526994e3eb11a5dee/PIBT_2.xlsx,65a7899d4106e94ddb0612919ea45f7ce356910693a6c74526994e3eb11a5dee,1904922,2026-09-09T19:37:36+00:00
+A.1,datos_usados,reportes/20260922T215556606577Z_corrida/datos_usados/a_1_datos_usados.csv,aa9e803b540ec50e7c13d6cf77e9d280efd77a6d5cd9b33ac39db2ceb3ce5856,5223,2026-09-22T21:55:59+00:00
+A.1,texto_generado,build/text/a_1.md,288b366a5b151e472ecd215c8386424ffd94d6dd1be8395b7cdd970fbaab2ff4,256,2026-09-22T21:55:59+00:00
+A.1,texto_copia_corrida,reportes/20260922T215556606577Z_corrida/textos/a_1_parrafo.md,288b366a5b151e472ecd215c8386424ffd94d6dd1be8395b7cdd970fbaab2ff4,256,2026-09-22T21:55:59+00:00
+A.1,grafica,build/figures/A/figura_a_1.png,a20f5280259eb59e87e524c1a3123facae07450cafcad921bf6f944a3adf4f05,316422,2026-09-22T21:56:00+00:00
+A.1,grafica_jpg,build/figures/A/figura_a_1.jpg,a3f1826b5fb3febfac5f83e4b96c0ef036d0de750f642d2838c1ede6e636fc8a,425983,2026-09-22T21:56:00+00:00
+A.1,grafica_svg_editable,build/figures/A/figura_a_1.svg,de475e1ba61d98b6ed18722537a34b6fbd20eac87afba4b76de83c409db6764c,58521,2026-09-22T21:56:00+00:00
+A.1,metadatos,build/metadata/a_1.json,ea56391ab86f932a78b6639aedfd731d1e5fbe3766da7b3627504b52127b6f3e,1267,2026-09-22T21:56:00+00:00

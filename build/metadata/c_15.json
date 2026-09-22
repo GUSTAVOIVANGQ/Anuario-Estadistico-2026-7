@@ -3,7 +3,19 @@
   "title": "Participación de mercado del servicio móvil de acceso a Internet",
   "reference_page_2024": 60,
   "figure_path": "build\\figures\\C\\figura_c_15.png",
-  "run_id": "20260921T161817643317Z_corrida",
+  "figure_formats": {
+    "png": "build\\figures\\C\\figura_c_15.png",
+    "jpg": "build\\figures\\C\\figura_c_15.jpg",
+    "svg": "build\\figures\\C\\figura_c_15.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 72,
+    "positioned_text_elements": 72,
+    "vector_elements": 168,
+    "embedded_images": 0
+  },
+  "run_id": "20260922T173925458200Z_corrida",
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\C\\figura_c_15.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\c_15.md",

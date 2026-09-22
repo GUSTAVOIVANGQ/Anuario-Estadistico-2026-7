@@ -1,0 +1,14 @@
+2026-09-22 15:44:43,910 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-09-22 15:44:43,911 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-09-22 15:44:43,912 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-09-22 15:44:43,913 | INFO | 
+2026-09-22 15:44:43,913 | INFO | Anuario Estadístico 2026 | corrida 20260922T214443891931Z_corrida
+2026-09-22 15:44:43,913 | INFO | Figuras seleccionadas: 1 de 105
+2026-09-22 15:44:43,913 | INFO | 
+2026-09-22 15:44:43,914 | INFO | [001/001] A.1 | LISTA
+2026-09-22 15:44:48,404 | INFO | 
+2026-09-22 15:44:48,404 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20260922T214443891931Z_corrida
+2026-09-22 15:44:59,397 | INFO | PPTX ensamblado: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\entrega\anuario_estadistico_2026_20260922T214443891931Z_corrida.pptx
+2026-09-22 15:44:59,397 | INFO | Figuras insertadas: 91 | faltantes: 14 | errores: 0
+2026-09-22 15:44:59,398 | INFO | Marcadores conservados para figuras faltantes: H.1, H.2, H.3, H.4, H.5, H.6, H.7, H.8, H.9, H.10, H.11, H.12, H.13, H.14
+2026-09-22 15:44:59,398 | INFO | Reporte de ensamblaje: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\entrega\anuario_estadistico_2026_20260922T214443891931Z_corrida_ensamblaje.json

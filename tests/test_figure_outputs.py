@@ -16,6 +16,7 @@ from PIL import Image
 import anuario2026.figure_outputs as figure_outputs
 from anuario2026.exports import ExportUnavailable, create_figure_compendium
 from anuario2026.figure_outputs import (
+    extract_svg_text,
     inspect_svg,
     install_figure_output_exporter,
     validate_figure_bundle,
@@ -72,11 +73,17 @@ def test_png_save_generates_code_native_jpg_and_editable_svg(tmp_path: Path) -> 
     assert inspection.text_elements >= 4
     assert inspection.vector_elements > 0
     assert inspection.embedded_images == 0
+    assert inspection.transparent_background
 
     svg = png_path.with_suffix(".svg").read_text(encoding="utf-8")
     assert "<text" in svg
     assert "Texto seleccionable" in svg
     assert "data:image/png;base64" not in svg
+    assert 'id="patch_1"' in svg
+    assert "fill: none" in svg
+    extracted = extract_svg_text(png_path.with_suffix(".svg"))
+    assert any("Texto seleccionable" in text for text in extracted)
+    assert "Porcentaje" in extracted
 
     with Image.open(png_path) as png, Image.open(png_path.with_suffix(".jpg")) as jpg:
         assert jpg.format == "JPEG"
@@ -106,6 +113,7 @@ def test_svg_compendium_contains_origin_manifest_and_text_positions(tmp_path: Pa
         positions = archive.read("TEXTOS_Y_POSICIONES.csv").decode("utf-8-sig")
         assert "scripts/figures/figura_a_1.py" in manifest
         assert "editable_text" in manifest
+        assert "transparent_background" in manifest
         assert "Texto seleccionable" in positions
         assert "transform" in positions
         assert "svg_group_id" in positions
@@ -154,3 +162,19 @@ def test_svg_inspection_requires_positioned_text(tmp_path: Path) -> None:
     inspection = inspect_svg(svg_path)
     assert inspection.text_elements == 1
     assert not inspection.editable_text
+
+
+def test_editable_svg_validation_rejects_embedded_raster(tmp_path: Path) -> None:
+    svg_path = tmp_path / "mixed.svg"
+    svg_path.write_text(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="50">'
+        '<rect width="100" height="50" fill="none"/>'
+        '<text x="5" y="15">Texto vectorial</text>'
+        '<path d="M 0 0 L 10 10" stroke="black"/>'
+        '<image x="0" y="0" width="10" height="10" href="data:image/png;base64,AAAA"/>'
+        '</svg>',
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="raster"):
+        figure_outputs.validate_editable_svg(svg_path, require_fully_vector=True)

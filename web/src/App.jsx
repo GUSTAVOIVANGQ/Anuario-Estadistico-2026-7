@@ -27,8 +27,8 @@ import {
 } from 'lucide-react'
 
 const exportOptions = [
-  { kind: 'pdf', label: 'PDF', detail: 'Presentación completa · sin Office', icon: FileText },
-  { kind: 'pptx', label: 'PPTX', detail: 'Presentación editable', icon: Presentation },
+  { kind: 'pdf', label: 'PDF', detail: 'SVG vectorial · texto copiable', icon: FileText },
+  { kind: 'pptx', label: 'PPTX', detail: 'SVG nativo · respaldo PNG', icon: Presentation },
   { kind: 'jpg', label: 'JPG', detail: 'Alta calidad · desde código', icon: FileImage },
   { kind: 'png', label: 'PNG', detail: 'Sin pérdida · desde código', icon: SquareStack },
   { kind: 'svg', label: 'SVG', detail: 'Vector editable · texto real', icon: Layers3 },
@@ -384,7 +384,7 @@ function App() {
                 </button>
               ))}
             </div>
-            <div className="modal-note"><Archive size={14} /> ZIP por sección con manifiesto de origen; el SVG conserva texto seleccionable y sus posiciones.</div>
+            <div className="modal-note"><Archive size={14} /> PDF y PPTX conservan vectores y texto copiable; los ZIP incluyen manifiesto de origen y posiciones SVG.</div>
           </div>
         </div>
       )}

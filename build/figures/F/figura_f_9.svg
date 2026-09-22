@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.9.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.9.</dc:title>
+    <dc:date>2026-09-22T11:50:10.628452</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 54.144 593.568 
+L 1097.856 593.568 
+Q 1118.592 593.568 1118.592 581.904 
+L 1118.592 59.616 
+Q 1118.592 47.952 1097.856 47.952 
+L 54.144 47.952 
+Q 33.408 47.952 33.408 59.616 
+L 33.408 581.904 
+Q 33.408 593.568 54.144 593.568 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_3">
+    <path d="M 391.68 524.88 
+L 1082.88 524.88 
+L 1082.88 136.08 
+L 391.68 136.08 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 391.68 507.207273 
+L 398.606211 507.207273 
+L 398.606211 492.428685 
+L 391.68 492.428685 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 391.68 476.418549 
+L 402.656063 476.418549 
+L 402.656063 461.639962 
+L 391.68 461.639962 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 391.68 445.629826 
+L 408.666314 445.629826 
+L 408.666314 430.851239 
+L 391.68 430.851239 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 391.68 414.841102 
+L 410.711532 414.841102 
+L 410.711532 400.062515 
+L 391.68 400.062515 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 391.68 384.052379 
+L 439.050922 384.052379 
+L 439.050922 369.273792 
+L 391.68 369.273792 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 391.68 353.263655 
+L 454.805071 353.263655 
+L 454.805071 338.485068 
+L 391.68 338.485068 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 391.68 322.474932 
+L 457.604226 322.474932 
+L 457.604226 307.696345 
+L 391.68 307.696345 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 391.68 291.686208 
+L 457.962217 291.686208 
+L 457.962217 276.907621 
+L 391.68 276.907621 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 391.68 260.897485 
+L 476.046249 260.897485 
+L 476.046249 246.118898 
+L 391.68 246.118898 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 391.68 230.108761 
+L 492.487869 230.108761 
+L 492.487869 215.330174 
+L 391.68 215.330174 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 391.68 199.320038 
+L 554.709096 199.320038 
+L 554.709096 184.541451 
+L 391.68 184.541451 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 391.68 168.531315 
+L 966.058586 168.531315 
+L 966.058586 153.752727 
+L 391.68 153.752727 
+z
+" clip-path="url(#p97d2865cc3)" style="fill: #335a5c"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="391.68" y="536.3975" transform="rotate(-0 391.68 536.3975)">0.0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="478.08" y="536.3975" transform="rotate(-0 478.08 536.3975)">10.0%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="564.48" y="536.3975" transform="rotate(-0 564.48 536.3975)">20.0%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="650.88" y="536.3975" transform="rotate(-0 650.88 536.3975)">30.0%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="737.28" y="536.3975" transform="rotate(-0 737.28 536.3975)">40.0%</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="823.68" y="536.3975" transform="rotate(-0 823.68 536.3975)">50.0%</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="910.08" y="536.3975" transform="rotate(-0 910.08 536.3975)">60.0%</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="996.48" y="536.3975" transform="rotate(-0 996.48 536.3975)">70.0%</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 7.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1082.88" y="536.3975" transform="rotate(-0 1082.88 536.3975)">80.0%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="504.093979" transform="rotate(-0 388.18 504.093979)">Publicar la situación en redes sociales</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_11"/>
+     <g id="text_11">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(226.5825 467.857256)">Denunciar ante las autoridades escolares o</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(353.82875 478.753256)">laborales</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_12"/>
+     <g id="text_12">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="442.516532" transform="rotate(-0 388.18 442.516532)">Otra</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13"/>
+     <g id="text_13">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="411.727809" transform="rotate(-0 388.18 411.727809)">Reportar ante la policía</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14"/>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(241.03875 370.043085)">Informar a una persona (madre, padre,</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(256.01625 380.939085)">amiga(o), compañera(o) de trabajo,</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(354.99625 391.835085)">etcétera)</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_15"/>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="350.150362" transform="rotate(-0 388.18 350.150362)">Reclamar o confrontar a la persona</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_16"/>
+     <g id="text_16">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(252.05625 313.913638)">Eliminar la publicación, el mensaje o</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(367.78 324.809638)">video</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_17"/>
+     <g id="text_17">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="288.572915" transform="rotate(-0 388.18 288.572915)">Ninguna</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_18"/>
+     <g id="text_18">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(242.47875 252.336191)">Cambiar o cancelar número telefónico,</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(311.64625 263.232191)">cuenta o contraseña</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_19"/>
+     <g id="text_19">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(250.15125 216.099468)">Denunciar ante el Ministerio Público,</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(263.88625 226.995468)">Fiscalía Estatal o el proveedor del</text>
+      <text style="font-size: 8px; font-family: 'Noto Sans'; fill: #3c3c3b" transform="translate(359.66 237.891468)">servicio</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_20"/>
+     <g id="text_20">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="196.206744" transform="rotate(-0 388.18 196.206744)">Ignorar o no contestar</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_21"/>
+     <g id="text_21">
+      <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="388.18" y="165.418021" transform="rotate(-0 388.18 165.418021)">Bloquear (a la persona, cuenta o página)</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="402.926211" y="503.115979" transform="rotate(-0 402.926211 503.115979)">0.8%</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="406.976063" y="472.327256" transform="rotate(-0 406.976063 472.327256)">1.3%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="412.986314" y="441.538532" transform="rotate(-0 412.986314 441.538532)">2.0%</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="415.031532" y="410.749809" transform="rotate(-0 415.031532 410.749809)">2.2%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="443.370922" y="379.961085" transform="rotate(-0 443.370922 379.961085)">5.5%</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="459.125071" y="349.172362" transform="rotate(-0 459.125071 349.172362)">7.3%</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="461.924226" y="318.383638" transform="rotate(-0 461.924226 318.383638)">7.6%</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="462.282217" y="287.594915" transform="rotate(-0 462.282217 287.594915)">7.7%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="480.366249" y="256.806191" transform="rotate(-0 480.366249 256.806191)">9.8%</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="496.807869" y="226.017468" transform="rotate(-0 496.807869 226.017468)">11.7%</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="559.029096" y="195.228744" transform="rotate(-0 559.029096 195.228744)">18.9%</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="970.378586" y="164.440021" transform="rotate(-0 970.378586 164.440021)">66.5%</text>
+   </g>
+  </g>
+  <g id="text_34">
+   <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="76.032" y="87.728" transform="rotate(-0 76.032 87.728)">Figura F.9.</text>
+  </g>
+  <g id="text_35">
+   <text style="font-size: 14px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="173.952" y="87.728" transform="rotate(-0 173.952 87.728)">Medidas tomadas contra el ciberacoso experimentado</text>
+  </g>
+  <g id="text_36">
+   <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="576.0865" transform="rotate(-0 59.904 576.0865)">Fuente:</text>
+  </g>
+  <g id="text_37">
+   <text style="font-size: 8.5px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="109.44" y="576.0865" transform="rotate(-0 109.44 576.0865)">Elaborado por CRT con datos del MOCIBA 2025, del INEGI. Para más información consultar https://www.inegi.org.mx/programas/mociba/2025/</text>
+  </g>
+  <g id="patch_16">
+   <path d="M 62.208 88.128 
+L 65.664 88.128 
+Q 67.968 88.128 67.968 86.832 
+L 67.968 77.76 
+Q 67.968 76.464 65.664 76.464 
+L 62.208 76.464 
+Q 59.904 76.464 59.904 77.76 
+L 59.904 86.832 
+Q 59.904 88.128 62.208 88.128 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p97d2865cc3">
+   <rect x="391.68" y="136.08" width="691.2" height="388.8"/>
+  </clipPath>
+ </defs>
+</svg>

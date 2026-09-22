@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+1,A.1,OK,"Gráfica PNG, JPG y SVG editable generada y verificada.",scripts\figures\figura_a_1.py,build\figures\A\figura_a_1.png,2026-09-22T20:17:41+00:00,2026-09-22T20:17:47+00:00,5.935

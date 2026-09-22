@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Figura F.15.</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Figura F.15.</dc:title>
+    <dc:date>2026-09-22T11:51:28.745361</dc:date>
+    <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Anuario Estadístico 2026 (Matplotlib)</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 1152 648 
+L 1152 0 
+L 0 0 
+z
+" style="fill: none"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 38.016 620.136 
+L 1113.984 620.136 
+Q 1137.024 620.136 1137.024 607.176 
+L 1137.024 53.784 
+Q 1137.024 40.824 1113.984 40.824 
+L 38.016 40.824 
+Q 14.976 40.824 14.976 53.784 
+L 14.976 607.176 
+Q 14.976 620.136 38.016 620.136 
+z
+" style="fill: #f8f8fa"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_3">
+    <path d="M 334.08 544.32 
+L 1082.88 544.32 
+L 1082.88 116.64 
+L 334.08 116.64 
+z
+" style="fill: #f8f8fa"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 334.08 544.32 
+L 334.08 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="334.08" y="557.9755" transform="rotate(-0 334.08 557.9755)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 480.903529 544.32 
+L 480.903529 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="480.903529" y="557.9755" transform="rotate(-0 480.903529 557.9755)">20%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 627.727059 544.32 
+L 627.727059 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="627.727059" y="557.9755" transform="rotate(-0 627.727059 557.9755)">40%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 774.550588 544.32 
+L 774.550588 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="774.550588" y="557.9755" transform="rotate(-0 774.550588 557.9755)">60%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 921.374118 544.32 
+L 921.374118 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="921.374118" y="557.9755" transform="rotate(-0 921.374118 557.9755)">80%</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 1068.197647 544.32 
+L 1068.197647 116.64 
+" clip-path="url(#p7def0e0b1c)" style="fill: none; stroke: #d1d1d1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: middle; fill: #3c3c3b" x="1068.197647" y="557.9755" transform="rotate(-0 1068.197647 557.9755)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13"/>
+     <g id="text_7">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="516.115026" transform="rotate(-0 330.58 516.115026)">Comentar con otras personas lo que sucede</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14"/>
+     <g id="text_8">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="475.991187" transform="rotate(-0 330.58 475.991187)">Limitar la actividad en redes sociales</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15"/>
+     <g id="text_9">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="435.867348" transform="rotate(-0 330.58 435.867348)">Cuestionar el contenido antes de publicarlo</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_16"/>
+     <g id="text_10">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="395.743509" transform="rotate(-0 330.58 395.743509)">Restringir fotos o videos</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17"/>
+     <g id="text_11">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="355.61967" transform="rotate(-0 330.58 355.61967)">Mantener redes sociales privadas</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18"/>
+     <g id="text_12">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="315.49583" transform="rotate(-0 330.58 315.49583)">Evitar publicar información de ubicación</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_19"/>
+     <g id="text_13">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="275.371991" transform="rotate(-0 330.58 275.371991)">Ser más precavido al abrir vínculos o archivos</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_20"/>
+     <g id="text_14">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="235.248152" transform="rotate(-0 330.58 235.248152)">Revisar un perfil antes de aceptarlo</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_21"/>
+     <g id="text_15">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="195.124313" transform="rotate(-0 330.58 195.124313)">Evitar compartir contraseñas</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_22"/>
+     <g id="text_16">
+      <text style="font-size: 9.5px; font-family: 'Noto Sans'; text-anchor: end; fill: #3c3c3b" x="330.58" y="155.000474" transform="rotate(-0 330.58 155.000474)">Evitar compartir información personal</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_4">
+    <path d="M 334.08 524.88 
+L 857.116626 524.88 
+L 857.116626 515.651517 
+L 334.08 515.651517 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 334.08 484.756161 
+L 861.927271 484.756161 
+L 861.927271 475.527678 
+L 334.08 475.527678 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 334.08 444.632322 
+L 880.186888 444.632322 
+L 880.186888 435.403839 
+L 334.08 435.403839 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 334.08 404.508483 
+L 927.671701 404.508483 
+L 927.671701 395.28 
+L 334.08 395.28 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 334.08 364.384644 
+L 935.854164 364.384644 
+L 935.854164 355.156161 
+L 334.08 355.156161 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 334.08 324.260805 
+L 965.569014 324.260805 
+L 965.569014 315.032322 
+L 334.08 315.032322 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 334.08 284.136966 
+L 970.420331 284.136966 
+L 970.420331 274.908483 
+L 334.08 274.908483 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 334.08 244.013127 
+L 977.297741 244.013127 
+L 977.297741 234.784644 
+L 334.08 234.784644 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 334.08 203.889288 
+L 991.002548 203.889288 
+L 991.002548 194.660805 
+L 334.08 194.660805 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 334.08 163.765449 
+L 996.682508 163.765449 
+L 996.682508 154.536966 
+L 334.08 154.536966 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #afafaf"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 334.08 515.651517 
+L 858.760967 515.651517 
+L 858.760967 506.423034 
+L 334.08 506.423034 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 334.08 475.527678 
+L 862.179301 475.527678 
+L 862.179301 466.299195 
+L 334.08 466.299195 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 334.08 435.403839 
+L 892.709359 435.403839 
+L 892.709359 426.175356 
+L 334.08 426.175356 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 334.08 395.28 
+L 940.403295 395.28 
+L 940.403295 386.051517 
+L 334.08 386.051517 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 334.08 355.156161 
+L 954.887275 355.156161 
+L 954.887275 345.927678 
+L 334.08 345.927678 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 334.08 315.032322 
+L 977.211613 315.032322 
+L 977.211613 305.803839 
+L 334.08 305.803839 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 334.08 274.908483 
+L 976.664221 274.908483 
+L 976.664221 265.68 
+L 334.08 265.68 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 334.08 234.784644 
+L 994.549604 234.784644 
+L 994.549604 225.556161 
+L 334.08 225.556161 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 334.08 194.660805 
+L 1006.078844 194.660805 
+L 1006.078844 185.432322 
+L 334.08 185.432322 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 334.08 154.536966 
+L 1003.433715 154.536966 
+L 1003.433715 145.308483 
+L 334.08 145.308483 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #86adae"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 334.08 506.423034 
+L 855.366512 506.423034 
+L 855.366512 497.194551 
+L 334.08 497.194551 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 334.08 466.299195 
+L 861.659029 466.299195 
+L 861.659029 457.070712 
+L 334.08 457.070712 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 334.08 426.175356 
+L 866.858909 426.175356 
+L 866.858909 416.946873 
+L 334.08 416.946873 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 334.08 386.051517 
+L 914.121148 386.051517 
+L 914.121148 376.823034 
+L 334.08 376.823034 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 334.08 345.927678 
+L 915.596748 345.927678 
+L 915.596748 336.699195 
+L 334.08 336.699195 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 334.08 305.803839 
+L 953.177506 305.803839 
+L 953.177506 296.575356 
+L 334.08 296.575356 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 334.08 265.68 
+L 963.774803 265.68 
+L 963.774803 256.451517 
+L 334.08 256.451517 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 334.08 225.556161 
+L 958.936153 225.556161 
+L 958.936153 216.327678 
+L 334.08 216.327678 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 334.08 185.432322 
+L 974.956469 185.432322 
+L 974.956469 176.203839 
+L 334.08 176.203839 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 334.08 145.308483 
+L 989.49703 145.308483 
+L 989.49703 136.08 
+L 334.08 136.08 
+z
+" clip-path="url(#p7def0e0b1c)" style="fill: #335a5c"/>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="859.686038" y="523.292159" transform="rotate(-0 859.686038 523.292159)">71.2%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="864.496683" y="483.16832" transform="rotate(-0 864.496683 483.16832)">71.9%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="882.756299" y="443.04448" transform="rotate(-0 882.756299 443.04448)">74.4%</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="930.241113" y="402.920641" transform="rotate(-0 930.241113 402.920641)">80.9%</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="938.423575" y="362.796802" transform="rotate(-0 938.423575 362.796802)">82.0%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="968.138426" y="322.672963" transform="rotate(-0 968.138426 322.672963)">86.0%</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="972.989743" y="282.549124" transform="rotate(-0 972.989743 282.549124)">86.7%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="979.867153" y="242.425285" transform="rotate(-0 979.867153 242.425285)">87.6%</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="993.571959" y="202.301446" transform="rotate(-0 993.571959 202.301446)">89.5%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="999.25192" y="162.177607" transform="rotate(-0 999.25192 162.177607)">90.3%</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="861.330379" y="514.063676" transform="rotate(-0 861.330379 514.063676)">71.5%</text>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="864.748713" y="473.939837" transform="rotate(-0 864.748713 473.939837)">71.9%</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="895.278771" y="433.815998" transform="rotate(-0 895.278771 433.815998)">76.1%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="942.972707" y="393.692159" transform="rotate(-0 942.972707 393.692159)">82.6%</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="957.456687" y="353.56832" transform="rotate(-0 957.456687 353.56832)">84.6%</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="979.781024" y="313.44448" transform="rotate(-0 979.781024 313.44448)">87.6%</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="979.233633" y="273.320641" transform="rotate(-0 979.233633 273.320641)">87.5%</text>
+   </g>
+   <g id="text_34">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="997.119015" y="233.196802" transform="rotate(-0 997.119015 233.196802)">90.0%</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1008.648256" y="193.072963" transform="rotate(-0 1008.648256 193.072963)">91.5%</text>
+   </g>
+   <g id="text_36">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1006.003127" y="152.949124" transform="rotate(-0 1006.003127 152.949124)">91.2%</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="857.935924" y="504.835193" transform="rotate(-0 857.935924 504.835193)">71.0%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="864.228441" y="464.711354" transform="rotate(-0 864.228441 464.711354)">71.9%</text>
+   </g>
+   <g id="text_39">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="869.428321" y="424.587515" transform="rotate(-0 869.428321 424.587515)">72.6%</text>
+   </g>
+   <g id="text_40">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="916.69056" y="384.463676" transform="rotate(-0 916.69056 384.463676)">79.0%</text>
+   </g>
+   <g id="text_41">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="918.16616" y="344.339837" transform="rotate(-0 918.16616 344.339837)">79.2%</text>
+   </g>
+   <g id="text_42">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="955.746918" y="304.215998" transform="rotate(-0 955.746918 304.215998)">84.3%</text>
+   </g>
+   <g id="text_43">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="966.344214" y="264.092159" transform="rotate(-0 966.344214 264.092159)">85.8%</text>
+   </g>
+   <g id="text_44">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="961.505565" y="223.96832" transform="rotate(-0 961.505565 223.96832)">85.1%</text>
+   </g>
+   <g id="text_45">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="977.525881" y="183.84448" transform="rotate(-0 977.525881 183.84448)">87.3%</text>
+   </g>
+   <g id="text_46">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="992.066442" y="143.720641" transform="rotate(-0 992.066442 143.720641)">89.3%</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_34">
+     <path d="M 831.869062 532.39 
+L 851.869062 532.39 
+L 851.869062 525.39 
+L 831.869062 525.39 
+z
+" style="fill: #afafaf"/>
+    </g>
+    <g id="text_47">
+     <text style="font-size: 10px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="859.869062" y="532.39" transform="rotate(-0 859.869062 532.39)">General</text>
+    </g>
+    <g id="patch_35">
+     <path d="M 916.728437 532.39 
+L 936.728437 532.39 
+L 936.728437 525.39 
+L 916.728437 525.39 
+z
+" style="fill: #86adae"/>
+    </g>
+    <g id="text_48">
+     <text style="font-size: 10px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="944.728437" y="532.39" transform="rotate(-0 944.728437 532.39)">Mujeres</text>
+    </g>
+    <g id="patch_36">
+     <path d="M 1002.559687 532.39 
+L 1022.559687 532.39 
+L 1022.559687 525.39 
+L 1002.559687 525.39 
+z
+" style="fill: #335a5c"/>
+    </g>
+    <g id="text_49">
+     <text style="font-size: 10px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="1030.559687" y="532.39" transform="rotate(-0 1030.559687 532.39)">Hombres</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_50">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="73.728" y="79.432" transform="rotate(-0 73.728 79.432)">Figura F.15.</text>
+  </g>
+  <g id="text_51">
+   <text style="font-size: 16px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="196.992" y="79.432" transform="rotate(-0 196.992 79.432)">Acciones para protegerse o prevenir la violencia en Internet, por sexo (2023)</text>
+  </g>
+  <g id="text_52">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="54.144" y="589.68" transform="rotate(-0 54.144 589.68)">Fuente:</text>
+  </g>
+  <g id="text_53">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="108.288" y="589.68" transform="rotate(-0 108.288 589.68)">Elaborado por CRT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.</text>
+  </g>
+  <g id="text_54">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="54.144" y="604.584" transform="rotate(-0 54.144 604.584)">Nota:</text>
+  </g>
+  <g id="text_55">
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="93.312" y="604.584" transform="rotate(-0 93.312 604.584)">Porcentajes ponderados; las respuestas son de selección múltiple.</text>
+  </g>
+  <g id="patch_37">
+   <path d="M 59.904 79.056 
+L 63.36 79.056 
+Q 65.664 79.056 65.664 77.76 
+L 65.664 68.688 
+Q 65.664 67.392 63.36 67.392 
+L 59.904 67.392 
+Q 57.6 67.392 57.6 68.688 
+L 57.6 77.76 
+Q 57.6 79.056 59.904 79.056 
+z
+" style="fill: #4a7d75"/>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7def0e0b1c">
+   <rect x="334.08" y="116.64" width="748.8" height="427.68"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: anuario-estadistico-2026
-Version: 0.27.0
+Version: 0.30.0
 Summary: Pipeline reproducible para generar el Anuario Estadístico 2026
 License: MIT License
         
@@ -37,9 +37,10 @@ Requires-Dist: numpy<3,>=1.26
 Requires-Dist: openpyxl<4,>=3.1
 Requires-Dist: pandas<3,>=2.1
 Requires-Dist: Pillow<13,>=10
+Requires-Dist: CairoSVG<3,>=2.7
+Requires-Dist: PyMuPDF<2,>=1.24
 Requires-Dist: pypdf<7,>=6
 Requires-Dist: python-pptx<2,>=1.0
-Requires-Dist: reportlab<5,>=4.2
 Requires-Dist: fastapi<1,>=0.115
 Requires-Dist: uvicorn<1,>=0.30
 Provides-Extra: mapas
@@ -89,9 +90,23 @@ Si Windows bloquea los archivos `.ps1`, se puede ejecutar directamente:
 .\.venv\Scripts\python.exe scripts\figures\figura_g_1.py
 ```
 
+En macOS o Linux se usa el mismo proyecto con Python 3.11 o superior, Node.js
+20 o superior y LibreOffice para convertir la presentación a PDF:
+
+```bash
+chmod +x preparar_entorno.sh ejecutar.sh
+./preparar_entorno.sh
+./ejecutar.sh doctor
+./ejecutar.sh web
+```
+
+En macOS puede instalarse el convertidor con `brew install --cask libreoffice`; en
+Ubuntu o Debian, con `sudo apt-get install libreoffice`. En Windows basta PowerPoint o
+LibreOffice.
+
 ## Interfaz web React
 
-La versión 0.27.0 incorpora una interfaz local inspirada en un flujo de edición/escaneo:
+La versión 0.30.0 mantiene el PPTX de 0.29.0 y corrige la exportación PDF: las figuras ya no se convierten a través de PowerPoint/LibreOffice. El PDF usa directamente los SVG originales de `build/figures`, sin generar un segundo SVG por figura. Los párrafos narrativos del PPTX continúan como texto nativo, editable, buscable y copiable. La redacción base proviene del Anuario Estadístico 2024 y sólo se actualizan los registros respaldados por la corrida actual; cada narrativa queda auditada contra la huella SHA-256 de su archivo `datos_usados`. La interfaz local incorporada en 0.27.0 continúa disponible:
 una pantalla central grande muestra cada figura conforme termina de generarse, mientras el
 panel lateral permite ejecutar la figura actual, una selección o una corrida completa.
 
@@ -106,15 +121,28 @@ panel lateral permite ejecutar la figura actual, una selección o una corrida co
 La UI recibe eventos de avance del pipeline en tiempo real y, al concluir la corrida, abre
 automáticamente un panel de exportación con estas opciones:
 
-- PDF portátil de la presentación completa, sin requerir Office.
-- PPTX editable de la presentación.
+- PDF de entrega compuesto con la presentación como base visual y con cada figura insertada directamente desde su SVG original, conservando vectores y texto de figura buscable y copiable.
+- PPTX con cada figura como SVG nativo directo, sin PNG/JPG de respaldo para la figura.
 - ZIP con compendio de figuras JPG.
 - ZIP con compendio de figuras PNG.
 - ZIP con compendio de figuras SVG.
 
-El PDF se construye directamente en Python con portada, contenido, introducción,
-separadores por sección, figuras verificadas y cierre. Funciona igual en Windows, macOS y
-Linux: no requiere Microsoft PowerPoint, LibreOffice ni servicios externos.
+Al presionar **PDF**, el servidor garantiza primero que exista el PPTX de la corrida. Crea una copia temporal sólo para renderizar la base visual (fondos, títulos, narrativas y elementos de plantilla), eliminando de esa copia las figuras `ANUARIO_IMAGE_*` y las capas auxiliares `ANUARIO_TEXT_LAYER_*`. PowerPoint o LibreOffice convierten únicamente esa base. Después, el exportador toma **los SVG originales existentes en `build/figures`**, verifica que coincidan con los SVG usados al ensamblar el PPTX y los compone directamente sobre las páginas con CairoSVG + pypdf, en las mismas coordenadas del PPTX. No se crea ningún SVG alterno y las figuras no pasan por el motor Office.
+
+La descarga sólo se publica cuando el número de páginas coincide con el de diapositivas, el tamaño de todas las páginas coincide con la presentación, ninguna página está vacía y todos los textos esperados de los SVG originales siguen siendo copiables. También incorpora metadatos, marcadores por sección y figura, huellas SHA-256 del PPTX/PDF y una huella conjunta de los SVG originales. Puede fijarse el motor usado **sólo para la base visual** con `ANUARIO_PDF_CONVERTER=powerpoint` o `ANUARIO_PDF_CONVERTER=libreoffice`.
+
+Al ensamblar la presentación, cada figura disponible se incrusta como un SVG nativo directo, sin un raster de respaldo. El exportador de Matplotlib conserva las letras como elementos `<text>`, exige un lienzo transparente y rechaza SVG que incluyan imágenes rasterizadas. Para facilitar búsqueda/copia en visores de PowerPoint, el PPTX conserva su capa auxiliar nativa. Esa decisión **no afecta al PDF**: para la exportación PDF se eliminan temporalmente tanto la figura del PPTX como su helper y se vuelve a insertar exclusivamente el SVG original de `build/figures`, conservando su contenido vectorial y texto real.
+
+Además, cada figura disponible puede tener una narrativa revisada en
+`assets/presentation/narrativas_figuras_2026.json`. El ensamblador conserva el encabezado de la
+figura y reemplaza únicamente el texto de relleno por el párrafo actualizado. Al terminar genera
+reportes `*_narrativas.json` y `*_narrativas.csv` que registran, por figura, el texto 2024, el texto
+insertado, el modo de actualización, la página fuente, el archivo de datos y el estado de
+verificación de su huella. Si los datos cambian después de revisar una narrativa, el estado pasa a
+`data_changed` y el modo estricto impide publicar un PPTX con texto potencialmente desactualizado.
+la descarga. El reporte `*_ensamblaje.json` registra cuántos SVG y capas de texto se
+incrustaron; el manifiesto `*_pdf.json` documenta la misma verificación en el PDF final.
+
 Cada script genera en una misma ejecución su PNG, JPG de alta calidad y SVG nativo. El SVG
 conserva el texto como elementos `<text>` seleccionables y copiables, con posiciones
 explícitas (`x`/`y` o `transform`), en vez de convertir las letras a curvas o incrustar el
@@ -133,7 +161,7 @@ el frontend, recompílalo con `cd web; npm run build`.
 
 - Gráficas reproducibles PNG, JPG y SVG editable: `build/figures/<sección>/`
 - Textos automáticos: `build/text/`
-- PowerPoint: `entrega/`
+- PDF con base de presentación + SVG originales directos, y PowerPoint editable: `entrega/`
 - Datos usados, fuentes, cálculos y estado: `reportes/<corrida>/`
 - Catálogo figura-fuente por corrida: `reportes/<corrida>/referencias_fuentes_figuras.csv`
 - Datos descargados y reutilizables: `data/raw/`

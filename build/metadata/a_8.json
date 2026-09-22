@@ -3,7 +3,19 @@
   "title": "Gasto promedio y porcentaje de gasto en Servicios de Telecomunicaciones Fijas de los hogares por decil de ingreso",
   "reference_page_2024": 18,
   "figure_path": "build\\figures\\A\\figura_a_8.png",
-  "run_id": "20260921T161817643317Z_corrida",
+  "figure_formats": {
+    "png": "build\\figures\\A\\figura_a_8.png",
+    "jpg": "build\\figures\\A\\figura_a_8.jpg",
+    "svg": "build\\figures\\A\\figura_a_8.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 59,
+    "positioned_text_elements": 59,
+    "vector_elements": 52,
+    "embedded_images": 0
+  },
+  "run_id": "20260922T173925458200Z_corrida",
   "result": {
     "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\A\\figura_a_8.png",
     "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\a_8.md",
