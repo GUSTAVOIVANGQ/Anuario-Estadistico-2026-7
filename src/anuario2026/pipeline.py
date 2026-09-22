@@ -11,6 +11,11 @@ from typing import Any, Callable
 from PIL import Image
 
 from .context import FigureContext
+from .figure_outputs import (
+    companion_paths,
+    install_figure_output_exporter,
+    validate_figure_bundle,
+)
 from .models import FigureDefinition, FigureStatus
 from .presentation import assemble_from_template
 from .registry import load_figures, load_project_config
@@ -172,6 +177,7 @@ def run_pipeline(
 ) -> Path:
     install_source_credit_normalizer()
     install_title_marker_normalizer()
+    install_figure_output_exporter()
     config = load_project_config(project_root)
     all_figures = load_figures(project_root, config)
     figures = select_figures(all_figures, only, start_from, until, figure_ids)
@@ -250,8 +256,11 @@ def run_pipeline(
             output = Path(payload.get("figure_path", figure.output_path))
             if not output.is_absolute():
                 output = project_root / output
-            validate_png(output)
+            svg_inspection = validate_figure_bundle(output)
             reports.add_artifact(figure.figure_id, "grafica", output)
+            paths = companion_paths(output)
+            reports.add_artifact(figure.figure_id, "grafica_jpg", paths["jpg"])
+            reports.add_artifact(figure.figure_id, "grafica_svg_editable", paths["svg"])
             slide_value = payload.get("slide_path")
             if slide_value:
                 slide_path = Path(slide_value)
@@ -272,6 +281,19 @@ def run_pipeline(
                         "title": figure.title,
                         "reference_page_2024": figure.reference_page,
                         "figure_path": str(output.relative_to(project_root)),
+                        "figure_formats": {
+                            kind: str(path.relative_to(project_root))
+                            for kind, path in paths.items()
+                        },
+                        "svg": {
+                            "editable_text": svg_inspection.editable_text,
+                            "text_elements": svg_inspection.text_elements,
+                            "positioned_text_elements": (
+                                svg_inspection.positioned_text_elements
+                            ),
+                            "vector_elements": svg_inspection.vector_elements,
+                            "embedded_images": svg_inspection.embedded_images,
+                        },
                         "run_id": run_id,
                         "result": payload,
                     },
@@ -284,7 +306,7 @@ def run_pipeline(
             )
             reports.add_artifact(figure.figure_id, "metadatos", metadata_path)
             status = "OK"
-            message = "Gráfica generada y verificada."
+            message = "Gráfica PNG, JPG y SVG editable generada y verificada."
         except Exception as exc:  # noqa: BLE001 - cada figura debe quedar aislada
             LOGGER.exception("  Falló %s", figure.figure_id)
             status = "ERROR"

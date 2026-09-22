@@ -35,6 +35,18 @@ Si Windows bloquea los archivos `.ps1`, se puede ejecutar directamente:
 .\.venv\Scripts\python.exe scripts\figures\figura_g_1.py
 ```
 
+En macOS o Linux se usa el mismo proyecto con Python 3.11 o superior y Node.js
+20 o superior, sin instalar Office ni LibreOffice:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -e .
+(cd web && npm install --no-audit --no-fund && npm run build)
+.venv/bin/python -m anuario2026 doctor
+.venv/bin/python -m anuario2026 web
+```
+
 ## Interfaz web React
 
 La versión 0.27.0 incorpora una interfaz local inspirada en un flujo de edición/escaneo:
@@ -52,24 +64,34 @@ panel lateral permite ejecutar la figura actual, una selección o una corrida co
 La UI recibe eventos de avance del pipeline en tiempo real y, al concluir la corrida, abre
 automáticamente un panel de exportación con estas opciones:
 
-- PDF de la presentación completa.
+- PDF portátil de la presentación completa, sin requerir Office.
 - PPTX editable de la presentación.
 - ZIP con compendio de figuras JPG.
 - ZIP con compendio de figuras PNG.
 - ZIP con compendio de figuras SVG.
 
-Para PDF se intenta primero LibreOffice y, en Windows, Microsoft PowerPoint como respaldo.
-Los SVG nativos se reutilizan cuando existen; para figuras que actualmente sólo producen
-PNG se genera un contenedor SVG compatible que conserva exactamente el render final.
+El PDF se construye directamente en Python con portada, contenido, introducción,
+separadores por sección, figuras verificadas y cierre. Funciona igual en Windows, macOS y
+Linux: no requiere Microsoft PowerPoint, LibreOffice ni servicios externos.
+Cada script genera en una misma ejecución su PNG, JPG de alta calidad y SVG nativo. El SVG
+conserva el texto como elementos `<text>` seleccionables y copiables, con posiciones
+explícitas (`x`/`y` o `transform`), en vez de convertir las letras a curvas o incrustar el
+PNG completo. Las capas que por su naturaleza ya son raster (por ejemplo, ciertos mapas)
+pueden permanecer incrustadas sin afectar la editabilidad del resto.
+
+Los ZIP incluyen `MANIFIESTO_EXPORTACION.csv` con el script de origen, ruta generada,
+huella SHA-256 y métricas del SVG. El compendio SVG añade `TEXTOS_Y_POSICIONES.csv` para
+localizar y auditar el contenido textual sin abrir cada archivo, así como las fuentes Noto
+Sans del proyecto y su licencia para evitar sustituciones tipográficas al editar.
 
 El frontend vive en `web/` y el servidor/API en `src/anuario2026/web.py`. Si se modifica
 el frontend, recompílalo con `cd web; npm run build`.
 
 ## Resultados
 
-- Gráficas: `build/figures/<sección>/`
+- Gráficas reproducibles PNG, JPG y SVG editable: `build/figures/<sección>/`
 - Textos automáticos: `build/text/`
-- PowerPoint: `entrega/`
+- PDF portátil y PowerPoint: `entrega/`
 - Datos usados, fuentes, cálculos y estado: `reportes/<corrida>/`
 - Catálogo figura-fuente por corrida: `reportes/<corrida>/referencias_fuentes_figuras.csv`
 - Datos descargados y reutilizables: `data/raw/`

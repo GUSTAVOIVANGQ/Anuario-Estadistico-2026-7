@@ -46,14 +46,17 @@ Se abrirá `http://127.0.0.1:8765`.
 ## Requisitos adicionales de la UI
 
 - Node.js 20 o superior y npm para compilar `web/`.
-- Para exportar PDF: Microsoft PowerPoint en Windows o LibreOffice.
+- Para exportar PDF no se requiere software externo: el proyecto lo genera directamente
+  con Python, ReportLab y pypdf, instalados por `preparar_entorno.ps1`.
 
 ## Nota sobre SVG
 
-Si una figura ya cuenta con SVG nativo, se copia ese archivo. Si el generador actual sólo
-produce PNG, el compendio crea un SVG compatible que incrusta el render PNG para mantener
-exactamente la apariencia. Esto permite incorporar la opción SVG desde ahora sin modificar
-los 91 scripts de figuras.
+La ejecución de cada figura produce PNG, JPG y un SVG nativo desde el mismo objeto
+Matplotlib. El SVG configura `svg.fonttype=none`, por lo que títulos, etiquetas, leyendas,
+notas y fuentes permanecen como texto seleccionable y copiable, con sus posiciones
+explícitas. El pipeline valida este requisito y no sustituye silenciosamente el SVG por una
+captura PNG. El ZIP incorpora un manifiesto de origen, un inventario de textos/posiciones y
+las fuentes Noto Sans con su licencia para facilitar la edición en otras aplicaciones.
 
 ## Archivos principales
 

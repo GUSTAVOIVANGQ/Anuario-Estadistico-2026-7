@@ -27,11 +27,11 @@ import {
 } from 'lucide-react'
 
 const exportOptions = [
-  { kind: 'pdf', label: 'PDF', detail: 'Presentación completa', icon: FileText },
+  { kind: 'pdf', label: 'PDF', detail: 'Presentación completa · sin Office', icon: FileText },
   { kind: 'pptx', label: 'PPTX', detail: 'Presentación editable', icon: Presentation },
-  { kind: 'jpg', label: 'JPG', detail: 'Compendio de figuras', icon: FileImage },
-  { kind: 'png', label: 'PNG', detail: 'Compendio de figuras', icon: SquareStack },
-  { kind: 'svg', label: 'SVG', detail: 'Compendio de figuras', icon: Layers3 },
+  { kind: 'jpg', label: 'JPG', detail: 'Alta calidad · desde código', icon: FileImage },
+  { kind: 'png', label: 'PNG', detail: 'Sin pérdida · desde código', icon: SquareStack },
+  { kind: 'svg', label: 'SVG', detail: 'Vector editable · texto real', icon: Layers3 },
 ]
 
 function App() {
@@ -384,7 +384,7 @@ function App() {
                 </button>
               ))}
             </div>
-            <div className="modal-note"><Archive size={14} /> Los compendios JPG, PNG y SVG se descargan como ZIP organizados por sección.</div>
+            <div className="modal-note"><Archive size={14} /> ZIP por sección con manifiesto de origen; el SVG conserva texto seleccionable y sus posiciones.</div>
           </div>
         </div>
       )}

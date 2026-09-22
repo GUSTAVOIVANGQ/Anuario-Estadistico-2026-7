@@ -1,22 +1,24 @@
 from __future__ import annotations
 
-import base64
 import csv
 import shutil
-import subprocess
-import sys
 import tempfile
 import zipfile
 from pathlib import Path
-from xml.sax.saxutils import escape
+from xml.etree import ElementTree
 
-from PIL import Image
-
+from .figure_outputs import companion_paths, inspect_svg, validate_editable_svg, validate_jpg
+from .pdf_export import (
+    PdfDependencyUnavailable,
+    create_portable_presentation_pdf,
+    figures_for_pdf,
+)
 from .pipeline import assemble_pptx
+from .reports import sha256_file
 
 
 class ExportUnavailable(RuntimeError):
-    """La exportación solicitada necesita una herramienta externa no disponible."""
+    """La exportación solicitada no puede construirse con artefactos verificados."""
 
 
 def _run_dir(project_root: Path, run_id: str) -> Path:
@@ -27,13 +29,13 @@ def _run_dir(project_root: Path, run_id: str) -> Path:
     return candidate
 
 
-def successful_figure_paths(project_root: Path, run_id: str) -> list[tuple[str, Path]]:
+def _read_successful_rows(project_root: Path, run_id: str) -> list[dict[str, str | Path]]:
     run_dir = _run_dir(project_root, run_id)
     status_path = run_dir / "estado_figuras.csv"
     if not status_path.is_file():
         raise FileNotFoundError(f"No existe el estado de la corrida: {status_path}")
 
-    rows: list[tuple[str, Path]] = []
+    rows: list[dict[str, str | Path]] = []
     with status_path.open("r", encoding="utf-8-sig", newline="") as stream:
         for row in csv.DictReader(stream):
             if row.get("status") != "OK":
@@ -45,39 +47,100 @@ def successful_figure_paths(project_root: Path, run_id: str) -> list[tuple[str, 
             path = (project_root / Path(rel.replace("\\", "/"))).resolve()
             if project_root.resolve() not in path.parents or not path.is_file():
                 continue
-            rows.append((figure_id, path))
+            rows.append(
+                {
+                    "figure_id": figure_id,
+                    "source_path": path,
+                    "script_path": (row.get("script_path") or "").replace("\\", "/"),
+                }
+            )
     if not rows:
         raise FileNotFoundError("La corrida no contiene figuras generadas correctamente.")
     return rows
+
+
+def successful_figure_paths(project_root: Path, run_id: str) -> list[tuple[str, Path]]:
+    return [
+        (str(row["figure_id"]), Path(row["source_path"]))
+        for row in _read_successful_rows(project_root, run_id)
+    ]
 
 
 def _safe_name(figure_id: str) -> str:
     return "figura_" + figure_id.lower().replace(".", "_")
 
 
-def _write_svg_wrapper(png_path: Path, svg_path: Path) -> None:
-    """Crea un SVG válido que conserva exactamente el render final del PNG.
+def _write_export_notes(temp_root: Path, project_root: Path, kind: str) -> None:
+    description = {
+        "png": "PNG sin pérdida, generado directamente por el script de cada figura.",
+        "jpg": "JPG de alta calidad, generado desde la misma figura Matplotlib que el PNG.",
+        "svg": (
+            "SVG nativo y autocontenido. Los textos permanecen como elementos <text> "
+            "seleccionables, con su posición en x/y o transform; las formas compatibles "
+            "permanecen vectoriales. Los mapas o capas creadas originalmente como imagen "
+            "pueden conservar imágenes incrustadas sin convertir el texto en curvas."
+        ),
+    }[kind]
+    font_note = ""
+    if kind == "svg":
+        font_source = project_root / "assets" / "fonts" / "Noto_Sans"
+        if font_source.is_dir():
+            shutil.copytree(font_source, temp_root / "FUENTES" / "Noto_Sans")
+            font_note = (
+                "Para evitar sustituciones tipográficas al editar, instala las fuentes "
+                "Noto Sans incluidas en FUENTES/Noto_Sans. Se conserva también su "
+                "licencia OFL.txt.\n"
+            )
 
-    Si una figura tiene un SVG nativo junto al PNG se usa ese archivo. Este
-    wrapper es el respaldo compatible para figuras que hoy sólo producen PNG.
-    """
-    with Image.open(png_path) as image:
-        width, height = image.size
-    encoded = base64.b64encode(png_path.read_bytes()).decode("ascii")
-    title = escape(png_path.stem)
-    svg_path.write_text(
-        "\n".join(
-            [
-                '<?xml version="1.0" encoding="UTF-8"?>',
-                f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-                f"  <title>{title}</title>",
-                f'  <image width="{width}" height="{height}" href="data:image/png;base64,{encoded}"/>',
-                "</svg>",
-            ]
+    notes = (
+        "Anuario Estadístico 2026 — compendio de figuras\n"
+        "===================================================\n\n"
+        f"{description}\n\n"
+        "MANIFIESTO_EXPORTACION.csv registra el script de origen y la huella SHA-256 "
+        "de cada archivo.\n"
+        + (
+            "TEXTOS_Y_POSICIONES.csv permite localizar y auditar cada texto del SVG.\n"
+            if kind == "svg"
+            else ""
         )
-        + "\n",
-        encoding="utf-8",
+        + font_note
     )
+    (temp_root / "LEEME.txt").write_text(notes, encoding="utf-8")
+
+
+def _svg_text_rows(figure_id: str, svg_path: Path) -> list[dict[str, str | int]]:
+    root = ElementTree.parse(svg_path).getroot()
+    parents = {child: parent for parent in root.iter() for child in parent}
+    rows: list[dict[str, str | int]] = []
+    position = 0
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "text":
+            continue
+        content = "".join(element.itertext()).strip()
+        if not content:
+            continue
+        position += 1
+        ancestor = parents.get(element)
+        group_id = ""
+        while ancestor is not None:
+            if ancestor.get("id"):
+                group_id = ancestor.get("id", "")
+                break
+            ancestor = parents.get(ancestor)
+        rows.append(
+            {
+                "figure_id": figure_id,
+                "text_order": position,
+                "svg_group_id": group_id,
+                "svg_element_id": element.get("id", ""),
+                "text": " ".join(content.split()),
+                "x": element.get("x", ""),
+                "y": element.get("y", ""),
+                "transform": element.get("transform", ""),
+                "style": element.get("style", ""),
+            }
+        )
+    return rows
 
 
 def create_figure_compendium(project_root: Path, run_id: str, kind: str) -> Path:
@@ -85,31 +148,122 @@ def create_figure_compendium(project_root: Path, run_id: str, kind: str) -> Path
     if kind not in {"png", "jpg", "svg"}:
         raise ValueError(f"Formato de compendio no soportado: {kind}")
 
-    rows = successful_figure_paths(project_root, run_id)
+    rows = _read_successful_rows(project_root, run_id)
     export_dir = project_root / "entrega" / "exports"
     export_dir.mkdir(parents=True, exist_ok=True)
     zip_path = export_dir / f"anuario_estadistico_2026_{run_id}_figuras_{kind}.zip"
 
     with tempfile.TemporaryDirectory(prefix=f"anuario_{kind}_") as temp_name:
         temp_root = Path(temp_name)
-        for figure_id, source_path in rows:
+        manifest: list[dict[str, str | int | bool]] = []
+        svg_texts: list[dict[str, str | int]] = []
+        for row in rows:
+            figure_id = str(row["figure_id"])
+            source_path = Path(row["source_path"])
             section_dir = temp_root / figure_id.split(".", 1)[0]
             section_dir.mkdir(parents=True, exist_ok=True)
             base_name = _safe_name(figure_id)
+            sources = companion_paths(source_path)
+            target = section_dir / f"{base_name}.{kind}"
             if kind == "png":
-                shutil.copy2(source_path, section_dir / f"{base_name}.png")
+                export_source = sources["png"]
             elif kind == "jpg":
-                target = section_dir / f"{base_name}.jpg"
-                with Image.open(source_path) as image:
-                    rgb = image.convert("RGB")
-                    rgb.save(target, "JPEG", quality=95, optimize=True)
+                export_source = sources["jpg"]
+                if not export_source.is_file():
+                    raise ExportUnavailable(
+                        f"La figura {figure_id} no tiene JPG generado por código. "
+                        "Vuelve a ejecutar esa figura o la corrida completa."
+                    )
+                try:
+                    validate_jpg(export_source)
+                except (OSError, ValueError) as exc:
+                    raise ExportUnavailable(
+                        f"El JPG generado para {figure_id} no superó la validación. "
+                        "Vuelve a ejecutar esa figura."
+                    ) from exc
             else:
-                native_svg = source_path.with_suffix(".svg")
-                target = section_dir / f"{base_name}.svg"
-                if native_svg.is_file():
-                    shutil.copy2(native_svg, target)
-                else:
-                    _write_svg_wrapper(source_path, target)
+                export_source = sources["svg"]
+                if not export_source.is_file():
+                    raise ExportUnavailable(
+                        f"La figura {figure_id} no tiene SVG nativo editable. "
+                        "Vuelve a ejecutar esa figura o la corrida completa."
+                    )
+                try:
+                    validate_editable_svg(export_source)
+                except (OSError, ValueError) as exc:
+                    raise ExportUnavailable(
+                        f"El SVG de {figure_id} no contiene texto editable y posicionado. "
+                        "Vuelve a ejecutar esa figura."
+                    ) from exc
+
+            shutil.copy2(export_source, target)
+            inspection = inspect_svg(export_source) if kind == "svg" else None
+            manifest.append(
+                {
+                    "figure_id": figure_id,
+                    "section": figure_id.split(".", 1)[0],
+                    "format": kind.upper(),
+                    "archive_path": target.relative_to(temp_root).as_posix(),
+                    "source_script": str(row["script_path"]),
+                    "generated_path": export_source.relative_to(
+                        project_root.resolve()
+                    ).as_posix(),
+                    "sha256": sha256_file(target),
+                    "bytes": target.stat().st_size,
+                    "editable_text": inspection.editable_text if inspection else "",
+                    "fully_vector": inspection.fully_vector if inspection else "",
+                    "text_elements": inspection.text_elements if inspection else "",
+                    "positioned_text_elements": (
+                        inspection.positioned_text_elements if inspection else ""
+                    ),
+                    "vector_elements": inspection.vector_elements if inspection else "",
+                    "embedded_images": inspection.embedded_images if inspection else "",
+                }
+            )
+            if kind == "svg":
+                svg_texts.extend(_svg_text_rows(figure_id, export_source))
+
+        _write_export_notes(temp_root, project_root, kind)
+        manifest_fields = [
+            "figure_id",
+            "section",
+            "format",
+            "archive_path",
+            "source_script",
+            "generated_path",
+            "sha256",
+            "bytes",
+            "editable_text",
+            "fully_vector",
+            "text_elements",
+            "positioned_text_elements",
+            "vector_elements",
+            "embedded_images",
+        ]
+        with (temp_root / "MANIFIESTO_EXPORTACION.csv").open(
+            "w", encoding="utf-8-sig", newline=""
+        ) as stream:
+            writer = csv.DictWriter(stream, fieldnames=manifest_fields)
+            writer.writeheader()
+            writer.writerows(manifest)
+        if kind == "svg":
+            with (temp_root / "TEXTOS_Y_POSICIONES.csv").open(
+                "w", encoding="utf-8-sig", newline=""
+            ) as stream:
+                fields = [
+                    "figure_id",
+                    "text_order",
+                    "svg_group_id",
+                    "svg_element_id",
+                    "text",
+                    "x",
+                    "y",
+                    "transform",
+                    "style",
+                ]
+                writer = csv.DictWriter(stream, fieldnames=fields)
+                writer.writeheader()
+                writer.writerows(svg_texts)
 
         if zip_path.exists():
             zip_path.unlink()
@@ -128,77 +282,18 @@ def ensure_pptx(project_root: Path, run_id: str) -> Path:
     return output
 
 
-def _convert_with_libreoffice(pptx_path: Path, pdf_path: Path) -> bool:
-    executable = shutil.which("soffice") or shutil.which("libreoffice")
-    if not executable:
-        return False
-    pdf_path.parent.mkdir(parents=True, exist_ok=True)
-    completed = subprocess.run(
-        [
-            executable,
-            "--headless",
-            "--convert-to",
-            "pdf",
-            "--outdir",
-            str(pdf_path.parent),
-            str(pptx_path),
-        ],
-        capture_output=True,
-        text=True,
-        timeout=300,
-        check=False,
-    )
-    generated = pdf_path.parent / f"{pptx_path.stem}.pdf"
-    if completed.returncode == 0 and generated.is_file():
-        if generated.resolve() != pdf_path.resolve():
-            if pdf_path.exists():
-                pdf_path.unlink()
-            generated.replace(pdf_path)
-        return True
-    return False
-
-
-def _convert_with_powerpoint(pptx_path: Path, pdf_path: Path) -> bool:
-    if sys.platform != "win32":
-        return False
-    powershell = shutil.which("powershell.exe") or shutil.which("powershell")
-    if not powershell:
-        return False
-
-    source = str(pptx_path.resolve()).replace("'", "''")
-    destination = str(pdf_path.resolve()).replace("'", "''")
-    script = f"""
-$ErrorActionPreference = 'Stop'
-$powerPoint = New-Object -ComObject PowerPoint.Application
-$powerPoint.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
-$presentation = $powerPoint.Presentations.Open('{source}', $true, $true, $false)
-$presentation.SaveAs('{destination}', 32)
-$presentation.Close()
-$powerPoint.Quit()
-"""
-    completed = subprocess.run(
-        [powershell, "-NoProfile", "-NonInteractive", "-Command", script],
-        capture_output=True,
-        text=True,
-        timeout=300,
-        check=False,
-    )
-    return completed.returncode == 0 and pdf_path.is_file()
-
-
 def ensure_pdf(project_root: Path, run_id: str) -> Path:
-    pptx_path = ensure_pptx(project_root, run_id)
-    pdf_path = pptx_path.with_suffix(".pdf")
-    if pdf_path.is_file() and pdf_path.stat().st_mtime >= pptx_path.stat().st_mtime:
-        return pdf_path
-
-    # En Windows, PowerPoint suele ser la vía más rápida y fiel. En otros
-    # sistemas se usa LibreOffice; ambos quedan como respaldo mutuo.
-    if _convert_with_powerpoint(pptx_path, pdf_path):
-        return pdf_path
-    if _convert_with_libreoffice(pptx_path, pdf_path):
-        return pdf_path
-    raise ExportUnavailable(
-        "No se encontró LibreOffice ni Microsoft PowerPoint para convertir la presentación a PDF. "
-        "Instala LibreOffice o ejecuta la app en un equipo con PowerPoint."
-    )
+    rows = successful_figure_paths(project_root, run_id)
+    figures, section_titles = figures_for_pdf(project_root, rows)
+    pdf_path = project_root / "entrega" / f"anuario_estadistico_2026_{run_id}.pdf"
+    try:
+        result = create_portable_presentation_pdf(
+            project_root,
+            run_id,
+            figures,
+            pdf_path,
+            section_titles=section_titles,
+        )
+    except PdfDependencyUnavailable as exc:
+        raise ExportUnavailable(str(exc)) from exc
+    return result.output_path

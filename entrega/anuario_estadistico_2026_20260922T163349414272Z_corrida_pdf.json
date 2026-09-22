@@ -1,0 +1,22 @@
+{
+  "project": "Anuario Estadístico 2026",
+  "run_id": "20260922T163349414272Z_corrida",
+  "generated_at": "2026-09-22T16:34:17+00:00",
+  "generator": "Python + ReportLab",
+  "external_office_required": false,
+  "page_size_points": [
+    720.0,
+    405.0
+  ],
+  "page_count": 6,
+  "figure_count": 1,
+  "section_count": 1,
+  "figures": [
+    {
+      "figure_id": "A.1",
+      "title": "Producto Interno Bruto y contribución de telecomunicaciones y radiodifusión",
+      "section": "A",
+      "image_path": "build/figures/A/figura_a_1.png"
+    }
+  ]
+}

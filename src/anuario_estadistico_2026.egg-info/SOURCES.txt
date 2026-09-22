@@ -6,7 +6,9 @@ src/anuario2026/__main__.py
 src/anuario2026/cli.py
 src/anuario2026/context.py
 src/anuario2026/exports.py
+src/anuario2026/figure_outputs.py
 src/anuario2026/models.py
+src/anuario2026/pdf_export.py
 src/anuario2026/pipeline.py
 src/anuario2026/presentation.py
 src/anuario2026/registry.py
@@ -43,6 +45,8 @@ tests/test_figuras_e3_e8.py
 tests/test_figuras_f1.py
 tests/test_figuras_f10_f16.py
 tests/test_figuras_f3_f9.py
+tests/test_figure_outputs.py
+tests/test_pdf_export.py
 tests/test_presentation_assembly.py
 tests/test_registry.py
 tests/test_sources.py

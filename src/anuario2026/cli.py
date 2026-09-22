@@ -57,6 +57,14 @@ def doctor(project_root: Path) -> int:
         f"UI React compilada: {'OK' if frontend_dist.is_file() else 'FALTA (ejecuta preparar_entorno.ps1)'} "
         f"| {frontend_dist}"
     )
+    try:
+        import pypdf  # noqa: F401
+        import reportlab  # noqa: F401
+
+        pdf_status = "OK"
+    except ImportError:
+        pdf_status = "FALTA (ejecuta preparar_entorno.ps1)"
+    print(f"Exportador PDF portátil sin Office: {pdf_status}")
     print("Estado base: correcto")
     return 0
 

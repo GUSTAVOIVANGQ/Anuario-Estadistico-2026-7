@@ -14,3 +14,9 @@ Usa `_plantilla.py` como punto de partida. No modifiques el diseño por medio de
 orquestador: la figura debe conservar directamente sus colores, tamaños,
 tipografía, títulos y pies. En el pie, `Fuente:`, `Nota:` o `Notas:` van en
 negritas; el texto posterior usa peso normal. No agregues leyendas editoriales.
+
+Los scripts continúan guardando su ruta canónica `.png` con `fig.savefig`. El
+pipeline captura esa misma figura antes de cerrarla y crea también `.jpg` y
+`.svg`. En el SVG el texto se conserva como texto (`svg.fonttype=none`), por lo
+que no se deben convertir manualmente las etiquetas a trazados ni sustituir la
+figura completa por una imagen raster.
