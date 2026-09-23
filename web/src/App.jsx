@@ -53,7 +53,7 @@ function App() {
   const [showExport, setShowExport] = useState(false)
   const [downloadKind, setDownloadKind] = useState(null)
   const [toast, setToast] = useState(null)
-  const [theme, setTheme] = useState(() => localStorage.getItem('anuario-theme') === 'light' ? 'light' : 'dark')
+  const [theme, setTheme] = useState(() => localStorage.getItem('anuario-theme') === 'dark' ? 'dark' : 'light')
   const [zoom, setZoom] = useState(1)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [fullscreen, setFullscreen] = useState(false)
