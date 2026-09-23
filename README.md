@@ -14,7 +14,7 @@ de Nielsen IBOPE y de INRA.
 ## La interfaz web
 
 La web se ejecuta en la computadora del usuario y se abre en
-`http://127.0.0.1:8765`. Desde ella se puede:
+http://172.17.42.163:3005/. Desde ella se puede:
 
 - Buscar figuras en el catálogo y filtrar por sección.
 - Ver una figura en grande, navegar entre resultados y ampliar la imagen.
@@ -28,7 +28,7 @@ La web se ejecuta en la computadora del usuario y se abre en
 El panel izquierdo reúne el catálogo y las acciones de ejecución; el área central
 muestra la figura seleccionada y el avance de la corrida.
 
-![Vista principal de la interfaz web del Anuario Estadístico 2026](assets/screenshots/Screensot-two.png)
+![Vista principal de la interfaz web del Anuario Estadístico 2026](assets/screenshots/screenshot-2.png)
 
 ### Descarga de resultados
 
@@ -36,7 +36,7 @@ Al terminar una corrida, la interfaz presenta las opciones de exportación. La
 captura muestra una corrida de una figura; el mensaje de finalización se refiere
 a esa corrida, no a todas las secciones del proyecto.
 
-![Opciones de descarga de PDF, PPTX, JPG, PNG y SVG](assets/screenshots/Screenshot-one.png)
+![Opciones de descarga de PDF, PPTX, JPG, PNG y SVG](assets/screenshots/screenshot-1.png)
 
 ## Inicio rápido
 
