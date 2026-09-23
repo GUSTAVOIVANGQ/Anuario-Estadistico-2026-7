@@ -1,0 +1,8 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+A.1,pib_miles_millones_ultimo_periodo,pib_millones_pesos / 1000,"{""periodo"": ""2026-T2"", ""pib_millones_pesos"": 26144132.442}",26144.13,miles de millones de pesos,2
+A.1,tyr_miles_millones_ultimo_periodo,(telecom_millones_pesos + radio_tv_millones_pesos) / 1000,"{""periodo"": ""2026-T2"", ""telecom_millones_pesos"": 392043.758, ""radio_tv_millones_pesos"": 48372.236}",440.42,miles de millones de pesos,2
+A.1,participacion_tyr_ultimo_periodo,(telecom_millones_pesos + radio_tv_millones_pesos) / pib_millones_pesos * 100,"{""periodo"": ""2026-T2"", ""tyr_millones_pesos"": 440415.994, ""pib_millones_pesos"": 26144132.442}",1.6846,porcentaje,4
+A.2,empleo_tyr_ultimo_periodo,telecomunicaciones_personas + radiodifusion_personas,"{""periodo"": ""2026-T2"", ""telecomunicaciones_personas"": 242348, ""radiodifusion_personas"": 36721}",279069,personas,0
+A.2,distribucion_ultimo_periodo,personas_sector / total_personas * 100,"{""periodo"": ""2026-T2"", ""total_personas"": 279069}","{'telecomunicaciones_pct': 86.84, 'radiodifusion_pct': 13.16}",porcentaje,2
+A.2,variacion_anual_empleo_tyr,(total_ultimo / total_mismo_trimestre_previo - 1) * 100,"{""periodo_ultimo"": ""2026-T2"", ""total_ultimo"": 279069, ""periodo_previo"": ""2025-T2"", ""total_previo"": 291646}",-4.31,porcentaje,2
+A.2,extremos_serie_empleo_tyr,máximo y mínimo de total_personas en los periodos graficados,"{""periodos"": 27}","{'mayor_periodo': '2021-T4', 'mayor_total': 323048, 'menor_periodo': '2014-T4', 'menor_total': 216150}",personas,0

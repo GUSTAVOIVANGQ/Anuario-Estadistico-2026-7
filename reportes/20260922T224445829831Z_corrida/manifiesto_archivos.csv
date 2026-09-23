@@ -1,0 +1,10 @@
+﻿figure_id,role,path,sha256,bytes,modified_at
+A.3,dato_crudo,data/raw/inegi_inpc_dynamic/objects/f883f3859247e8509bae82527a1ac108bbff457a48e3f31ac56a3d43b3e9131c/inpc_ipcom_hasta_2024.csv,f883f3859247e8509bae82527a1ac108bbff457a48e3f31ac56a3d43b3e9131c,49405,2026-09-09T21:53:26+00:00
+A.3,dato_crudo,data/raw/inegi_inpc_current_2026_07_reference/objects/5d75d854deb25a0e901d/conjunto_de_datos_inpc_indicador_mensual_csv.zip,5d75d854deb25a0e901def5adb4430eadb44cc253ff86bf39734efc9185144c1,34591,2026-09-09T21:53:59+00:00
+A.3,datos_usados,reportes/20260922T224445829831Z_corrida/datos_usados/a_3_datos_usados.csv,281d85a83a3f8218b2ee6281592c1089f43cc2743d7d39cecb19e9514bb516d5,993,2026-09-22T22:44:47+00:00
+A.3,texto_generado,build/text/a_3.md,75d97c5e37fb1635b0b295c3f2db1e24e26910f97fdf3ed650aa776829e4d76a,359,2026-09-22T22:44:47+00:00
+A.3,texto_copia_corrida,reportes/20260922T224445829831Z_corrida/textos/a_3_parrafo.md,75d97c5e37fb1635b0b295c3f2db1e24e26910f97fdf3ed650aa776829e4d76a,359,2026-09-22T22:44:47+00:00
+A.3,grafica,build/figures/A/figura_a_3.png,699ff0beecd32f1c0f345e919fc1013f60afbf1ad10359dd4fca4ceca7126a01,277577,2026-09-22T22:44:48+00:00
+A.3,grafica_jpg,build/figures/A/figura_a_3.jpg,ac29b393b216b2e9761e11055c0beeebab2dabb5c718fead2b1b36eaf2a8ada8,330278,2026-09-22T22:44:49+00:00
+A.3,grafica_svg_editable,build/figures/A/figura_a_3.svg,e66e871a10986cf8422d55ee9d4b8ff0fef9a18cbcfdc908701534b07006ab5c,44505,2026-09-22T22:44:48+00:00
+A.3,metadatos,build/metadata/a_3.json,c1183022c5c029bbff5b0d12dc8335e69b1c0c8f76f02356716f5777248e2405,1018,2026-09-22T22:44:49+00:00

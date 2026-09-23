@@ -1,0 +1,4 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+A.3,variacion_anual_inpc,(INPC último mes / INPC mismo mes año anterior - 1) * 100,"{""periodo_ultimo"": ""2026-08"", ""inpc_ultimo"": 145.462, ""periodo_previo"": ""2025-08"", ""inpc_previo"": 140.867}",3.26,porcentaje,2
+A.3,variacion_ipcom_ultimo_corte,(IPCOM julio 2024 / IPCOM diciembre 2023 - 1) * 100,"{""ipcom_2024_07"": 90.402427, ""ipcom_2023_12"": 91.819751}",-1.54,porcentaje,2
+A.3,ultimo_nivel_inpc,última observación publicada del INPC,"{""periodo"": ""2026-08""}",145.462,índice,3

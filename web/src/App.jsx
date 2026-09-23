@@ -11,7 +11,9 @@ import {
   FileText,
   Layers3,
   LoaderCircle,
-  Menu,
+  Maximize2,
+  Minimize2,
+  Moon,
   MonitorPlay,
   PanelLeftClose,
   PanelLeftOpen,
@@ -22,8 +24,11 @@ import {
   Settings2,
   Sparkles,
   SquareStack,
+  Sun,
   X,
   Zap,
+  ZoomIn,
+  ZoomOut,
 } from 'lucide-react'
 
 const exportOptions = [
@@ -40,7 +45,7 @@ function App() {
   const [activeId, setActiveId] = useState(null)
   const [section, setSection] = useState('Todas')
   const [query, setQuery] = useState('')
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 760)
   const [run, setRun] = useState(null)
   const [processing, setProcessing] = useState(false)
   const [generated, setGenerated] = useState([])
@@ -48,11 +53,48 @@ function App() {
   const [showExport, setShowExport] = useState(false)
   const [downloadKind, setDownloadKind] = useState(null)
   const [toast, setToast] = useState(null)
+  const [theme, setTheme] = useState(() => localStorage.getItem('anuario-theme') === 'light' ? 'light' : 'dark')
+  const [zoom, setZoom] = useState(1)
+  const [pan, setPan] = useState({ x: 0, y: 0 })
+  const [fullscreen, setFullscreen] = useState(false)
+  const dragRef = useRef(null)
+  const compactRef = useRef(window.innerWidth <= 760)
   const eventSourceRef = useRef(null)
 
   useEffect(() => {
     loadCatalog()
     return () => eventSourceRef.current?.close()
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('anuario-theme', theme)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#f3f7f5' : '#071b1a')
+  }, [theme])
+
+  useEffect(() => {
+    setZoom(1)
+    setPan({ x: 0, y: 0 })
+    document.querySelector('.figure-row.active')?.scrollIntoView({ block: 'nearest' })
+  }, [activeId])
+
+  useEffect(() => {
+    if (!fullscreen) return undefined
+    const closeOnEscape = (event) => { if (event.key === 'Escape') setFullscreen(false) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [fullscreen])
+
+  useEffect(() => {
+    const onResize = () => {
+      const compact = window.innerWidth <= 760
+      if (compact !== compactRef.current) {
+        compactRef.current = compact
+        setSidebarOpen(!compact)
+      }
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   async function loadCatalog() {
@@ -84,6 +126,52 @@ function App() {
 
   const progress = run?.total ? Math.min(100, (run.completed / run.total) * 100) : 0
   const isRunning = run?.status === 'running' || run?.status === 'queued'
+  const hasPreview = Boolean(activeFigure?.has_preview || generated.includes(activeId))
+  const activeIndex = catalog.figures.findIndex((item) => item.id === activeId)
+
+  function changeZoom(amount) {
+    const next = Math.max(1, Math.min(3, Math.round((zoom + amount) * 10) / 10))
+    setZoom(next)
+    if (next === 1) setPan({ x: 0, y: 0 })
+  }
+
+  function startDrag(event) {
+    if (zoom <= 1) return
+    dragRef.current = { x: event.clientX - pan.x, y: event.clientY - pan.y }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  function moveDrag(event) {
+    if (!dragRef.current) return
+    setPan({ x: event.clientX - dragRef.current.x, y: event.clientY - dragRef.current.y })
+  }
+
+  function stopDrag() { dragRef.current = null }
+
+  function figureImage() {
+    return <img
+      key={`${activeId}-${refreshKey}`}
+      className={`figure-image ${zoom > 1 ? 'zoomed' : ''}`}
+      src={`${activeFigure.preview_url}?v=${refreshKey}`}
+      alt={`Figura ${activeFigure.id}: ${activeFigure.title}`}
+      style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
+      onPointerDown={startDrag}
+      onPointerMove={moveDrag}
+      onPointerUp={stopDrag}
+      onPointerCancel={stopDrag}
+      draggable="false"
+    />
+  }
+
+  function viewerControls() {
+    return <div className="viewer-controls" aria-label="Controles de la figura">
+      <button type="button" onClick={() => changeZoom(-0.25)} disabled={zoom <= 1} title="Alejar" aria-label="Alejar"><ZoomOut size={17} /></button>
+      <span aria-live="polite">{Math.round(zoom * 100)}%</span>
+      <button type="button" onClick={() => changeZoom(0.25)} disabled={zoom >= 3} title="Ampliar" aria-label="Ampliar"><ZoomIn size={17} /></button>
+      <button type="button" onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }) }} disabled={zoom === 1} title="Ajustar figura" aria-label="Ajustar figura">Ajustar</button>
+      <button type="button" onClick={() => setFullscreen((current) => !current)} title={fullscreen ? 'Salir de pantalla completa' : 'Ver en pantalla completa'} aria-label={fullscreen ? 'Salir de pantalla completa' : 'Ver en pantalla completa'}>{fullscreen ? <Minimize2 size={17} /> : <Maximize2 size={17} />}</button>
+    </div>
+  }
 
   function notify(message, type = 'info') {
     setToast({ message, type })
@@ -234,7 +322,11 @@ function App() {
     const figures = catalog.figures
     const index = figures.findIndex((item) => item.id === activeFigure.id)
     const next = Math.max(0, Math.min(figures.length - 1, index + direction))
-    setActiveId(figures[next]?.id || activeId)
+    const nextFigure = figures[next]
+    if (!nextFigure) return
+    if (section !== 'Todas' && section !== nextFigure.section) setSection(nextFigure.section)
+    if (query && !`${nextFigure.id} ${nextFigure.title}`.toLowerCase().includes(query.trim().toLowerCase())) setQuery('')
+    setActiveId(nextFigure.id)
   }
 
   return (
@@ -251,48 +343,52 @@ function App() {
         </div>
 
         <div className="action-stack">
-          <button className="action-button primary" disabled={isRunning} onClick={() => startRun('all')}>
+          <button className="action-button primary" disabled={isRunning || !catalog.available_count} title={isRunning ? 'Hay una corrida en curso' : !catalog.available_count ? 'No hay figuras ejecutables' : 'Generar todas las figuras ejecutables'} onClick={() => startRun('all')}>
             {isRunning ? <LoaderCircle className="spin" size={19} /> : <MonitorPlay size={19} />}
-            <span><strong>Corrida completa</strong><small>{catalog.available_count} figuras disponibles</small></span>
+            <span><strong>Corrida completa</strong><small>{catalog.available_count} de {catalog.figures.length} figuras ejecutables</small></span>
           </button>
-          <button className="action-button" disabled={!activeFigure?.available || isRunning} onClick={() => startRun('single', activeFigure ? [activeFigure.id] : [])}>
+          <button className="action-button" disabled={!activeFigure?.available || isRunning} title={!activeFigure?.available ? activeFigure?.status_message || 'Esta figura no está disponible para ejecución' : isRunning ? 'Hay una corrida en curso' : `Generar figura ${activeFigure.id}`} onClick={() => startRun('single', activeFigure ? [activeFigure.id] : [])}>
             <Play size={18} />
             <span><strong>Crear figura actual</strong><small>{activeFigure?.id || 'Selecciona una figura'}</small></span>
           </button>
-          <button className="action-button" disabled={!selected.size || isRunning} onClick={() => startRun('selection', [...selected])}>
+          <button className="action-button" disabled={!selected.size || isRunning} title={!selected.size ? 'Selecciona al menos una figura ejecutable' : isRunning ? 'Hay una corrida en curso' : `Generar ${selected.size} figuras seleccionadas`} onClick={() => startRun('selection', [...selected])}>
             <Zap size={18} />
             <span><strong>Ejecutar selección</strong><small>{selected.size} figura{selected.size === 1 ? '' : 's'} seleccionada{selected.size === 1 ? '' : 's'}</small></span>
           </button>
         </div>
 
         <div className="catalog-head">
-          <div><span>FIGURAS</span><b>{catalog.figures.length}</b></div>
-          <button className="ghost-mini" onClick={() => selectSectionFigures(section)}>Seleccionar sección</button>
+          <div><span>CATÁLOGO</span><b>{catalog.figures.length}</b></div>
+          <button className="ghost-mini" disabled={isRunning} onClick={() => selectSectionFigures(section)}>Seleccionar {section === 'Todas' ? 'disponibles' : `sección ${section}`}</button>
         </div>
-        <div className="search-box"><Search size={15} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar A.1, conectividad…" /></div>
+        <div className="search-box"><Search size={15} /><input aria-label="Buscar figuras" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar A.1, conectividad…" /></div>
         <div className="section-tabs">
           {sections.map((item) => <button key={item} className={section === item ? 'active' : ''} onClick={() => setSection(item)}>{item}</button>)}
         </div>
+        <div className="catalog-summary">{filteredFigures.length} en esta vista · {catalog.available_count} ejecutables</div>
         <div className="figure-list">
+          {!filteredFigures.length && <div className="no-results">No hay figuras con estos filtros.</div>}
           {filteredFigures.map((figure) => {
             const checked = selected.has(figure.id)
             const runState = run?.figure_statuses?.[figure.id]?.status
             return (
-              <button key={figure.id} className={`figure-row ${activeId === figure.id ? 'active' : ''} ${!figure.available ? 'disabled' : ''}`} onClick={() => setActiveId(figure.id)}>
-                <span className={`checkbox ${checked ? 'checked' : ''}`} onClick={(event) => toggleSelected(figure, event)}>
+              <div key={figure.id} className={`figure-row ${activeId === figure.id ? 'active' : ''} ${!figure.available ? 'disabled' : ''}`}>
+                <button type="button" className={`checkbox ${checked ? 'checked' : ''}`} role="checkbox" aria-checked={checked} aria-label={`Seleccionar figura ${figure.id}`} disabled={!figure.available || isRunning} onClick={(event) => toggleSelected(figure, event)}>
                   {checked ? <Check size={12} /> : null}
-                </span>
-                <span className="figure-id">{figure.id}</span>
-                <span className="figure-name">{figure.title}</span>
-                <span className={`state-dot ${runState === 'OK' ? 'ok' : runState === 'ERROR' ? 'error' : figure.available ? 'ready' : 'pending'}`} />
-              </button>
+                </button>
+                <button type="button" className="figure-select" title={`${figure.id}: ${figure.title}`} aria-current={activeId === figure.id ? 'true' : undefined} onClick={() => setActiveId(figure.id)}>
+                  <span className="figure-id">{figure.id}</span>
+                  <span className="figure-name">{figure.title}</span>
+                  <span className={`state-dot ${runState === 'OK' ? 'ok' : runState === 'ERROR' ? 'error' : figure.available ? 'ready' : 'pending'}`} />
+                </button>
+              </div>
             )
           })}
         </div>
         <div className="sidebar-footer"><Settings2 size={14} /><span>Proyecto v{catalog.version || '0.27.0'}</span><span className="live-dot" />Local</div>
       </aside>
 
-      {!sidebarOpen && <button className="sidebar-open-button" onClick={() => setSidebarOpen(true)}><PanelLeftOpen size={19} /></button>}
+      {!sidebarOpen && <button className="sidebar-open-button" aria-label="Abrir catálogo" title="Abrir catálogo" onClick={() => setSidebarOpen(true)}><PanelLeftOpen size={19} /></button>}
 
       <main className="workspace">
         <header className="topbar">
@@ -301,11 +397,12 @@ function App() {
             <h2>Anuario Estadístico <span>2026</span></h2>
           </div>
           <div className="topbar-actions">
-            <div className={`run-pill ${isRunning ? 'running' : run?.status === 'finished' ? 'done' : ''}`}>
+            <button className="theme-toggle" onClick={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'} title={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}>{theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}<span>{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</span></button>
+            <div className={`run-pill ${isRunning ? 'running' : run?.status === 'finished' ? 'done' : run?.status === 'error' ? 'error' : ''}`}>
               {isRunning ? <LoaderCircle className="spin" size={14} /> : run?.status === 'finished' ? <CheckCircle2 size={14} /> : <Circle size={10} />}
-              {isRunning ? `${run.completed || 0}/${run.total || 0} procesadas` : run?.status === 'finished' ? 'Corrida finalizada' : 'Listo para ejecutar'}
+              {isRunning ? `${run.completed || 0}/${run.total || 0} procesadas` : run?.status === 'finished' ? 'Corrida finalizada' : run?.status === 'error' ? 'Corrida con error' : 'Listo para ejecutar'}
             </div>
-            <button className="export-top" disabled={!run || run.status !== 'finished'} onClick={() => setShowExport(true)}><Download size={17} /> Exportar</button>
+            <button className="export-top" disabled={!run || run.status !== 'finished'} title={!run || run.status !== 'finished' ? 'Disponible al finalizar una corrida' : 'Exportar resultados'} onClick={() => setShowExport(true)}><Download size={17} /> Exportar</button>
           </div>
         </header>
 
@@ -319,9 +416,9 @@ function App() {
 
             <div className="stage">
               <div className="stage-grid" />
-              {activeFigure?.has_preview || generated.includes(activeFigure?.id) ? (
-                <div className="image-frame" key={`${activeId}-${refreshKey}`}>
-                  <img src={`${activeFigure.preview_url}?v=${refreshKey}`} alt={`Figura ${activeFigure.id}`} onError={(event) => { event.currentTarget.style.opacity = 0 }} />
+              {hasPreview ? (
+                <div className="image-frame">
+                  {figureImage()}
                   {processing && run?.current_figure === activeFigure.id && <div className="scan-line" />}
                 </div>
               ) : (
@@ -335,14 +432,15 @@ function App() {
               )}
 
               {processing && <div className="processing-badge"><LoaderCircle className="spin" size={16} /><span>Generando imagen</span><i /></div>}
-              <button className="stage-nav left" onClick={() => navigateFigure(-1)}><ChevronLeft size={20} /></button>
-              <button className="stage-nav right" onClick={() => navigateFigure(1)}><ChevronRight size={20} /></button>
+              {hasPreview && viewerControls()}
+              <button className="stage-nav left" disabled={activeIndex <= 0} aria-label="Figura anterior" onClick={() => navigateFigure(-1)}><ChevronLeft size={20} /></button>
+              <button className="stage-nav right" disabled={activeIndex >= catalog.figures.length - 1} aria-label="Figura siguiente" onClick={() => navigateFigure(1)}><ChevronRight size={20} /></button>
             </div>
 
             <div className="monitor-footer">
               <div className="figure-meta">
-                <span className="figure-counter">{activeFigure ? `${activeFigure.order} / ${catalog.figures.length}` : '—'}</span>
-                <div><strong>{activeFigure ? `Figura ${activeFigure.id}` : 'Sin selección'}</strong><small>{activeFigure?.title || 'Selecciona una figura desde el panel lateral'}</small></div>
+                <span className="figure-counter" title="Posición en el catálogo">{activeFigure ? `${activeFigure.order} / ${catalog.figures.length}` : '—'}</span>
+                <div><strong>{activeFigure ? `Figura ${activeFigure.id}` : 'Sin selección'}</strong><small title={activeFigure?.title}>{activeFigure?.title || 'Selecciona una figura desde el panel lateral'}</small></div>
               </div>
               <div className="monitor-status">
                 {run?.figure_statuses?.[activeId]?.status === 'OK' ? <><CheckCircle2 size={15} /><span>Generada correctamente</span></> : processing && run?.current_figure === activeId ? <><LoaderCircle className="spin" size={15} /><span>Procesando…</span></> : <><RefreshCw size={14} /><span>{activeFigure?.has_preview ? 'Imagen existente' : 'Pendiente'}</span></>}
@@ -352,8 +450,8 @@ function App() {
 
           <div className="progress-strip">
             <div className="progress-copy">
-              <span>{isRunning ? 'CORRIDA EN PROGRESO' : run?.status === 'finished' ? 'ÚLTIMA CORRIDA' : 'SECUENCIA DE GENERACIÓN'}</span>
-              <strong>{isRunning ? `${run.current_figure || 'Preparando'} · ${Math.round(progress)}%` : run?.status === 'finished' ? `${run.completed}/${run.total} figuras procesadas` : 'Las figuras aparecerán aquí conforme se generen'}</strong>
+              <span>{isRunning ? 'CORRIDA EN PROGRESO' : run?.status === 'finished' ? 'ÚLTIMA CORRIDA' : run?.status === 'error' ? 'ERROR EN LA CORRIDA' : 'SECUENCIA DE GENERACIÓN'}</span>
+              <strong>{isRunning ? `${run.current_figure || 'Preparando'} · ${Math.round(progress)}%` : run?.status === 'finished' ? `${run.completed}/${run.total} figuras procesadas` : run?.status === 'error' ? run.error : 'Inicia una corrida para ver su avance y miniaturas'}</strong>
             </div>
             <div className="progress-track"><span style={{ width: `${progress}%` }} /></div>
             <div className="filmstrip">
@@ -361,11 +459,17 @@ function App() {
                 const figure = catalog.figures.find((item) => item.id === figureId)
                 if (!figure) return null
                 return <button key={figureId} onClick={() => setActiveId(figureId)} className={activeId === figureId ? 'active' : ''}><img src={`${figure.preview_url}?v=${refreshKey}-${index}`} alt={figureId} /><span>{figureId}</span></button>
-              }) : <div className="filmstrip-empty"><span /><span /><span /><span /><em>Las miniaturas de la corrida aparecerán en secuencia</em></div>}
+              }) : <div className="filmstrip-empty"><FileImage size={20} /><em>{isRunning ? 'Esperando la primera figura…' : 'Aquí aparecerán las figuras generadas en esta sesión'}</em></div>}
             </div>
           </div>
         </section>
       </main>
+
+      {fullscreen && hasPreview && <div className="fullscreen-viewer" role="dialog" aria-modal="true" aria-label={`Figura ${activeFigure.id} en pantalla completa`}>
+        <div className="fullscreen-toolbar"><strong>Figura {activeFigure.id}</strong><span title={activeFigure.title}>{activeFigure.title}</span>{viewerControls()}<button type="button" className="fullscreen-close" onClick={() => setFullscreen(false)} aria-label="Cerrar pantalla completa"><X size={19} /></button></div>
+        <div className="fullscreen-image-frame">{figureImage()}</div>
+        <div className="fullscreen-hint">{zoom > 1 ? 'Arrastra la imagen para recorrerla' : 'La figura completa está ajustada a la pantalla'}</div>
+      </div>}
 
       {showExport && run?.status === 'finished' && (
         <div className="modal-backdrop" onMouseDown={() => setShowExport(false)}>
