@@ -93,7 +93,7 @@ def build_parser() -> argparse.ArgumentParser:
     assemble.add_argument(
         "--strict",
         action="store_true",
-        help="No genera el PPTX si falta una figura o un marcador de la plantilla",
+        help="No genera el PPTX si faltan figuras, narrativas o campos editoriales",
     )
 
     web = subparsers.add_parser("web", help="Abre la interfaz web del Anuario Estadístico")

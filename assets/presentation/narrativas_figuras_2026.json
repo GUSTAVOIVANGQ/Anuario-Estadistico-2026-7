@@ -3,7 +3,7 @@
   "source_document": "anuarioestadistico2024vf_0.pdf",
   "source_purpose": "Redacción base; se preserva y se actualizan registros puntuales con los datos de las figuras del proyecto 2026.",
   "reference_run": "reportes/20260922T173925458200Z_corrida",
-  "figure_count": 91,
+  "figure_count": 105,
   "entries": [
     {
       "figure_id": "A.1",
@@ -29,7 +29,7 @@
       "figure_id": "A.3",
       "source_pdf_page": 13,
       "baseline_text_2024": "En diciembre de 2023, el Índice Nacional de Precios al Consumidor (INPC) tuvo un incremento de 4.9% con respecto del mismo mes de 2022. Por otro lado, el Índice de Precios de Comunicaciones (IPCOM) mostró un decremento del -1.0% en este mismo periodo. Por otro lado, en el periodo de diciembre de 2023 a julio de 2024, el IPCOM llegó a tener una disminución de 1.5%.",
-      "updated_text": "En agosto de 2026, el Índice Nacional de Precios al Consumidor (INPC) tuvo un incremento de 3.3% con respecto del mismo mes de 2025. Por otro lado, el Índice de Precios de Comunicaciones (IPCOM) mostró un decremento del -1.5% en el periodo de diciembre de 2023 a julio de 2024. Por otro lado, en el periodo de diciembre de 2023 a julio de 2024, el IPCOM llegó a tener una disminución de 1.5%.",
+      "updated_text": "En agosto de 2026, el Índice Nacional de Precios al Consumidor (INPC) aumentó 3.3% respecto del mismo mes de 2025. El Índice de Precios de Comunicaciones (IPCOM) disminuyó 1.5% entre diciembre de 2023 y julio de 2024. Los dos indicadores tienen cortes diferentes y se presentan con sus periodos originales.",
       "update_mode": "minimal_grammar_adjustment",
       "notes": [
         "INPC e IPCOM ya no comparten el mismo corte; se ajustó únicamente la referencia del periodo para evitar una afirmación inconsistente."
@@ -972,6 +972,188 @@
       "notes": [],
       "data_file": "reportes/20260922T173925458200Z_corrida/datos_usados/g_1_datos_usados.csv",
       "data_sha256": "691333308fac175a0c3e001ca36270a521e88721d136658a53841e3ce5c77545"
+    },
+    {
+      "figure_id": "H.1",
+      "source_pdf_page": 102,
+      "baseline_text_2024": "El nivel de exposición a la televisión se mide a través del promedio de personas que tienen su televisor encendido en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 15.72% durante las 24 horas del día. Sin embargo, esa proporción cambia significativamente a lo largo del día, alcanzando su punto máximo de 31.21% entre las 21:00 horas y 22:00 horas (Ver Figura H.1.).\n\nAdemás, el nivel de encendidos puede variar dependiendo del público que se analice. De esta manera, el porcentaje de encendidos para las mujeres fue de 16.46%, mientras que para los hombres fue de 14.95%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 32.61% y 29.73% respectivamente.",
+      "updated_text": "El nivel de exposición a la televisión se mide a través del promedio de personas que tienen su televisor encendido en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 15.72% durante las 24 horas del día. Sin embargo, esa proporción cambia significativamente a lo largo del día, alcanzando su punto máximo de 31.21% entre las 21:00 horas y 22:00 horas (Ver Figura H.1.).\n\nAdemás, el nivel de encendidos puede variar dependiendo del público que se analice. De esta manera, el porcentaje de encendidos para las mujeres fue de 16.46%, mientras que para los hombres fue de 14.95%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 32.61% y 29.73% respectivamente.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.2",
+      "source_pdf_page": 103,
+      "baseline_text_2024": "De julio 2023 a junio 2024, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.2.).\n\nPor otra parte, al analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres géneros ya mencionados fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, seguidos de “Reality shows” y “Deportes”.",
+      "updated_text": "De julio 2023 a junio 2024, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.2.).\n\nPor otra parte, al analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres géneros ya mencionados fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, seguidos de “Reality shows” y “Deportes”.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.3",
+      "source_pdf_page": 104,
+      "baseline_text_2024": "En la Ciudad de México, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 16.69% durante las 24 horas del día. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 34.82% entre las 21:00 horas y 22:00 horas (Ver Figura H.3.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 17.43%, mientras que para los hombres fue de 15.89%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 36.48% y 33.03% respectivamente.",
+      "updated_text": "En la Ciudad de México, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 16.69% durante las 24 horas del día. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 34.82% entre las 21:00 horas y 22:00 horas (Ver Figura H.3.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 17.43%, mientras que para los hombres fue de 15.89%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 36.48% y 33.03% respectivamente.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.4",
+      "source_pdf_page": 105,
+      "baseline_text_2024": "De julio 2023 a junio 2024 en la Ciudad de México, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.4.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, seguidos de “Reality shows” y “Deportes”.",
+      "updated_text": "De julio 2023 a junio 2024 en la Ciudad de México, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.4.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, seguidos de “Reality shows” y “Deportes”.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.5",
+      "source_pdf_page": 106,
+      "baseline_text_2024": "En Guadalajara, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 15.27% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 28.99% entre las 21:00 horas y 22:00 horas (ver Figura H.5.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 16.22%, mientras que para los hombres fue de 14.28%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 29.92% y 28.03% respectivamente.",
+      "updated_text": "En Guadalajara, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 15.27% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 28.99% entre las 21:00 horas y 22:00 horas (ver Figura H.5.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 16.22%, mientras que para los hombres fue de 14.28%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 29.92% y 28.03% respectivamente.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.6",
+      "source_pdf_page": 107,
+      "baseline_text_2024": "De julio 2023 a junio 2024 en Guadalajara, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.6.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Deportes”, “Dramatizados unitarios”, y “Reality show”.",
+      "updated_text": "De julio 2023 a junio 2024 en Guadalajara, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.6.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Deportes”, “Dramatizados unitarios”, y “Reality show”.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.7",
+      "source_pdf_page": 108,
+      "baseline_text_2024": "En Monterrey, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 17.92% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 31.35% entre las 21:00 horas y 22:00 horas. (Ver Figura H.7.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 19.33% y, su hora de mayor exposición fue de 21:00 a 22:00 horas, con 33.32%. En el caso de los hombres el porcentaje de encendidos fue de 16.50%, con un consumo máximo de 29.38% de 20:00 a 21:00 horas.",
+      "updated_text": "En Monterrey, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 17.92% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 31.35% entre las 21:00 horas y 22:00 horas. (Ver Figura H.7.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 19.33% y, su hora de mayor exposición fue de 21:00 a 22:00 horas, con 33.32%. En el caso de los hombres el porcentaje de encendidos fue de 16.50%, con un consumo máximo de 29.38% de 20:00 a 21:00 horas.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.8",
+      "source_pdf_page": 109,
+      "baseline_text_2024": "De julio 2023 a junio 2024 en Monterrey, los géneros televisivos “Dramatizado Unitario”, “Telenovelas” y “Deportes” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/ tiempo al aire (ver Figura H.8.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para los hombres, mientras que las mujeres consumieron principalmente “Dramatizados unitarios”, “Telenovelas” y “Reality show”.",
+      "updated_text": "De julio 2023 a junio 2024 en Monterrey, los géneros televisivos “Dramatizado Unitario”, “Telenovelas” y “Deportes” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/ tiempo al aire (ver Figura H.8.).\n\nAl analizar la audiencia de los géneros programáticos en hombres y mujeres, se puede apreciar que los tres ya mencionados también fueron los de mayor audiencia para los hombres, mientras que las mujeres consumieron principalmente “Dramatizados unitarios”, “Telenovelas” y “Reality show”.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.9",
+      "source_pdf_page": 110,
+      "baseline_text_2024": "En las 25 ciudades restantes de la muestra analizada por el IFT, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 14.73% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 28.98% entre las 21:00 horas y 22:00 horas (Ver Figura H.9.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 15.31%, mientras que para los hombres fue de 14.13%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 30.15% y 27.75% respectivamente.",
+      "updated_text": "En las 25 ciudades restantes de la muestra analizada por el IFT, el promedio de personas con el televisor encendido de julio 2023 a junio 2024 fue de 14.73% a lo largo de las 24 horas. Sin embargo, esa proporción cambió significativamente a lo largo del día, alcanzando su punto máximo de 28.98% entre las 21:00 horas y 22:00 horas (Ver Figura H.9.).\n\nAdemás, al analizar el nivel de encendidos por el género de la audiencia se encontró que, el porcentaje de encendidos para las mujeres fue de 15.31%, mientras que para los hombres fue de 14.13%. Asimismo, en ambos casos su hora de mayor exposición fue de 21:00 a 22:00 horas, con 30.15% y 27.75% respectivamente.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.10",
+      "source_pdf_page": 111,
+      "baseline_text_2024": "De julio 2023 a junio 2024 en las 25 ciudades restantes de la muestra analizada por el IFT, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.10.).\n\nPor otra parte, al analizar la audiencia de los géneros programáticos entre hombres y mujeres, se puede apreciar que los tres géneros ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, “Reality shows” y “Deportes”.",
+      "updated_text": "De julio 2023 a junio 2024 en las 25 ciudades restantes de la muestra analizada por el IFT, los géneros televisivos “Dramatizado Unitario”, “Reality Show” y “Telenovelas” fueron los que mayor consumo registraron en los canales nacionales, sin importar que estos no hayan sido los que tuvieron más horas de transmisión, lo que indica que son géneros rentables en términos de la relación audiencia generada/tiempo al aire (ver Figura H.10.).\n\nPor otra parte, al analizar la audiencia de los géneros programáticos entre hombres y mujeres, se puede apreciar que los tres géneros ya mencionados también fueron los de mayor audiencia para las mujeres, mientras que los hombres consumieron principalmente “Dramatizados unitarios”, “Reality shows” y “Deportes”.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.11",
+      "source_pdf_page": 112,
+      "baseline_text_2024": "En el caso de la radio, el nivel de personas con la radio encendida es un indicador que mide el grado de exposición a este servicio en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT10, de julio 2023 a junio 2024, el promedio de personas con la radio encendida en estas tres ciudades fue de 9.67% en el intervalo de tiempo de las 6:00 horas a las 24:00 horas de lunes a domingo. Sin embargo, al contrario que en televisión, la proporción de personas con la radio encendida alcanzó su máximo entre las 09:00 y 10:00 horas, cuando el nivel de encendidos fue de 16.91% (ver Figura H.11.).\n\nAdemás, al analizar el nivel de exposición a la radio entre géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 11.09% y su horario más alto fue a las 08:00 horas con 19.00%, mientras que para las mujeres el promedio fue de 8.54% y su principal horario fue a las 10:00 horas con 16.10%.",
+      "updated_text": "En el caso de la radio, el nivel de personas con la radio encendida es un indicador que mide el grado de exposición a este servicio en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT10, de julio 2023 a junio 2024, el promedio de personas con la radio encendida en estas tres ciudades fue de 9.67% en el intervalo de tiempo de las 6:00 horas a las 24:00 horas de lunes a domingo. Sin embargo, al contrario que en televisión, la proporción de personas con la radio encendida alcanzó su máximo entre las 09:00 y 10:00 horas, cuando el nivel de encendidos fue de 16.91% (ver Figura H.11.).\n\nAdemás, al analizar el nivel de exposición a la radio entre géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 11.09% y su horario más alto fue a las 08:00 horas con 19.00%, mientras que para las mujeres el promedio fue de 8.54% y su principal horario fue a las 10:00 horas con 16.10%.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.12",
+      "source_pdf_page": 113,
+      "baseline_text_2024": "En el caso de la Ciudad de México, el promedio de personas con la radio encendida fue de 10.76% y alcanzó su máximo a las 09:00 horas, cuando el nivel de encendidos fue de 18.73% (ver Figura H.12.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 12.24% y su horario más alto ocurrió a las 08:00 horas con 20.62%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 9.59% y su máximo lo alcanzaron a las 10:00 horas con 18.48%.",
+      "updated_text": "En el caso de la Ciudad de México, el promedio de personas con la radio encendida fue de 10.76% y alcanzó su máximo a las 09:00 horas, cuando el nivel de encendidos fue de 18.73% (ver Figura H.12.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 12.24% y su horario más alto ocurrió a las 08:00 horas con 20.62%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 9.59% y su máximo lo alcanzaron a las 10:00 horas con 18.48%.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.13",
+      "source_pdf_page": 114,
+      "baseline_text_2024": "Respecto a la ciudad de Guadalajara, el promedio de personas expuestas la radio fue de 7.83% y alcanzó su máximo a las 10:00 horas, cuando el nivel de encendidos fue de 13.06% (ver Figura H.13.).\n\nAdemás, al analizar el nivel de exposición a la radio entre los géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 9.49% y su horario más alto fue a las 10:00 horas con 15.99%, mientras que para las mujeres el promedio fue de 6.51% y su principal horario fue a las 10:00 horas con 10.74%.",
+      "updated_text": "Respecto a la ciudad de Guadalajara, el promedio de personas expuestas la radio fue de 7.83% y alcanzó su máximo a las 10:00 horas, cuando el nivel de encendidos fue de 13.06% (ver Figura H.13.).\n\nAdemás, al analizar el nivel de exposición a la radio entre los géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 9.49% y su horario más alto fue a las 10:00 horas con 15.99%, mientras que para las mujeres el promedio fue de 6.51% y su principal horario fue a las 10:00 horas con 10.74%.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
+    },
+    {
+      "figure_id": "H.14",
+      "source_pdf_page": 115,
+      "baseline_text_2024": "En el caso de Monterrey, el promedio de personas con la radio encendida fue de 7.15% y alcanzó su máximo a las 08:00 horas, cuando el nivel de encendidos fue de 14.43% (ver Figura H.14.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 8.15% y su horario más alto ocurrió a las 08:00 horas con 16.06%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 6.32% y su máximo lo alcanzaron a las 08:00 horas con 13.09%.",
+      "updated_text": "En el caso de Monterrey, el promedio de personas con la radio encendida fue de 7.15% y alcanzó su máximo a las 08:00 horas, cuando el nivel de encendidos fue de 14.43% (ver Figura H.14.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 8.15% y su horario más alto ocurrió a las 08:00 horas con 16.06%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 6.32% y su máximo lo alcanzaron a las 08:00 horas con 13.09%.",
+      "update_mode": "historical_replica",
+      "notes": [
+        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
+        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+      ],
+      "data_file": null,
+      "data_sha256": null
     }
   ]
 }

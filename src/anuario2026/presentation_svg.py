@@ -202,7 +202,27 @@ def embed_svg_images(
         previous_media_path = _resolved_relationship_target(slide_name, previous_target)
         media_path = _safe_media_name(request.figure_id)
         target = "../media/" + Path(media_path).name
-        relationship.set("Target", target)
+        # python-pptx deduplica el PNG transparente. Si dos figuras comparten
+        # página (C.3 y C.4), ambas usan la misma relación inicial; cada SVG
+        # necesita su propia relación antes de cambiar el destino.
+        shared_blips = [
+            item for item in slide_root.iter(f"{{{A_NS}}}blip")
+            if item.get(f"{{{R_NS}}}embed") == relationship_id
+        ]
+        if len(shared_blips) > 1:
+            used_ids = {item.get("Id") for item in relationships_root}
+            next_id = 1
+            while f"rId{next_id}" in used_ids:
+                next_id += 1
+            relationship_id = f"rId{next_id}"
+            ElementTree.SubElement(
+                relationships_root,
+                f"{{{PACKAGE_REL_NS}}}Relationship",
+                {"Id": relationship_id, "Type": IMAGE_REL_TYPE, "Target": target},
+            )
+            blip.set(f"{{{R_NS}}}embed", relationship_id)
+        else:
+            relationship.set("Target", target)
         _remove_svg_fallback_extensions(blip)
         replacements[slide_name] = _xml_bytes(slide_root)
         replacements[relationships_name] = _xml_bytes(relationships_root)

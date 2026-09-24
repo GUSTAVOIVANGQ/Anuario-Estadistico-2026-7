@@ -7,7 +7,11 @@ from pathlib import Path
 
 from pptx import Presentation
 
-from anuario2026.presentation import TRANSPARENT_BOOTSTRAP_PNG, assemble_from_template
+from anuario2026.presentation import (
+    TRANSPARENT_BOOTSTRAP_PNG,
+    _insert_editorial_text,
+    assemble_from_template,
+)
 
 
 def _project_root() -> Path:
@@ -23,14 +27,53 @@ def test_template_manifest_matches_placeholders() -> None:
     )
     presentation = Presentation(str(template))
 
-    assert len(presentation.slides) == manifest["slide_count"] == 119
+    assert len(presentation.slides) == manifest["slide_count"] == 131
     assert len(manifest["entries"]) == manifest["figure_count"] == 105
+    index_text = " ".join(
+        shape.text for shape in presentation.slides[1].shapes if shape.has_text_frame
+    )
+    assert "SATISFACIÓN" in index_text
+    assert "HERRAMIENTAS IFT" in index_text
+    assert "ANEXO IV" in index_text
+
+    editorial = json.loads(
+        (root / "assets/presentation/textos_editoriales_2026.json").read_text(encoding="utf-8")
+    )
+    assert len(editorial["slots"]) == len(manifest["editorial_slots"]) == 44
+    assert all(value for value in editorial["slots"].values())
+    historical = [entry for entry in manifest["entries"] if entry.get("historical_image")]
+    assert len(historical) == 14
+    assert all((root / entry["historical_image"]).is_file() for entry in historical)
 
     for entry in manifest["entries"]:
         slide = presentation.slides[entry["slide_number"] - 1]
         names = {shape.name for shape in slide.shapes}
         assert entry["figure_shape_name"] in names
         assert entry["narrative_shape_name"] in names
+
+
+def test_editorial_text_fills_named_box_without_losing_heading(tmp_path: Path) -> None:
+    root = _project_root()
+    deck = Presentation(str(root / "assets/presentation/anuario_estadistico_2026_automatizable.pptx"))
+    manifest = json.loads(
+        (root / "assets/presentation/anuario_estadistico_2026_manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    slot = next(item for item in manifest["editorial_slots"] if item["key"] == "LEGALES_1")
+    data_dir = tmp_path / "assets/presentation"
+    data_dir.mkdir(parents=True)
+    (data_dir / "textos_editoriales_2026.json").write_text(
+        json.dumps({"slots": {"LEGALES_1": "Texto revisado con fuente y periodo."}}),
+        encoding="utf-8",
+    )
+    result = _insert_editorial_text(tmp_path, deck, {"editorial_slots": [slot]})
+    shape = next(s for s in deck.slides[2].shapes if s.name == slot["shape_name"])
+    assert result["inserted"] == ["LEGALES_1"]
+    assert result["pending"] == []
+    assert "LEGALES" in shape.text
+    assert "Texto revisado con fuente y periodo." in shape.text
+    assert slot["token"] not in shape.text
 
 
 def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:
@@ -58,6 +101,7 @@ def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:
     manifest = json.loads((source_root / manifest_rel).read_text(encoding="utf-8"))
     manifest["entries"] = [entry for entry in manifest["entries"] if entry["figure_id"] == "A.1"]
     manifest["figure_count"] = 1
+    manifest["editorial_slots"] = []
     (project_root / manifest_rel).write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
@@ -78,7 +122,7 @@ def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:
     assert result.errors == ()
 
     presentation = Presentation(str(output))
-    slide = presentation.slides[5]
+    slide = presentation.slides[10]
     by_name = {shape.name: shape for shape in slide.shapes}
     assert by_name["ANUARIO_FIGURE_A_1"].text == ""
     assert "ANUARIO_IMAGE_A_1" in by_name
@@ -110,9 +154,9 @@ def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:
         assert archive.read("ppt/media/anuario_figure_a_1.svg") == (
             project_root / "build" / "figures" / "A" / "figura_a_1.svg"
         ).read_bytes()
-        slide_xml = archive.read("ppt/slides/slide6.xml")
+        slide_xml = archive.read("ppt/slides/slide11.xml")
         assert b"svgBlip" not in slide_xml
-        relationships = archive.read("ppt/slides/_rels/slide6.xml.rels")
+        relationships = archive.read("ppt/slides/_rels/slide11.xml.rels")
         assert b"../media/anuario_figure_a_1.svg" in relationships
         assert all(
             archive.read(name) != TRANSPARENT_BOOTSTRAP_PNG

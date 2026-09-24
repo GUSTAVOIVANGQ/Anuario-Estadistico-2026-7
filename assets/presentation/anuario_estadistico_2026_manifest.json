@@ -1,7 +1,7 @@
 {
   "project": "Anuario Estadístico 2026",
   "reference_structure": "Anuario Estadístico 2024",
-  "slide_count": 119,
+  "slide_count": 131,
   "figure_count": 105,
   "sections": {
     "A": "A. INDICADORES ECONÓMICOS",
@@ -30,7 +30,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 6
+      "slide_number": 11
     },
     {
       "figure_id": "A.2",
@@ -47,7 +47,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 7
+      "slide_number": 12
     },
     {
       "figure_id": "A.3",
@@ -64,7 +64,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 8
+      "slide_number": 13
     },
     {
       "figure_id": "A.4",
@@ -81,7 +81,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 9
+      "slide_number": 14
     },
     {
       "figure_id": "A.5",
@@ -98,7 +98,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 10
+      "slide_number": 15
     },
     {
       "figure_id": "A.6",
@@ -115,7 +115,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 11
+      "slide_number": 16
     },
     {
       "figure_id": "A.7",
@@ -132,7 +132,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 12
+      "slide_number": 17
     },
     {
       "figure_id": "A.8",
@@ -149,7 +149,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 13
+      "slide_number": 18
     },
     {
       "figure_id": "A.9",
@@ -166,7 +166,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 14
+      "slide_number": 19
     },
     {
       "figure_id": "A.10",
@@ -183,7 +183,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 15
+      "slide_number": 20
     },
     {
       "figure_id": "B.1",
@@ -200,7 +200,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 17
+      "slide_number": 21
     },
     {
       "figure_id": "B.2",
@@ -217,7 +217,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 18
+      "slide_number": 22
     },
     {
       "figure_id": "B.3",
@@ -234,7 +234,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 19
+      "slide_number": 23
     },
     {
       "figure_id": "B.4",
@@ -251,7 +251,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 20
+      "slide_number": 24
     },
     {
       "figure_id": "B.5",
@@ -268,7 +268,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 21
+      "slide_number": 25
     },
     {
       "figure_id": "B.6",
@@ -285,7 +285,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 22
+      "slide_number": 26
     },
     {
       "figure_id": "B.7",
@@ -302,7 +302,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 23
+      "slide_number": 27
     },
     {
       "figure_id": "B.8",
@@ -319,7 +319,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 24
+      "slide_number": 28
     },
     {
       "figure_id": "B.9",
@@ -336,7 +336,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 25
+      "slide_number": 29
     },
     {
       "figure_id": "B.10",
@@ -353,7 +353,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 26
+      "slide_number": 30
     },
     {
       "figure_id": "B.11",
@@ -370,7 +370,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 27
+      "slide_number": 31
     },
     {
       "figure_id": "B.12",
@@ -387,7 +387,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 28
+      "slide_number": 32
     },
     {
       "figure_id": "B.13",
@@ -404,7 +404,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 29
+      "slide_number": 33
     },
     {
       "figure_id": "B.14",
@@ -421,7 +421,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 30
+      "slide_number": 34
     },
     {
       "figure_id": "B.15",
@@ -438,7 +438,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 31
+      "slide_number": 35
     },
     {
       "figure_id": "B.16",
@@ -455,7 +455,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 32
+      "slide_number": 36
     },
     {
       "figure_id": "B.17",
@@ -472,7 +472,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 33
+      "slide_number": 37
     },
     {
       "figure_id": "B.18",
@@ -489,7 +489,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 34
+      "slide_number": 38
     },
     {
       "figure_id": "B.19",
@@ -506,7 +506,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 35
+      "slide_number": 39
     },
     {
       "figure_id": "B.20",
@@ -523,7 +523,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 36
+      "slide_number": 40
     },
     {
       "figure_id": "B.21",
@@ -540,7 +540,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 37
+      "slide_number": 41
     },
     {
       "figure_id": "B.22",
@@ -557,7 +557,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 38
+      "slide_number": 42
     },
     {
       "figure_id": "B.23",
@@ -574,7 +574,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 39
+      "slide_number": 43
     },
     {
       "figure_id": "B.24",
@@ -591,7 +591,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 40
+      "slide_number": 44
     },
     {
       "figure_id": "B.25",
@@ -608,7 +608,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 41
+      "slide_number": 45
     },
     {
       "figure_id": "C.1",
@@ -625,7 +625,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 43
+      "slide_number": 46
     },
     {
       "figure_id": "C.2",
@@ -642,7 +642,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 44
+      "slide_number": 47
     },
     {
       "figure_id": "C.3",
@@ -657,9 +657,9 @@
         "left": 3.5917,
         "top": 1.0319,
         "width": 5.9333,
-        "height": 3.9265
+        "height": 1.9133
       },
-      "slide_number": 45
+      "slide_number": 48
     },
     {
       "figure_id": "C.4",
@@ -672,11 +672,11 @@
       "expected_image": "build/figures/C/figura_c_4.png",
       "figure_bounds_inches": {
         "left": 3.5917,
-        "top": 1.0319,
+        "top": 3.0451,
         "width": 5.9333,
-        "height": 3.9265
+        "height": 1.9133
       },
-      "slide_number": 46
+      "slide_number": 48
     },
     {
       "figure_id": "C.5",
@@ -693,7 +693,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 47
+      "slide_number": 49
     },
     {
       "figure_id": "C.6",
@@ -710,7 +710,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 48
+      "slide_number": 50
     },
     {
       "figure_id": "C.7",
@@ -727,7 +727,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 49
+      "slide_number": 51
     },
     {
       "figure_id": "C.8",
@@ -744,7 +744,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 50
+      "slide_number": 52
     },
     {
       "figure_id": "C.9",
@@ -761,7 +761,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 51
+      "slide_number": 53
     },
     {
       "figure_id": "C.10",
@@ -778,7 +778,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 52
+      "slide_number": 54
     },
     {
       "figure_id": "C.11",
@@ -795,7 +795,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 53
+      "slide_number": 55
     },
     {
       "figure_id": "C.12",
@@ -812,7 +812,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 54
+      "slide_number": 56
     },
     {
       "figure_id": "C.13",
@@ -829,7 +829,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 55
+      "slide_number": 57
     },
     {
       "figure_id": "C.14",
@@ -846,7 +846,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 56
+      "slide_number": 58
     },
     {
       "figure_id": "C.15",
@@ -863,7 +863,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 57
+      "slide_number": 59
     },
     {
       "figure_id": "C.16",
@@ -880,7 +880,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 58
+      "slide_number": 60
     },
     {
       "figure_id": "D.1",
@@ -897,7 +897,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 60
+      "slide_number": 61
     },
     {
       "figure_id": "D.2",
@@ -914,7 +914,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 61
+      "slide_number": 62
     },
     {
       "figure_id": "D.3",
@@ -931,7 +931,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 62
+      "slide_number": 63
     },
     {
       "figure_id": "D.4",
@@ -948,7 +948,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 63
+      "slide_number": 64
     },
     {
       "figure_id": "D.5",
@@ -965,7 +965,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 64
+      "slide_number": 65
     },
     {
       "figure_id": "D.6",
@@ -982,7 +982,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 65
+      "slide_number": 66
     },
     {
       "figure_id": "D.7",
@@ -999,7 +999,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 66
+      "slide_number": 67
     },
     {
       "figure_id": "D.8",
@@ -1016,7 +1016,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 67
+      "slide_number": 68
     },
     {
       "figure_id": "D.9",
@@ -1033,7 +1033,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 68
+      "slide_number": 69
     },
     {
       "figure_id": "D.10",
@@ -1050,7 +1050,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 69
+      "slide_number": 70
     },
     {
       "figure_id": "D.11",
@@ -1067,7 +1067,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 70
+      "slide_number": 71
     },
     {
       "figure_id": "E.1",
@@ -1560,7 +1560,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 102
+      "slide_number": 101
     },
     {
       "figure_id": "H.1",
@@ -1577,7 +1577,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 104
+      "slide_number": 102,
+      "historical_image": "assets/reference/audiencias_2024/h_01_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 102
     },
     {
       "figure_id": "H.2",
@@ -1594,7 +1597,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 105
+      "slide_number": 103,
+      "historical_image": "assets/reference/audiencias_2024/h_02_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 103
     },
     {
       "figure_id": "H.3",
@@ -1611,7 +1617,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 106
+      "slide_number": 104,
+      "historical_image": "assets/reference/audiencias_2024/h_03_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 104
     },
     {
       "figure_id": "H.4",
@@ -1628,7 +1637,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 107
+      "slide_number": 105,
+      "historical_image": "assets/reference/audiencias_2024/h_04_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 105
     },
     {
       "figure_id": "H.5",
@@ -1645,7 +1657,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 108
+      "slide_number": 106,
+      "historical_image": "assets/reference/audiencias_2024/h_05_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 106
     },
     {
       "figure_id": "H.6",
@@ -1662,7 +1677,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 109
+      "slide_number": 107,
+      "historical_image": "assets/reference/audiencias_2024/h_06_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 107
     },
     {
       "figure_id": "H.7",
@@ -1679,7 +1697,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 110
+      "slide_number": 108,
+      "historical_image": "assets/reference/audiencias_2024/h_07_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 108
     },
     {
       "figure_id": "H.8",
@@ -1696,7 +1717,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 111
+      "slide_number": 109,
+      "historical_image": "assets/reference/audiencias_2024/h_08_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 109
     },
     {
       "figure_id": "H.9",
@@ -1713,7 +1737,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 112
+      "slide_number": 110,
+      "historical_image": "assets/reference/audiencias_2024/h_09_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 110
     },
     {
       "figure_id": "H.10",
@@ -1730,7 +1757,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 113
+      "slide_number": 111,
+      "historical_image": "assets/reference/audiencias_2024/h_10_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 111
     },
     {
       "figure_id": "H.11",
@@ -1747,7 +1777,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 114
+      "slide_number": 112,
+      "historical_image": "assets/reference/audiencias_2024/h_11_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 112
     },
     {
       "figure_id": "H.12",
@@ -1764,7 +1797,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 115
+      "slide_number": 113,
+      "historical_image": "assets/reference/audiencias_2024/h_12_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 113
     },
     {
       "figure_id": "H.13",
@@ -1781,7 +1817,10 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 116
+      "slide_number": 114,
+      "historical_image": "assets/reference/audiencias_2024/h_13_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 114
     },
     {
       "figure_id": "H.14",
@@ -1798,7 +1837,320 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 117
+      "slide_number": 115,
+      "historical_image": "assets/reference/audiencias_2024/h_14_2024.png",
+      "historical_period": "julio de 2023 a junio de 2024",
+      "historical_source_pdf_page": 115
+    }
+  ],
+  "editorial_slots": [
+    {
+      "key": "LEGALES_1",
+      "kind": "texto",
+      "slide_number": 3,
+      "shape_name": "ANUARIO_LEGALES_TEXT_1",
+      "token": "{{TEXTO:LEGALES_1}}"
+    },
+    {
+      "key": "LEGALES_2",
+      "kind": "texto",
+      "slide_number": 4,
+      "shape_name": "ANUARIO_LEGALES_TEXT_2",
+      "token": "{{TEXTO:LEGALES_2}}"
+    },
+    {
+      "key": "GLOSARIO_1_A",
+      "kind": "texto",
+      "slide_number": 5,
+      "shape_name": "ANUARIO_GLOSARIO_COL_1",
+      "token": "{{TEXTO:GLOSARIO_1_A}}"
+    },
+    {
+      "key": "GLOSARIO_1_B",
+      "kind": "texto",
+      "slide_number": 5,
+      "shape_name": "ANUARIO_GLOSARIO_COL_2",
+      "token": "{{TEXTO:GLOSARIO_1_B}}"
+    },
+    {
+      "key": "GLOSARIO_2_A",
+      "kind": "texto",
+      "slide_number": 6,
+      "shape_name": "ANUARIO_GLOSARIO_COL_3",
+      "token": "{{TEXTO:GLOSARIO_2_A}}"
+    },
+    {
+      "key": "GLOSARIO_2_B",
+      "kind": "texto",
+      "slide_number": 6,
+      "shape_name": "ANUARIO_GLOSARIO_COL_4",
+      "token": "{{TEXTO:GLOSARIO_2_B}}"
+    },
+    {
+      "key": "INTRODUCCION_1",
+      "kind": "texto",
+      "slide_number": 7,
+      "shape_name": "ANUARIO_INTRO_TEXT_1",
+      "token": "{{TEXTO:INTRODUCCION_1}}"
+    },
+    {
+      "key": "INTRODUCCION_2",
+      "kind": "texto",
+      "slide_number": 8,
+      "shape_name": "ANUARIO_INTRO_TEXT_2",
+      "token": "{{TEXTO:INTRODUCCION_2}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_ECONOMICOS",
+      "kind": "texto",
+      "slide_number": 9,
+      "shape_name": "ANUARIO_KEY_ECON",
+      "token": "{{TEXTO:PUNTOS_CLAVE_ECONOMICOS}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_ESPECTRO",
+      "kind": "texto",
+      "slide_number": 9,
+      "shape_name": "ANUARIO_KEY_ESPECTRO",
+      "token": "{{TEXTO:PUNTOS_CLAVE_ESPECTRO}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_MOVILES",
+      "kind": "texto",
+      "slide_number": 9,
+      "shape_name": "ANUARIO_KEY_MOVIL",
+      "token": "{{TEXTO:PUNTOS_CLAVE_MOVILES}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_AUDIENCIAS",
+      "kind": "texto",
+      "slide_number": 9,
+      "shape_name": "ANUARIO_KEY_AUDIENCIAS",
+      "token": "{{TEXTO:PUNTOS_CLAVE_AUDIENCIAS}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_FIJOS",
+      "kind": "texto",
+      "slide_number": 10,
+      "shape_name": "ANUARIO_KEY_FIJOS",
+      "token": "{{TEXTO:PUNTOS_CLAVE_FIJOS}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_GENERO",
+      "kind": "texto",
+      "slide_number": 10,
+      "shape_name": "ANUARIO_KEY_GENERO",
+      "token": "{{TEXTO:PUNTOS_CLAVE_GENERO}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_TIC",
+      "kind": "texto",
+      "slide_number": 10,
+      "shape_name": "ANUARIO_KEY_TIC",
+      "token": "{{TEXTO:PUNTOS_CLAVE_TIC}}"
+    },
+    {
+      "key": "PUNTOS_CLAVE_USUARIOS",
+      "kind": "texto",
+      "slide_number": 10,
+      "shape_name": "ANUARIO_KEY_USUARIOS",
+      "token": "{{TEXTO:PUNTOS_CLAVE_USUARIOS}}"
+    },
+    {
+      "key": "F_OVERVIEW_SMARTPHONE",
+      "kind": "texto",
+      "slide_number": 81,
+      "shape_name": "ANUARIO_F_OVERVIEW_SMARTPHONE",
+      "token": "{{TEXTO:F_OVERVIEW_SMARTPHONE}}"
+    },
+    {
+      "key": "F_OVERVIEW_INTERNET",
+      "kind": "texto",
+      "slide_number": 81,
+      "shape_name": "ANUARIO_F_OVERVIEW_INTERNET",
+      "token": "{{TEXTO:F_OVERVIEW_INTERNET}}"
+    },
+    {
+      "key": "F_OVERVIEW_COMPUTADORA",
+      "kind": "texto",
+      "slide_number": 81,
+      "shape_name": "ANUARIO_F_OVERVIEW_COMPUTADORA",
+      "token": "{{TEXTO:F_OVERVIEW_COMPUTADORA}}"
+    },
+    {
+      "key": "F_OVERVIEW_REDES",
+      "kind": "texto",
+      "slide_number": 81,
+      "shape_name": "ANUARIO_F_OVERVIEW_REDES",
+      "token": "{{TEXTO:F_OVERVIEW_REDES}}"
+    },
+    {
+      "key": "HERRAMIENTA_1",
+      "kind": "texto",
+      "slide_number": 116,
+      "shape_name": "ANUARIO_TOOL_1",
+      "token": "{{TEXTO:HERRAMIENTA_1}}"
+    },
+    {
+      "key": "HERRAMIENTA_2",
+      "kind": "texto",
+      "slide_number": 116,
+      "shape_name": "ANUARIO_TOOL_2",
+      "token": "{{TEXTO:HERRAMIENTA_2}}"
+    },
+    {
+      "key": "HERRAMIENTA_3",
+      "kind": "texto",
+      "slide_number": 116,
+      "shape_name": "ANUARIO_TOOL_3",
+      "token": "{{TEXTO:HERRAMIENTA_3}}"
+    },
+    {
+      "key": "HERRAMIENTA_4",
+      "kind": "texto",
+      "slide_number": 116,
+      "shape_name": "ANUARIO_TOOL_4",
+      "token": "{{TEXTO:HERRAMIENTA_4}}"
+    },
+    {
+      "key": "ANEXO_I_1",
+      "kind": "tabla",
+      "slide_number": 117,
+      "shape_name": "ANUARIO_ANEXO_I_TABLE_1",
+      "token": "{{TABLA:ANEXO_I_1}}"
+    },
+    {
+      "key": "ANEXO_I_2",
+      "kind": "tabla",
+      "slide_number": 118,
+      "shape_name": "ANUARIO_ANEXO_I_TABLE_2",
+      "token": "{{TABLA:ANEXO_I_2}}"
+    },
+    {
+      "key": "ANEXO_I_3",
+      "kind": "tabla",
+      "slide_number": 119,
+      "shape_name": "ANUARIO_ANEXO_I_TABLE_3",
+      "token": "{{TABLA:ANEXO_I_3}}"
+    },
+    {
+      "key": "ANEXO_I_4",
+      "kind": "tabla",
+      "slide_number": 120,
+      "shape_name": "ANUARIO_ANEXO_I_TABLE_4",
+      "token": "{{TABLA:ANEXO_I_4}}"
+    },
+    {
+      "key": "ANEXO_II_1_A",
+      "kind": "texto",
+      "slide_number": 121,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_1A",
+      "token": "{{TEXTO:ANEXO_II_1_A}}"
+    },
+    {
+      "key": "ANEXO_II_1_B",
+      "kind": "texto",
+      "slide_number": 121,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_1B",
+      "token": "{{TEXTO:ANEXO_II_1_B}}"
+    },
+    {
+      "key": "ANEXO_II_2_A",
+      "kind": "texto",
+      "slide_number": 122,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_2A",
+      "token": "{{TEXTO:ANEXO_II_2_A}}"
+    },
+    {
+      "key": "ANEXO_II_2_B",
+      "kind": "texto",
+      "slide_number": 122,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_2B",
+      "token": "{{TEXTO:ANEXO_II_2_B}}"
+    },
+    {
+      "key": "ANEXO_II_3_A",
+      "kind": "texto",
+      "slide_number": 123,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_3A",
+      "token": "{{TEXTO:ANEXO_II_3_A}}"
+    },
+    {
+      "key": "ANEXO_II_3_B",
+      "kind": "texto",
+      "slide_number": 123,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_3B",
+      "token": "{{TEXTO:ANEXO_II_3_B}}"
+    },
+    {
+      "key": "ANEXO_II_4_A",
+      "kind": "texto",
+      "slide_number": 124,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_4A",
+      "token": "{{TEXTO:ANEXO_II_4_A}}"
+    },
+    {
+      "key": "ANEXO_II_4_B",
+      "kind": "texto",
+      "slide_number": 124,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_4B",
+      "token": "{{TEXTO:ANEXO_II_4_B}}"
+    },
+    {
+      "key": "ANEXO_II_5_A",
+      "kind": "texto",
+      "slide_number": 125,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_5A",
+      "token": "{{TEXTO:ANEXO_II_5_A}}"
+    },
+    {
+      "key": "ANEXO_II_5_B",
+      "kind": "texto",
+      "slide_number": 125,
+      "shape_name": "ANUARIO_ANEXO_II_TEXT_5B",
+      "token": "{{TEXTO:ANEXO_II_5_B}}"
+    },
+    {
+      "key": "ANEXO_III_1",
+      "kind": "texto",
+      "slide_number": 126,
+      "shape_name": "ANUARIO_ANEXO_III_TEXT_1",
+      "token": "{{TEXTO:ANEXO_III_1}}"
+    },
+    {
+      "key": "ANEXO_III_2",
+      "kind": "texto",
+      "slide_number": 127,
+      "shape_name": "ANUARIO_ANEXO_III_TEXT_2",
+      "token": "{{TEXTO:ANEXO_III_2}}"
+    },
+    {
+      "key": "ANEXO_III_3",
+      "kind": "texto",
+      "slide_number": 128,
+      "shape_name": "ANUARIO_ANEXO_III_TEXT_3",
+      "token": "{{TEXTO:ANEXO_III_3}}"
+    },
+    {
+      "key": "ANEXO_III_4",
+      "kind": "texto",
+      "slide_number": 129,
+      "shape_name": "ANUARIO_ANEXO_III_TEXT_4",
+      "token": "{{TEXTO:ANEXO_III_4}}"
+    },
+    {
+      "key": "ANEXO_IV_METODOS_CALCULO",
+      "kind": "tabla",
+      "slide_number": 130,
+      "shape_name": "ANUARIO_ANEXO_IV_TABLE",
+      "token": "{{TABLA:ANEXO_IV_METODOS_CALCULO}}"
+    },
+    {
+      "key": "CONTACTO_INSTITUCIONAL",
+      "kind": "contraportada",
+      "slide_number": 131,
+      "shape_name": "ANUARIO_BACK_CONTACT",
+      "token": "{{CONTRAPORTADA:CONTACTO_INSTITUCIONAL}}"
     }
   ]
 }

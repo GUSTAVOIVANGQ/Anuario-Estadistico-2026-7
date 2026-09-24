@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 from io import BytesIO
 import json
+import math
 import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -14,6 +15,7 @@ from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.text import MSO_AUTO_SIZE, MSO_VERTICAL_ANCHOR
 from pptx.util import Inches, Pt
+from PIL import Image
 
 from .figure_outputs import companion_paths, extract_svg_text, validate_editable_svg
 from .narratives import load_narrative_audit, write_narrative_reports
@@ -59,6 +61,122 @@ def _shape_by_name(slide, name: str):
     return None
 
 
+def _insert_editorial_text(project_root: Path, presentation, manifest: dict[str, Any]) -> dict[str, Any]:
+    """Fill named editorial boxes when reviewed copy is available."""
+
+    registry_path = project_root / "assets" / "presentation" / "textos_editoriales_2026.json"
+    slots = manifest.get("editorial_slots", [])
+    registry = _load_json(registry_path) if registry_path.is_file() else {}
+    values = registry.get("slots", {})
+    source_notes = registry.get("source_notes", {})
+    inserted: list[str] = []
+    pending: list[str] = []
+    for slot in slots:
+        key = str(slot["key"])
+        value = values.get(key)
+        if not isinstance(value, str) or not value.strip():
+            pending.append(key)
+            continue
+        shape = _shape_by_name(presentation.slides[int(slot["slide_number"]) - 1], slot["shape_name"])
+        if shape is None or not shape.has_text_frame:
+            raise ValueError(f"Falta el campo editorial {key}: {slot['shape_name']}")
+        token = str(slot["token"])
+        if slot.get("kind") == "tabla":
+            rows = [line.split("\t") for line in value.strip().splitlines() if line.strip()]
+            if not rows or len({len(row) for row in rows}) != 1:
+                raise ValueError(f"La tabla editorial {key} no es rectangular")
+            shape.text = shape.text.replace(token, "")
+            inset = Inches(0.12)
+            top_offset = Inches(0.47)
+            source_note = str(source_notes.get(key) or "")
+            note_space = Inches(0.23) if source_note else 0
+            table_shape = presentation.slides[int(slot["slide_number"]) - 1].shapes.add_table(
+                len(rows), len(rows[0]),
+                shape.left + inset, shape.top + top_offset,
+                shape.width - 2 * inset, shape.height - top_offset - inset - note_space,
+            )
+            table_shape.name = "ANUARIO_TABLE_" + key
+            table = table_shape.table
+            table.first_row = False
+            table.horz_banding = False
+            first_width = int((shape.width - 2 * inset) * (0.24 if len(rows[0]) > 3 else 0.30))
+            table.columns[0].width = first_width
+            for column in list(table.columns)[1:]:
+                column.width = int((shape.width - 2 * inset - first_width) / (len(rows[0]) - 1))
+            font_size = 5.4 if len(rows) > 25 else (8.3 if len(rows) > 10 else 9.0)
+            for row_index, row_values in enumerate(rows):
+                for column_index, cell_text in enumerate(row_values):
+                    cell = table.cell(row_index, column_index)
+                    cell.text = cell_text
+                    cell.margin_left = Inches(0.015)
+                    cell.margin_right = Inches(0.015)
+                    cell.margin_top = 0
+                    cell.margin_bottom = 0
+                    cell.fill.solid()
+                    cell.fill.fore_color.rgb = (
+                        RGBColor(32, 61, 62) if row_index == 0 else
+                        RGBColor(245, 247, 247) if row_index % 2 == 0 else RGBColor(255, 255, 255)
+                    )
+                    cell.text_frame.word_wrap = False
+                    for paragraph in cell.text_frame.paragraphs:
+                        paragraph.space_before = Pt(0)
+                        paragraph.space_after = Pt(0)
+                        for run in paragraph.runs:
+                            run.font.name = "Noto Sans"
+                            run.font.size = Pt(font_size)
+                            run.font.bold = row_index == 0
+                            run.font.color.rgb = (
+                                RGBColor(255, 255, 255) if row_index == 0 else RGBColor(32, 54, 52)
+                            )
+            if source_note:
+                note = presentation.slides[int(slot["slide_number"]) - 1].shapes.add_textbox(
+                    shape.left + inset,
+                    shape.top + shape.height - Inches(0.23),
+                    shape.width - 2 * inset,
+                    Inches(0.20),
+                )
+                note.name = "ANUARIO_SOURCE_" + key
+                note.text = source_note
+                note.text_frame.margin_left = 0
+                note.text_frame.margin_top = 0
+                for paragraph in note.text_frame.paragraphs:
+                    for run in paragraph.runs:
+                        run.font.name = "Noto Sans"
+                        run.font.size = Pt(6.2)
+                        run.font.color.rgb = RGBColor(67, 67, 67)
+            inserted.append(key)
+            continue
+        replaced = False
+        area = (shape.width / 914400) * (shape.height / 914400)
+        fitted_size = max(6.0, min(8.5, math.sqrt(area * 6200 / len(value))))
+        if key.startswith("ANEXO_II_"):
+            # The source definitions fill ten dense columns. Keep the complete
+            # wording within the fixed 2024 page sequence and avoid overflow.
+            fitted_size = 5.6
+            shape.text_frame.margin_top = Inches(0.02)
+            shape.text_frame.margin_bottom = Inches(0.02)
+            shape.text_frame.margin_left = Inches(0.02)
+            shape.text_frame.margin_right = Inches(0.02)
+            shape.text_frame.word_wrap = True
+        for paragraph in shape.text_frame.paragraphs:
+            if key.startswith("ANEXO_II_"):
+                paragraph.space_before = Pt(0)
+                paragraph.space_after = Pt(0)
+                paragraph.line_spacing = 1.0
+            for run in paragraph.runs:
+                if token in run.text:
+                    run.text = run.text.replace(token, value.strip())
+                    current_size = run.font.size.pt if run.font.size else fitted_size
+                    run.font.size = Pt(min(current_size, fitted_size))
+                    replaced = True
+        if not replaced:
+            if token not in shape.text:
+                raise ValueError(f"Falta el token editorial {token} en {slot['shape_name']}")
+            shape.text = shape.text.replace(token, value.strip())
+        inserted.append(key)
+    return {"registry": str(registry_path), "inserted": inserted, "pending": pending}
+
+
 def _narrative_font_size(text: str) -> float:
     """Return a conservative body size for the fixed narrative card.
 
@@ -82,7 +200,9 @@ def _narrative_font_size(text: str) -> float:
     return 6.0
 
 
-def _set_narrative_shape_text(shape, narrative: str) -> dict[str, Any]:
+def _set_narrative_shape_text(
+    shape, narrative: str, *, context_line: str | None = None
+) -> dict[str, Any]:
     """Replace only the template filler with reviewed native PPTX prose."""
 
     if not getattr(shape, "has_text_frame", False):
@@ -91,6 +211,8 @@ def _set_narrative_shape_text(shape, narrative: str) -> dict[str, Any]:
     original_lines = [line.strip() for line in shape.text.splitlines() if line.strip()]
     label = original_lines[0] if original_lines else shape.name
     title = original_lines[1] if len(original_lines) > 1 else ""
+    if title.startswith("{{TEXTO:"):
+        title = ""
     body_size = _narrative_font_size(narrative)
 
     frame = shape.text_frame
@@ -119,6 +241,16 @@ def _set_narrative_shape_text(shape, narrative: str) -> dict[str, Any]:
             run.font.size = Pt(9.5)
             run.font.bold = True
             run.font.color.rgb = RGBColor(32, 54, 52)
+
+    if context_line:
+        context = frame.add_paragraph()
+        context.text = context_line
+        context.space_after = Pt(5)
+        for run in context.runs:
+            run.font.name = "Noto Sans"
+            run.font.size = Pt(7)
+            run.font.bold = True
+            run.font.color.rgb = RGBColor(74, 125, 117)
 
     for paragraph_text in [part.strip() for part in narrative.split("\n\n") if part.strip()]:
         paragraph = frame.add_paragraph()
@@ -366,6 +498,8 @@ def assemble_from_template(
             f"{len(presentation.slides)} diapositivas vs {expected_slide_count}."
         )
 
+    editorial = _insert_editorial_text(project_root, presentation, manifest)
+
     inserted = 0
     missing: list[str] = []
     errors: list[str] = []
@@ -378,6 +512,7 @@ def assemble_from_template(
     narrative_missing: list[str] = []
     narrative_errors: list[str] = []
     narrative_data_changed: list[str] = []
+    historical_rows: list[dict[str, Any]] = []
 
     for entry in entries:
         figure_id = str(entry["figure_id"])
@@ -388,6 +523,54 @@ def assemble_from_template(
         image_path = project_root / image_rel
 
         svg_path = companion_paths(image_path)["svg"]
+        historical_rel = entry.get("historical_image")
+        if not svg_path.is_file() and historical_rel:
+            historical_path = project_root / str(historical_rel)
+            if not historical_path.is_file():
+                errors.append(f"{figure_id}: falta el recorte histórico {historical_path}")
+                continue
+            if slide_number < 1 or slide_number > len(presentation.slides):
+                errors.append(f"{figure_id}: diapositiva histórica fuera de rango")
+                continue
+            slide = presentation.slides[slide_number - 1]
+            placeholder = _shape_by_name(slide, shape_name)
+            narrative_shape = _shape_by_name(slide, narrative_shape_name)
+            record = narrative_audit.records.get(figure_id)
+            if placeholder is None or narrative_shape is None or record is None:
+                errors.append(f"{figure_id}: faltan marcadores o narrativa históricos")
+                continue
+            _set_narrative_shape_text(
+                narrative_shape,
+                record.updated_text,
+                context_line="Serie histórica: julio de 2023 a junio de 2024",
+            )
+            narrative_inserted.add(figure_id)
+            placeholder.text_frame.clear()
+            with Image.open(historical_path) as bitmap:
+                image_ratio = bitmap.width / bitmap.height
+            box_ratio = placeholder.width / placeholder.height
+            if image_ratio >= box_ratio:
+                width = placeholder.width
+                height = int(round(width / image_ratio))
+            else:
+                height = placeholder.height
+                width = int(round(height * image_ratio))
+            picture = slide.shapes.add_picture(
+                str(historical_path),
+                placeholder.left + (placeholder.width - width) // 2,
+                placeholder.top + (placeholder.height - height) // 2,
+                width=width,
+                height=height,
+            )
+            picture.name = "ANUARIO_HISTORICAL_" + figure_id.replace(".", "_")
+            historical_rows.append({
+                "figure_id": figure_id,
+                "slide_number": slide_number,
+                "source_pdf_page": entry.get("historical_source_pdf_page"),
+                "period": entry.get("historical_period"),
+                "image": str(historical_rel),
+            })
+            continue
         if not svg_path.is_file():
             missing.append(figure_id)
             svg_missing.append(figure_id)
@@ -501,6 +684,7 @@ def assemble_from_template(
         or narrative_missing
         or narrative_errors
         or narrative_data_changed
+        or editorial["pending"]
     ):
         details = []
         if missing:
@@ -519,6 +703,11 @@ def assemble_from_template(
             details.append(
                 "cambió el archivo de datos revisado para "
                 + ", ".join(narrative_data_changed)
+            )
+        if editorial["pending"]:
+            details.append(
+                f"faltan {len(editorial['pending'])} campos editoriales: "
+                + ", ".join(editorial["pending"])
             )
         raise RuntimeError("No se generó el PPTX en modo estricto; " + " | ".join(details))
 
@@ -557,6 +746,11 @@ def assemble_from_template(
         if run_dir and run_dir.is_relative_to(project_root)
         else (str(run_dir) if run_dir else None),
         "slide_count": len(presentation.slides),
+        "editorial_inserted_count": len(editorial["inserted"]),
+        "editorial_pending_count": len(editorial["pending"]),
+        "editorial_pending_keys": editorial["pending"],
+        "historical_figure_count": len(historical_rows),
+        "historical_figures": historical_rows,
         "manifest_figure_count": len(entries),
         "inserted_count": inserted,
         "embedded_svg_count": len(embeddings),
