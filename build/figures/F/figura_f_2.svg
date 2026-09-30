@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura F.2.</dc:title>
-    <dc:date>2026-09-22T11:49:57.034877</dc:date>
+    <dc:date>2026-09-29T11:32:44.368470</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1152 648 
 L 1152 0 
 L 0 0 
+L 0 648 
 z
 " style="fill: none"/>
   </g>
@@ -236,7 +237,7 @@ z
    <text style="font-weight: 700; font-size: 9.2px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="59.904" y="561.9308" transform="rotate(-0 59.904 561.9308)">Fuente:</text>
   </g>
   <g id="text_16">
-   <text style="font-size: 9.2px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="114.048" y="561.9308" transform="rotate(-0 114.048 561.9308)">Elaborado por CRT con datos de la Encuesta Nacional de Ocupación y Empleo (ENOE) a junio de 2026, del INEGI. Datos disponibles en https://www.inegi.org.mx/programas/enoe/15ymas/#microdatos</text>
+   <text style="font-size: 9.2px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="114.048" y="561.9308" transform="rotate(-0 114.048 561.9308)">Elaborado por la CRT con datos de la Encuesta Nacional de Ocupación y Empleo (ENOE) a junio de 2026, del INEGI. Datos disponibles en https://www.inegi.org.mx/programas/enoe/15ymas/#microdatos</text>
   </g>
   <g id="text_17">
    <g id="patch_15">

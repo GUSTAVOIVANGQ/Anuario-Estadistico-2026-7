@@ -343,19 +343,35 @@ def run_pipeline(
     reports.finalize()
     LOGGER.info("")
     LOGGER.info("Reporte de corrida: %s", reports.run_dir)
-    pptx_path: Path | None = None
-    if assemble and not dry_run:
-        _emit_event(progress_callback, "assembly_started", run_id=run_id)
-        pptx_path = assemble_pptx(project_root, reports.run_dir)
-        _emit_event(
-            progress_callback,
-            "assembly_finished",
-            run_id=run_id,
-            pptx_path=str(pptx_path.relative_to(project_root)),
-        )
     counts: dict[str, int] = {}
     for item in reports.summary.statuses:
         counts[item.status] = counts.get(item.status, 0) + 1
+    failed_figures = [
+        item.figure_id for item in reports.summary.statuses if item.status == "ERROR"
+    ]
+    pptx_path: Path | None = None
+    if assemble and not dry_run:
+        if failed_figures:
+            LOGGER.error(
+                "No se ensambla el PPTX: fallaron %d figuras (%s).",
+                len(failed_figures),
+                ", ".join(failed_figures),
+            )
+            _emit_event(
+                progress_callback,
+                "assembly_skipped",
+                run_id=run_id,
+                failed_figures=failed_figures,
+            )
+        else:
+            _emit_event(progress_callback, "assembly_started", run_id=run_id)
+            pptx_path = assemble_pptx(project_root, reports.run_dir)
+            _emit_event(
+                progress_callback,
+                "assembly_finished",
+                run_id=run_id,
+                pptx_path=str(pptx_path.relative_to(project_root)),
+            )
     _emit_event(
         progress_callback,
         "run_finished",

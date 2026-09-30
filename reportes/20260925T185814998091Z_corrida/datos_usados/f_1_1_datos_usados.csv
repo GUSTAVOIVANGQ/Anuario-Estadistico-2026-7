@@ -1,0 +1,21 @@
+﻿periodo,tipo,indicador,variable,sexo,personas,universo,porcentaje,porcentaje_mostrado
+2025,resumen,Usuarios de Internet mediante Smartphone,P8_11=1,Mujeres,52728126,64213725,82.11348274843112,82
+2025,destacado,Instalaron aplicaciones,P8_14=1,Mujeres,17073210,52728126,32.37970186916941,32
+2025,indicador,Mensajería instantánea,P8_16_1=1,Mujeres,5101624,52728126,9.675337219456653,10
+2025,indicador,Acceder a redes sociales,P8_16_6=1,Mujeres,5482904,52728126,10.398442758993559,10
+2025,indicador,Contenidos de audio y video,P8_16_2=1,Mujeres,5528612,52728126,10.485128942378875,10
+2025,indicador,Jugar,P8_16_5=1,Mujeres,6644963,52728126,12.602312094308074,13
+2025,indicador,Tránsito y navegación asistida,P8_16_4=1,Mujeres,2803290,52728126,5.316498447147543,5
+2025,indicador,Adquirir bienes o servicios,P8_16_3=1,Mujeres,3837463,52728126,7.277829293610775,7
+2025,indicador,Acceder a banca móvil,P8_16_7=1,Mujeres,3321677,52728126,6.299630295982831,6
+2025,indicador,Editar fotos o videos,P8_16_8=1,Mujeres,4304590,52728126,8.163745474284445,8
+2025,resumen,Usuarios de Internet mediante Smartphone,P8_11=1,Hombres,47528779,57693032,82.38218265249085,82
+2025,destacado,Instalaron aplicaciones,P8_14=1,Hombres,17663719,47528779,37.164259994981144,37
+2025,indicador,Mensajería instantánea,P8_16_1=1,Hombres,5978557,47528779,12.57881461671885,13
+2025,indicador,Acceder a redes sociales,P8_16_6=1,Hombres,6152403,47528779,12.944584585267801,13
+2025,indicador,Contenidos de audio y video,P8_16_2=1,Hombres,6700026,47528779,14.096777028503087,14
+2025,indicador,Jugar,P8_16_5=1,Hombres,8265035,47528779,17.38953782086428,17
+2025,indicador,Tránsito y navegación asistida,P8_16_4=1,Hombres,3893004,47528779,8.190835283187056,8
+2025,indicador,Adquirir bienes o servicios,P8_16_3=1,Hombres,4236366,47528779,8.913264950483999,9
+2025,indicador,Acceder a banca móvil,P8_16_7=1,Hombres,4065231,47528779,8.55319889450558,9
+2025,indicador,Editar fotos o videos,P8_16_8=1,Hombres,3479272,47528779,7.320347951711531,7

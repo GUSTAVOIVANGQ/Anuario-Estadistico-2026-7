@@ -43,27 +43,30 @@ EXCLUDE_DIRS = {
     ".codex-finalizer",
     ".pptx-build",
     "node_modules",
-    "build",         # resultados generados, no código
-    "entrega",       # PDFs/PPTX generados
-    "reportes",      # reportes de corridas
-    "output",        # salidas temporales
-    "tmp",
-    "web/dist",      # frontend compilado
-    # ← el directorio de datos descargables se excluye por patrón:
-    # data/raw/** (sólo se conserva data/manual/*)
+    "build",          # resultados generados, no código
+    "entrega",        # PDFs/PPTX/JSONs de corridas generadas
+    "reportes",       # reportes de corridas
+    "output",         # salidas temporales
+    "tmp",            # archivos temporales
+    "demo_output",    # imágenes generadas por el demo (no son código)
+    "web/dist",       # frontend compilado
+    # data/raw se excluye por patrón (ver _should_exclude_file)
 }
 
 EXCLUDE_EXTENSIONS = {".pyc", ".pyo", ".part"}
 
-# Archivos grandes a excluir de la raíz
+# Archivos grandes o innecesarios a excluir de la raíz
 EXCLUDE_ROOT_FILES = {
     "anuarioestadistico2024vf_0.pdf",  # PDF de referencia (45 MB)
-    "MANIFEST_SHA256.txt",             # manifiesto de hashes (397 KB)
+    "MANIFEST_SHA256.txt",             # manifiesto de hashes
     OUTPUT_ZIP.name,                   # el propio ZIP que estamos creando
 }
 
-# Archivos de screenshots y referencias de imagen grandes
-EXCLUDE_ASSET_SUBDIRS = {"screenshots"}  # assets/screenshots (no es código)
+# Excluir ZIPs anteriores de empaquetado con patrón
+EXCLUDE_ZIP_PATTERN = "anuario_2026_ui_review_"
+
+# Archivos de screenshots (no son código)
+EXCLUDE_ASSET_SUBDIRS = {"screenshots"}  # assets/screenshots
 
 
 # ---------------------------------------------------------------------------
@@ -786,16 +789,16 @@ def _should_exclude_file(path: Path, rel: Path) -> bool:
     if path.suffix in EXCLUDE_EXTENSIONS:
         return True
 
-    # Excluir archivos raíz grandes
+    # Excluir archivos raíz grandes o innecesarios
     if len(parts) == 1 and parts[0] in EXCLUDE_ROOT_FILES:
+        return True
+
+    # Excluir ZIPs de empaquetado anteriores (cualquier fecha)
+    if len(parts) == 1 and parts[0].startswith(EXCLUDE_ZIP_PATTERN) and parts[0].endswith(".zip"):
         return True
 
     # Excluir el propio script de empaquetado
     if len(parts) == 1 and parts[0] == Path(__file__).name:
-        return True
-
-    # Excluir el ZIP de salida si ya existe
-    if len(parts) == 1 and parts[0] == OUTPUT_ZIP.name:
         return True
 
     # Excluir archivos dentro de dirs excluidos
@@ -805,9 +808,22 @@ def _should_exclude_file(path: Path, rel: Path) -> bool:
     return False
 
 
+def _read_version() -> str:
+    ver_file = ROOT / "VERSION"
+    return ver_file.read_text(encoding="utf-8").strip() if ver_file.is_file() else "?"
+
+
 def build_zip() -> None:
-    print(f"Proyecto raíz : {ROOT}")
-    print(f"Archivo de salida: {OUTPUT_ZIP}")
+    version = _read_version()
+
+    # Borrar ZIP anterior del mismo día si existe
+    if OUTPUT_ZIP.is_file():
+        OUTPUT_ZIP.unlink()
+        print(f"Eliminado ZIP anterior: {OUTPUT_ZIP.name}")
+
+    print(f"Proyecto raiz   : {ROOT}")
+    print(f"Version         : {version}")
+    print(f"Archivo de salida: {OUTPUT_ZIP.name}")
     print()
 
     included = 0
@@ -845,9 +861,9 @@ def build_zip() -> None:
     zip_size = OUTPUT_ZIP.stat().st_size
 
     print(f"[OK] Archivos incluidos : {included:,}")
-    print(f"     Archivos excluidos : {excluded:,}  (data/raw, .venv, build, etc.)")
-    print(f"     Tamano del contenido: {total_bytes / 1_048_576:.1f} MB")
-    print(f"     Tamano del ZIP      : {zip_size / 1_048_576:.1f} MB")
+    print(f"     Archivos excluidos : {excluded:,}  (data/raw, .venv, entrega, build, tmp, etc.)")
+    print(f"     Contenido total    : {total_bytes / 1_048_576:.1f} MB")
+    print(f"     Tamano del ZIP     : {zip_size / 1_048_576:.1f} MB")
     print()
     print(f"     -> {OUTPUT_ZIP}")
     print()

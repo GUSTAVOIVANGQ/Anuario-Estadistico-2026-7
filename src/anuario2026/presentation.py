@@ -18,6 +18,9 @@ from pptx.util import Inches, Pt
 from PIL import Image
 
 from .figure_outputs import companion_paths, extract_svg_text, validate_editable_svg
+from .editorial_pages import apply_editorial_pages
+from .annex_pages import apply_annex_pages
+from .frontmatter import DESIGNED_FRONTMATTER_SHAPES, apply_reference_frontmatter
 from .narratives import load_narrative_audit, write_narrative_reports
 from .presentation_svg import SvgEmbeddingRequest, embed_svg_images
 
@@ -71,8 +74,14 @@ def _insert_editorial_text(project_root: Path, presentation, manifest: dict[str,
     source_notes = registry.get("source_notes", {})
     inserted: list[str] = []
     pending: list[str] = []
+    preserved_template: list[str] = []
     for slot in slots:
         key = str(slot["key"])
+        slide = presentation.slides[int(slot["slide_number"]) - 1]
+        design_shape = DESIGNED_FRONTMATTER_SHAPES.get(int(slot["slide_number"]))
+        if design_shape and _shape_by_name(slide, design_shape) is not None:
+            preserved_template.append(key)
+            continue
         value = values.get(key)
         if not isinstance(value, str) or not value.strip():
             pending.append(key)
@@ -174,7 +183,10 @@ def _insert_editorial_text(project_root: Path, presentation, manifest: dict[str,
                 raise ValueError(f"Falta el token editorial {token} en {slot['shape_name']}")
             shape.text = shape.text.replace(token, value.strip())
         inserted.append(key)
-    return {"registry": str(registry_path), "inserted": inserted, "pending": pending}
+    return {
+        "registry": str(registry_path), "inserted": inserted, "pending": pending,
+        "preserved_template": preserved_template,
+    }
 
 
 def _narrative_font_size(text: str) -> float:
@@ -499,6 +511,9 @@ def assemble_from_template(
         )
 
     editorial = _insert_editorial_text(project_root, presentation, manifest)
+    apply_reference_frontmatter(project_root, presentation)
+    apply_editorial_pages(project_root, presentation)
+    apply_annex_pages(project_root, presentation)
 
     inserted = 0
     missing: list[str] = []

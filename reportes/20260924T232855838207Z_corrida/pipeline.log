@@ -1,0 +1,41 @@
+2026-09-24 17:28:55,848 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-09-24 17:28:55,850 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-09-24 17:28:55,850 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-09-24 17:28:55,850 | INFO | 
+2026-09-24 17:28:55,850 | INFO | Anuario Estadístico 2026 | corrida 20260924T232855838207Z_corrida
+2026-09-24 17:28:55,850 | INFO | Figuras seleccionadas: 1 de 105
+2026-09-24 17:28:55,850 | INFO | 
+2026-09-24 17:28:55,850 | INFO | [001/001] A.1 | LISTA
+2026-09-24 17:28:58,170 | ERROR |   Falló A.1
+Traceback (most recent call last):
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 255, in run_pipeline
+    payload: dict[str, Any] = generate(context) or {}
+                              ~~~~~~~~^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\scripts\figures\figura_a_1.py", line 364, in generate
+    raw_path = context.acquire_source(SOURCE_ID)
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\context.py", line 36, in acquire_source
+    path, metadata = self.sources.acquire(source_id)
+                     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\sources.py", line 151, in acquire
+    path, response_metadata = self._download_http(source_id, source)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\sources.py", line 198, in _download_http
+    with urllib.request.urlopen(request, timeout=120) as response, partial.open(
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 487, in open
+    response = self._open(req, data)
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 509, in _open
+    return self._call_chain(self.handle_open, 'unknown',
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            'unknown_open', req)
+                            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 1397, in unknown_open
+    raise URLError('unknown url type: %s' % type)
+urllib.error.URLError: <urlopen error unknown url type: https>
+2026-09-24 17:28:58,211 | INFO | 
+2026-09-24 17:28:58,211 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20260924T232855838207Z_corrida

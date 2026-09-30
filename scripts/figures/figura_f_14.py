@@ -375,7 +375,7 @@ def _plot(data: pd.DataFrame, out: Path, root: Path) -> None:
     footer_y = .92
     ax.text(left_x, footer_y, "Fuente:", color=TEXT, fontsize=8.55, fontweight="bold", va="top")
     ax.text(left_x + .78, footer_y,
-            "Elaborado por CRT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",
+            "Elaborado por la CRT con información de la Tercera Encuesta 2023, Personas Usuarias de Servicios de Telecomunicaciones.",
             color=SUBTEXT, fontsize=8.55, va="top")
     ax.text(left_x, footer_y - .28, "Nota:", color=TEXT, fontsize=8.55, fontweight="bold", va="top")
     ax.text(left_x + .57, footer_y - .28,

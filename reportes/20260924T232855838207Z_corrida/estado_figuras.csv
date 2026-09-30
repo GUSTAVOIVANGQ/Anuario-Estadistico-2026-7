@@ -1,0 +1,2 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+1,A.1,ERROR,URLError: <urlopen error unknown url type: https>,scripts\figures\figura_a_1.py,build\figures\A\figura_a_1.png,2026-09-24T23:28:55+00:00,2026-09-24T23:28:58+00:00,2.358

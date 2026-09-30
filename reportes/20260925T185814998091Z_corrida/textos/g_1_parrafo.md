@@ -1,0 +1,1 @@
+Con información disponible a 2023, BIT registra 266 concesiones de AM, 1,898 de FM y 909 distintivos de TDT en el último corte común disponible. El valor más alto correspondió a FM con 1,898 concesiones.

@@ -143,16 +143,18 @@ def format_source_credit(value: object) -> object:
         return value
     leading = value[: len(value) - len(value.lstrip())]
     body = value.lstrip()
-    if body.startswith("Elaborado por CRT"):
+    if body.startswith("Elaborado por la CRT"):
         return value
+    if body.startswith("Elaborado por CRT"):
+        return leading + "Elaborado por la CRT" + body[len("Elaborado por CRT"):]
     if body.startswith("IFT "):
-        return leading + "Elaborado por CRT " + body[4:]
+        return leading + "Elaborado por la CRT " + body[4:]
     if body.startswith("IFT,"):
-        return leading + "Elaborado por CRT," + body[4:]
+        return leading + "Elaborado por la CRT," + body[4:]
     if body.startswith("CRT "):
-        return leading + "Elaborado por CRT " + body[4:]
+        return leading + "Elaborado por la CRT " + body[4:]
     if body.startswith("CRT,"):
-        return leading + "Elaborado por CRT," + body[4:]
+        return leading + "Elaborado por la CRT," + body[4:]
     return value
 
 

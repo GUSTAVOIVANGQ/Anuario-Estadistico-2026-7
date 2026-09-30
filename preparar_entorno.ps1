@@ -20,12 +20,26 @@ if (-not (Test-Path -LiteralPath $python)) {
     }
 }
 
-& $python -m pip install --upgrade pip
+# Los venv basados en Anaconda necesitan registrar sus DLL antes de importar pip.
+$pipBootstrap = @'
+import os
+import sys
+from pathlib import Path
+
+dll_dir = Path(sys.base_prefix) / "Library" / "bin"
+dll_handle = os.add_dll_directory(str(dll_dir)) if os.name == "nt" and dll_dir.is_dir() else None
+from pip._internal.cli.main import main
+raise SystemExit(main())
+'@
+& $python -c $pipBootstrap install --upgrade pip
+if ($LASTEXITCODE -ne 0) { throw "No se pudo actualizar pip en .venv." }
 if ($ConPlaywright) {
-    & $python -m pip install -e "$raizProyecto[playwright]"
+    & $python -c $pipBootstrap install -e "$raizProyecto[playwright]"
+    if ($LASTEXITCODE -ne 0) { throw "No se pudieron instalar las dependencias de Python." }
     & $python -m playwright install chromium
 } else {
-    & $python -m pip install -e $raizProyecto
+    & $python -c $pipBootstrap install -e $raizProyecto
+    if ($LASTEXITCODE -ne 0) { throw "No se pudieron instalar las dependencias de Python." }
 }
 
 if (-not $SinFrontend) {

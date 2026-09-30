@@ -1,0 +1,6 @@
+﻿anio,indicador,porcentaje,numerador_hogares,denominador_hogares,regla,origen_calculo
+2023,Equipo de cómputo,43.848331798538744,16937435,38627319,P4_2_1_1=1 o P4_2_2_1=1 o P4_2_3_1=1,microdatos ENDUTIH
+2023,Aparatos de radio,42.69271186022514,16491050,38627319,P4_1_1=1,microdatos ENDUTIH
+2023,Televisor analógico,18.609650335815438,7188409,38627319,P4_1_2=1,microdatos ENDUTIH
+2023,Televisor digital,81.6729967720514,31548089,38627319,P4_1_4=1,microdatos ENDUTIH
+2023,Teléfono celular,95.05240837449786,36716197,38627319,P4_1_6=1,microdatos ENDUTIH

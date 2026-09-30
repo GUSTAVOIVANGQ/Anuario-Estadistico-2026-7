@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura C.2.</dc:title>
-    <dc:date>2026-09-22T11:46:17.176926</dc:date>
+    <dc:date>2026-09-29T11:26:08.917707</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1131.84 571.32 
 L 1131.84 0 
 L 0 0 
+L 0 571.32 
 z
 " style="fill: none"/>
   </g>
@@ -50,8 +51,9 @@ z
 L 1061.28 463.14 
 L 1061.28 83.7 
 L 70.56 83.7 
+L 70.56 463.14 
 z
-" style="fill: #ffffff"/>
+" style="fill: none"/>
    </g>
    <g id="patch_4">
     <path d="M 118.594909 445.573333 
@@ -646,7 +648,7 @@ z
    <text style="font-weight: 700; font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="41.76" y="539.64" transform="rotate(-0 41.76 539.64)">Fuente:</text>
   </g>
   <g id="text_26">
-   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="88.992" y="539.64" transform="rotate(-0 88.992 539.64)">Elaborado por CRT, distribución del espectro radioeléctrico a agosto de 2024.</text>
+   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="88.992" y="539.64" transform="rotate(-0 88.992 539.64)">Elaborado por la CRT, distribución del espectro radioeléctrico a agosto de 2024.</text>
   </g>
   <g id="text_27">
    <text style="font-weight: 700; font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="41.76" y="552.492" transform="rotate(-0 41.76 552.492)">Nota:</text>

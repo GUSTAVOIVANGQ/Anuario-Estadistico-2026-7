@@ -54,13 +54,19 @@ def test_template_manifest_matches_placeholders() -> None:
 
 def test_editorial_text_fills_named_box_without_losing_heading(tmp_path: Path) -> None:
     root = _project_root()
-    deck = Presentation(str(root / "assets/presentation/anuario_estadistico_2026_automatizable.pptx"))
+    # La compatibilidad con plantillas antiguas se prueba con un marcador real.
+    deck = Presentation()
+    for _ in range(3):
+        deck.slides.add_slide(deck.slide_layouts[6])
     manifest = json.loads(
         (root / "assets/presentation/anuario_estadistico_2026_manifest.json").read_text(
             encoding="utf-8"
         )
     )
     slot = next(item for item in manifest["editorial_slots"] if item["key"] == "LEGALES_1")
+    shape = deck.slides[2].shapes.add_textbox(0, 0, 3 * 914400, 4 * 914400)
+    shape.name = slot["shape_name"]
+    shape.text = "LEGALES\n" + slot["token"]
     data_dir = tmp_path / "assets/presentation"
     data_dir.mkdir(parents=True)
     (data_dir / "textos_editoriales_2026.json").write_text(
@@ -74,6 +80,36 @@ def test_editorial_text_fills_named_box_without_losing_heading(tmp_path: Path) -
     assert "LEGALES" in shape.text
     assert "Texto revisado con fuente y periodo." in shape.text
     assert slot["token"] not in shape.text
+
+
+def test_designed_frontmatter_survives_editorial_and_reference_passes(tmp_path: Path) -> None:
+    from anuario2026.frontmatter import apply_reference_frontmatter
+
+    root = _project_root()
+    deck = Presentation(str(root / "assets/presentation/anuario_estadistico_2026_automatizable.pptx"))
+    manifest = json.loads(
+        (root / "assets/presentation/anuario_estadistico_2026_manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    keys = [
+        "LEGALES_1", "LEGALES_2", "GLOSARIO_1_A", "GLOSARIO_1_B",
+        "GLOSARIO_2_A", "GLOSARIO_2_B", "INTRODUCCION_1", "INTRODUCCION_2",
+    ]
+    slots = [item for item in manifest["editorial_slots"] if item["key"] in keys]
+    data_dir = tmp_path / "assets/presentation"
+    data_dir.mkdir(parents=True)
+    (data_dir / "textos_editoriales_2026.json").write_text(
+        json.dumps({"slots": {key: "Texto del marcador anterior." for key in keys}}),
+        encoding="utf-8",
+    )
+    original = {number: deck.slides[number - 1]._element.xml for number in range(3, 9)}
+    result = _insert_editorial_text(tmp_path, deck, {"editorial_slots": slots})
+    assert result["preserved_template"] == keys
+    assert result["pending"] == []
+    apply_reference_frontmatter(root, deck)
+    for number, xml in original.items():
+        assert deck.slides[number - 1]._element.xml == xml
 
 
 def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:

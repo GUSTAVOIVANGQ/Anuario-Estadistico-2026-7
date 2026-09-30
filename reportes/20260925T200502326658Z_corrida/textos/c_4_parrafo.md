@@ -1,0 +1,1 @@
+Al desagregar por zona geográfica, 85% de la población de 6 años o más en zonas urbanas hizo uso de servicios móviles de telecomunicaciones, frente a 71% en zonas rurales; la diferencia fue de 14.3 puntos porcentuales.

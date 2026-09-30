@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura C.12.</dc:title>
-    <dc:date>2026-09-22T11:46:35.845128</dc:date>
+    <dc:date>2026-09-29T11:26:33.644513</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1152 648 
 L 1152 0 
 L 0 0 
+L 0 648 
 z
 " style="fill: none"/>
   </g>
@@ -50,8 +51,9 @@ z
 L 1059.84 518.4 
 L 1059.84 116.64 
 L 92.16 116.64 
+L 92.16 518.4 
 z
-" style="fill: #ffffff"/>
+" style="fill: none"/>
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
@@ -559,7 +561,7 @@ L 454.320703 572.8122
    <text style="font-weight: 700; font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="57.6" y="602.64" transform="rotate(-0 57.6 602.64)">Fuente:</text>
   </g>
   <g id="text_33">
-   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="104.832" y="602.64" transform="rotate(-0 104.832 602.64)">Elaborado por CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta 2024.</text>
+   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="104.832" y="602.64" transform="rotate(-0 104.832 602.64)">Elaborado por la CRT con datos de los operadores de telecomunicaciones a diciembre de cada año, hasta 2024.</text>
   </g>
   <g id="text_34">
    <text style="font-weight: 700; font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="57.6" y="615.6" transform="rotate(-0 57.6 615.6)">Nota:</text>

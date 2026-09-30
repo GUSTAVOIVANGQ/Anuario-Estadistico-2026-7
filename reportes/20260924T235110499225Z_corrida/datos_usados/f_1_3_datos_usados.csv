@@ -1,0 +1,21 @@
+﻿periodo,tipo,indicador,variable,sexo,personas,universo,porcentaje,porcentaje_mostrado
+2024,resumen,Usuarios de computadora,P6_1=1,Mujeres,22549120,63657484,35.42257497955779,35
+2024,destacado,Descargar contenidos de Internet,P6_8_2=1,Mujeres,19366537,22549120,85.88599909885617,86
+2024,indicador,Enviar y recibir correo electrónico,P6_8_1=1,Mujeres,18695595,22549120,82.91053043311668,83
+2024,indicador,Crear archivos de texto,P6_8_4=1,Mujeres,18843681,22549120,83.56725672664831,84
+2024,indicador,Copiar archivos entre directorios,P6_8_3=1,Mujeres,17464018,22549120,77.44877848891663,77
+2024,indicador,Crear presentaciones,P6_8_6=1,Mujeres,16803397,22549120,74.51908101070019,75
+2024,indicador,Crear hojas de cálculo,P6_8_5=1,Mujeres,15132001,22549120,67.10683609826016,67
+2024,indicador,Instalar dispositivos periféricos,P6_8_7=1,Mujeres,12287169,22549120,54.49068078931683,54
+2024,indicador,Crear o usar bases de datos,P6_8_8=1,Mujeres,10520118,22549120,46.654228635086426,47
+2024,indicador,Programar en lenguaje especializado,P6_8_9=1,Mujeres,2941970,22549120,13.046939304061533,13
+2024,resumen,Usuarios de computadora,P6_1=1,Hombres,21586229,56947313,37.9056146160926,38
+2024,destacado,Descargar contenidos de Internet,P6_8_2=1,Hombres,19070664,21586229,88.34643605420845,88
+2024,indicador,Enviar y recibir correo electrónico,P6_8_1=1,Hombres,18368919,21586229,85.09554401558512,85
+2024,indicador,Crear archivos de texto,P6_8_4=1,Hombres,18308235,21586229,84.81442034178365,85
+2024,indicador,Copiar archivos entre directorios,P6_8_3=1,Hombres,17302573,21586229,80.15560754034435,80
+2024,indicador,Crear presentaciones,P6_8_6=1,Hombres,16226871,21586229,75.17232861747182,75
+2024,indicador,Crear hojas de cálculo,P6_8_5=1,Hombres,15249449,21586229,70.64433996322379,71
+2024,indicador,Instalar dispositivos periféricos,P6_8_7=1,Hombres,14147948,21586229,65.54154502854574,66
+2024,indicador,Crear o usar bases de datos,P6_8_8=1,Hombres,10856764,21586229,50.29486159903149,50
+2024,indicador,Programar en lenguaje especializado,P6_8_9=1,Hombres,4179931,21586229,19.363877775965406,19

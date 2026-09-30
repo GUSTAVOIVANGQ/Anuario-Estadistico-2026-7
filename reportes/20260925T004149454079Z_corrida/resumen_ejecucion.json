@@ -1,0 +1,19 @@
+{
+  "run_id": "20260925T004149454079Z_corrida",
+  "dry_run": false,
+  "started_at": "2026-09-25T00:41:49+00:00",
+  "finished_at": "2026-09-25T00:42:57+00:00",
+  "statuses": [
+    {
+      "order": 32,
+      "figure_id": "B.22",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_b_22.py",
+      "output_path": "build\\figures\\B\\figura_b_22.png",
+      "started_at": "2026-09-25T00:41:49+00:00",
+      "finished_at": "2026-09-25T00:42:57+00:00",
+      "duration_seconds": 68.416
+    }
+  ]
+}

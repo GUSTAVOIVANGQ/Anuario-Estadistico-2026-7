@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura D.4.</dc:title>
-    <dc:date>2026-09-22T11:46:50.215775</dc:date>
+    <dc:date>2026-09-29T11:26:54.626220</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1152 612 
 L 1152 0 
 L 0 0 
+L 0 612 
 z
 " style="fill: none"/>
   </g>
@@ -37,8 +38,9 @@ z
 L 1111.68 459 
 L 1111.68 104.04 
 L 80.64 104.04 
+L 80.64 459 
 z
-" style="fill: #f8f8fa"/>
+" style="fill: none"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -456,7 +458,7 @@ z
    <text style="font-weight: 700; font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="63.36" y="576.504" transform="rotate(-0 63.36 576.504)">Fuente:</text>
   </g>
   <g id="text_32">
-   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="110.592" y="576.504" transform="rotate(-0 110.592 576.504)">Elaborado por CRT con datos de la ENDUTIH 2025, del INEGI. Datos disponibles en https://www.inegi.org.mx/programas/endutih/2025/</text>
+   <text style="font-size: 8px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="110.592" y="576.504" transform="rotate(-0 110.592 576.504)">Elaborado por la CRT con datos de la ENDUTIH 2025, del INEGI. Datos disponibles en https://www.inegi.org.mx/programas/endutih/2025/</text>
   </g>
   <g id="patch_23">
    <path d="M 70.272 48.348 

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import csv
+import errno
+import os
 import zipfile
 from pathlib import Path
+from types import SimpleNamespace
 
 import matplotlib
 
@@ -88,6 +91,55 @@ def test_png_save_generates_code_native_jpg_and_editable_svg(tmp_path: Path) -> 
     with Image.open(png_path) as png, Image.open(png_path.with_suffix(".jpg")) as jpg:
         assert jpg.format == "JPEG"
         assert jpg.size == png.size
+
+
+def test_bundle_publication_retries_transient_windows_error(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    native_replace = os.replace
+    attempts = 0
+
+    def flaky_replace(source: Path, destination: Path) -> None:
+        nonlocal attempts
+        if Path(destination).suffix == ".svg" and attempts == 0:
+            attempts += 1
+            raise OSError(errno.EINVAL, "bloqueo temporal", str(destination))
+        native_replace(source, destination)
+
+    monkeypatch.setattr(
+        figure_outputs, "os", SimpleNamespace(name="nt", replace=flaky_replace)
+    )
+    monkeypatch.setattr(figure_outputs.time, "sleep", lambda _: None)
+    png_path = tmp_path / "figura_a_1.png"
+    _save_sample_bundle(png_path)
+
+    assert attempts == 1
+    validate_figure_bundle(png_path)
+    assert not list(tmp_path.glob(".figura_a_1.*"))
+
+
+def test_failed_bundle_validation_preserves_previous_outputs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    png_path = tmp_path / "figura_a_1.png"
+    _save_sample_bundle(png_path)
+    previous = {kind: path.read_bytes() for kind, path in figure_outputs.companion_paths(png_path).items()}
+
+    def reject_bundle(_: Path) -> None:
+        raise ValueError("SVG inválido simulado")
+
+    monkeypatch.setattr(figure_outputs, "validate_figure_bundle", reject_bundle)
+    figure, ax = plt.subplots(figsize=(4, 2.25))
+    ax.bar(["Uno", "Dos"], [3, 4])
+    with pytest.raises(ValueError, match="SVG inválido simulado"):
+        figure.savefig(png_path, dpi=100, facecolor="white")
+    plt.close(figure)
+
+    assert all(
+        path.read_bytes() == previous[kind]
+        for kind, path in figure_outputs.companion_paths(png_path).items()
+    )
+    assert not list(tmp_path.glob(".figura_a_1.*"))
 
 
 def test_svg_compendium_contains_origin_manifest_and_text_positions(tmp_path: Path) -> None:

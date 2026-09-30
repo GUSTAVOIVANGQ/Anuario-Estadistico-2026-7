@@ -4,7 +4,7 @@ Fecha de revisión: 17 de septiembre de 2026.
 
 ## Cambios aplicados
 
-1. Los pies de fuente que comenzaban con `IFT` o `CRT` se normalizan a `Elaborado por CRT` desde el flujo central de generación.
+1. Los pies de fuente que comenzaban con `IFT` o `CRT` se normalizan a `Elaborado por la CRT` desde el flujo central de generación.
 2. A.6 incorpora los ingresos trimestrales disponibles de 2024. Como la tabla fuente no contiene egresos ni margen para ese año, las cuatro barras se muestran como ingreso total sin desglose, en gris, y no se imputan datos inexistentes.
 3. B.1 coloca el total de hogares debajo de la gráfica circular, siguiendo la composición de B.2.
 4. B.5 incluye correctamente la etiqueta 2024 en la última barra.

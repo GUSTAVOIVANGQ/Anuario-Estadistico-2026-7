@@ -573,9 +573,62 @@ def _load_manifest(project_root: Path) -> dict[str, Any]:
         return {}
 
 
+def _reference_index_entries(project_root: Path) -> list[tuple[str, int, int]]:
+    """Lee títulos, páginas y sangrías del índice impreso de 2024."""
+    import pymupdf  # noqa: PLC0415
+
+    source = project_root / "anuarioestadistico2024vf_0.pdf"
+    if not source.is_file():
+        source = (
+            project_root / "assets" / "reference" / "anuario_2024_fuente"
+            / "anuarioestadistico2024vf_0.pdf"
+        )
+    entries: list[tuple[str, int, int]] = []
+    with pymupdf.open(source) as document:
+        page = document[1]
+        lines = [
+            line
+            for block in page.get_text("dict")["blocks"]
+            for line in block.get("lines", [])
+            if 100 <= line["bbox"][1] <= 800
+        ]
+        for base, limit, page_x in ((470, 1000, 920), (1030, 1540, 1480)):
+            column = [line for line in lines if base <= line["bbox"][0] < limit]
+            grouped: dict[int, list[dict[str, Any]]] = {}
+            for line in column:
+                grouped.setdefault(round(line["bbox"][1]), []).append(line)
+            pending: list[str] = []
+            indent = 0
+            for y in sorted(grouped):
+                same_row = grouped[y]
+                spans = sorted(
+                    (span for line in same_row for span in line["spans"]),
+                    key=lambda span: span["bbox"][0],
+                )
+                if not spans:
+                    continue
+                title = "".join(
+                    span["text"] for span in spans if span["bbox"][0] < page_x
+                ).replace("\x08", "").strip()
+                if title:
+                    if not pending:
+                        indent = round(min(span["bbox"][0] for span in spans) - base)
+                    pending.append(title)
+                page_spans = [
+                    span["text"].strip()
+                    for span in spans
+                    if span["bbox"][0] >= page_x and span["text"].strip().isdigit()
+                ]
+                if page_spans and pending:
+                    name = " ".join(pending)
+                    entries.append((name, int(page_spans[-1]), indent))
+                    pending = []
+    return entries
+
+
 def _add_delivery_outline(
     writer: PdfWriter,
-    manifest: dict[str, Any],
+    project_root: Path,
     page_count: int,
 ) -> int:
     outline_count = 0
@@ -588,27 +641,29 @@ def _add_delivery_outline(
         return None
 
     add("Portada", 0)
-    add("Índice", 1)
-    add("Introducción", 2)
-
-    entries = manifest.get("entries", [])
-    sections = manifest.get("sections", {})
-    for section, section_title in sections.items():
-        section_entries = [entry for entry in entries if entry.get("section") == section]
-        if not section_entries:
-            continue
-        section_entries.sort(key=lambda entry: int(entry.get("slide_number", 0)))
-        first_slide = int(section_entries[0].get("slide_number", 0))
-        parent = add(str(section_title), first_slide - 2)
-        for entry in section_entries:
-            slide_number = int(entry.get("slide_number", 0))
-            figure_id = str(entry.get("figure_id", "")).strip()
-            title = str(entry.get("title", "")).strip()
-            label = f"Figura {figure_id}. {title}" if title else f"Figura {figure_id}"
-            add(label, slide_number - 1, parent=parent)
-
-    if page_count >= 2:
-        add("Conclusión", page_count - 2)
+    add("ÍNDICE", 1)
+    national = None
+    section = None
+    annex = None
+    for title, page_number, indent in _reference_index_entries(project_root):
+        if title == "INDICADORES DE TELECOMUNICACIONES Y RADIODIFUSIÓN A NIVEL NACIONAL":
+            national = add(title, page_number - 1)
+            section = None
+            annex = None
+        elif re.match(r"^[A-H]\. ", title):
+            section = add(title, page_number - 1, parent=national)
+            annex = None
+        elif title.startswith("ANEXO "):
+            annex = add(title, page_number - 1)
+            section = None
+        elif indent >= 30:
+            add(title, page_number - 1, parent=section or annex)
+        elif indent >= 10 and (section is not None or annex is not None):
+            add(title, page_number - 1, parent=section or annex)
+        else:
+            add(title, page_number - 1)
+            section = None
+            annex = None
     return outline_count
 
 
@@ -701,7 +756,7 @@ def _polish_pdf(
             "/Keywords": "Anuario Estadístico 2026, telecomunicaciones, radiodifusión, CRT, SVG",
         }
     )
-    outline_count = _add_delivery_outline(writer, _load_manifest(project_root), expected_pages)
+    outline_count = _add_delivery_outline(writer, project_root, expected_pages)
     with polished_pdf.open("wb") as stream:
         writer.write(stream)
     polished_reader = _validate_pdf(

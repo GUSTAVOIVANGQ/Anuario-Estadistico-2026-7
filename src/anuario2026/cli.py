@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from pathlib import Path
 
@@ -120,7 +121,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Reporte: {pptx_path.with_name(pptx_path.stem + '_ensamblaje.json')}")
         return 0
     if args.command == "run":
-        run_pipeline(
+        run_dir = run_pipeline(
             project_root,
             dry_run=args.dry_run,
             only=args.only,
@@ -129,6 +130,11 @@ def main(argv: list[str] | None = None) -> int:
             stop_on_error=args.stop_on_error,
             assemble=args.assemble,
         )
+        summary = json.loads((run_dir / "resumen_ejecucion.json").read_text(encoding="utf-8"))
+        failures = [item["figure_id"] for item in summary["statuses"] if item["status"] == "ERROR"]
+        if failures:
+            print(f"La corrida terminó con {len(failures)} figura(s) fallida(s): {', '.join(failures)}")
+            return 1
         return 0
     if args.command == "web":
         from .web import serve

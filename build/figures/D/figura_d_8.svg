@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura D.8.</dc:title>
-    <dc:date>2026-09-22T11:46:53.144215</dc:date>
+    <dc:date>2026-09-29T11:27:00.568178</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1152 648 
 L 1152 0 
 L 0 0 
+L 0 648 
 z
 " style="fill: none"/>
   </g>
@@ -50,8 +51,9 @@ z
 L 1036.8 518.4 
 L 1036.8 142.56 
 L 115.2 142.56 
+L 115.2 518.4 
 z
-" style="fill: #f8f8fa"/>
+" style="fill: none"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -358,7 +360,7 @@ z
    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="63.36" y="589.68" transform="rotate(-0 63.36 589.68)">Fuente:</text>
   </g>
   <g id="text_26">
-   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="116.352" y="589.68" transform="rotate(-0 116.352 589.68)">Elaborado por CRT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.</text>
+   <text style="font-size: 9px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="116.352" y="589.68" transform="rotate(-0 116.352 589.68)">Elaborado por la CRT, Encuesta de Confianza en el Servicio de Internet (ECSI) 2024.</text>
   </g>
   <g id="patch_16">
    <path d="M 70.272 83.592 

@@ -8,7 +8,7 @@
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
     <dc:title>Figura A.4.</dc:title>
-    <dc:date>2026-09-22T11:42:29.369376</dc:date>
+    <dc:date>2026-09-29T11:21:32.904275</dc:date>
     <dc:description>Figura vectorial editable del Anuario Estadístico 2026. Los textos se conservan como texto seleccionable.</dc:description>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
@@ -28,6 +28,7 @@
 L 1152 612 
 L 1152 0 
 L 0 0 
+L 0 612 
 z
 " style="fill: none"/>
   </g>
@@ -37,8 +38,9 @@ z
 L 1059.84 501.84 
 L 1059.84 91.8 
 L 115.2 91.8 
+L 115.2 501.84 
 z
-" style="fill: #f8f8fa"/>
+" style="fill: none"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -1425,7 +1427,7 @@ z
    <text style="font-weight: 700; font-size: 8.1px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="63.36" y="572.9229" transform="rotate(-0 63.36 572.9229)">Fuente:</text>
   </g>
   <g id="text_66">
-   <text style="font-size: 8.1px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="108.288" y="572.9229" transform="rotate(-0 108.288 572.9229)">Elaborado por CRT con datos proporcionados por los operadores de telecomunicaciones. Para cada año la inversión se presenta acumulada al mes de diciembre.</text>
+   <text style="font-size: 8.1px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="108.288" y="572.9229" transform="rotate(-0 108.288 572.9229)">Elaborado por la CRT con datos proporcionados por los operadores de telecomunicaciones. Para cada año la inversión se presenta acumulada al mes de diciembre.</text>
   </g>
   <g id="text_67">
    <text style="font-weight: 700; font-size: 8.1px; font-family: 'Noto Sans'; text-anchor: start; fill: #3c3c3b" x="63.36" y="592.5069" transform="rotate(-0 63.36 592.5069)">Notas:</text>

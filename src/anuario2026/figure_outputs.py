@@ -14,10 +14,16 @@ la entrega sin avisar.
 
 from __future__ import annotations
 
+import errno
+import logging
+import os
+import time
+import uuid
+from contextlib import suppress
 from dataclasses import dataclass
 from os import PathLike
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from xml.etree import ElementTree
 
 import matplotlib as mpl
@@ -39,6 +45,8 @@ VECTOR_ELEMENTS = {
 SVG_RASTER_DPI = 600
 
 _exporter_installed = False
+LOGGER = logging.getLogger("anuario2026")
+_RETRYABLE_OUTPUT_ERRORS = {errno.EACCES, errno.EBUSY, errno.EINVAL}
 
 
 @dataclass(frozen=True)
@@ -84,6 +92,29 @@ def _saved_path(args: tuple[Any, ...], kwargs: dict[str, Any]) -> Path | None:
     return path
 
 
+def _retry_windows_output(action: Callable[[], Any], path: Path) -> Any:
+    """Reintenta bloqueos transitorios al escribir una figura en Windows."""
+    for attempt in range(6):
+        try:
+            return action()
+        except OSError as exc:
+            retryable = os.name == "nt" and (
+                exc.errno in _RETRYABLE_OUTPUT_ERRORS
+                or getattr(exc, "winerror", None) in {32, 33}
+            )
+            if not retryable or attempt == 5:
+                raise
+            delay = 0.1 * (2**attempt)
+            LOGGER.warning(
+                "Escritura de figura bloqueada (%s): %s; reintento %d/5 en %.1f s",
+                exc.errno,
+                path,
+                attempt + 1,
+                delay,
+            )
+            time.sleep(delay)
+
+
 def _svg_metadata(figure: Figure, target: Path) -> dict[str, str]:
     visible_text = [
         item.get_text().strip()
@@ -116,6 +147,7 @@ def _companion_kwargs(
     options.pop("format", None)
     options.pop("metadata", None)
     options.pop("pil_kwargs", None)
+    options.pop("fname", None)
 
     if kind == "svg":
         options["format"] = "svg"
@@ -153,40 +185,65 @@ def install_figure_output_exporter() -> None:
 
     def savefig(self, *args, **kwargs):
         png_path = _saved_path(args, kwargs)
-        result = original_savefig(self, *args, **kwargs)
         if png_path is None:
-            return result
+            return original_savefig(self, *args, **kwargs)
 
         png_path.parent.mkdir(parents=True, exist_ok=True)
         svg_path = png_path.with_suffix(".svg")
         jpg_path = png_path.with_suffix(".jpg")
+        temporary_stem = f".{png_path.stem}.{uuid.uuid4().hex}"
+        temp_png = png_path.with_name(temporary_stem + ".png")
+        temp_svg = png_path.with_name(temporary_stem + ".svg")
+        temp_jpg = png_path.with_name(temporary_stem + ".jpg")
+        if args:
+            png_args = (temp_png, *args[1:])
+            png_kwargs = kwargs
+        else:
+            png_args = ()
+            png_kwargs = {**kwargs, "fname": temp_png}
 
-        svg_options = _companion_kwargs(self, svg_path, kwargs, "svg")
-        # ``none`` es la clave para conservar texto real. El valor predeterminado
-        # de Matplotlib (``path``) convertiría cada letra en curvas no copiables.
-        with mpl.rc_context(
-            {
-                "svg.fonttype": "none",
-                "svg.image_inline": True,
-                "svg.hashsalt": "anuario-estadistico-2026",
-                # Evita perder detalle geométrico en líneas, mapas y contornos.
-                "path.simplify": False,
-                "agg.path.chunksize": 0,
-                # Impide que Matplotlib combine artistas de imagen en un raster
-                # compuesto. La entrega estricta rechaza cualquier raster de
-                # todos modos, pero esta opción evita crear uno innecesario.
-                "image.composite_image": False,
-            }
-        ):
-            original_savefig(self, svg_path, **svg_options)
+        try:
+            result = _retry_windows_output(
+                lambda: original_savefig(self, *png_args, **png_kwargs), temp_png
+            )
+            svg_options = _companion_kwargs(self, temp_svg, kwargs, "svg")
+            # ``none`` conserva texto real; el valor predeterminado de Matplotlib
+            # convertiría cada letra en curvas no copiables.
+            with mpl.rc_context(
+                {
+                    "svg.fonttype": "none",
+                    "svg.image_inline": True,
+                    "svg.hashsalt": "anuario-estadistico-2026",
+                    "path.simplify": False,
+                    "agg.path.chunksize": 0,
+                    "image.composite_image": False,
+                }
+            ):
+                _retry_windows_output(
+                    lambda: original_savefig(self, temp_svg, **svg_options), temp_svg
+                )
 
-        # El SVG es el artefacto maestro para PPTX/PDF: no se acepta degradación
-        # silenciosa a imagen, texto en curvas ni fondo de lienzo opaco.
-        validate_editable_svg(svg_path, require_fully_vector=True)
-
-        jpg_options = _companion_kwargs(self, jpg_path, kwargs, "jpg")
-        original_savefig(self, jpg_path, **jpg_options)
-        return result
+            jpg_options = _companion_kwargs(self, temp_jpg, kwargs, "jpg")
+            _retry_windows_output(
+                lambda: original_savefig(self, temp_jpg, **jpg_options), temp_jpg
+            )
+            # Valida las tres salidas antes de publicarlas. Mientras se renderiza,
+            # la interfaz puede seguir leyendo las figuras de la corrida previa.
+            validate_figure_bundle(temp_png)
+            for temporary, destination in (
+                (temp_png, png_path),
+                (temp_jpg, jpg_path),
+                (temp_svg, svg_path),
+            ):
+                _retry_windows_output(
+                    lambda source=temporary, target=destination: os.replace(source, target),
+                    destination,
+                )
+            return result
+        finally:
+            for temporary in (temp_png, temp_jpg, temp_svg):
+                with suppress(OSError):
+                    temporary.unlink(missing_ok=True)
 
     # Conserva las marcas de adaptadores ya instalados para que el orden de
     # importación no provoque dobles envolturas.
