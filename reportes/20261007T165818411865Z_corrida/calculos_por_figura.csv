@@ -1,0 +1,4 @@
+﻿figure_id,calculation_id,formula,inputs_json,result,unit,decimals
+A.1,pib_miles_millones_ultimo_periodo,pib_millones_pesos / 1000,"{""periodo"": ""2026-T2"", ""pib_millones_pesos"": 26144132.442}",26144.13,miles de millones de pesos,2
+A.1,tyr_miles_millones_ultimo_periodo,(telecom_millones_pesos + radio_tv_millones_pesos) / 1000,"{""periodo"": ""2026-T2"", ""telecom_millones_pesos"": 392043.758, ""radio_tv_millones_pesos"": 48372.236}",440.42,miles de millones de pesos,2
+A.1,participacion_tyr_ultimo_periodo,(telecom_millones_pesos + radio_tv_millones_pesos) / pib_millones_pesos * 100,"{""periodo"": ""2026-T2"", ""tyr_millones_pesos"": 440415.994, ""pib_millones_pesos"": 26144132.442}",1.6846,porcentaje,4

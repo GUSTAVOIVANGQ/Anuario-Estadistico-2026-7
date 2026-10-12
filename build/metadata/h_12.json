@@ -1,0 +1,32 @@
+{
+  "figure_id": "H.12",
+  "title": "Proporción de personas que escucharon la radio por hora (%) — CDMX",
+  "reference_page_2024": 113,
+  "figure_path": "build\\figures\\H\\figura_h_12.png",
+  "figure_formats": {
+    "png": "build\\figures\\H\\figura_h_12.png",
+    "jpg": "build\\figures\\H\\figura_h_12.jpg",
+    "svg": "build\\figures\\H\\figura_h_12.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 38,
+    "positioned_text_elements": 38,
+    "vector_elements": 30,
+    "embedded_images": 0
+  },
+  "run_id": "20261012T202536229052Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\H\\figura_h_12.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\h_12.md",
+    "source_latest_period": "julio 2023 a junio 2024",
+    "rows_used": 54,
+    "historical_validation_2024": true,
+    "data_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\reportes\\20261012T202536229052Z_corrida\\datos_usados\\h_12_datos_usados.csv",
+    "data_sha256": "26c3610d99caadb07e3aa08b9f05a00fd0f925883042d2fc3235df80b3b00338",
+    "text_sha256": "5b55a79bb390e391d42be9349984c7a61b5183ba1d8d056be103149b83609628",
+    "manual_path": "data\\manual\\H\\datos_inram_h11_h14_2024.ods",
+    "manual_sha256": "41ddb2da9878187741fad09b2f4915927e0789b456fdcef315effdc804324624",
+    "narrative_mode": "manual_inram_records_only"
+  }
+}

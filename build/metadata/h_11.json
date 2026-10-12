@@ -1,0 +1,32 @@
+{
+  "figure_id": "H.11",
+  "title": "Proporción de personas que escucharon la radio por hora (%) — CDMX, Guadalajara y Monterrey",
+  "reference_page_2024": 112,
+  "figure_path": "build\\figures\\H\\figura_h_11.png",
+  "figure_formats": {
+    "png": "build\\figures\\H\\figura_h_11.png",
+    "jpg": "build\\figures\\H\\figura_h_11.jpg",
+    "svg": "build\\figures\\H\\figura_h_11.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 37,
+    "positioned_text_elements": 37,
+    "vector_elements": 30,
+    "embedded_images": 0
+  },
+  "run_id": "20261012T202536229052Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\H\\figura_h_11.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\h_11.md",
+    "source_latest_period": "julio 2023 a junio 2024",
+    "rows_used": 54,
+    "historical_validation_2024": true,
+    "data_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\reportes\\20261012T202536229052Z_corrida\\datos_usados\\h_11_datos_usados.csv",
+    "data_sha256": "3d8fba1d5c3a0e7a88ea2b4d2aaa65b5f088fb011036884d49b58538adf4b2ea",
+    "text_sha256": "e7ee678af6cbb454888ab553a5f5ead8f04534879d2b7b024291d41aec2d0ee2",
+    "manual_path": "data\\manual\\H\\datos_inram_h11_h14_2024.ods",
+    "manual_sha256": "41ddb2da9878187741fad09b2f4915927e0789b456fdcef315effdc804324624",
+    "narrative_mode": "manual_inram_records_only"
+  }
+}

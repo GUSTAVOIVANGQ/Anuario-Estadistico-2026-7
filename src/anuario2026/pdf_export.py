@@ -630,6 +630,7 @@ def _add_delivery_outline(
     writer: PdfWriter,
     project_root: Path,
     page_count: int,
+    page_map: dict[str, int] | None = None,
 ) -> int:
     outline_count = 0
 
@@ -646,6 +647,7 @@ def _add_delivery_outline(
     section = None
     annex = None
     for title, page_number, indent in _reference_index_entries(project_root):
+        page_number = (page_map or {}).get(str(page_number), page_number)
         if title == "INDICADORES DE TELECOMUNICACIONES Y RADIODIFUSIÓN A NIVEL NACIONAL":
             national = add(title, page_number - 1)
             section = None
@@ -756,7 +758,10 @@ def _polish_pdf(
             "/Keywords": "Anuario Estadístico 2026, telecomunicaciones, radiodifusión, CRT, SVG",
         }
     )
-    outline_count = _add_delivery_outline(writer, project_root, expected_pages)
+    page_map = _assembly_payload(source_pptx).get("publication_revision", {}).get(
+        "template_to_publication_pages", {}
+    )
+    outline_count = _add_delivery_outline(writer, project_root, expected_pages, page_map)
     with polished_pdf.open("wb") as stream:
         writer.write(stream)
     polished_reader = _validate_pdf(

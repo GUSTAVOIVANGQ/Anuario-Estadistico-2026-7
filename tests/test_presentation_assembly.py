@@ -42,7 +42,7 @@ def test_template_manifest_matches_placeholders() -> None:
     assert len(editorial["slots"]) == len(manifest["editorial_slots"]) == 44
     assert all(value for value in editorial["slots"].values())
     historical = [entry for entry in manifest["entries"] if entry.get("historical_image")]
-    assert len(historical) == 14
+    assert len(historical) == 10
     assert all((root / entry["historical_image"]).is_file() for entry in historical)
 
     for entry in manifest["entries"]:
@@ -95,6 +95,8 @@ def test_designed_frontmatter_survives_editorial_and_reference_passes(tmp_path: 
     keys = [
         "LEGALES_1", "LEGALES_2", "GLOSARIO_1_A", "GLOSARIO_1_B",
         "GLOSARIO_2_A", "GLOSARIO_2_B", "INTRODUCCION_1", "INTRODUCCION_2",
+        "PUNTOS_CLAVE_ECONOMICOS", "PUNTOS_CLAVE_ESPECTRO",
+        "PUNTOS_CLAVE_MOVILES", "PUNTOS_CLAVE_AUDIENCIAS",
     ]
     slots = [item for item in manifest["editorial_slots"] if item["key"] in keys]
     data_dir = tmp_path / "assets/presentation"
@@ -103,7 +105,7 @@ def test_designed_frontmatter_survives_editorial_and_reference_passes(tmp_path: 
         json.dumps({"slots": {key: "Texto del marcador anterior." for key in keys}}),
         encoding="utf-8",
     )
-    original = {number: deck.slides[number - 1]._element.xml for number in range(3, 9)}
+    original = {number: deck.slides[number - 1]._element.xml for number in range(3, 10)}
     result = _insert_editorial_text(tmp_path, deck, {"editorial_slots": slots})
     assert result["preserved_template"] == keys
     assert result["pending"] == []
@@ -112,7 +114,45 @@ def test_designed_frontmatter_survives_editorial_and_reference_passes(tmp_path: 
         assert deck.slides[number - 1]._element.xml == xml
 
 
-def test_assemble_inserts_image_and_clears_token(tmp_path: Path) -> None:
+def test_designed_annex_survives_editorial_and_reference_passes(tmp_path: Path) -> None:
+    from anuario2026.annex_pages import apply_annex_pages
+
+    root = _project_root()
+    deck = Presentation(str(root / "assets/presentation/anuario_estadistico_2026_automatizable.pptx"))
+    manifest = json.loads(
+        (root / "assets/presentation/anuario_estadistico_2026_manifest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    slots = [item for item in manifest["editorial_slots"] if 121 <= item["slide_number"] <= 130]
+    keys = [item["key"] for item in slots]
+    data_dir = tmp_path / "assets/presentation"
+    data_dir.mkdir(parents=True)
+    (data_dir / "textos_editoriales_2026.json").write_text(
+        json.dumps({"slots": {key: "Texto del marcador anterior." for key in keys}}),
+        encoding="utf-8",
+    )
+    original = {number: deck.slides[number - 1]._element.xml for number in range(121, 131)}
+    result = _insert_editorial_text(tmp_path, deck, {"editorial_slots": slots})
+    assert result["preserved_template"] == keys
+    assert result["pending"] == []
+    apply_annex_pages(root, deck)
+    for number, xml in original.items():
+        assert deck.slides[number - 1]._element.xml == xml
+    for number in (125, 127, 130):
+        assert any(shape.has_table for shape in deck.slides[number - 1].shapes)
+    # Las plantillas antiguas sin marcador conservan la reconstrucción anterior.
+    for shape in list(deck.slides[121].shapes):
+        if shape.name == "ANUARIO_ANEXO_P122_DESIGN_2026":
+            deck.slides[121].shapes._spTree.remove(shape._element)
+    apply_annex_pages(root, deck)
+    assert any(shape.name.startswith("ANUARIO_ANEXO_P122_L") for shape in deck.slides[121].shapes)
+
+
+def test_assemble_inserts_image_and_clears_token(tmp_path: Path, monkeypatch) -> None:
+    # Esta prueba aísla la inserción de figura/narrativa de las páginas editoriales.
+    for name in ('apply_reference_frontmatter', 'apply_editorial_pages', 'apply_annex_pages'):
+        monkeypatch.setattr('anuario2026.presentation.' + name, lambda root, deck: None)
     source_root = _project_root()
     project_root = tmp_path / "project"
     (project_root / "config").mkdir(parents=True)

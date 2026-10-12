@@ -100,6 +100,8 @@ def _project_with_pptx(
     with_a1: bool = False,
 ) -> tuple[Path, str]:
     (tmp_path / "reportes" / run_id).mkdir(parents=True)
+    # El índice de entrega consulta la segunda página del PDF de referencia.
+    _converted_pdf(tmp_path / "anuarioestadistico2024vf_0.pdf", page_count=2)
     pptx = tmp_path / "entrega" / f"anuario_estadistico_2026_{run_id}.pptx"
     _presentation(pptx, with_a1=with_a1)
     if with_a1:

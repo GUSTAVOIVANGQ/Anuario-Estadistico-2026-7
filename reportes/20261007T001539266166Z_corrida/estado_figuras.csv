@@ -1,0 +1,5 @@
+﻿order,figure_id,status,message,script_path,output_path,started_at,finished_at,duration_seconds
+102,H.11,OK,"Gráfica PNG, JPG y SVG editable generada y verificada.",scripts\figures\figura_h_11.py,build\figures\H\figura_h_11.png,2026-10-07T00:15:39+00:00,2026-10-07T00:15:42+00:00,3.171
+103,H.12,OK,"Gráfica PNG, JPG y SVG editable generada y verificada.",scripts\figures\figura_h_12.py,build\figures\H\figura_h_12.png,2026-10-07T00:15:42+00:00,2026-10-07T00:15:45+00:00,3.146
+104,H.13,OK,"Gráfica PNG, JPG y SVG editable generada y verificada.",scripts\figures\figura_h_13.py,build\figures\H\figura_h_13.png,2026-10-07T00:15:45+00:00,2026-10-07T00:15:49+00:00,3.418
+105,H.14,OK,"Gráfica PNG, JPG y SVG editable generada y verificada.",scripts\figures\figura_h_14.py,build\figures\H\figura_h_14.png,2026-10-07T00:15:49+00:00,2026-10-07T00:15:52+00:00,3.315

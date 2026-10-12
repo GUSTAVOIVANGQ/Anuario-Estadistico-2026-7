@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import shutil
 import tempfile
 import zipfile
@@ -10,6 +11,8 @@ from xml.etree import ElementTree
 from .figure_outputs import companion_paths, inspect_svg, validate_editable_svg, validate_jpg
 from .pdf_export import PdfConversionError, PdfConverterUnavailable, convert_pptx_to_pdf
 from .pipeline import assemble_pptx
+from .presentation_headers import HEADER_DESIGN_VERSION
+from .editorial_revision import revision_fingerprint
 from .reports import sha256_file
 
 
@@ -277,7 +280,22 @@ def create_figure_compendium(project_root: Path, run_id: str, kind: str) -> Path
 def ensure_pptx(project_root: Path, run_id: str) -> Path:
     run_dir = _run_dir(project_root, run_id)
     output = project_root / "entrega" / f"anuario_estadistico_2026_{run_id}.pptx"
-    if not output.is_file():
+    current_design = True
+    # Los proyectos del anuario deben invalidar exportaciones anteriores al
+    # diseño aprobado, aunque el archivo PPTX ya exista en entrega/.
+    if (project_root / "config" / "proyecto.json").is_file():
+        report_path = output.with_name(output.stem + "_ensamblaje.json")
+        try:
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            current_design = report.get("header_design", {}).get("version") == HEADER_DESIGN_VERSION
+            expected_revision = revision_fingerprint(project_root)
+            if expected_revision:
+                current_design = current_design and (
+                    report.get("publication_revision", {}).get("fingerprint") == expected_revision
+                )
+        except (OSError, ValueError, AttributeError):
+            current_design = False
+    if not output.is_file() or not current_design:
         assemble_pptx(project_root, run_dir, output=output)
     return output
 

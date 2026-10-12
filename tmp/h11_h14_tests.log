@@ -1,0 +1,178 @@
+Windows fatal exception: Windows fatal exception: code 0xcode 0xc0000139c0000139
+
+
+
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+Thread 0x000071c4 (most recent call first):
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1053 in create_module
+  File "<frozen importlib._bootstrap>", line 816 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 924 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\ssl.py", line 100 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\http\client.py", line 1479 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 89 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\sources.py", line 9 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\context.py", line 11 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 13 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\tests\test_figuras_h11_h14.py", line 12 in <module>
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\assertion\rewrite.py", line 188 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1406 in _gcd_import
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\importlib\__init__.py", line 88 in import_module
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\pathlib.py", line 596 in import_path
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 508 in importtestmodule
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 561 in _getobj
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 290 in obj
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 577 in _register_setup_module_fixture
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 564 in collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 406 in collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 361 in from_call
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 408 in pytest_make_collect_report
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 589 in collect_one_node
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 895 in _collect_one_node
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 1032 in genitems
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 869 in perform_collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 394 in pytest_collection
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 383 in _main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 330 in wrap_session
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 377 in pytest_cmdline_main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\config\__init__.py", line 229 in _main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\config\__init__.py", line 253 in _console_main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pytest\__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 203 in _run_module_as_main
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+Windows fatal exception: code 0xc0000139
+
+Thread 0x000071c4 (most recent call first):
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1053 in create_module
+  File "<frozen importlib._bootstrap>", line 816 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 924 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\ssl.py", line 100 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in Windows fatal exception: _call_with_frames_removedcode 0x
+c0000139  File 
+
+"
+<frozen importlib._bootstrap_external>Current thread's C stack trace (most recent call first):
+"  <cannot get C stack on this system>
+, line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 110 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\sources.py", line 9 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\context.py", line 11 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\src\anuario2026\pipeline.py", line 13 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\tests\test_figuras_h11_h14.py", line 12 in <module>
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\assertion\rewrite.py", line 188 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1406 in _gcd_import
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\importlib\__init__.py", line 88 in import_module
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\pathlib.py", line 596 in import_path
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 508 in importtestmodule
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 561 in _getobj
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 290 in obj
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 577 in _register_setup_module_fixture
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\python.py", line 564 in collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 406 in collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 361 in from_call
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 408 in pytest_make_collect_report
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\runner.py", line 589 in collect_one_node
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 895 in _collect_one_node
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 1032 in genitems
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 869 in perform_collect
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 394 in pytest_collection
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 383 in _main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 330 in wrap_session
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\main.py", line 377 in pytest_cmdline_main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_callers.py", line 121 in _multicall
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_manager.py", line 120 in _hookexec
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pluggy\_hooks.py", line 512 in __call__
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\config\__init__.py", line 229 in _main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\config\__init__.py", line 253 in _console_main
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pytest\__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 203 in _run_module_as_main
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+............................                                             [100%]
+28 passed in 24.43s

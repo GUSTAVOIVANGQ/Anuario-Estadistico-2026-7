@@ -4,7 +4,7 @@ import csv
 import hashlib
 import json
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -106,6 +106,8 @@ def load_narrative_audit(
             current_data_sha256=current,
             verification_status=status,
         )
+        if figure_id in ('H.11', 'H.12', 'H.13', 'H.14'):
+            records[figure_id] = _manual_radio_record(project_root, run_dir, records[figure_id])
 
     return NarrativeAudit(
         records=records,
@@ -113,6 +115,36 @@ def load_narrative_audit(
         reference_run=payload.get("reference_run"),
         source_document=payload.get("source_document"),
     )
+
+
+def _manual_radio_record(root: Path, run_dir: Path | None, record: NarrativeRecord):
+    """Usa el párrafo calculado sólo si conserva su vínculo al ODS y a los resultados."""
+    metadata = root / 'build/metadata' / (record.figure_id.lower().replace('.', '_') + '.json')
+    if not metadata.is_file():
+        return replace(record, verification_status='data_changed',
+                       notes=('Falta generar la figura desde el ODS manual.',))
+    try:
+        payload = _load_json(metadata)['result']
+        if payload.get('narrative_mode') != 'manual_inram_records_only':
+            raise ValueError('Metadatos sin narrativa INRAM calculada')
+        data = Path(payload['data_path'])
+        text = Path(payload['text_path'])
+        manual = root / payload['manual_path']
+        if run_dir is not None:
+            candidate = run_dir / 'datos_usados' / data.name
+            if candidate.is_file():
+                data = candidate
+        current = _sha256(data)
+        valid = (current == payload['data_sha256']
+                 and _sha256(text) == payload['text_sha256']
+                 and _sha256(manual) == payload['manual_sha256'])
+        return replace(record, updated_text=text.read_text(encoding='utf-8').strip(),
+                       update_mode='manual_inram_records_only', data_file=str(data),
+                       expected_data_sha256=payload['data_sha256'], current_data_sha256=current,
+                       verification_status='verified' if valid else 'data_changed',
+                       notes=('Cifras y periodo calculados desde el ODS manual INRAM.',))
+    except (OSError, ValueError, KeyError) as exc:
+        return replace(record, verification_status='data_changed', notes=(str(exc),))
 
 
 def write_narrative_reports(

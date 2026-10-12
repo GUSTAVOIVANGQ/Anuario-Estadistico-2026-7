@@ -1,0 +1,1 @@
+En el segundo trimestre de 2026, el PIB de México fue de $ 26,144.13 miles de millones de pesos, de los cuales $ 440.42 miles de millones (1.7%) correspondieron a la contribución conjunta de los subsectores de telecomunicaciones y radiodifusión (TyR).

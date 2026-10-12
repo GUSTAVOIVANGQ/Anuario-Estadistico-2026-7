@@ -1108,10 +1108,10 @@
       "source_pdf_page": 112,
       "baseline_text_2024": "En el caso de la radio, el nivel de personas con la radio encendida es un indicador que mide el grado de exposición a este servicio en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT10, de julio 2023 a junio 2024, el promedio de personas con la radio encendida en estas tres ciudades fue de 9.67% en el intervalo de tiempo de las 6:00 horas a las 24:00 horas de lunes a domingo. Sin embargo, al contrario que en televisión, la proporción de personas con la radio encendida alcanzó su máximo entre las 09:00 y 10:00 horas, cuando el nivel de encendidos fue de 16.91% (ver Figura H.11.).\n\nAdemás, al analizar el nivel de exposición a la radio entre géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 11.09% y su horario más alto fue a las 08:00 horas con 19.00%, mientras que para las mujeres el promedio fue de 8.54% y su principal horario fue a las 10:00 horas con 16.10%.",
       "updated_text": "En el caso de la radio, el nivel de personas con la radio encendida es un indicador que mide el grado de exposición a este servicio en un intervalo de tiempo determinado. De acuerdo con los datos reportados en la muestra analizada por el IFT10, de julio 2023 a junio 2024, el promedio de personas con la radio encendida en estas tres ciudades fue de 9.67% en el intervalo de tiempo de las 6:00 horas a las 24:00 horas de lunes a domingo. Sin embargo, al contrario que en televisión, la proporción de personas con la radio encendida alcanzó su máximo entre las 09:00 y 10:00 horas, cuando el nivel de encendidos fue de 16.91% (ver Figura H.11.).\n\nAdemás, al analizar el nivel de exposición a la radio entre géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 11.09% y su horario más alto fue a las 08:00 horas con 19.00%, mientras que para las mujeres el promedio fue de 8.54% y su principal horario fue a las 10:00 horas con 16.10%.",
-      "update_mode": "historical_replica",
+      "update_mode": "manual_inram_records_only",
       "notes": [
-        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
-        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+        "La generación conserva este texto base y sustituye únicamente cifras, horarios y periodo desde el ODS manual INRAM.",
+        "El ensamblaje usa el párrafo calculado y sus huellas de datos, texto y archivo manual."
       ],
       "data_file": null,
       "data_sha256": null
@@ -1121,10 +1121,10 @@
       "source_pdf_page": 113,
       "baseline_text_2024": "En el caso de la Ciudad de México, el promedio de personas con la radio encendida fue de 10.76% y alcanzó su máximo a las 09:00 horas, cuando el nivel de encendidos fue de 18.73% (ver Figura H.12.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 12.24% y su horario más alto ocurrió a las 08:00 horas con 20.62%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 9.59% y su máximo lo alcanzaron a las 10:00 horas con 18.48%.",
       "updated_text": "En el caso de la Ciudad de México, el promedio de personas con la radio encendida fue de 10.76% y alcanzó su máximo a las 09:00 horas, cuando el nivel de encendidos fue de 18.73% (ver Figura H.12.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 12.24% y su horario más alto ocurrió a las 08:00 horas con 20.62%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 9.59% y su máximo lo alcanzaron a las 10:00 horas con 18.48%.",
-      "update_mode": "historical_replica",
+      "update_mode": "manual_inram_records_only",
       "notes": [
-        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
-        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+        "La generación conserva este texto base y sustituye únicamente cifras, horarios y periodo desde el ODS manual INRAM.",
+        "El ensamblaje usa el párrafo calculado y sus huellas de datos, texto y archivo manual."
       ],
       "data_file": null,
       "data_sha256": null
@@ -1134,10 +1134,10 @@
       "source_pdf_page": 114,
       "baseline_text_2024": "Respecto a la ciudad de Guadalajara, el promedio de personas expuestas la radio fue de 7.83% y alcanzó su máximo a las 10:00 horas, cuando el nivel de encendidos fue de 13.06% (ver Figura H.13.).\n\nAdemás, al analizar el nivel de exposición a la radio entre los géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 9.49% y su horario más alto fue a las 10:00 horas con 15.99%, mientras que para las mujeres el promedio fue de 6.51% y su principal horario fue a las 10:00 horas con 10.74%.",
       "updated_text": "Respecto a la ciudad de Guadalajara, el promedio de personas expuestas la radio fue de 7.83% y alcanzó su máximo a las 10:00 horas, cuando el nivel de encendidos fue de 13.06% (ver Figura H.13.).\n\nAdemás, al analizar el nivel de exposición a la radio entre los géneros de la audiencia, se pudo encontrar que el promedio de exposición de los hombres fue de 9.49% y su horario más alto fue a las 10:00 horas con 15.99%, mientras que para las mujeres el promedio fue de 6.51% y su principal horario fue a las 10:00 horas con 10.74%.",
-      "update_mode": "historical_replica",
+      "update_mode": "manual_inram_records_only",
       "notes": [
-        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
-        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+        "La generación conserva este texto base y sustituye únicamente cifras, horarios y periodo desde el ODS manual INRAM.",
+        "El ensamblaje usa el párrafo calculado y sus huellas de datos, texto y archivo manual."
       ],
       "data_file": null,
       "data_sha256": null
@@ -1147,10 +1147,10 @@
       "source_pdf_page": 115,
       "baseline_text_2024": "En el caso de Monterrey, el promedio de personas con la radio encendida fue de 7.15% y alcanzó su máximo a las 08:00 horas, cuando el nivel de encendidos fue de 14.43% (ver Figura H.14.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 8.15% y su horario más alto ocurrió a las 08:00 horas con 16.06%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 6.32% y su máximo lo alcanzaron a las 08:00 horas con 13.09%.",
       "updated_text": "En el caso de Monterrey, el promedio de personas con la radio encendida fue de 7.15% y alcanzó su máximo a las 08:00 horas, cuando el nivel de encendidos fue de 14.43% (ver Figura H.14.).\n\nPor otro lado, para el caso particular de los hombres el promedio de exposición a la radio fue de 8.15% y su horario más alto ocurrió a las 08:00 horas con 16.06%. Asimismo, respecto a las mujeres se registró un promedio de exposición de 6.32% y su máximo lo alcanzaron a las 08:00 horas con 13.09%.",
-      "update_mode": "historical_replica",
+      "update_mode": "manual_inram_records_only",
       "notes": [
-        "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
-        "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura."
+        "La generación conserva este texto base y sustituye únicamente cifras, horarios y periodo desde el ODS manual INRAM.",
+        "El ensamblaje usa el párrafo calculado y sus huellas de datos, texto y archivo manual."
       ],
       "data_file": null,
       "data_sha256": null

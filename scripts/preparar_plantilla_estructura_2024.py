@@ -91,9 +91,11 @@ def prepare(source: Path) -> None:
             })
 
     # Conservar la redacción ya revisada al regenerar; nunca inventar cifras.
-    previous = json.loads(EDITORIAL.read_text(encoding="utf-8")).get("slots", {}) if EDITORIAL.exists() else {}
+    previous_payload = json.loads(EDITORIAL.read_text(encoding="utf-8")) if EDITORIAL.exists() else {}
+    previous = previous_payload.get("slots", {})
+    previous_payload["slots"] = {key: previous.get(key) for key in ids}
     EDITORIAL.write_text(
-        json.dumps({"slots": {key: previous.get(key) for key in ids}}, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(previous_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"Plantilla: {TEMPLATE} ({len(deck.slides)} diapositivas)")

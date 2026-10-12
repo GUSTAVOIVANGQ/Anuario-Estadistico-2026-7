@@ -1,0 +1,21 @@
+2026-10-06 18:15:39,278 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-10-06 18:15:39,280 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-10-06 18:15:39,280 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-10-06 18:15:39,281 | INFO |   H.11 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-06 18:15:39,281 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-06 18:15:39,282 | INFO |   H.12 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-06 18:15:39,282 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-06 18:15:39,283 | INFO |   H.13 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-06 18:15:39,283 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-06 18:15:39,283 | INFO |   H.14 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-06 18:15:39,283 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-06 18:15:39,284 | INFO | 
+2026-10-06 18:15:39,284 | INFO | Anuario Estadístico 2026 | corrida 20261007T001539266166Z_corrida
+2026-10-06 18:15:39,284 | INFO | Figuras seleccionadas: 4 de 105
+2026-10-06 18:15:39,284 | INFO | 
+2026-10-06 18:15:39,284 | INFO | [001/004] H.11 | LISTA
+2026-10-06 18:15:42,455 | INFO | [002/004] H.12 | LISTA
+2026-10-06 18:15:45,603 | INFO | [003/004] H.13 | LISTA
+2026-10-06 18:15:49,022 | INFO | [004/004] H.14 | LISTA
+2026-10-06 18:15:52,338 | INFO | 
+2026-10-06 18:15:52,339 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20261007T001539266166Z_corrida

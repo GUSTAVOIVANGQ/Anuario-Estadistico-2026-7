@@ -116,11 +116,10 @@ def editorial_text(pdf) -> dict[str, str]:
         "no hay una edición comparable verificada. Las figuras de TIC y perspectiva de género "
         "emplean, según el indicador, ENDUTIH 2025, MOCIBA 2025, ENOE y encuestas previas. "
         "No se extrapola una encuesta de 2023 o 2024 al año 2026.\n\n"
-        "La sección H reproduce la redacción y los resultados de julio de 2023 a junio de "
-        "2024 del anuario de referencia. Para televisión se conserva la mención de Nielsen "
-        "IBOPE México y el software MSS TV; para radio, la de INRA y el software INRAM. "
-        "No se tuvo acceso a las bases licenciadas para recalcular esas 14 figuras. Esta "
-        "conservación de texto histórico permite actualizarlas cuando exista acceso."
+        "Las figuras H.1-H.10 conservan los resultados de julio de 2023 a junio de 2024 "
+        "de Nielsen IBOPE México y MSS TV. H.11-H.14 se recalculan con el archivo INRA / "
+        "INRAM descargado manualmente. Se conserva la redacción de referencia y sólo "
+        "se actualizan cifras, horarios y periodo según los datos del archivo."
     )
     legal2 = [clean(block[4]) for block in blocks(pdf, 4, x_min=470, y_min=120, y_max=400)]
     legal2[-1] = re.sub(r" que puede descargar descargar en https?://.*", ".", legal2[-1])
@@ -167,9 +166,9 @@ def editorial_text(pdf) -> dict[str, str]:
         "y ciberacoso por sexo con datos de ENDUTIH, ENOE, MOCIBA y encuestas de personas usuarias.\n\n"
         "7. Indicadores de radiodifusión. Presenta concesiones AM, FM y TDT según el corte "
         "verificado en la fuente.\n\n"
-        "8. Consumo de radio y televisión. Reproduce el análisis de julio de 2023 a junio "
-        "de 2024 del Anuario 2024 mientras no se disponga de las bases de Nielsen IBOPE / "
-        "MSS TV e INRA / INRAM.\n\n"
+        "8. Consumo de radio y televisión. H.1-H.10 conservan el análisis de julio de 2023 "
+        "a junio de 2024 de Nielsen IBOPE / MSS TV. H.11-H.14 se calculan desde el ODS "
+        "manual INRA / INRAM e indican el periodo observado.\n\n"
         "Los anexos contienen resumen de indicadores por entidad federativa, definiciones, "
         "metodologías y métodos de cálculo. Las observaciones no tienen un corte único: "
         "el año de edición no sustituye el año de referencia de cada indicador. Las series "
@@ -191,9 +190,9 @@ def editorial_text(pdf) -> dict[str, str]:
             "móvil por cada 100 habitantes a nivel nacional (figuras C.6 y C.12, BIT e INEGI)."
         ),
         "PUNTOS_CLAVE_AUDIENCIAS": (
-            "Las cifras de exposición a radio y televisión corresponden a julio de 2023-junio "
-            "de 2024. Se conserva la redacción del Anuario 2024 y la referencia a INRA / "
-            "INRAM y Nielsen IBOPE / MSS TV hasta contar con sus bases licenciadas."
+            "Las cifras de televisión conservan el periodo julio de 2023-junio de 2024 "
+            "de Nielsen IBOPE / MSS TV. Las cifras de radio se recalculan desde el ODS "
+            "manual INRA / INRAM y muestran el periodo disponible en ese archivo."
         ),
         "PUNTOS_CLAVE_FIJOS": (
             "A diciembre de 2024 se estimaron 56 líneas residenciales de telefonía fija y "
@@ -288,12 +287,14 @@ def editorial_text(pdf) -> dict[str, str]:
         "las figuras A.7 a A.10 quedan registrados por corrida."
     )
     slots["ANEXO_III_3"] = (
-        "Consumo de radio y televisión. Se conservan sin recálculo las particularidades "
-        "metodológicas del Anuario 2024 para el periodo julio de 2023-junio de 2024. "
+        "Consumo de radio y televisión. Se conservan las particularidades metodológicas "
+        "del Anuario 2024. H.11-H.14 se recalculan desde el archivo INRAM manual, "
+        "ponderando los ratings horarios por los universos de cada mes y plaza. "
         "Las audiencias de televisión proceden de Nielsen IBOPE México y MSS TV; las de "
         "radio, de INRA e INRAM. La exposición y el rating tienen definiciones distintas; "
         "las series anteriores al cambio de bases de 2017-2018 no se comparan linealmente. "
-        "No se dispone de las bases licenciadas para una estimación de 2026.\n\n"
+        "H.1-H.10 conservan julio de 2023-junio de 2024 por falta de bases actualizadas "
+        "de televisión.\n\n"
         "ENDUTIH. Las figuras actualizadas usan la edición 2025 del INEGI con sus factores "
         "de expansión y universo de personas de 6 años o más. Las encuestas de otros años "
         "se identifican expresamente en cada figura."
@@ -341,8 +342,25 @@ def main() -> None:
         "ANEXO_I_4": "Fuente: datos usados en la figura G.1; corte diciembre de 2023. No representa una actualización de 2026.",
         "ANEXO_IV_METODOS_CALCULO": "Cada figura identifica el corte y denominador exactos aplicados en la corrida.",
     }
+    previous = json.loads(TARGET.read_text(encoding="utf-8")) if TARGET.exists() else {}
+    revision = previous.get("publication_revision")
+    if revision:
+        # Las correcciones aprobadas tienen prioridad sobre la extracción de 2024.
+        for key in ("LEGALES_1", "GLOSARIO_1_A"):
+            slots[key] = previous["slots"][key]
+        if revision.get("introduction"):
+            slots["INTRODUCCION_1"] = previous["slots"]["INTRODUCCION_1"]
+        if revision.get("introduction_notes"):
+            slots["INTRODUCCION_2"] = previous["slots"]["INTRODUCCION_2"]
+        slots = {key: value.replace("Coordinación General de Planeación Estratégica",
+                                   "Dirección General de Planeación").replace("CGPE", "DGP")
+                 for key, value in slots.items()}
+    payload = {"schema_version": 2, "reference_pdf": SOURCE.name,
+               "slots": slots, "source_notes": source_notes}
+    if revision:
+        payload["publication_revision"] = revision
     TARGET.write_text(
-        json.dumps({"schema_version": 2, "reference_pdf": SOURCE.name, "slots": slots, "source_notes": source_notes}, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"Campos editoriales completos: {len(slots)}")

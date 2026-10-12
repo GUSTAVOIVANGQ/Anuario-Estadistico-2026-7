@@ -26,6 +26,19 @@ PALE = RGBColor(228, 240, 237)
 MUTED = RGBColor(75, 88, 88)
 WHITE = RGBColor(255, 255, 255)
 
+DESIGNED_ANNEX_SHAPES = {
+    121: "ANUARIO_ANEXO_II_DEFINICIONES_DESIGN_2026",
+    122: "ANUARIO_ANEXO_P122_DESIGN_2026",
+    123: "ANUARIO_ANEXO_P123_DESIGN_2026",
+    124: "ANUARIO_ANEXO_P124_DESIGN_2026",
+    125: "ANUARIO_ANEXO_II_STU_DESIGN_2026",
+    126: "ANUARIO_ANEXO_P126_DESIGN_2026",
+    127: "ANUARIO_ANEXO_P127_DESIGN_2026",
+    128: "ANUARIO_ANEXO_P128_DESIGN_2026",
+    129: "ANUARIO_ANEXO_P129_DESIGN_2026",
+    130: "ANUARIO_ANEXO_P130_DESIGN_2026",
+}
+
 
 def _clear(slide) -> None:
     for shape in list(slide.shapes):
@@ -439,6 +452,13 @@ def apply_annex_pages(project_root: Path, presentation) -> None:
         for page in range(117, 121):
             _annex_table(presentation.slides[page - 1], reference[page - 1], project_root, page)
         for page in range(121, 130):
+            design_shape = DESIGNED_ANNEX_SHAPES.get(page)
+            if design_shape and any(
+                shape.name == design_shape for shape in presentation.slides[page - 1].shapes
+            ):
+                continue
             _reference_body(presentation.slides[page - 1], reference[page - 1], page)
-    _methods_page(presentation.slides[129])
+    methods_slide = presentation.slides[129]
+    if not any(shape.name == DESIGNED_ANNEX_SHAPES[130] for shape in methods_slide.shapes):
+        _methods_page(methods_slide)
     _back_cover(presentation.slides[130])

@@ -1,0 +1,52 @@
+{
+  "run_id": "20261007T001539266166Z_corrida",
+  "dry_run": false,
+  "started_at": "2026-10-07T00:15:39+00:00",
+  "finished_at": "2026-10-07T00:15:52+00:00",
+  "statuses": [
+    {
+      "order": 102,
+      "figure_id": "H.11",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_h_11.py",
+      "output_path": "build\\figures\\H\\figura_h_11.png",
+      "started_at": "2026-10-07T00:15:39+00:00",
+      "finished_at": "2026-10-07T00:15:42+00:00",
+      "duration_seconds": 3.171
+    },
+    {
+      "order": 103,
+      "figure_id": "H.12",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_h_12.py",
+      "output_path": "build\\figures\\H\\figura_h_12.png",
+      "started_at": "2026-10-07T00:15:42+00:00",
+      "finished_at": "2026-10-07T00:15:45+00:00",
+      "duration_seconds": 3.146
+    },
+    {
+      "order": 104,
+      "figure_id": "H.13",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_h_13.py",
+      "output_path": "build\\figures\\H\\figura_h_13.png",
+      "started_at": "2026-10-07T00:15:45+00:00",
+      "finished_at": "2026-10-07T00:15:49+00:00",
+      "duration_seconds": 3.418
+    },
+    {
+      "order": 105,
+      "figure_id": "H.14",
+      "status": "OK",
+      "message": "Gráfica PNG, JPG y SVG editable generada y verificada.",
+      "script_path": "scripts\\figures\\figura_h_14.py",
+      "output_path": "build\\figures\\H\\figura_h_14.png",
+      "started_at": "2026-10-07T00:15:49+00:00",
+      "finished_at": "2026-10-07T00:15:52+00:00",
+      "duration_seconds": 3.315
+    }
+  ]
+}

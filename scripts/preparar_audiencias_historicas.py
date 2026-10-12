@@ -1,4 +1,4 @@
-"""Rescata H.1-H.14 del PDF 2024 sin atribuirles un corte 2026."""
+"""Rescata H.1-H.10 del PDF 2024; H.11-H.14 usan el ODS manual INRAM."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ def main() -> None:
     existing = {item["figure_id"]: item for item in registry["entries"]}
     IMAGES.mkdir(parents=True, exist_ok=True)
     with fitz.open(SOURCE) as pdf:
-        for number in range(1, 15):
+        for number in range(1, 11):
             page_number = 101 + number
             figure_id = f"H.{number}"
             page = pdf[page_number - 1]
@@ -46,7 +46,7 @@ def main() -> None:
                 "update_mode": "historical_replica",
                 "notes": [
                     "Reproducción literal de la redacción 2024; periodo julio 2023-junio 2024.",
-                    "No hay acceso a Nielsen IBOPE/MSS TV o INRA/INRAM para actualizar la figura.",
+                    "No hay acceso a Nielsen IBOPE/MSS TV para actualizar la figura.",
                 ],
                 "data_file": None,
                 "data_sha256": None,
@@ -64,7 +64,7 @@ def main() -> None:
     registry["figure_count"] = len(registry["entries"])
     NARRATIVES.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Audiencias históricas: 14; narrativas registradas: {len(registry['entries'])}")
+    print(f"Audiencias históricas: 10; narrativas registradas: {len(registry['entries'])}")
 
 
 if __name__ == "__main__":

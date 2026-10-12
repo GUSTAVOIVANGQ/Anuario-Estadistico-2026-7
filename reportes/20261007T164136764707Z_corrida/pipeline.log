@@ -1,0 +1,21 @@
+2026-10-07 10:41:36,809 | INFO | INSUMOS DE DESCARGA MANUAL
+2026-10-07 10:41:36,810 | INFO |   A.5 | 2 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\A.5
+2026-10-07 10:41:36,810 | INFO |       Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos.
+2026-10-07 10:41:36,811 | INFO |   H.11 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-07 10:41:36,811 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-07 10:41:36,811 | INFO |   H.12 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-07 10:41:36,812 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-07 10:41:36,812 | INFO |   H.13 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-07 10:41:36,812 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-07 10:41:36,812 | INFO |   H.14 | 1 archivo(s) | C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\data\manual\H
+2026-10-07 10:41:36,813 | INFO |       Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet.
+2026-10-07 10:41:36,813 | INFO | 
+2026-10-07 10:41:36,813 | INFO | Anuario Estadístico 2026 | corrida 20261007T164136764707Z_corrida
+2026-10-07 10:41:36,813 | INFO | Figuras seleccionadas: 1 de 105
+2026-10-07 10:41:36,813 | INFO | 
+2026-10-07 10:41:36,813 | INFO | [001/001] A.1 | LISTA
+2026-10-07 10:41:40,645 | INFO | 
+2026-10-07 10:41:40,645 | INFO | Reporte de corrida: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\reportes\20261007T164136764707Z_corrida
+2026-10-07 10:42:07,295 | INFO | PPTX ensamblado: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\entrega\anuario_estadistico_2026_20261007T164136764707Z_corrida.pptx
+2026-10-07 10:42:07,296 | INFO | Figuras insertadas: 95 | faltantes: 0 | errores: 0
+2026-10-07 10:42:07,296 | INFO | Reporte de ensamblaje: C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\entrega\anuario_estadistico_2026_20261007T164136764707Z_corrida_ensamblaje.json

@@ -1,0 +1,1 @@
+Al segundo trimestre de 2026, los resultados de la Encuesta Nacional de Ocupación y Empleo (ENOE) indican que el 87% de las personas empleadas se registran en el sector de telecomunicaciones y el 13% restante en el sector de radiodifusión, lo que en su conjunto representa un total de 279,069 personas empleadas en TyR.

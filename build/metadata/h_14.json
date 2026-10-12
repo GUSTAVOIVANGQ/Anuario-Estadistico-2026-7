@@ -1,0 +1,32 @@
+{
+  "figure_id": "H.14",
+  "title": "Proporción de personas que escucharon la radio por hora (%) — Monterrey",
+  "reference_page_2024": 115,
+  "figure_path": "build\\figures\\H\\figura_h_14.png",
+  "figure_formats": {
+    "png": "build\\figures\\H\\figura_h_14.png",
+    "jpg": "build\\figures\\H\\figura_h_14.jpg",
+    "svg": "build\\figures\\H\\figura_h_14.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 42,
+    "positioned_text_elements": 42,
+    "vector_elements": 30,
+    "embedded_images": 0
+  },
+  "run_id": "20261012T202536229052Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\H\\figura_h_14.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\h_14.md",
+    "source_latest_period": "julio 2023 a junio 2024",
+    "rows_used": 54,
+    "historical_validation_2024": true,
+    "data_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\reportes\\20261012T202536229052Z_corrida\\datos_usados\\h_14_datos_usados.csv",
+    "data_sha256": "b72e86046bc19184f09e5ff9225118d7f9851ed93930c17c1e792c12e6a0a6a9",
+    "text_sha256": "305e461b8b63b60b43cdb6a570f554ce5d31b0cc2dc162e0533f4bbb367d6007",
+    "manual_path": "data\\manual\\H\\datos_inram_h11_h14_2024.ods",
+    "manual_sha256": "41ddb2da9878187741fad09b2f4915927e0789b456fdcef315effdc804324624",
+    "narrative_mode": "manual_inram_records_only"
+  }
+}

@@ -124,7 +124,8 @@ def preflight_status(
         directory = project_root / figure.manual_input["directory"]
         return (
             "BLOQUEADA_INSUMO_MANUAL",
-            f"Coloca los archivos crudos en {directory}",
+            f"Coloca los archivos crudos en {directory}. "
+            + figure.manual_input.get("instruction", ""),
             files,
         )
     if figure.downloader and figure.downloader.get("status") != "ready":

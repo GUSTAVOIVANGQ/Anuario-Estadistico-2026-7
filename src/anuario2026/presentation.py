@@ -5,7 +5,7 @@ from io import BytesIO
 import json
 import math
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -19,8 +19,10 @@ from PIL import Image
 
 from .figure_outputs import companion_paths, extract_svg_text, validate_editable_svg
 from .editorial_pages import apply_editorial_pages
-from .annex_pages import apply_annex_pages
+from .editorial_revision import apply_publication_revision
+from .annex_pages import DESIGNED_ANNEX_SHAPES, apply_annex_pages
 from .frontmatter import DESIGNED_FRONTMATTER_SHAPES, apply_reference_frontmatter
+from .presentation_headers import apply_uniform_headers, validate_uniform_headers
 from .narratives import load_narrative_audit, write_narrative_reports
 from .presentation_svg import SvgEmbeddingRequest, embed_svg_images
 
@@ -75,10 +77,17 @@ def _insert_editorial_text(project_root: Path, presentation, manifest: dict[str,
     inserted: list[str] = []
     pending: list[str] = []
     preserved_template: list[str] = []
+    omitted_pages = registry.get("publication_revision", {}).get("omitted_template_pages", [])
     for slot in slots:
         key = str(slot["key"])
+        if int(slot["slide_number"]) in omitted_pages:
+            continue
         slide = presentation.slides[int(slot["slide_number"]) - 1]
-        design_shape = DESIGNED_FRONTMATTER_SHAPES.get(int(slot["slide_number"]))
+        slide_number = int(slot["slide_number"])
+        design_shape = (
+            DESIGNED_FRONTMATTER_SHAPES.get(slide_number)
+            or DESIGNED_ANNEX_SHAPES.get(slide_number)
+        )
         if design_shape and _shape_by_name(slide, design_shape) is not None:
             preserved_template.append(key)
             continue
@@ -213,7 +222,8 @@ def _narrative_font_size(text: str) -> float:
 
 
 def _set_narrative_shape_text(
-    shape, narrative: str, *, context_line: str | None = None
+    shape, narrative: str, *, context_line: str | None = None,
+    title_override: str | None = None,
 ) -> dict[str, Any]:
     """Replace only the template filler with reviewed native PPTX prose."""
 
@@ -223,6 +233,8 @@ def _set_narrative_shape_text(
     original_lines = [line.strip() for line in shape.text.splitlines() if line.strip()]
     label = original_lines[0] if original_lines else shape.name
     title = original_lines[1] if len(original_lines) > 1 else ""
+    if title_override is not None:
+        title = title_override
     if title.startswith("{{TEXTO:"):
         title = ""
     body_size = _narrative_font_size(narrative)
@@ -621,6 +633,9 @@ def assemble_from_template(
                     narrative_meta = _set_narrative_shape_text(
                         narrative_shape,
                         narrative_record.updated_text,
+                        title_override=(str(entry['title']).upper()
+                                        if figure_id in ('H.11', 'H.12', 'H.13', 'H.14')
+                                        else None),
                     )
                     narrative_inserted.add(figure_id)
                     if narrative_record.verification_status == "data_changed":
@@ -726,6 +741,18 @@ def assemble_from_template(
             )
         raise RuntimeError("No se generó el PPTX en modo estricto; " + " | ".join(details))
 
+    header_design = apply_uniform_headers(presentation)
+    publication_revision = apply_publication_revision(project_root, presentation, run_dir)
+    if publication_revision:
+        page_map = publication_revision["template_to_publication_pages"]
+        for row in inserted_rows + historical_rows:
+            row["template_slide_number"] = row["slide_number"]
+            row["slide_number"] = page_map[str(row["slide_number"])]
+        svg_requests = [replace(request, slide_number=page_map[str(request.slide_number)])
+                        for request in svg_requests]
+        header_design["reference_slide"] = page_map[str(header_design["reference_slide"])]
+        header_design["slide_count"] = len(presentation.slides) - 2
+        header_design["excluded_slides"] = [1, len(presentation.slides)]
     output_path.parent.mkdir(parents=True, exist_ok=True)
     if output_path.exists():
         output_path.unlink()
@@ -738,6 +765,7 @@ def assemble_from_template(
         raise RuntimeError("La verificación del PPTX detectó un número de diapositivas distinto.")
     _validate_native_text_layers(reopened, inserted_rows)
     _validate_narrative_layers(reopened, inserted_rows)
+    validate_uniform_headers(reopened)
 
     narrative_report_json = output_path.with_name(output_path.stem + "_narrativas.json")
     narrative_report_csv = output_path.with_name(output_path.stem + "_narrativas.csv")
@@ -761,6 +789,8 @@ def assemble_from_template(
         if run_dir and run_dir.is_relative_to(project_root)
         else (str(run_dir) if run_dir else None),
         "slide_count": len(presentation.slides),
+        "header_design": header_design,
+        "publication_revision": publication_revision,
         "editorial_inserted_count": len(editorial["inserted"]),
         "editorial_pending_count": len(editorial["pending"]),
         "editorial_pending_keys": editorial["pending"],

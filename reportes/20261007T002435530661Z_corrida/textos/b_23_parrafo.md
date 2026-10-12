@@ -1,0 +1,1 @@
+Al cierre de 2024, el segmento residencial registró 19,137,914 accesos de televisión restringida. Cable concentró 52.0%, seguida de Direct-to-home (DTH) con 35.5%. En el segmento no residencial se registraron 2,066,047 accesos; Cable representó 96.0%.

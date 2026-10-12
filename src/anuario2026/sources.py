@@ -29,7 +29,7 @@ def verify_raw_file(path: Path) -> dict[str, Any]:
     if not path.is_file() or path.stat().st_size == 0:
         raise SourceError(f"Archivo crudo ausente o vacío: {path}")
     suffix = path.suffix.lower()
-    if suffix in {".zip", ".xlsx", ".pptx", ".docx"}:
+    if suffix in {".zip", ".xlsx", ".ods", ".pptx", ".docx"}:
         try:
             with zipfile.ZipFile(path) as archive:
                 bad = archive.testzip()

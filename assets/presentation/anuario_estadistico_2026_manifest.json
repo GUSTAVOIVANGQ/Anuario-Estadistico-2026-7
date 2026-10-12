@@ -1766,7 +1766,7 @@
       "figure_id": "H.11",
       "section": "H",
       "section_title": "H. CONSUMO DE RADIO Y TELEVISIÓN",
-      "title": "Proporción de personas que escucharon la radio por hora (%) — Nacional",
+      "title": "Proporción de personas que escucharon la radio por hora (%) — CDMX, Guadalajara y Monterrey",
       "token": "{{FIGURA:H.11}}",
       "figure_shape_name": "ANUARIO_FIGURE_H_11",
       "narrative_shape_name": "ANUARIO_TEXT_H_11",
@@ -1777,10 +1777,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 112,
-      "historical_image": "assets/reference/audiencias_2024/h_11_2024.png",
-      "historical_period": "julio de 2023 a junio de 2024",
-      "historical_source_pdf_page": 112
+      "slide_number": 112
     },
     {
       "figure_id": "H.12",
@@ -1797,10 +1794,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 113,
-      "historical_image": "assets/reference/audiencias_2024/h_12_2024.png",
-      "historical_period": "julio de 2023 a junio de 2024",
-      "historical_source_pdf_page": 113
+      "slide_number": 113
     },
     {
       "figure_id": "H.13",
@@ -1817,10 +1811,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 114,
-      "historical_image": "assets/reference/audiencias_2024/h_13_2024.png",
-      "historical_period": "julio de 2023 a junio de 2024",
-      "historical_source_pdf_page": 114
+      "slide_number": 114
     },
     {
       "figure_id": "H.14",
@@ -1837,10 +1828,7 @@
         "width": 5.9333,
         "height": 3.9265
       },
-      "slide_number": 115,
-      "historical_image": "assets/reference/audiencias_2024/h_14_2024.png",
-      "historical_period": "julio de 2023 a junio de 2024",
-      "historical_source_pdf_page": 115
+      "slide_number": 115
     }
   ],
   "editorial_slots": [

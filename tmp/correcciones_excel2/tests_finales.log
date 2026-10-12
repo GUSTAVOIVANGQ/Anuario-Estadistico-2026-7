@@ -1,0 +1,166 @@
+Windows fatal exception: code 0xc0000139
+
+Thread 0x0000fe50 (most recent call first):
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1053 in create_module
+  File "<frozen importlib._bootstrap>", line 816 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 924 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\ssl.py", line 100 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\http\client.py", line 1479 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 89 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\xml\sax\saxutils.py", line 6 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\shapes\picture.py", line 6 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\shapes\groupshape.py", line 13 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\__init__.py", line 352 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\opc\oxml.py", line 11 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\opc\package.py", line 14 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\package.py", line 8 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\api.py", line 14 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\__init__.py", line 9 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+Windows fatal exception: code 0xc0000139
+
+Thread 0x0000fe50 (most recent call first):
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1053 in create_module
+  File "<frozen importlib._bootstrap>", line 816 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 924 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\ssl.py", line 100 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\urllib\request.py", line 110 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\AppData\Local\anaconda3\Lib\xml\sax\saxutils.py", line 6 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\shapes\picture.py", line 6 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\shapes\groupshape.py", line 13 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\oxml\__init__.py", line 352 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\opc\oxml.py", line 11 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\opc\package.py", line 14 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\package.py", line 8 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\api.py", line 14 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\pptx\__init__.py", line 9 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\tests\test_editorial_statistics.py", line 5 in <module>
+  File "C:\Users\gustavo.garcia\Documents\GitHub\Anuario-Estadistico-2026-7\.venv\Lib\site-packages\_pytest\assertion\rewrite.py", line 188 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+
+Current thread's C stack trace (most recent call first):
+  <cannot get C stack on this system>
+....                                                                     [100%]
+4 passed in 1.57s

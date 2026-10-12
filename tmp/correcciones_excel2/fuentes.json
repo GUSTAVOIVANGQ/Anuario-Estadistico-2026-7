@@ -1,0 +1,14 @@
+[
+  {
+    "file": "ingresos_BIT.csv",
+    "url": "https://bit.crt.gob.mx/descargas/datos/tabs/TD_INGRESOS_TELECOM_ITE_VA.csv",
+    "sha256": "508885afb319e4e14caabd29a2241c48dffbebedef8447f3308fbd2d1fc82eb9",
+    "bytes": 929871
+  },
+  {
+    "file": "PIBT_2.xlsx",
+    "url": "https://www.inegi.org.mx/contenidos/programas/pib/2018/tabulados/ori/PIBT_2.xlsx",
+    "sha256": "65a7899d4106e94ddb0612919ea45f7ce356910693a6c74526994e3eb11a5dee",
+    "bytes": 1904922
+  }
+]

@@ -146,6 +146,34 @@
         "*.zip"
       ],
       "instruction": "Coloca aquí Datos_originales_y_actualizacion__1_.xlsx y 2026_2T_Flujos_TI_AC_3.xlsx. A.5 no descarga estos insumos."
+    },
+    "H.11": {
+      "directory": "data/manual/H",
+      "patterns": [
+        "datos_inram_h11_h14_2024.ods"
+      ],
+      "instruction": "Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet."
+    },
+    "H.12": {
+      "directory": "data/manual/H",
+      "patterns": [
+        "datos_inram_h11_h14_2024.ods"
+      ],
+      "instruction": "Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet."
+    },
+    "H.13": {
+      "directory": "data/manual/H",
+      "patterns": [
+        "datos_inram_h11_h14_2024.ods"
+      ],
+      "instruction": "Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet."
+    },
+    "H.14": {
+      "directory": "data/manual/H",
+      "patterns": [
+        "datos_inram_h11_h14_2024.ods"
+      ],
+      "instruction": "Coloca datos_inram_h11_h14_2024.ods en data/manual/H/. Conserva las nueve hojas INRAM y UNIVERSOS; el periodo se lee del contenido. No se descarga de internet."
     }
   },
   "downloaders": {

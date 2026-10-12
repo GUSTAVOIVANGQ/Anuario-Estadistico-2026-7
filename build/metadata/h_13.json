@@ -1,0 +1,32 @@
+{
+  "figure_id": "H.13",
+  "title": "Proporción de personas que escucharon la radio por hora (%) — Guadalajara",
+  "reference_page_2024": 114,
+  "figure_path": "build\\figures\\H\\figura_h_13.png",
+  "figure_formats": {
+    "png": "build\\figures\\H\\figura_h_13.png",
+    "jpg": "build\\figures\\H\\figura_h_13.jpg",
+    "svg": "build\\figures\\H\\figura_h_13.svg"
+  },
+  "svg": {
+    "editable_text": true,
+    "text_elements": 42,
+    "positioned_text_elements": 42,
+    "vector_elements": 30,
+    "embedded_images": 0
+  },
+  "run_id": "20261012T202536229052Z_corrida",
+  "result": {
+    "figure_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\figures\\H\\figura_h_13.png",
+    "text_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\build\\text\\h_13.md",
+    "source_latest_period": "julio 2023 a junio 2024",
+    "rows_used": 54,
+    "historical_validation_2024": true,
+    "data_path": "C:\\Users\\gustavo.garcia\\Documents\\GitHub\\Anuario-Estadistico-2026-7\\reportes\\20261012T202536229052Z_corrida\\datos_usados\\h_13_datos_usados.csv",
+    "data_sha256": "006253f71df085361c78b80059faf2d0c4b97a7d9effbe475ce3f3deffb57649",
+    "text_sha256": "0b6f55236c4021328b4fba599477cd85018b1c45cbbc8cd6d97557c247236d28",
+    "manual_path": "data\\manual\\H\\datos_inram_h11_h14_2024.ods",
+    "manual_sha256": "41ddb2da9878187741fad09b2f4915927e0789b456fdcef315effdc804324624",
+    "narrative_mode": "manual_inram_records_only"
+  }
+}

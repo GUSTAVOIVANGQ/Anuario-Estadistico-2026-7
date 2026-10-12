@@ -7,10 +7,11 @@ registro de la evidencia de cada corrida. La interfaz web permite consultar el
 catálogo, ejecutar figuras y descargar los resultados sin trabajar directamente
 con los scripts.
 
-La edición integral reúne **131 páginas**, las **91 figuras automatizadas de A a G**,
-las **14 figuras históricas de H** y **44 campos editoriales completos**. Las
-figuras de H conservan el corte de julio de 2023 a junio de 2024 porque todavía
-no se dispone de las bases licenciadas de Nielsen IBOPE / MSS TV e INRA / INRAM.
+La edición integral reúne **130 páginas**, las **95 figuras automatizadas de A a G y H.11 a H.14**,
+las **10 figuras históricas de televisión** y **44 campos editoriales completos**.
+H.11 a H.14 se calculan desde el ODS INRAM descargado manualmente. El archivo
+incluido conserva el corte de julio de 2023 a junio de 2024. H.1 a H.10 siguen
+como referencia histórica por falta de las bases de Nielsen IBOPE / MSS TV.
 Es un borrador reproducible para revisión académica e institucional; cada
 indicador muestra su propio periodo observado.
 
@@ -94,7 +95,8 @@ subcomandos (`doctor`, `web` y `run`).
 
 Cada figura disponible tiene un script en `scripts/figures/`. Si un archivo crudo
 verificado ya existe, se reutiliza. La figura A.5 emplea insumos manuales en
-`data/manual/A.5/`.
+`data/manual/A.5/`. H.11 a H.14 comparten el archivo
+`data/manual/H/datos_inram_h11_h14_2024.ods`; no realizan descarga web.
 
 Los reportes de cada corrida conservan la referencia y fecha de la fuente, la
 huella del archivo crudo, el periodo detectado, la tabla usada, las fórmulas y el
@@ -107,25 +109,40 @@ La [arquitectura](docs/ARQUITECTURA.md), las [metodologías](docs/) y las
 [notas de la versión 0.30.0](PAQUETE_COMPLETO_0.30.0.md) documentan el diseño y
 los detalles de exportación.
 
+El ensamblaje aplica la barra BIT CRT de la diapositiva 7 de la plantilla en las páginas 2 a 129 de la edición,
+con el mismo fondo, QR, logotipo y enlace blanco. La portada y la contraportada
+quedan sin barra. Al descargar una corrida anterior, la aplicación regenera su
+PPTX si todavía tiene el diseño anterior y actualiza el PDF desde ese PPTX.
+
 ## Estado y trabajo futuro
 
-| Alcance                               | Estado        | Fuente necesaria                              |
-| ------------------------------------- | ------------- | --------------------------------------------- |
-| Secciones A a G: 91 figuras           | Automatizadas y ensambladas | Fuentes y cortes registrados por figura |
-| H.1 a H.10: audiencias de televisión | Réplica histórica 2024      | Nielsen IBOPE / MSS TV                  |
-| H.11 a H.14: audiencias de radio      | Réplica histórica 2024      | INRA / INRAM                            |
-| Texto, herramientas y anexos          | 44 campos completos         | PDF 2024, BIT, INEGI y corrida documentada |
+| Alcance                               | Estado                        | Fuente necesaria                           |
+| ------------------------------------- | ----------------------------- | ------------------------------------------ |
+| Secciones A a G: 91 figuras           | Automatizadas y ensambladas   | Fuentes y cortes registrados por figura    |
+| H.1 a H.10: audiencias de televisión | Réplica histórica 2024      | Nielsen IBOPE / MSS TV                     |
+| H.11 a H.14: audiencias de radio      | Cálculo desde archivo manual | ODS INRA / INRAM en`data/manual/H/`      |
+| Texto, herramientas y anexos          | 44 campos completos           | PDF 2024, BIT, INEGI y corrida documentada |
 
 ### Alcance de la edición completa
 
 El [Anuario Estadístico 2024](assets/reference/anuario_2024_fuente/anuarioestadistico2024vf_0.pdf)
 es la referencia de **estructura y contenido** para la edición 2026. Tiene 131
 páginas. La plantilla automatizable de 2026 tiene ahora **131 diapositivas** y
-respeta la secuencia de páginas e índice de 2024: portada, índice, legales,
+conserva la secuencia de contenido de 2024: portada, índice, legales,
 glosario, introducción, puntos clave, secciones A a H, herramientas, anexos I a
 IV y contraportada. Se quitaron los separadores y la conclusión ajenos al
-índice de referencia. El índice conserva literalmente los títulos y números de
-página de 2024, incluida la grafía «SATISFACIÓN» y los títulos que mencionan
+índice de referencia. Las correcciones de Anuario_mejoras.xlsx se aplican en cada ensamblaje desde
+publication_revision del registro editorial. Se actualizan legales, Gemini y
+DGP y se elimina la página 4 de la plantilla. La edición tiene 130 páginas:
+índice, pies, marcadores PDF y posiciones de figuras se renumeran juntos.
+La plantilla y el manifiesto conservan sus 131 posiciones originales.
+La segunda revisión, Anuario_mejoras (1).xlsx, actualiza las introducciones
+de las páginas 6 y 7 y los puntos clave de ingresos y PIB de 2025 de la página 8.
+Los ingresos se suman para los cuatro trimestres de cada año; el PIB compara
+T4 de 2025 con T4 de 2024 a precios de 2018. El ensamblaje usa los datos
+completos de la corrida o los cortes oficiales verificados en data/manual/editorial/.
+El reporte de ensamblaje registra valores, fórmulas, fuentes y huellas de los datos.
+El índice conserva los títulos de 2024, incluida la grafía «SATISFACIÓN» y los títulos que mencionan
 años históricos. Los 105 marcadores de figuras y 44 campos de texto y tablas
 son objetos editables de PowerPoint. La redacción revisada está en
 `assets/presentation/textos_editoriales_2026.json`; las narrativas de cada
@@ -137,20 +154,21 @@ identificada en el registro de narrativas.
 El archivo para trabajar es `assets/presentation/anuario_estadistico_2026_automatizable.pptx`.
 Se puede ensamblar mediante `.\ejecutar.ps1 assemble --strict`; el PowerPoint
 completo y el PDF de revisión se guardan en `entrega/`. Los cuadros, títulos,
-notas y tablas del PPTX son editables; A a G se insertan como SVG y H como
-recortes históricos del PDF original, identificados con su periodo.
+notas y tablas del PPTX son editables; A a G y H.11 a H.14 se insertan como
+SVG. H.1 a H.10 conservan recortes históricos del PDF original, identificados
+con su periodo.
 
 ### Notas críticas de redacción y fuentes
 
-| Tema | Criterio aplicado y revisión necesaria |
-| --- | --- |
-| Índice y capítulos | Se mantienen los títulos, la grafía y las páginas de 2024, incluso «Herramientas IFT» y «SATISFACIÓN». No se agrega conclusión. Esos nombres son una referencia estructural, no el año de las cifras. |
-| Cambios mínimos | Se preservan definiciones y métodos de 2024 cuando siguen siendo válidos. Al actualizar una gráfica se revisan juntos cifra, periodo, fuente y conclusión; no se cambia sólo el año. |
-| INEGI | Se indica la edición de cada encuesta. ENDUTIH 2025 alimenta las figuras que la usan; ENIGH 2024, ENOE y MOCIBA conservan su propio corte. Algunas encuestas de usuarios y MiPymes siguen en 2023 o 2024 cuando no hay una actualización comparable verificada. |
-| BIT, IFT y CRT | «IFT» permanece como autor histórico y como título literal del índice. El texto nuevo identifica a la CRT y al BIT vigente. Las páginas antiguas del BIT estatal y de la calculadora no se presentan como servicios operativos: se enlaza el [BIT](https://bit.crt.gob.mx/BitWebApp/), su [descarga de datos](https://bit.crt.gob.mx/BitWebApp/descargaDatos.xhtml) y la [información estadística](https://bit.crt.gob.mx/BitWebApp/informacionEstadistica.xhtml). Si no se verifica un equivalente, se conserva la cita histórica sin prometer un enlace activo. |
-| Audiencias H.1 a H.14 | **No se tiene acceso al software INRA ni a Nielsen IBOPE / MSS TV.** La redacción de 2024 que menciona INRA / INRAM y Nielsen IBOPE / MSS TV queda como **réplica exacta**, con el periodo julio de 2023 a junio de 2024 visible. Los recortes de figuras son históricos. Se actualizarán cuando se obtenga acceso a las bases licenciadas; no se infieren datos nuevos de las gráficas redondeadas. |
-| Cortes diferentes | El año 2026 designa la edición, no todas las observaciones. El Anexo I combina BIT de diciembre de 2024, denominadores de INEGI 2025 y radiodifusión de 2023; cada tabla lo declara. |
-| Investigación auxiliar | `Estado Sitios BIT IFT.md` orienta la búsqueda de enlaces. Sus cifras, causas y posibles capítulos nuevos no se incorporan sin cotejo con fuentes primarias y con la estructura de 2024. |
+| Tema                    | Criterio aplicado y revisión necesaria                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Índice y capítulos    | Se mantienen los títulos y la grafía de 2024, incluidos «Herramientas IFT» y «SATISFACIÓN». La numeración incorpora la eliminación de la página 4. No se agrega conclusión. Esos nombres son una referencia estructural, no el año de las cifras.                                                                                                                                                                                                                                                                                                                                                        |
+| Cambios mínimos        | Se preservan definiciones y métodos de 2024 cuando siguen siendo válidos. Al actualizar una gráfica se revisan juntos cifra, periodo, fuente y conclusión; no se cambia sólo el año.                                                                                                                                                                                                                                                                                                                                                                             |
+| INEGI                   | Se indica la edición de cada encuesta. ENDUTIH 2025 alimenta las figuras que la usan; ENIGH 2024, ENOE y MOCIBA conservan su propio corte. Algunas encuestas de usuarios y MiPymes siguen en 2023 o 2024 cuando no hay una actualización comparable verificada.                                                                                                                                                                                                                                                                                                      |
+| BIT, IFT y CRT          | «IFT» permanece como autor histórico y como título literal del índice. El texto nuevo identifica a la CRT y al BIT vigente. Las páginas antiguas del BIT estatal y de la calculadora no se presentan como servicios operativos: se enlaza el[BIT](https://bit.crt.gob.mx/BitWebApp/), su [descarga de datos](https://bit.crt.gob.mx/BitWebApp/descargaDatos.xhtml) y la [información estadística](https://bit.crt.gob.mx/BitWebApp/informacionEstadistica.xhtml). Si no se verifica un equivalente, se conserva la cita histórica sin prometer un enlace activo. |
+| Audiencias H.1 a H.14   | H.11 a H.14 recalculan los ratings del ODS manual INRAM y validan sus resultados históricos contra 2024. El periodo se lee del archivo y la redacción sólo actualiza cifras y fechas. H.1 a H.10 conservan los recortes de julio de 2023 a junio de 2024 por falta de bases de televisión.                                                                                                                                                                                                                                                                         |
+| Cortes diferentes       | El año 2026 designa la edición, no todas las observaciones. El Anexo I combina BIT de diciembre de 2024, denominadores de INEGI 2025 y radiodifusión de 2023; cada tabla lo declara.                                                                                                                                                                                                                                                                                                                                                                                |
+| Investigación auxiliar | `Estado Sitios BIT IFT.md` orienta la búsqueda de enlaces. Sus cifras, causas y posibles capítulos nuevos no se incorporan sin cotejo con fuentes primarias y con la estructura de 2024.                                                                                                                                                                                                                                                                                                                                                                           |
 
 Para volver a sincronizar otro borrador de 131 páginas con el generador:
 
@@ -163,8 +181,8 @@ Para volver a sincronizar otro borrador de 131 páginas con el generador:
 1. Validar las cifras y la redacción con los responsables de cada fuente, en
    especial los puntos clave, las tasas del Anexo I y las encuestas que conservan
    un corte anterior al de la edición.
-2. Conseguir las bases licenciadas de audiencias, reproducir primero H.1 a H.14
-   del periodo histórico y después actualizar las figuras y su texto.
+2. Incorporar un ODS INRAM de un periodo más reciente para H.11 a H.14 y
+   conseguir las bases de televisión para actualizar H.1 a H.10.
 3. Aprobar identidad institucional, créditos y enlaces antes de una difusión
    oficial. Esta entrega documenta la automatización y sus límites de datos.
 
